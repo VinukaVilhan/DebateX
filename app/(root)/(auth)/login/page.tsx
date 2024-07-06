@@ -52,7 +52,7 @@ const Login = () => {
 
   return (
     <>
-      <div style={{ maxWidth: '600px', margin: '0 auto', padding: '20px', backgroundColor: 'white', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)', marginTop: '50px' }}>
+      <div style={{ maxWidth: '600px', margin: '0px auto', padding: '20px', backgroundColor: 'white', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)'}}>
         <h1 style={{ color: 'purple', textAlign: 'center' }}>Log in</h1>
         <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <div>

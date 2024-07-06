@@ -68,11 +68,11 @@ const Signup = () => {
       <div
         style={{
           maxWidth: "600px",
-          margin: "0 auto",
+          margin: "0px auto",
           padding: "20px",
           backgroundColor: "white",
           boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-          marginTop: "50px",
+     
         }}
       >
         <h1 style={{ color: "purple", textAlign: "center" }}>Sign up</h1>
