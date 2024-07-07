@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/card";
 import Image from "next/image";
 import MeetingTypeList from "@/components/MeetingTypeList";
+import MeetingModel from "@/components/MeetingModel";
 
 const Home = () => {
   const [meetingState, setMeetingState] = useState<
@@ -63,6 +64,14 @@ const Home = () => {
                   img="/icons/host-meeting.svg"
                   title="Host"
                   handleClick={() => setMeetingState("isHostMeeting")}
+                />
+
+                <MeetingModel 
+                  isOpen={meetingState === "isJoiningMeeting"}
+                  onClose{() => setMeetingState(undefined)}
+                  title="Join Meeting"
+                  className="text-center"
+                  
                 />
               </div>
               <div className="flex-[1] bg-black">
