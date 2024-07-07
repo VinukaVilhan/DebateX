@@ -16,34 +16,63 @@ const Home = () => {
   return (
 
     <section className="flex size-full flex-col gap-10 text-white">
-      <div className="flex flex-col gap-4">
-        <div className="flex h-60">
-         <div className="flex gap-4 w-full">
+      <div className="flex flex-col">
+        <div className="flex h-70 flex-grow">
+         <div className="flex gap-4 w-full flex-grow my-2">
             <div className="flex flex-[3] bg-red-100 rounded-sm flex-col">
               {/* Content for first part */}
-              <div className='flex flex-[1] bg-slate-600'>
-              <div className='w-1/4 bg-red-500 last:items-center justify-end'>
+              <div className='flex flex-[1] bg-black'>
+              <div className='flex w-1/4 items-center justify-center p-2'>
                 {/* Content for the smaller part */}
-                <Image
+                <Image className='rounded-full'
                 src='/images/avatar-1.jpeg'
-                height={100}
-                width={100}
+                height={150}
+                width={150}
                 alt='profile pic'
 
                 />
               </div>
-              <div className='w-3/4 bg-blue-500'>
+              <div className='flex flex-col w-3/4 bg-black px-5 py-6 gap-1'>
                 {/* Content for the larger part */}
-                large
-              </div>
-              </div>
-              <div className='flex flex-[1] bg-slate-900'>
+                
+                <h1 className='font-extrabold text-3xl'>Jamie Curtis</h1>
+                <h3 className='font-light'>Jamie47@gmail.com</h3>
+                <Button className='bg-purple-600 rounded-xl w-min' variant="outline">Free Plan</Button>
 
+              </div>
+              </div>
+              <div className='flex flex-[1] bg-slate-900 flex-col'>
+                <p className='mx-5 my-2 font-semibold'>Included in your plan</p>
+                <div className='flex flex-row items-center justify-evenly p-1 m-1'>
+                  <Image
+                  src='/icons/chat(p).png'
+                  width={30}
+                  height={30}
+                  alt='chat icon'
+                  />
+
+                  <Image
+                  src={'/icons/notes(p).png'}
+                  width={30}
+                  height={30}
+                  alt='notes icon'
+                  />
+
+                  <Image
+                  src={'/icons/video(p).png'}
+                  width={30}
+                  height={30}
+                  alt='video icon'
+                  />
+
+
+                </div>
               </div>
             </div>
             <div className="flex flex-[2] bg-red-100 rounded-lg flex-col">
               {/* Content for second part */}
-              <div className='flex flex-[1] bg-blue-600  last:items-center gap-5 justify-evenly'>
+              
+              <div className='flex flex-[1] bg-black  last:items-center gap-5 justify-evenly'>
                 
                 <Image
                 src='/icons/schedule.svg'
@@ -66,13 +95,27 @@ const Home = () => {
                 alt='join a meeting'/>
 
               </div>
-              <div className='flex-[1] bg-black'>
-                <p>till</p>
+              <div className='flex flex-[1] bg-black justify-center items-center'>
+                <Card className='bg-slate-400 outline-none rounded-xl'>
+                  <CardContent className='flex flex-col bg-slate-400 m-1 justify-center'>
+                    <h3 className='font-semibold'>Personal meeting ID</h3>
+                    <div className='flex flex-row items-center gap-2'>
+                      <h3>305-206-243</h3>
+                      <Image
+                      src={'/icons/copy.png'}
+                      width={30}
+                      height={30}
+                      alt='copy id icon'/>
+                    </div>
+                    
+                  </CardContent>
+              
+                </Card>
               </div>
             </div>
           </div>
         </div>
-        <div className="flex h-60 items-center">
+        <div className="flex h-60 items-center my-1">
           <Tabs defaultValue="upcoming" className="w-full">
             <TabsList className="grid w-full grid-cols-2 bg-gray-800">
               <TabsTrigger value="upcoming">Upcoming</TabsTrigger>
