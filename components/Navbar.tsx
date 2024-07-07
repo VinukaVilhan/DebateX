@@ -62,8 +62,8 @@ const Navbar = () => {
   }, [user, storage]);
 
   return (
-    <nav className="flex-between fixed z-50 w-full bg-dark-1 px-6 py-4 lg:px-10">
-      <Link href="/" className="flex items-center gap-1">
+    <nav className="flex justify-between items-center absolute t-0 z-50 w-full bg-dark-1 px-6 py-4 lg:px-20">
+      <Link href="/" className="flex items-center">
         {/* <Image
           src="/icons/logo.svg"
           width={32}
@@ -71,26 +71,31 @@ const Navbar = () => {
           alt="DebateX logo"
           className="max-sm:size-10"
         /> */}
-        <p className="text-[26 px] font-extrabold text-white max-sm:hidden">
+        <p className="text-4xl font-extrabold text-white max-sm:hidden">
           DebateX
         </p>
       </Link>
-      <Link href="/#hero" className="text-white max-sm:hidden">
-        <p>Home</p>
-      </Link>
-      <Link href="/#aims" className="text-white max-sm:hidden">
-        <p>Aims</p>
-      </Link>
-      <Link href="/#contact" className="text-white max-sm:hidden">
-        <p>Contact Us</p>
-      </Link>
+      <div className="flex w-2/5 mx-2 text-lg justify-evenly">
+        <Link href="/#hero" className="text-white max-sm:hidden">
+          <p>Home</p>
+        </Link>
+        <Link href="" className="text-white max-sm:hidden">
+          <p>About</p>
+        </Link>
+        <Link href="/#aims" className="text-white max-sm:hidden">
+          <p>Aims</p>
+        </Link>
+        <Link href="/#contact" className="text-white max-sm:hidden">
+          <p>Contact Us</p>
+        </Link>
+      </div>
       <Link href="/login" className="text-white max-sm:hidden">
         <p>Get Started</p>
       </Link>
-   
-      <div className="flex-between gap-5">
+
+      {/* <div className="flex-between hidden">
         <Mobilenav />
-      </div>
+      </div> */}
     </nav>
   );
 };
