@@ -1,3 +1,5 @@
+"use client";
+
 import { tokenProvider } from "@/actions/stream.actions";
 import Loader from "@/components/Loader";
 import { auth } from "@/lib/firebase/config";
@@ -8,9 +10,7 @@ import { ReactNode, useEffect, useState } from "react";
 const apiKey = process.env.NEXT_PUBLIC_STREAM_API_KEY;
 
 export const StreamVideoProvider = ({ children }: { children: ReactNode }) => {
-  const [videoClient, setVideoClient] = useState<StreamVideoClient | null>(
-    null
-  );
+  const [videoClient, setVideoClient] = useState<StreamVideoClient>();
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
