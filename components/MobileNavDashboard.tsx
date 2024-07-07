@@ -14,13 +14,17 @@ import { usePathname } from 'next/navigation'
 import { sidebarLinks } from '@/constants'
 import { cn } from '@/lib/utils';
 
-const Mobilenav = () => {
+const MobileNavDashboard = () => {
 
   const pathname =  usePathname();
 
 
   return (
-    <section className='w-full max-w-[264px]'>
+    <section className='flex w-full max-w-[264px]'>
+               <Link href="/" className="flex items-center gap-1 sm:hidden">
+        
+          <p className="text-[26 px] font-extrabold text-white ">DebateX</p>
+          </Link>
         <Sheet>
         <SheetTrigger asChild>
           <Image 
@@ -70,7 +74,7 @@ const Mobilenav = () => {
           </div>
 
       {/* <div className='flex-between gap-5'>
-        <Mobilenav/>          
+        <MobileNavDashboard/>          
       </div> */}
         </SheetContent>
         </Sheet>
@@ -79,4 +83,4 @@ const Mobilenav = () => {
   )
 }
 
-export default Mobilenav
+export default MobileNavDashboard

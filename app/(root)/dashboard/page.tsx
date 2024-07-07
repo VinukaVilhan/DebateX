@@ -1,6 +1,8 @@
-import React from 'react'
-import NavbarDashboard from '@/components/Navbar'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+"use client";
+
+import React, { useState } from "react";
+import NavbarDashboard from "@/components/Navbar";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Card,
   CardContent,
@@ -8,14 +10,19 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import Image from 'next/image'
+} from "@/components/ui/card";
+import Image from "next/image";
+import MeetingTypeList from "@/components/MeetingTypeList";
+import MeetingModel from "@/components/MeetingModel";
 
 const Home = () => {
-  return (
+  const [meetingState, setMeetingState] = useState<
+    "isScheduleMeeting" | "isJoiningMeeting" | "isHostMeeting" | undefined
+  >(undefined);
 
+  return (
     <section className="flex size-full flex-col gap-10 text-white">
+
       <div className="flex flex-col">
         <div className="flex h-70 flex-grow">
          <div className="flex gap-4 w-full flex-grow my-2">
@@ -65,36 +72,43 @@ const Home = () => {
                   alt='video icon'
                   />
 
-
                 </div>
               </div>
+              <div className="flex flex-[1] bg-slate-900"></div>
             </div>
             <div className="flex flex-[2] bg-red-100 rounded-lg flex-col">
-              {/* Content for second part */}
-              
-              <div className='flex flex-[1] bg-black  last:items-center gap-5 justify-evenly'>
-                
-                <Image
-                src='/icons/schedule.svg'
-                width={30}
-                height={30}
-                alt='schedule meeting'
+              {/* Content for second part */}          
+
+              <div className="flex flex-[1] bg-white last:items-center gap-5 justify-evenly items-center">
+                <MeetingTypeList
+                  img="/icons/schedule-meeting.svg"
+                  title="Schedule"
+                  handleClick={() => setMeetingState("isScheduleMeeting")}
+
                 />
 
-                <Image
-                src='/icons/add-meeting.svg'
-                width={30}
-                height={30}
-                alt='host a meeting'
+                <MeetingTypeList
+                  img="/icons/join-meeting.svg"
+                  title="Join"
+                  handleClick={() => setMeetingState("isJoiningMeeting")}
                 />
 
-                <Image
-                src={'/icons/join-meeting.svg'}
-                width={30}
-                height={30}
-                alt='join a meeting'/>
+                <MeetingTypeList
+                  img="/icons/host-meeting.svg"
+                  title="Host"
+                  handleClick={() => setMeetingState("isHostMeeting")}
+                />
 
+                <MeetingModel
+                  isOpen={meetingState === "isHostMeeting"}
+                  onClose={() => setMeetingState(undefined)}
+                  title="Host a Meeting"
+                  className="text-center"
+                  buttonText="Start a Meeting"
+                  handleClick={() => {}}
+                />
               </div>
+
               <div className='flex flex-[1] bg-black justify-center items-center'>
                 <Card className='bg-slate-400 outline-none rounded-xl'>
                   <CardContent className='flex flex-col bg-slate-400 m-1 justify-center'>
@@ -111,6 +125,7 @@ const Home = () => {
                   </CardContent>
               
                 </Card>
+
               </div>
             </div>
           </div>
@@ -122,7 +137,7 @@ const Home = () => {
               <TabsTrigger value="previous">Previous</TabsTrigger>
             </TabsList>
             <TabsContent value="upcoming">
-              <Card className='text-center'>
+              <Card className="text-center">
                 <CardHeader>
                   <CardTitle>Upcoming</CardTitle>
                   <CardDescription>
@@ -134,35 +149,28 @@ const Home = () => {
                     {/* Add content for upcoming events */}
                   </div>
                 </CardContent>
-                <CardFooter>
-                
-                </CardFooter>
+                <CardFooter></CardFooter>
               </Card>
             </TabsContent>
             <TabsContent value="previous">
-              <Card className='text-center'>
+              <Card className="text-center">
                 <CardHeader>
                   <CardTitle>Previous</CardTitle>
-                  <CardDescription>
-                    View your past events here.
-                  </CardDescription>
+                  <CardDescription>View your past events here.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-2 flex justify-center">
                   <div className="space-y-1">
                     {/* Add content for previous events */}
                   </div>
                 </CardContent>
-                <CardFooter>
-                 
-                </CardFooter>
+                <CardFooter></CardFooter>
               </Card>
             </TabsContent>
           </Tabs>
         </div>
-      
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

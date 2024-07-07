@@ -31,7 +31,7 @@ const Signup = () => {
         setShowSignupSuccessModal(true);
         setTimeout(() => {
           setShowSignupSuccessModal(false);
-          router.push("/");
+          router.push("/pricing");
         }, 3000); // Show modal for 3 seconds before navigating
       })
       .catch((error) => {
@@ -53,7 +53,7 @@ const Signup = () => {
         setShowSignupSuccessModal(true);
         setTimeout(() => {
           setShowSignupSuccessModal(false);
-          router.push("/");
+          router.push("/pricing");
         }, 3000); // Show modal for 3 seconds before navigating
       })
       .catch((error) => {
@@ -67,15 +67,19 @@ const Signup = () => {
     <>
       <div
         style={{
-          maxWidth: "600px",
-          margin: "0px auto",
-          padding: "20px",
-          backgroundColor: "white",
+          maxWidth: "400px",
+          margin: "0 auto",
+          padding: "40px",
+          backgroundColor: "#ffffff",
           boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-     
+          borderRadius: "8px",
+          textAlign: "center",
+          background: "#F0F0FF",
         }}
       >
-        <h1 style={{ color: "purple", textAlign: "center" }}>Sign up</h1>
+        <h1 style={{ color: "#413A67", fontSize: "2rem", marginBottom: "20px" }}>
+          Sign up
+        </h1>
         <form
           onSubmit={handleSignup}
           style={{ display: "flex", flexDirection: "column", gap: "20px" }}
@@ -83,7 +87,7 @@ const Signup = () => {
           <div>
             <label
               htmlFor="formUsername"
-              style={{ display: "block", marginBottom: "5px" }}
+              style={{ display: "block", marginBottom: "5px", color: "#413A67" }}
             >
               Username
             </label>
@@ -97,13 +101,15 @@ const Signup = () => {
                 width: "100%",
                 padding: "10px",
                 boxSizing: "border-box",
+                border: "1px solid #CCCCCC",
+                borderRadius: "4px",
               }}
             />
           </div>
           <div>
             <label
               htmlFor="formEmail"
-              style={{ display: "block", marginBottom: "5px" }}
+              style={{ display: "block", marginBottom: "5px", color: "#413A67" }}
             >
               Email address
             </label>
@@ -117,13 +123,15 @@ const Signup = () => {
                 width: "100%",
                 padding: "10px",
                 boxSizing: "border-box",
+                border: "1px solid #CCCCCC",
+                borderRadius: "4px",
               }}
             />
           </div>
           <div>
             <label
               htmlFor="formPassword"
-              style={{ display: "block", marginBottom: "5px" }}
+              style={{ display: "block", marginBottom: "5px", color: "#413A67" }}
             >
               Password
             </label>
@@ -137,6 +145,8 @@ const Signup = () => {
                 width: "100%",
                 padding: "10px",
                 boxSizing: "border-box",
+                border: "1px solid #CCCCCC",
+                borderRadius: "4px",
               }}
             />
           </div>
@@ -144,9 +154,10 @@ const Signup = () => {
             type="submit"
             style={{
               padding: "10px",
-              backgroundColor: "purple",
+              backgroundColor: "#413A67",
               color: "white",
               border: "none",
+              borderRadius: "4px",
               cursor: "pointer",
             }}
           >
@@ -158,20 +169,21 @@ const Signup = () => {
             style={{
               padding: "10px",
               backgroundColor: "white",
-              border: "1px solid purple",
-              color: "purple",
+              border: "1px solid #413A67",
+              color: "#413A67",
+              borderRadius: "4px",
               cursor: "pointer",
             }}
           >
             Sign up with Google
           </button>
         </form>
-        <p style={{ textAlign: "center", marginTop: "20px" }}>
+        <p style={{ marginTop: "20px", color: "#413A67" }}>
           Already signed in? then{" "}
           <a
             href="/login"
             style={{
-              color: "purple",
+              color: "#413A67",
               textDecoration: "underline",
               textUnderlineOffset: "5px",
             }}
@@ -203,17 +215,19 @@ const Signup = () => {
               boxShadow: "0 0 10px rgba(0,0,0,0.1)",
               maxWidth: "400px",
               width: "100%",
+              borderRadius: "8px",
             }}
           >
-            <h2>Signup Successful</h2>
-            <p>User signed up successfully!!</p>
+            <h2 style={{ color: "#413A67" }}>Signup Successful</h2>
+            <p style={{ color: "#413A67" }}>User signed up successfully!!</p>
             <button
               onClick={() => setShowSignupSuccessModal(false)}
               style={{
                 padding: "10px",
-                backgroundColor: "purple",
+                backgroundColor: "#413A67",
                 color: "white",
                 border: "none",
+                borderRadius: "4px",
                 cursor: "pointer",
               }}
             >
@@ -245,17 +259,19 @@ const Signup = () => {
               boxShadow: "0 0 10px rgba(0,0,0,0.1)",
               maxWidth: "400px",
               width: "100%",
+              borderRadius: "8px",
             }}
           >
-            <h2>Signup Error</h2>
-            <p>{signupError}</p>
+            <h2 style={{ color: "#413A67" }}>Signup Error</h2>
+            <p style={{ color: "#413A67" }}>{signupError}</p>
             <button
               onClick={() => setShowSignupErrorModal(false)}
               style={{
                 padding: "10px",
-                backgroundColor: "purple",
+                backgroundColor: "#413A67",
                 color: "white",
                 border: "none",
+                borderRadius: "4px",
                 cursor: "pointer",
               }}
             >
