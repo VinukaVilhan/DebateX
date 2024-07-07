@@ -9,7 +9,7 @@ import Mobilenav from "./mobileNav";
 import { auth } from "../lib/firebase/config";
 import { signOut, onAuthStateChanged } from "firebase/auth";
 
-const Navbar = () => {
+const NavbarDashboard = () => {
   const router = useRouter();
   const [name, setName] = useState("");
   const [profileImageUrl, setProfileImageUrl] = useState("");
@@ -75,17 +75,9 @@ const Navbar = () => {
           DebateX
         </p>
       </Link>
-      <Link href="/#hero" className="max-sm:hidden">
-        <p>Home</p>
-      </Link>
-      <Link href="/#aims" className="max-sm:hidden">
-        <p>Aims</p>
-      </Link>
-      <Link href="/#contact" className="max-sm:hidden">
-        <p>Contact Us</p>
-      </Link>
+   
       <Link href="/login" className="max-sm:hidden">
-        <p>Get Started</p>
+        <p>Profile</p>
       </Link>
    
       <div className="flex-between gap-5">
@@ -95,4 +87,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavbarDashboard;
