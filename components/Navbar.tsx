@@ -75,16 +75,16 @@ const Navbar = () => {
           DebateX
         </p>
       </Link>
-      <Link href="/#hero" className="max-sm:hidden">
+      <Link href="/#hero" className="text-white max-sm:hidden">
         <p>Home</p>
       </Link>
-      <Link href="/#aims" className="max-sm:hidden">
+      <Link href="/#aims" className="text-white max-sm:hidden">
         <p>Aims</p>
       </Link>
-      <Link href="/#contact" className="max-sm:hidden">
+      <Link href="/#contact" className="text-white max-sm:hidden">
         <p>Contact Us</p>
       </Link>
-      <Link href="/login" className="max-sm:hidden">
+      <Link href="/login" className="text-white max-sm:hidden">
         <p>Get Started</p>
       </Link>
    
