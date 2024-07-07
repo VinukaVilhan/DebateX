@@ -89,7 +89,7 @@ const Navbar = () => {
       </Link>
    
       <div className="flex-between gap-5">
-        {/* <Mobilenav /> */}
+        <Mobilenav />
       </div>
     </nav>
   );

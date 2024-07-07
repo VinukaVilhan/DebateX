@@ -31,7 +31,7 @@ const Signup = () => {
         setShowSignupSuccessModal(true);
         setTimeout(() => {
           setShowSignupSuccessModal(false);
-          router.push("/");
+          router.push("/pricing");
         }, 3000); // Show modal for 3 seconds before navigating
       })
       .catch((error) => {
@@ -53,7 +53,7 @@ const Signup = () => {
         setShowSignupSuccessModal(true);
         setTimeout(() => {
           setShowSignupSuccessModal(false);
-          router.push("/");
+          router.push("/pricing");
         }, 3000); // Show modal for 3 seconds before navigating
       })
       .catch((error) => {
