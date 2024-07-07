@@ -1,8 +1,8 @@
 // useAuth.ts
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
-import { onAuthStateChanged, User } from "firebase/auth";
-import { auth } from "@/lib/firebase/config";
+import { getAuthState } from "../authUtils";
+import { User } from "firebase/auth";
 
 interface AuthState {
   user: User | null;
@@ -11,25 +11,17 @@ interface AuthState {
 }
 
 export const useAuth = (): AuthState => {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
+  const [state, setState] = useState<AuthState>({
+    user: null,
+    loading: true,
+    error: null,
+  });
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (authUser) => {
-      if (authUser) {
-        setUser(authUser);
-      } else {
-        setUser(null);
-      }
-      setLoading(false);
-    }, (error) => {
-      setError(error);
-      setLoading(false);
+    getAuthState().then((authState) => {
+      setState(authState);
     });
-
-    return () => unsubscribe();
   }, []);
 
-  return { user, loading, error };
+  return state;
 };

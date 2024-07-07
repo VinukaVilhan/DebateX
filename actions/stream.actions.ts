@@ -1,12 +1,12 @@
 // tokenProvider.ts
+import { getAuthState } from "@/lib/authUtils";
 import { StreamClient } from "@stream-io/node-sdk";
-import { useAuth } from "@/lib/hooks/useAuth"; // Adjust the path as necessary
 
 const apiKey = process.env.NEXT_PUBLIC_STREAM_API_KEY;
 const apiSecret = process.env.STREAM_SECRET_KEY;
 
 export const tokenProvider = async () => {
-  const { user, loading, error } = useAuth(); // This line causes the error
+  const { user, loading, error } = await getAuthState();
 
   if (loading) {
     throw new Error("Still loading user data");
@@ -19,7 +19,7 @@ export const tokenProvider = async () => {
   if (!user) {
     throw new Error("User is not logged in");
   }
-  
+
   if (!apiKey) {
     throw new Error("Stream API key is required");
   }
