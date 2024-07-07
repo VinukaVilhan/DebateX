@@ -24,6 +24,7 @@ export const tokenProvider = async () => {
     throw new Error("Stream API key is required");
   }
 
+
   if (!apiSecret) {
     throw new Error("Stream secret key is required");
   }
