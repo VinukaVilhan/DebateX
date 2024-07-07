@@ -75,8 +75,8 @@ const NavbarDashboard = () => {
         </p>
       </Link>
 
-      <Link href="/profile" className="flex max-sm:hidden">
-        <p className="text-white ">Hi {name}</p>
+      <Link href="/profile" className="flex items-center max-sm:hidden">
+        <p style={{alignItems:"center"}}  className="text-white " >Hi {name}</p>
         {profileImageUrl ? (
           <img
             src={profileImageUrl}
