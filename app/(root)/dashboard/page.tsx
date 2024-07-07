@@ -73,6 +73,7 @@ const Home = () => {
                   alt='video icon'
                   />
 
+
                 </div>
               </div>
               <div className="flex flex-[1] bg-slate-900"></div>
@@ -126,29 +127,23 @@ const Home = () => {
                   </CardContent>
               
                 </Card>
-
               </div>
             </div>
           </div>
         </div>
         <div className="flex h-60 items-center my-1">
           <Tabs defaultValue="upcoming" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 bg-gray-800">
-              <TabsTrigger value="upcoming">Upcoming</TabsTrigger>
-              <TabsTrigger value="previous">Previous</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-2 bg-white shadow-md rounded-lg">
+              <TabsTrigger value="upcoming" className="w-full text-center py-2">Upcoming</TabsTrigger>
+              <TabsTrigger value="previous" className="w-full text-center py-2">Previous</TabsTrigger>
             </TabsList>
             <TabsContent value="upcoming">
-              <Card className="text-center">
+              <Card className='text-center mt-4'>
                 <CardHeader>
-                  <CardTitle>Upcoming</CardTitle>
-                  <CardDescription>
-                    View your upcoming events here.
-                  </CardDescription>
+                  <CardTitle>No upcoming meetings</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2 flex justify-center">
-                  <div className="space-y-1">
-                    {/* Add content for upcoming events */}
-                  </div>
+                  <button className="bg-purple-600 text-white py-2 px-4 rounded-lg">Schedule a meeting</button>
                 </CardContent>
                 <CardFooter></CardFooter>
               </Card>
@@ -160,9 +155,7 @@ const Home = () => {
                   <CardDescription>View your past events here.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-2 flex justify-center">
-                  <div className="space-y-1">
-                    {/* Add content for previous events */}
-                  </div>
+                  {/* Add content for previous events */}
                 </CardContent>
                 <CardFooter></CardFooter>
               </Card>
