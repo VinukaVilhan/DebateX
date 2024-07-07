@@ -9,8 +9,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import Image from 'next/image'
+import MeetingTypeList from '@/components/MeetingTypeList'
 
 const Home = () => {
   return (
@@ -45,25 +45,20 @@ const Home = () => {
               {/* Content for second part */}
               <div className='flex flex-[1] bg-blue-600  last:items-center gap-5 justify-evenly'>
                 
-                <Image
-                src='/icons/schedule.svg'
-                width={30}
-                height={30}
-                alt='schedule meeting'
+                <MeetingTypeList
+                  img='/icons/schedule-meeting.svg'
+                  title='Schedule'
                 />
 
-                <Image
-                src='/icons/add-meeting.svg'
-                width={30}
-                height={30}
-                alt='host a meeting'
+                <MeetingTypeList
+                  img='/icons/join-meeting.svg'
+                  title='Join'
                 />
 
-                <Image
-                src={'/icons/join-meeting.svg'}
-                width={30}
-                height={30}
-                alt='join a meeting'/>
+                <MeetingTypeList
+                  img='/icons/host-meeting.svg'
+                  title='Host'
+                />
 
               </div>
               <div className='flex-[1] bg-black'>
