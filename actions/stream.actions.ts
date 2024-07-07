@@ -7,7 +7,7 @@ const apiKey = process.env.NEXT_PUBLIC_STREAM_API_KEY;
 const apiSecret = process.env.STREAM_SECRET_KEY;
 
 export const tokenProvider = async () => {
-    const user = await auth.currentUser;
+    const user = auth.currentUser;
 
     if (!user) throw new Error("User is not logged in");
     if(!apiKey) throw new Error("Stream API key is required");
