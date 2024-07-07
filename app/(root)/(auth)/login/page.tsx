@@ -25,7 +25,7 @@ const Login = () => {
         setShowErrorModal(false);
         setTimeout(() => {
           setShowSuccessModal(false);
-          router.push("/");
+          router.push("/dashboard/");
         }, 2500);
       })
       .catch((error) => {
@@ -41,7 +41,7 @@ const Login = () => {
         setShowSuccessModal(true);
         setTimeout(() => {
           setShowSuccessModal(false);
-          router.push("/");
+          router.push("/dashboard/");
         }, 2500);
       })
       .catch((error) => {
