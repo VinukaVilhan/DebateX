@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import Image from 'next/image'
 
 const Home = () => {
   return (
@@ -16,30 +17,41 @@ const Home = () => {
       <div className="flex flex-col gap-4">
         <div className="flex h-60">
          <div className="flex gap-4 w-full">
-            <div className="flex-[3] bg-red-100 rounded-sm">
+            <div className="flex flex-[3] bg-red-100 rounded-sm">
               {/* Content for first part */}
             </div>
-            <div className="flex-[2] bg-red-100 rounded-lg">
+            <div className="flex flex-[2] bg-red-100 rounded-lg flex-col">
               {/* Content for second part */}
-              <div className="flex-1 flex flex-row items-center justify-center gap-2 p-5">
-                {/* Top part with icons and text */}
-                <div className="flex flex-col items-center">
-                  <svg className="h-8 w-8 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1010 10A10 10 0 0012 2zm0 18a8 8 0 118-8 8 8 0 01-8 8z"/><path d="M12.29 6.71a1 1 0 00-1.41 0l-3 3a1 1 0 001.41 1.41L11 9.41V16a1 1 0 002 0V9.41l1.29 1.29a1 1 0 101.41-1.41z"/></svg>
-                  <span className="text-center text-black">Icon 1</span>
-                </div>
-                <div className="flex flex-col items-center">
-                  <svg className="h-8 w-8 text-black" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1010 10A10 10 0 0012 2zm0 18a8 8 0 118-8 8 8 0 01-8 8z"/><path d="M12.29 6.71a1 1 0 00-1.41 0l-3 3a1 1 0 001.41 1.41L11 9.41V16a1 1 0 002 0V9.41l1.29 1.29a1 1 0 101.41-1.41z"/></svg>
-                  <span className="text-center text-black">Icon 2</span>
-                </div>
+              <div className='flex flex-[1] bg-blue-600  last:items-center gap-5 justify-evenly'>
+                
+                <Image
+                src='/icons/schedule.svg'
+                width={30}
+                height={30}
+                alt='schedule meeting'
+                />
+
+                <Image
+                src='/icons/add-meeting.svg'
+                width={30}
+                height={30}
+                alt='host a meeting'
+                />
+
+                <Image
+                src={'/icons/join-meeting.svg'}
+                width={30}
+                height={30}
+                alt='join a meeting'/>
+
               </div>
-              <div className="flex-2 flex items-center justify-center bg-gray-200 rounded-b-lg p-4">
-                {/* Bottom part with centered content */}
-                <span className="text-center text-black justify-center">Centered Content</span>
+              <div className='flex-[1] bg-black'>
+                <p>till</p>
               </div>
             </div>
           </div>
         </div>
-        <div className="flex h-60 items-center ">
+        <div className="flex h-60 items-center">
           <Tabs defaultValue="upcoming" className="w-full">
             <TabsList className="grid w-full grid-cols-2 bg-gray-800">
               <TabsTrigger value="upcoming">Upcoming</TabsTrigger>
