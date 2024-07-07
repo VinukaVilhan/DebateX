@@ -1,15 +1,13 @@
 "use client";
-
+import MobileNavDashboard from "./MobileNavDashboard";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import Image from "next/image";
-import Mobilenav from "./mobileNav";
 import { auth } from "../lib/firebase/config";
 import { signOut, onAuthStateChanged } from "firebase/auth";
-
-const Navbar = () => {
+import profileImg from "./../public/images/avatar-1.jpeg";
+const NavbarDashboard = () => {
   const router = useRouter();
   const [name, setName] = useState("");
   const [profileImageUrl, setProfileImageUrl] = useState("");
@@ -75,24 +73,29 @@ const Navbar = () => {
           DebateX
         </p>
       </Link>
-      <Link href="/#hero" className="text-white max-sm:hidden">
-        <p>Home</p>
+
+      <Link href="/login" className="flex max-sm:hidden">
+        <p className="text-white">Hi {name}</p>
+        {profileImageUrl ? (
+          <img
+            src={profileImageUrl}
+            alt="Profile"
+            style={{ borderRadius: "50%", width: "30px", height: "30px" }}
+          />
+        ) : (
+          <img
+            src={profileImg}
+            alt="Default Profile"
+            style={{ borderRadius: "50%", width: "30px", height: "30px" }}
+          />
+        )}
       </Link>
-      <Link href="/#aims" className="text-white max-sm:hidden">
-        <p>Aims</p>
-      </Link>
-      <Link href="/#contact" className="text-white max-sm:hidden">
-        <p>Contact Us</p>
-      </Link>
-      <Link href="/login" className="text-white max-sm:hidden">
-        <p>Get Started</p>
-      </Link>
-   
+
       <div className="flex-between gap-5">
-        <Mobilenav />
+        <MobileNavDashboard />
       </div>
     </nav>
   );
 };
 
-export default Navbar;
+export default NavbarDashboard;

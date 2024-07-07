@@ -1,4 +1,5 @@
 import React from 'react'
+import NavbarDashboard from '@/components/Navbar'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
   Card,
@@ -13,12 +14,32 @@ import Image from 'next/image'
 
 const Home = () => {
   return (
+
     <section className="flex size-full flex-col gap-10 text-white">
       <div className="flex flex-col gap-4">
         <div className="flex h-60">
          <div className="flex gap-4 w-full">
-            <div className="flex flex-[3] bg-red-100 rounded-sm">
+            <div className="flex flex-[3] bg-red-100 rounded-sm flex-col">
               {/* Content for first part */}
+              <div className='flex flex-[1] bg-slate-600'>
+              <div className='w-1/4 bg-red-500 last:items-center justify-end'>
+                {/* Content for the smaller part */}
+                <Image
+                src='/images/avatar-1.jpeg'
+                height={100}
+                width={100}
+                alt='profile pic'
+
+                />
+              </div>
+              <div className='w-3/4 bg-blue-500'>
+                {/* Content for the larger part */}
+                large
+              </div>
+              </div>
+              <div className='flex flex-[1] bg-slate-900'>
+
+              </div>
             </div>
             <div className="flex flex-[2] bg-red-100 rounded-lg flex-col">
               {/* Content for second part */}
