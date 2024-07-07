@@ -119,107 +119,100 @@ const Profile = () => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
       const storageRef = ref(storage, `profile_images/${auth.currentUser!.uid}`);
-  
+
       // Upload the new image
-      uploadBytes(storageRef, file).then(() => {
-        // Get the download URL
-        getDownloadURL(storageRef).then((url) => {
-          // Update profile with new URL
-          updateProfile(auth.currentUser!, { photoURL: url }).then(() => {
-            setProfileImageUrl(url);
+      uploadBytes(storageRef, file)
+        .then(() => {
+          // Get the download URL
+          getDownloadURL(storageRef).then((url) => {
+            // Update profile with new URL
+            updateProfile(auth.currentUser!, { photoURL: url }).then(() => {
+              setProfileImageUrl(url);
+            });
           });
+        })
+        .catch((error) => {
+          console.error("Error uploading image:", error);
         });
-      }).catch((error) => {
-        console.error("Error uploading image:", error);
-      });
     } else {
       // If no file is selected, revert to Google profile image
       const googleProfileImageUrl = user?.photoURL || "";
-      updateProfile(auth.currentUser!, { photoURL: googleProfileImageUrl }).then(() => {
-        setProfileImageUrl(googleProfileImageUrl);
-      }).catch((error) => {
-        console.error("Error updating profile image:", error);
-      });
+      updateProfile(auth.currentUser!, { photoURL: googleProfileImageUrl })
+        .then(() => {
+          setProfileImageUrl(googleProfileImageUrl);
+        })
+        .catch((error) => {
+          console.error("Error updating profile image:", error);
+        });
     }
   };
-  
-  
 
   return (
     <>
-    <NavbarDashboard/>
+      <NavbarDashboard />
       {loading ? (
-        <div>Loading...</div>
+        <div className="flex items-center justify-center h-screen">
+          Loading...
+        </div>
       ) : (
-        <div className="container w-75 mx-auto shadow-lg pt-9">
-          <h1
-            style={{ textAlign: "center", color: "purple" }}
-            className="mx-auto mt-5 pt-5"
-          >
+        <div className="max-w-2xl mx-auto p-6  bg-white shadow-lg rounded-lg mt-10">
+          <h1 className="text-center text-purple-600 text-3xl mb-6">
             Hi {user ? `${user.displayName}!!` : "user"}
             <br />
-            <span style={{ color: "black" }}>Edit Your Profile</span>
+            <span className="text-black">Edit Your Profile</span>
           </h1>
-          <form onSubmit={changeUsername}>
-            <div className="form-group mt-5 mb-3 mx-auto w-50">
+          <form onSubmit={changeUsername} className="space-y-4">
+            <div className="form-group">
               <input
                 type="text"
                 value={name}
                 placeholder="Change username"
-                className="form-control"
+                className="w-full p-2 border rounded"
                 onChange={(e) => setName(e.target.value)}
               />
               <input
                 type="submit"
                 value="Change Username"
-                className="btn mt-2"
-                style={{
-                  backgroundColor: "purple",
-                  border: "none",
-                  color: "white",
-                }}
+                className="w-full mt-2 p-2 bg-purple-600 text-white rounded cursor-pointer"
               />
             </div>
           </form>
-          <form onSubmit={changePassword}>
-            <div className="form-group mt-5 mb-3 mx-auto w-50">
+          <form onSubmit={changePassword} className="space-y-4 mt-6">
+            <div className="form-group">
               <input
                 type="password"
                 value={newPassword}
                 placeholder="Change password"
-                className="form-control"
+                className="w-full p-2 border rounded"
                 onChange={(e) => setNewPassword(e.target.value)}
               />
               <input
                 type="submit"
                 value="Change Password"
-                className="btn mt-2 mb-3"
-                style={{
-                  backgroundColor: "purple",
-                  border: "none",
-                  color: "white",
-                }}
+                className="w-full mt-2 p-2 bg-purple-600 text-white rounded cursor-pointer"
               />
             </div>
           </form>
-          <div className="form-group mt-5 mb-3 mx-auto w-50">
-            <label>Upload Profile Image</label>
+          <div className="form-group mt-6">
+            <label className="block mb-2">Upload Profile Image</label>
             <input
               type="file"
-              className="form-control"
+              className="w-full p-2 border rounded"
               onChange={handleImageUpload}
             />
             {profileImageUrl && (
               <img
                 src={profileImageUrl}
                 alt="Profile"
-                className="mt-3"
-                style={{ width: "100px", height: "100px", borderRadius: "50%" }}
+                className="mt-3 w-24 h-24 rounded-full"
               />
             )}
           </div>
-          <div className="form-group mt-5 mb-2 mx-auto w-50">
-            <button className="btn btn-danger mb-5" onClick={deleteCurrentUser}>
+          <div className="form-group mt-6">
+            <button
+              className="w-full p-2 bg-red-600 text-white rounded cursor-pointer"
+              onClick={deleteCurrentUser}
+            >
               Delete Account
             </button>
           </div>
