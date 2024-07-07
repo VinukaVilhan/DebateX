@@ -46,7 +46,7 @@ const Home = () => {
             </div>
             <div className="flex flex-[2] bg-red-100 rounded-lg flex-col">
               {/* Content for second part */}
-              <div className="flex flex-[1] bg-blue-600  last:items-center gap-5 justify-evenly">
+              <div className="flex flex-[1] bg-white last:items-center gap-5 justify-evenly items-center">
 
                 <MeetingTypeList
                   img="/icons/schedule-meeting.svg"
@@ -67,11 +67,12 @@ const Home = () => {
                 />
 
                 <MeetingModel 
-                  isOpen={meetingState === "isJoiningMeeting"}
-                  onClose{() => setMeetingState(undefined)}
-                  title="Join Meeting"
+                  isOpen={meetingState === "isHostMeeting"}
+                  onClose={() => setMeetingState(undefined)}
+                  title="Host a Meeting"
                   className="text-center"
-                  
+                  buttonText="Start a Meeting"
+                  handleClick={() => {}}
                 />
               </div>
               <div className="flex-[1] bg-black">
