@@ -75,8 +75,8 @@ const NavbarDashboard = () => {
         </p>
       </Link>
 
-      <Link href="/login" className="flex max-sm:hidden">
-        <p className="text-white">Hi {name}</p>
+      <Link href="/profile" className="flex max-sm:hidden">
+        <p className="text-white ">Hi {name}</p>
         {profileImageUrl ? (
           <img
             src={profileImageUrl}
@@ -91,6 +91,7 @@ const NavbarDashboard = () => {
           />
         )}
       </Link>
+      <button className="text-white" onClick={handleSignout}>Logout</button>
 
       <div className="flex-between gap-5">
         <MobileNavDashboard />
