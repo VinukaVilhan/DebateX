@@ -1,4 +1,5 @@
 import React from 'react'
+import NavbarDashboard from '@/components/Navbar'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
   Card,
@@ -13,6 +14,7 @@ import Image from 'next/image'
 
 const Home = () => {
   return (
+
     <section className="flex size-full flex-col gap-10 text-white">
       <div className="flex flex-col gap-4">
         <div className="flex h-60">
