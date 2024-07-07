@@ -1,13 +1,12 @@
 "use client";
-
+import MobileNavDashboard from "./MobileNavDashboard";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import Mobilenav from "./mobileNav";
 import { auth } from "../lib/firebase/config";
 import { signOut, onAuthStateChanged } from "firebase/auth";
-import profileImg from "./../public/images/avatar-1.jpeg"
+import profileImg from "./../public/images/avatar-1.jpeg";
 const NavbarDashboard = () => {
   const router = useRouter();
   const [name, setName] = useState("");
@@ -74,17 +73,26 @@ const NavbarDashboard = () => {
           DebateX
         </p>
       </Link>
-   
-      <Link href="/login" className="max-sm:hidden">
+
+      <Link href="/login" className="flex max-sm:hidden">
         <p className="text-white">Hi {name}</p>
+        {profileImageUrl ? (
+          <img
+            src={profileImageUrl}
+            alt="Profile"
+            style={{ borderRadius: "50%", width: "30px", height: "30px" }}
+          />
+        ) : (
+          <img
+            src={profileImg}
+            alt="Default Profile"
+            style={{ borderRadius: "50%", width: "30px", height: "30px" }}
+          />
+        )}
       </Link>
-      {profileImageUrl ? (
-                        <img src={profileImageUrl} alt="Profile" style={{ borderRadius: "50%", width: "30px", height: "30px" }} />
-                      ) : (
-                        <img src={profileImg} alt="Default Profile" style={{ borderRadius: "50%", width: "30px", height: "30px" }} />
-                      )}
+
       <div className="flex-between gap-5">
-        {/* <Mobilenav /> */}
+        <MobileNavDashboard />
       </div>
     </nav>
   );
