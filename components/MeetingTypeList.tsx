@@ -13,7 +13,7 @@ type MeetingTypeListProps = {
 const MeetingTypeList = ({ img, title, handleClick }: MeetingTypeListProps) => {
   return (
     <div>
-      <div className="flex flex-col gap-1 my-auto">
+      <div className="flex flex-col gap-1 items-center">
         <Image
           src={img}
           width={40}
