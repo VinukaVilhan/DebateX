@@ -18,8 +18,10 @@ import Image from "next/image";
 import MeetingTypeList from "@/components/MeetingTypeList";
 import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
 import { useRouter } from "next/navigation";
+import { useToast } from "@/components/ui/use-toast";
 const Home = () => {
   const router = useRouter();
+  const { toast } = useToast();
   const [name, setName] = useState("");
   const storage = getStorage();
   const user = auth.currentUser;
@@ -41,6 +43,13 @@ const Home = () => {
     if (!client || !user) return;
 
     try {
+      if (!values.dateTime) {
+        toast({
+          title: "Please select a date and time",
+        });
+        return;
+      }
+
       const id = crypto.randomUUID();
       const call = client.call("default", id);
 
@@ -66,8 +75,15 @@ const Home = () => {
       if (!values.description) {
         router.push(`/meeting/${call.id}`);
       }
+
+      toast({
+        title: "Meeting created successfully",
+      });
     } catch (error) {
       console.error("Error creating meeting:", error);
+      toast({
+        title: "Error creating meeting",
+      });
     }
   };
 
@@ -220,7 +236,10 @@ const Home = () => {
                   <CardTitle>No upcoming meetings</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2 flex justify-center">
-                  <button type="button" className="bg-purple-600 text-white py-2 px-4 rounded-lg">
+                  <button
+                    type="button"
+                    className="bg-purple-600 text-white py-2 px-4 rounded-lg"
+                  >
                     Schedule a meeting
                   </button>
                 </CardContent>
