@@ -149,7 +149,7 @@ const HomePage = () => {
             <div className="grid grid-cols-3 gap-8 mt-8">
               <div>
                 <Image src={AkithImg} alt="B. A. Akith Chandru" className="rounded-full mx-auto" />
-                <h3 className="mt-4 text-xl font-bold">B. A. Akith Chandru</h3>
+                <h3 className="mt-4 text-xl font-bold">B. A. Akith Chandinu</h3>
                 <p>akith.chandru@gmail.com</p>
               </div>
               <div>
