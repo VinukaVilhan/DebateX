@@ -4,7 +4,6 @@ import { auth } from "@/lib/firebase/config";
 import MeetingModel from "@/components/MeetingModel";
 import React, { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
-import NavbarDashboard from "@/components/Navbar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Card,
