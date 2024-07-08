@@ -159,17 +159,17 @@ const HomePage = () => {
               </div>
               <div>
                 <Image src={JalinaImg} alt="Jalina Hrushan" className="rounded-full mx-auto" />
-                <h3 className="mt-4 text-xl font-bold">Jalina Hrushan</h3>
+                <h3 className="mt-4 text-xl font-bold">Jalina Hirushan</h3>
                 <p>jalinahrushan2023@gmail.com</p>
               </div>
               <div>
                 <Image src={RitharaImg} alt="Rithara Kithmenille" className="rounded-full mx-auto" />
-                <h3 className="mt-4 text-xl font-bold">Rithara Kithmenille</h3>
+                <h3 className="mt-4 text-xl font-bold">Rithara Kithmanthie</h3>
                 <p>rithara@example.com</p>
               </div>
               <div>
                 <Image src={DulminiImg} alt="S. Dhamika Abeyweera" className="rounded-full mx-auto" />
-                <h3 className="mt-4 text-xl font-bold">S. Dhamika Abeyweera</h3>
+                <h3 className="mt-4 text-xl font-bold">S. Dulmini Abeyweera</h3>
                 <p>dhamika@example.com</p>
               </div>
             </div>
