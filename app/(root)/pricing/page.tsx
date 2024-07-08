@@ -13,7 +13,7 @@ import {
 const Pricing = () => {
   return (
     <>
-      <button>
+     
         <Link href="/dashboard" className="bg-white">
           Dashboard
         </Link>     <div className="flex justify-around mt-6 w-full">
@@ -67,7 +67,7 @@ const Pricing = () => {
             </CardFooter>
           </Card>
         </div>
-      </button>
+   
     </>
   );
 };
