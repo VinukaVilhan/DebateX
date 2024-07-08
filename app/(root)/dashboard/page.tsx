@@ -25,6 +25,10 @@ const Home = () => {
     "isScheduleMeeting" | "isJoiningMeeting" | "isHostMeeting" | undefined
   >(undefined);
 
+  const createMeeting = () => {
+    
+  }
+
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -62,6 +66,7 @@ const Home = () => {
                     height={500}
                     width={500}
                     alt="profile pic"
+                    className="rounded-xl"
                   />
                 </div>
                 <div className="w-3/4 pl-4 flex flex-col justify-center">
@@ -117,7 +122,7 @@ const Home = () => {
                   title="Host a Meeting"
                   className="text-center"
                   buttonText="Start an instant Meeting"
-                  handleClick={() => {}}
+                  handleClick={createMeeting}
                 />
 
                 <MeetingModel
