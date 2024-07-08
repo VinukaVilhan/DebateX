@@ -6,27 +6,11 @@ const apiKey = process.env.NEXT_PUBLIC_STREAM_API_KEY;
 const apiSecret = process.env.STREAM_SECRET_KEY;
 
 export const tokenProvider = async () => {
-  const { user, loading, error } = useAuth(); // This line causes the error
+    const user = await auth.currentUser;
 
-  if (loading) {
-    throw new Error("Still loading user data");
-  }
-
-  if (error) {
-    throw new Error(`Error fetching user: ${error.message}`);
-  }
-
-  if (!user) {
-    throw new Error("User is not logged in");
-  }
-  
-  if (!apiKey) {
-    throw new Error("Stream API key is required");
-  }
-
-  if (!apiSecret) {
-    throw new Error("Stream secret key is required");
-  }
+    if (!user) throw new Error("User is not logged in");
+    if(!apiKey) throw new Error("Stream API key is required");
+    if(!apiSecret) throw new Error("Stream secret key is required");
 
   const client = new StreamClient(apiKey, apiSecret);
 

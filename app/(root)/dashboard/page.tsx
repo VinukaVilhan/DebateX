@@ -1,4 +1,9 @@
-import React from 'react';
+"use client"
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import { auth } from "@/lib/firebase/config";
+
+import React,{useState,useEffect} from 'react';
+import { onAuthStateChanged } from 'firebase/auth';
 import NavbarDashboard from '@/components/Navbar';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -13,21 +18,49 @@ import Image from 'next/image';
 import MeetingTypeList from '@/components/MeetingTypeList';
 
 const Home = () => {
+  const [name, setName] = useState("");
+  const storage = getStorage();
+  const user = auth.currentUser;
+  const [profileImageUrl, setProfileImageUrl] = useState("");
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setName(user.displayName || "");
+        if (user.photoURL) {
+          setProfileImageUrl(user.photoURL);
+        } else {
+          const profileImageRef = ref(storage, `profile_images/${user.uid}`);
+          getDownloadURL(profileImageRef)
+            .then((url) => {
+              setProfileImageUrl(url);
+            })
+            .catch((error) => {
+              console.error("Error fetching profile image:", error);
+            });
+        }
+      } else {
+        console.log("User is logged out");
+        setName("");
+        setProfileImageUrl("");
+      }
+    });
+  }, [user, storage]);
   return (
     <section className="flex size-full flex-col gap-10 text-black">
- 
+    
       <div className="flex flex-col gap-4 mx-auto max-w-5xl p-4 bg-gray-100 rounded-lg">
         <div className="flex h-60">
           <div className="flex gap-4 w-full">
             <div className="flex flex-[3] bg-white rounded-lg shadow-md p-4">
               <div className="flex w-full">
-                <div className="flex items-center w-1/4">
-                  <Image
-                    src='/images/avatar-1.jpeg'
-                    height={100}
-                    width={100}
+                <div className="flex items-center w-full">
+                  <img
+                    src={profileImageUrl}
+                    height={500}
+                    width={500}
                     alt='profile pic'
-                    className="rounded-full"
+
                   />
                 </div>
                 <div className="w-3/4 pl-4 flex flex-col justify-center">
@@ -94,7 +127,7 @@ const Home = () => {
             </TabsContent>
           </Tabs>
         </div>
-   
+
       </div>
     </section>
   );
