@@ -1,40 +1,37 @@
-// tokenProvider.ts
 import { getAuthState } from "@/lib/authUtils";
 import { StreamClient } from "@stream-io/node-sdk";
 
-const apiKey = process.env.NEXT_PUBLIC_STREAM_API_KEY;
-const apiSecret = process.env.STREAM_SECRET_KEY;
+const apiKey = process.env.NEXT_PUBLIC_STREAM_API_KEY!;
+const apiSecret = process.env.NEXT_PUBLIC_STREAM_SECRET_KEY!;
 
-export const tokenProvider = async () => {
-  const { user, loading, error } = await getAuthState();
+if (!apiKey) {
+  throw new Error("Stream API key is required");
+}
 
-  if (loading) {
-    throw new Error("Still loading user data");
-  }
+if (!apiSecret) {
+  throw new Error("Stream secret key is required");
+}
 
-  if (error) {
-    throw new Error(`Error fetching user: ${error.message}`);
-  }
+export const tokenProvider = async (): Promise<string> => {
+  const { user } = await getAuthState();
 
   if (!user) {
     throw new Error("User is not logged in");
   }
 
-  if (!apiKey) {
-    throw new Error("Stream API key is required");
+  try {
+    const client = new StreamClient(apiKey, apiSecret);
+
+    // Set token expiration and issued timestamps
+    const exp = Math.round(new Date().getTime() / 1000) + 60 * 60; // 1 hour expiration
+    const issued = Math.floor(Date.now() / 1000) - 60; // 1 minute ago
+
+    // Generate the token
+    const token = client.createToken(user.uid, exp, issued );
+
+    return token;
+  } catch (error) {
+    console.error("Error in tokenProvider:", error);
+    throw new Error(`Failed to create token: ${error.message}`);
   }
-
-  if (!apiSecret) {
-    throw new Error("Stream secret key is required");
-  }
-
-  const client = new StreamClient(apiKey, apiSecret);
-
-  const exp = Math.round(new Date().getTime() / 1000) + 60 * 60;
-
-  const issued = Math.floor(Date.now() / 1000) - 60;
-
-  const token = client.createToken(user.uid, exp, issued);
-
-  return token;
 };

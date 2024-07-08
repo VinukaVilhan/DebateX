@@ -16,7 +16,7 @@ const HomePage = () => {
   return (
     <>
       <Navbar />
-      <div style={{ paddingTop: "80px" }}>
+      <div className="pt-[80px]">
         {/* Hero Section */}
         <section
           id="hero"
