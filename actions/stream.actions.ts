@@ -6,13 +6,6 @@ const apiKey = process.env.NEXT_PUBLIC_STREAM_API_KEY;
 const apiSecret = process.env.STREAM_SECRET_KEY;
 
 export const tokenProvider = async () => {
-<<<<<<< HEAD
-    const user = await auth.currentUser;
-
-    if (!user) throw new Error("User is not logged in");
-    if(!apiKey) throw new Error("Stream API key is required");
-    if(!apiSecret) throw new Error("Stream secret key is required");
-=======
   const { user, loading, error } = await getAuthState();
 
   if (loading) {
@@ -35,7 +28,6 @@ export const tokenProvider = async () => {
   if (!apiSecret) {
     throw new Error("Stream secret key is required");
   }
->>>>>>> df3b8e39d97035e6d44d4cddb319b8c457b07568
 
   const client = new StreamClient(apiKey, apiSecret);
 
