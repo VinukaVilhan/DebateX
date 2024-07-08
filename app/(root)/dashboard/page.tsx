@@ -116,7 +116,25 @@ const Home = () => {
                   onClose={() => setMeetingState(undefined)}
                   title="Host a Meeting"
                   className="text-center"
-                  buttonText="Start a Meeting"
+                  buttonText="Start an instant Meeting"
+                  handleClick={() => {}}
+                />
+
+                <MeetingModel
+                  isOpen={meetingState === "isJoiningMeeting"}
+                  onClose={() => setMeetingState(undefined)}
+                  title="Join a Meeting"
+                  className="text-center"
+                  buttonText="Join Meeting"
+                  handleClick={() => {}}
+                />
+
+                <MeetingModel
+                  isOpen={meetingState === "isScheduleMeeting"}
+                  onClose={() => setMeetingState(undefined)}
+                  title="Schedule a Meeting"
+                  className="text-center"
+                  buttonText="Schedule Meeting"
                   handleClick={() => {}}
                 />
               </div>
