@@ -61,7 +61,7 @@ const NavbarDashboard = () => {
   }, [user, storage]);
 
   return (
-    <nav className="flex-between fixed z-50 w-full bg-dark-1 px-6 py-4 lg:px-10">
+    <nav className="flex-between fixed z-50 w-full bg-dark-1 px-6 py-4 lg:px-10 items-center">
       <Link href="/" className="flex items-center gap-1">
         {/* <Image
           src="/icons/logo.svg"
@@ -91,7 +91,7 @@ const NavbarDashboard = () => {
           />
         )}
       </Link>
-      <button className="text-white" onClick={handleSignout}>Logout</button>
+      <button type="button" className="text-white" onClick={handleSignout}>Logout</button>
 
       <div className="flex-between gap-5">
         <MobileNavDashboard />

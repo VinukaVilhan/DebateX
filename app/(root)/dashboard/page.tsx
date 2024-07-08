@@ -1,7 +1,7 @@
 "use client"
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { auth } from "@/lib/firebase/config";
-
+import MeetingModel from "@/components/MeetingModel";
 import React,{useState,useEffect} from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import NavbarDashboard from '@/components/Navbar';
@@ -22,6 +22,7 @@ const Home = () => {
   const storage = getStorage();
   const user = auth.currentUser;
   const [profileImageUrl, setProfileImageUrl] = useState("");
+  const [meetingState, setMeetingState] = useState("");
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -79,24 +80,60 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-[2] bg-white rounded-lg shadow-md p-4">
-              <div className="flex flex-col justify-between w-full">
-                <div className="flex justify-evenly mb-4">
-                  <MeetingTypeList img='/icons/schedule-meeting.svg' title='Schedule' />
-                  <MeetingTypeList img='/icons/join-meeting.svg' title='Join' />
-                  <MeetingTypeList img='/icons/host-meeting.svg' title='Host' />
-                </div>
-                <div className="flex justify-center items-center bg-gray-100 p-2 rounded-lg">
-                  <div className="text-center">
-                    <p>Personal Meeting ID</p>
-                    <p className="font-bold">305 208 1729-H</p>
-                  </div>
-                </div>
+            <div className="flex flex-[2] bg-red-100 rounded-lg flex-col">
+              {/* Content for second part */}          
+
+              <div className="flex flex-[1] bg-white last:items-center gap-5 justify-evenly items-center">
+                <MeetingTypeList
+                  img="/icons/schedule-meeting.svg"
+                  title="Schedule"
+                  handleClick={() => setMeetingState("isScheduleMeeting")}
+
+                />
+
+                <MeetingTypeList
+                  img="/icons/join-meeting.svg"
+                  title="Join"
+                  handleClick={() => setMeetingState("isJoiningMeeting")}
+                />
+
+                <MeetingTypeList
+                  img="/icons/host-meeting.svg"
+                  title="Host"
+                  handleClick={() => setMeetingState("isHostMeeting")}
+                />
+
+                <MeetingModel
+                  isOpen={meetingState === "isHostMeeting"}
+                  onClose={() => setMeetingState(undefined)}
+                  title="Host a Meeting"
+                  className="text-center"
+                  buttonText="Start a Meeting"
+                  handleClick={() => {}}
+                />
+              </div>
+
+              <div className='flex flex-[1] bg-black justify-center items-center'>
+                <Card className='bg-slate-400 outline-none rounded-xl'>
+                  <CardContent className='flex flex-col bg-slate-400 m-1 justify-center'>
+                    <h3 className='font-semibold'>Personal meeting ID</h3>
+                    <div className='flex flex-row items-center gap-2'>
+                      <h3>305-206-243</h3>
+                      <Image
+                      src={'/icons/copy.png'}
+                      width={30}
+                      height={30}
+                      alt='copy id icon'/>
+                    </div>
+                    
+                  </CardContent>
+              
+                </Card>
               </div>
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-center">
+        <div className="flex h-60 items-center my-1">
           <Tabs defaultValue="upcoming" className="w-full">
             <TabsList className="grid w-full grid-cols-2 bg-white shadow-md rounded-lg">
               <TabsTrigger value="upcoming" className="w-full text-center py-2">Upcoming</TabsTrigger>
@@ -110,10 +147,11 @@ const Home = () => {
                 <CardContent className="space-y-2 flex justify-center">
                   <button className="bg-purple-600 text-white py-2 px-4 rounded-lg">Schedule a meeting</button>
                 </CardContent>
+                <CardFooter></CardFooter>
               </Card>
             </TabsContent>
             <TabsContent value="previous">
-              <Card className='text-center mt-4'>
+              <Card className="text-center">
                 <CardHeader>
                   <CardTitle>Previous</CardTitle>
                   <CardDescription>
@@ -123,11 +161,11 @@ const Home = () => {
                 <CardContent className="space-y-2 flex justify-center">
                   {/* Add content for previous events */}
                 </CardContent>
+                <CardFooter></CardFooter>
               </Card>
             </TabsContent>
           </Tabs>
         </div>
-
       </div>
     </section>
   );
