@@ -6,6 +6,13 @@ import {
   SpeakerLayout,
 } from "@stream-io/video-react-sdk";
 import React, { useState } from "react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu";
 
 type CallLayoutType = "speaker-left" | "speaker-right" | "grid";
 
@@ -44,6 +51,8 @@ const MeetingRoom = () => {
 
         <div className="fixed bottom-0 flex w-full items-center justify-center gap-5">
           <CallControls />
+
+
         </div>
       </div>
     </section>
