@@ -16,6 +16,7 @@ import {
 import Image from "next/image";
 import MeetingTypeList from "@/components/MeetingTypeList";
 
+
 const Home = () => {
   const [name, setName] = useState("");
   const storage = getStorage();
