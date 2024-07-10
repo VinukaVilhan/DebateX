@@ -96,9 +96,8 @@ const Navbar = () => {
           <p>Get Started</p>
         </Link>
       )}
-   
-      <div className="flex-between gap-5">
 
+      <div className="flex-between gap-5">
         <Mobilenav />
       </div>
     </nav>
