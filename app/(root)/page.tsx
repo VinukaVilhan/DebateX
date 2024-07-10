@@ -148,29 +148,29 @@ const HomePage = () => {
             <h2 className="text-3xl font-bold">Our Team</h2>
             <div className="grid grid-cols-3 gap-8 mt-8">
               <div>
-                <Image src={AkithImg} alt="B. A. Akith Chandru" className="rounded-full mx-auto" />
-                <h3 className="mt-4 text-xl font-bold">B. A. Akith Chandru</h3>
-                <p>akith.chandru@gmail.com</p>
+                <Image src={AkithImg} alt="B. A. Akith Chandinu" className="rounded-full mx-auto" />
+                <h3 className="mt-4 text-xl font-bold">B. A. Akith Chandinu</h3>
+                <p>akith.chandinu@gmail.com</p>
               </div>
               <div>
                 <Image src={VinukaImg} alt="V. V. Fernando" className="rounded-full mx-auto" />
                 <h3 className="mt-4 text-xl font-bold">V. V. Fernando</h3>
-                <p>vv.fernando@gm</p>
+                <p>vv.fernando@gmail.com</p>
               </div>
               <div>
-                <Image src={JalinaImg} alt="Jalina Hrushan" className="rounded-full mx-auto" />
-                <h3 className="mt-4 text-xl font-bold">Jalina Hrushan</h3>
-                <p>jalinahrushan2023@gmail.com</p>
+                <Image src={JalinaImg} alt="Jalina Hirushan" className="rounded-full mx-auto" />
+                <h3 className="mt-4 text-xl font-bold">Jalina Hirushan</h3>
+                <p>jalinahirushan2002@gmail.com</p>
               </div>
               <div>
-                <Image src={RitharaImg} alt="Rithara Kithmenille" className="rounded-full mx-auto" />
-                <h3 className="mt-4 text-xl font-bold">Rithara Kithmenille</h3>
-                <p>rithara@example.com</p>
+                <Image src={RitharaImg} alt="Rithara Kithmanthie" className="rounded-full mx-auto" />
+                <h3 className="mt-4 text-xl font-bold">Rithara Kithmanthie</h3>
+                <p>ritharaedirisinghe@gmail.com</p>
               </div>
               <div>
-                <Image src={DulminiImg} alt="S. Dhamika Abeyweera" className="rounded-full mx-auto" />
-                <h3 className="mt-4 text-xl font-bold">S. Dhamika Abeyweera</h3>
-                <p>dhamika@example.com</p>
+                <Image src={DulminiImg} alt="S. Dulmini Abeyweera" className="rounded-full mx-auto" />
+                <h3 className="mt-4 text-xl font-bold">S. Dulmini Abeyweera</h3>
+                <p>samikshaabeyweera@gmail.com</p>
               </div>
             </div>
           </div>
