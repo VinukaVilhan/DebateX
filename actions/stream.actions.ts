@@ -3,7 +3,7 @@ import { getAuthState } from "@/lib/authUtils";
 import { StreamClient } from "@stream-io/node-sdk";
 
 const apiKey = process.env.NEXT_PUBLIC_STREAM_API_KEY;
-const apiSecret = process.env.STREAM_SECRET_KEY;
+const apiSecret = process.env.NEXT_PUBLIC_STREAM_SECRET_KEY;
 
 export const tokenProvider = async () => {
   const { user, loading, error } = await getAuthState();

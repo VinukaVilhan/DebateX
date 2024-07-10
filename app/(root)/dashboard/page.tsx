@@ -16,14 +16,13 @@ import {
 import Image from "next/image";
 import MeetingTypeList from "@/components/MeetingTypeList";
 
-
 const Home = () => {
   const [name, setName] = useState("");
   const storage = getStorage();
   const user = auth.currentUser;
   const [profileImageUrl, setProfileImageUrl] = useState("");
   const [meetingState, setMeetingState] = useState<
-    "isScheduleMeeting" | "isJoiningMeeting" | "isHostMeeting" | undefined
+    "isScheduleMeeting" | "isJoiningMeeting" | "isHostMeeting" | "isRecordingMeeting" | undefined
   >(undefined);
 
   useEffect(() => {
@@ -51,46 +50,65 @@ const Home = () => {
   }, [user, storage]);
 
   return (
-    <section className="flex size-full flex-col gap-10 text-black">
-      <div className="flex flex-col gap-4 mx-auto max-w-5xl p-4 bg-gray-100 rounded-lg">
-        <div className="flex h-60">
-          <div className="flex gap-4 w-full">
-            <div className="flex flex-[3] bg-white rounded-lg shadow-md p-4">
+    <section className="flex flex-col">
+      <div className="flex flex-col gap-4 mx-auto max-w-5xl p-4 bg-background_of_dashboard-1 rounded-lg w-full">
+        <div className="flex h-auto">
+          <div className="flex gap-4 w-full flex-grow">
+            <div className="flex flex-[3] bg-white rounded-lg shadow-md p-1 flex-col">
               <div className="flex w-full">
-                <div className="flex items-center w-full">
-                  <img
-                    src={profileImageUrl}
-                    height={500}
-                    width={500}
-                    alt="profile pic"
-                  />
+                <div className="flex items-center w-fit">
+                {profileImageUrl ? (
+                    <Image
+                      src={profileImageUrl}
+                      alt="Profile"
+                      width={150}
+                      height={150}
+                    />
+                  ) : (
+                    <Image
+                      src='/icons/user-profile.svg'
+                      alt="Default Profile"
+                      width={150}
+                      height={150}
+                    />
+                  )}
                 </div>
-                <div className="w-3/4 pl-4 flex flex-col justify-center">
+                <div className="w-3/4 pl-5 flex flex-col justify-center">
                   <h2 className="text-2xl font-bold">{name}</h2>
                   <p>{user?.email}</p>
-                  <span className="inline-block px-3 py-1 mt-2 text-sm text-white bg-purple-600 rounded-full">
+                  <span className="w-max inline-block px-3 py-1 mt-2 text-sm text-white bg-purple-600 rounded-full">
                     Free plan
                   </span>
                 </div>
               </div>
-              <div className="flex items-center justify-between mt-4 bg-gray-100 p-2 rounded-lg">
-                <span>Included in your plan:</span>
-                <div className="flex space-x-4">
+              <div className="flex items-center justify-evenly mt-2 bg-gray-100 p-9 rounded-lg flex-col">
+                <span className="text-left ">Included in your plan:</span>
+                <div className="flex space-x-9">
                   <span className="flex items-center space-x-2">
-                    <input type="checkbox" id="chat" />
+                    <Image
+                    src='/icons/chat_bubble.svg'
+                    height={30}
+                    width={30}
+                    alt='chat icon'
+                    />
                     <label htmlFor="chat">Chat</label>
                   </span>
                   <span className="flex items-center space-x-2">
-                    <input type="checkbox" id="meeting" />
+                  <Image
+                    src='/icons/video(ps).svg'
+                    height={30}
+                    width={30}
+                    alt='chat icon'
+                    />
                     <label htmlFor="meeting">Meeting</label>
                   </span>
                   <span className="flex items-center space-x-2">
-                    <input type="checkbox" id="notes" />
+                    <Image
+                    src='/icons/notes(ps).svg'
+                    height={30}
+                    width={30}
+                    alt='meeting icon'/>
                     <label htmlFor="notes">Notes</label>
-                  </span>
-                  <span className="flex items-center space-x-2">
-                    <input type="checkbox" id="scoreboard" />
-                    <label htmlFor="scoreboard">Score board</label>
                   </span>
                 </div>
               </div>
@@ -112,6 +130,11 @@ const Home = () => {
                   title="Host"
                   handleClick={() => setMeetingState("isHostMeeting")}
                 />
+                <MeetingTypeList
+                  img="/icons/recording(ps).png"
+                  title="Recordings"
+                  handleClick={() => setMeetingState("isRecordingMeeting")}
+                />
                 <MeetingModel
                   isOpen={meetingState === "isHostMeeting"}
                   onClose={() => setMeetingState(undefined)}
@@ -121,8 +144,8 @@ const Home = () => {
                   handleClick={() => {}}
                 />
               </div>
-              <div className="flex flex-[1] bg-black justify-center items-center">
-                <Card className="bg-slate-400 outline-none rounded-xl">
+              <div className="flex flex-[1] bg-white justify-center items-center">
+                <Card className="bg-slate-400 outline-none rounded-xl m-4">
                   <CardContent className="flex flex-col bg-slate-400 m-1 justify-center">
                     <h3 className="font-semibold">Personal meeting ID</h3>
                     <div className="flex flex-row items-center gap-2">
@@ -140,9 +163,9 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="flex h-60 items-center my-1">
+        <div className="flex h-60 items-center my-1 ">
           <Tabs defaultValue="upcoming" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 bg-white shadow-md rounded-lg">
+            <TabsList className="grid w-full grid-cols-2 bg-white">
               <TabsTrigger value="upcoming" className="w-full text-center py-2">
                 Upcoming
               </TabsTrigger>
@@ -151,7 +174,7 @@ const Home = () => {
               </TabsTrigger>
             </TabsList>
             <TabsContent value="upcoming">
-              <Card className="text-center mt-4">
+              <Card className="text-center mt-4 bg-slate-400 outline-none border-none">
                 <CardHeader>
                   <CardTitle>No upcoming meetings</CardTitle>
                 </CardHeader>
@@ -164,7 +187,7 @@ const Home = () => {
               </Card>
             </TabsContent>
             <TabsContent value="previous">
-              <Card className="text-center">
+              <Card className="text-center mt-4 bg-slate-400 outline-none border-none">
                 <CardHeader>
                   <CardTitle>Previous</CardTitle>
                   <CardDescription>View your past events here.</CardDescription>
