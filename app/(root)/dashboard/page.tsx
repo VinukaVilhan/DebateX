@@ -14,7 +14,7 @@ import {
 import Image from "next/image";
 import MeetingTypeList from "@/components/MeetingTypeList";
 import MeetingModel from "@/components/MeetingModel";
-import { Button } from "@/components/ui/button";
+
 
 const Home = () => {
   const [meetingState, setMeetingState] = useState<
