@@ -153,8 +153,8 @@ const HomePage = () => {
                 <p>akith.chandinu@gmail.com</p>
               </div>
               <div>
-                <Image src={VinukaImg} alt="V. V. Fernando" className="rounded-full mx-auto" />
-                <h3 className="mt-4 text-xl font-bold">V. V. Fernando</h3>
+                <Image src={VinukaImg} alt="V. V. Fernandopulle" className="rounded-full mx-auto" />
+                <h3 className="mt-4 text-xl font-bold">V. V. Fernandopulle</h3>
                 <p>vv.fernando@gmail.com</p>
               </div>
               <div>
