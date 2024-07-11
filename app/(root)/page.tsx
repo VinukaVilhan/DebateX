@@ -11,6 +11,8 @@ import JalinaImg from "@/public/images/team/Jalina.png"
 import AkithImg from "@/public/images/team/Akith.png"
 import DulminiImg from "@/public/images/team/Dulmini.png"
 import VinukaImg from "@/public/images/team/Vinuka.png"
+import VisionImg from "@/public/images/icons8-light-on-100.png"
+import MissionImg from "@/public/images/icons8-mission-100 (1).png"
 
 
 const HomePage = () => {
@@ -93,22 +95,25 @@ const HomePage = () => {
           </div>
         </section>
 
-        {/* Vision & Mission Section */}
-        <section id="vision-mission" className="vision-mission-section bg-[#413A67] text-white py-20">
+       {/* Vision & Mission Section */}
+       <section id="vision-mission" className="vision-mission-section bg-[#413A67] text-white py-20">
           <div className="container mx-auto text-center">
             <h2 className="text-3xl font-bold">Our Vision & Mission</h2>
             <div className="grid grid-cols-2 gap-8 mt-8">
-              <div>
-                <h3 className="text-xl font-bold">Vision</h3>
+              <div className="card1">
+              <Image src={VisionImg} alt="Vision Image" className="img1" /><br></br>
+                <h3 className="text-xl font-bold">Vision</h3><br></br>
                 <p>To be the premier online platform for fostering intellectual growth, critical thinking, and respectful discourse through engaging and dynamic debates.</p>
               </div>
-              <div>
-                <h3 className="text-xl font-bold">Mission</h3>
+              <div className="card2">
+              <Image src={MissionImg} alt="Mission Image" className="img2" /><br></br>
+                <h3 className="text-xl font-bold">Mission</h3><br></br>
                 <p>Our mission is to foster a diverse community where individuals can debate, challenge ideas, and enhance their communication skills. We provide a supportive environment that promotes respectful dialogue, perspective exchange, and the art of debate, empowering members to become confident, informed, and persuasive speakers.</p>
               </div>
             </div>
           </div>
         </section>
+
 
         {/* Services Section */}
         <section id="services" className="services-section bg-[#E6E1F8] py-20">
