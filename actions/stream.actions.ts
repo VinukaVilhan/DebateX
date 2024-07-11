@@ -8,6 +8,7 @@ if (!apiKey) {
   throw new Error("Stream API key is required");
 }
 
+
 if (!apiSecret) {
   throw new Error("Stream secret key is required");
 }
@@ -33,5 +34,5 @@ export const tokenProvider = async (): Promise<string> => {
   } catch (error) {
     console.error("Error in tokenProvider:", error);
     throw new Error(`Failed to create token: ${error.message}`);
-  }
+
 };

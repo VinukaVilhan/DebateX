@@ -78,7 +78,7 @@ const HomePage = () => {
             <div className="grid grid-cols-3 gap-8 mt-8">
               <div>
                 <h3 className="text-xl font-bold">Encourage Critical Thinking</h3>
-                <p>We aim to sharpen participants' analytical skills by providing a platform that challenges them to think deeply and articulate their thoughts clearly.</p>
+                <p>We aim to sharpen participants&apos; analytical skills by providing a platform that challenges them to think deeply and articulate their thoughts clearly.</p>
               </div>
               <div>
                 <h3 className="text-xl font-bold">Facilitate Lifelong Learning</h3>
