@@ -1,4 +1,5 @@
 "use client";
+
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { auth } from "@/lib/firebase/config";
 import MeetingModel from "@/components/MeetingModel";
@@ -15,8 +16,12 @@ import {
 } from "@/components/ui/card";
 import Image from "next/image";
 import MeetingTypeList from "@/components/MeetingTypeList";
-
+import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
+import { useRouter } from "next/navigation";
+import { useToast } from "@/components/ui/use-toast";
 const Home = () => {
+  const router = useRouter();
+  const { toast } = useToast();
   const [name, setName] = useState("");
   const storage = getStorage();
   const user = auth.currentUser;
@@ -24,6 +29,63 @@ const Home = () => {
   const [meetingState, setMeetingState] = useState<
     "isScheduleMeeting" | "isJoiningMeeting" | "isHostMeeting" | "isRecordingMeeting" | undefined
   >(undefined);
+
+  const client = useStreamVideoClient();
+  const [values, setValues] = useState({
+    dateTime: new Date(),
+    description: "",
+    link: "",
+  });
+
+  const [callDetails, setCallDetails] = useState<Call>();
+
+  const createMeeting = async () => {
+    if (!client || !user) return;
+
+    try {
+      if (!values.dateTime) {
+        toast({
+          title: "Please select a date and time",
+        });
+        return;
+      }
+
+      const id = crypto.randomUUID();
+      const call = client.call("default", id);
+
+      if (!call) {
+        throw new Error("Failed to create call");
+      }
+
+      const startsAt =
+        values.dateTime.toISOString() || new Date(Date.now()).toISOString();
+      const description = values.description || "Instant meeting";
+
+      await call.getOrCreate({
+        data: {
+          starts_at: startsAt,
+          custom: {
+            description,
+          },
+        },
+      });
+
+      setCallDetails(call);
+
+      if (!values.description) {
+        router.push(`/meeting/${call.id}`);
+      }
+
+      toast({
+        title: "Meeting created successfully",
+      });
+    } catch (error) {
+      console.error("Error creating meeting:", error);
+      toast({
+        title: "Error creating meeting",
+      });
+    }
+  };
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -56,22 +118,14 @@ const Home = () => {
           <div className="flex gap-4 w-full flex-grow">
             <div className="flex flex-[3] bg-white rounded-lg shadow-md p-1 flex-col">
               <div className="flex w-full">
-                <div className="flex items-center w-fit">
-                {profileImageUrl ? (
-                    <Image
-                      src={profileImageUrl}
-                      alt="Profile"
-                      width={150}
-                      height={150}
-                    />
-                  ) : (
-                    <Image
-                      src='/icons/user-profile.svg'
-                      alt="Default Profile"
-                      width={150}
-                      height={150}
-                    />
-                  )}
+                <div className="flex items-center w-full">
+                  <img
+                    src={profileImageUrl}
+                    height={500}
+                    width={500}
+                    alt="profile pic"
+                    className="rounded-xl"
+                  />
                 </div>
                 <div className="w-3/4 pl-5 flex flex-col justify-center">
                   <h2 className="text-2xl font-bold">{name}</h2>
@@ -140,7 +194,25 @@ const Home = () => {
                   onClose={() => setMeetingState(undefined)}
                   title="Host a Meeting"
                   className="text-center"
-                  buttonText="Start a Meeting"
+                  buttonText="Start an instant Meeting"
+                  handleClick={createMeeting}
+                />
+
+                <MeetingModel
+                  isOpen={meetingState === "isJoiningMeeting"}
+                  onClose={() => setMeetingState(undefined)}
+                  title="Join a Meeting"
+                  className="text-center"
+                  buttonText="Join Meeting"
+                  handleClick={() => {}}
+                />
+
+                <MeetingModel
+                  isOpen={meetingState === "isScheduleMeeting"}
+                  onClose={() => setMeetingState(undefined)}
+                  title="Schedule a Meeting"
+                  className="text-center"
+                  buttonText="Schedule Meeting"
                   handleClick={() => {}}
                 />
               </div>
@@ -179,7 +251,10 @@ const Home = () => {
                   <CardTitle>No upcoming meetings</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2 flex justify-center">
-                  <button className="bg-purple-600 text-white py-2 px-4 rounded-lg">
+                  <button
+                    type="button"
+                    className="bg-purple-600 text-white py-2 px-4 rounded-lg"
+                  >
                     Schedule a meeting
                   </button>
                 </CardContent>
