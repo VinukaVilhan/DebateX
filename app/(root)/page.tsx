@@ -78,7 +78,7 @@ const HomePage = () => {
             <div className="grid grid-cols-3 gap-8 mt-8">
               <div>
                 <h3 className="text-xl font-bold">Encourage Critical Thinking</h3>
-                <p>We aim to sharpen participants' analytical skills by providing a platform that challenges them to think deeply and articulate their thoughts clearly.</p>
+                <p>We aim to sharpen participants&apos; analytical skills by providing a platform that challenges them to think deeply and articulate their thoughts clearly.</p>
               </div>
               <div>
                 <h3 className="text-xl font-bold">Facilitate Lifelong Learning</h3>
@@ -148,29 +148,29 @@ const HomePage = () => {
             <h2 className="text-3xl font-bold">Our Team</h2>
             <div className="grid grid-cols-3 gap-8 mt-8">
               <div>
-                <Image src={AkithImg} alt="B. A. Akith Chandru" className="rounded-full mx-auto" />
+                <Image src={AkithImg} alt="B. A. Akith Chandinu" className="rounded-full mx-auto" />
                 <h3 className="mt-4 text-xl font-bold">B. A. Akith Chandinu</h3>
-                <p>akith.chandru@gmail.com</p>
+                <p>akith.chandinu@gmail.com</p>
               </div>
               <div>
                 <Image src={VinukaImg} alt="V. V. Fernando" className="rounded-full mx-auto" />
                 <h3 className="mt-4 text-xl font-bold">V. V. Fernando</h3>
-                <p>vv.fernando@gm</p>
+                <p>vv.fernando@gmail.com</p>
               </div>
               <div>
-                <Image src={JalinaImg} alt="Jalina Hrushan" className="rounded-full mx-auto" />
+                <Image src={JalinaImg} alt="Jalina Hirushan" className="rounded-full mx-auto" />
                 <h3 className="mt-4 text-xl font-bold">Jalina Hirushan</h3>
-                <p>jalinahrushan2023@gmail.com</p>
+                <p>jalinahirushan2002@gmail.com</p>
               </div>
               <div>
-                <Image src={RitharaImg} alt="Rithara Kithmenille" className="rounded-full mx-auto" />
+                <Image src={RitharaImg} alt="Rithara Kithmanthie" className="rounded-full mx-auto" />
                 <h3 className="mt-4 text-xl font-bold">Rithara Kithmanthie</h3>
-                <p>rithara@example.com</p>
+                <p>ritharaedirisinghe@gmail.com</p>
               </div>
               <div>
-                <Image src={DulminiImg} alt="S. Dhamika Abeyweera" className="rounded-full mx-auto" />
+                <Image src={DulminiImg} alt="S. Dulmini Abeyweera" className="rounded-full mx-auto" />
                 <h3 className="mt-4 text-xl font-bold">S. Dulmini Abeyweera</h3>
-                <p>dhamika@example.com</p>
+                <p>samikshaabeyweera@gmail.com</p>
               </div>
             </div>
           </div>

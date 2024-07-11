@@ -3,10 +3,13 @@ import { getAuthState } from "@/lib/authUtils";
 import { StreamClient } from "@stream-io/node-sdk";
 
 const apiKey = process.env.NEXT_PUBLIC_STREAM_API_KEY;
-const apiSecret = process.env.STREAM_SECRET_KEY;
+const apiSecret = process.env.NEXT_PUBLIC_STREAM_SECRET_KEY;
 
 export const tokenProvider = async () => {
-  const { user, loading, error } = await getAuthState();
+  try 
+  {
+    const { user, loading, error } = await getAuthState();
+    console.log("Auth state:", { user, loading, error });
 
   if (loading) {
     throw new Error("Still loading user data");
@@ -36,6 +39,12 @@ export const tokenProvider = async () => {
   const issued = Math.floor(Date.now() / 1000) - 60;
 
   const token = client.createToken(user.uid, exp, issued);
+  console.log("Token created successfully");
 
   return token;
+
+  }catch (error) {
+    console.error("Error in tokenProvider:", error);
+    throw error;
+  }
 };

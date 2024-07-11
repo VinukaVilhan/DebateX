@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import { auth } from "../lib/firebase/config";
 import { signOut, onAuthStateChanged } from "firebase/auth";
-import profileImg from "./../public/images/avatar-1.jpeg";
+import profileImg from "./../public/icons/user-profile.svg";
 const NavbarDashboard = () => {
   const router = useRouter();
   const [name, setName] = useState("");
@@ -61,7 +61,8 @@ const NavbarDashboard = () => {
   }, [user, storage]);
 
   return (
-    <nav className="flex-between fixed z-50 w-full bg-dark-1 px-6 py-4 lg:px-10 items-center">
+    <nav className=" fixed w-full bg-dark-1 px-6 py-4 lg:px-10 ">
+      <div className="flex flex-row flex-1 flex-between">
       <Link href="/" className="flex items-center gap-1">
         {/* <Image
           src="/icons/logo.svg"
@@ -75,23 +76,39 @@ const NavbarDashboard = () => {
         </p>
       </Link>
 
-      <Link href="/profile" className="flex items-center max-sm:hidden">
-        <p style={{alignItems:"center"}}  className="text-white " >Hi {name}</p>
-        {profileImageUrl ? (
-          <img
-            src={profileImageUrl}
-            alt="Profile"
-            style={{ borderRadius: "50%", width: "30px", height: "30px" }}
-          />
-        ) : (
-          <Image
-            src={profileImg}
-            alt="Default Profile"
-            style={{ borderRadius: "50%", width: "30px", height: "30px" }}
-          />
-        )}
+      <Link href="/profile" className="flex gap-2 items-center max-sm:hidden">
+        <p className="text-white " >Hi, {name}</p>   
       </Link>
-      <button type="button" className="text-white" onClick={handleSignout}>Logout</button>
+
+      <div className="flex flex-row gap-1">
+      <div>
+          {profileImageUrl ? (
+            <Image
+              src={profileImageUrl}
+              alt="Profile"
+              width={30}
+              height={30}
+              style={{ borderRadius: "50%" }}
+            />
+          ) : (
+            <Image
+              src={profileImg}
+              alt="Default Profile"
+              style={{ borderRadius: "50%", width: "30px", height: "30px" }}
+            />
+          )}
+        </div>
+      <button type="button" className="text-white" onClick={handleSignout}><Image
+      src='/icons/logout.png'
+      height={30}
+      width={30}
+      alt='logout icon'
+      /></button>
+      </div>
+    
+      
+      </div>
+      
 
       <div className="flex-between gap-5">
         <MobileNavDashboard />
