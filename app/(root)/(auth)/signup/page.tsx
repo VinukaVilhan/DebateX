@@ -9,6 +9,7 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 import { auth, provider } from "../../../../lib/firebase/config"; // Adjust the import based on your directory structure
+import Image from "next/image";
 
 const Signup = () => {
   const router = useRouter();
@@ -163,7 +164,7 @@ const Signup = () => {
           >
             Sign up
           </button>
-          <button
+          <button className="flex flex-row items-center justify-center gap-2"
             type="button"
             onClick={handleGoogleSignIn}
             style={{
@@ -176,6 +177,11 @@ const Signup = () => {
             }}
           >
             Sign up with Google
+            <Image
+            src='/icons/google.svg'
+            height={20}
+            width={20}
+            alt='Google logo'/>
           </button>
         </form>
         <p style={{ marginTop: "20px", color: "#413A67" }}>
