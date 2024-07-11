@@ -8,6 +8,7 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const Login = () => {
   const router = useRouter();
@@ -130,7 +131,7 @@ const Login = () => {
           </button>
         </form>
         <p style={{ marginTop: "20px", color: "#413A67" }}>
-          Don't have an account? then{" "}
+          Don&apos;t have an account? then{" "}
           <a
             href="/signup"
             style={{
@@ -142,7 +143,7 @@ const Login = () => {
             Sign up
           </a>
         </p>
-        <button
+        <button className="flex flex-row items-center justify-center gap-2"
           onClick={handleGoogleLogin}
           style={{
             width: "100%",
@@ -156,6 +157,11 @@ const Login = () => {
           }}
         >
           Login with Google
+          <Image
+          src='/icons/google.svg'
+          height={20}
+          width={20}
+          alt='Google logo'/>
         </button>
       </div>
 
