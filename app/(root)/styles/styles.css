@@ -98,7 +98,7 @@ p {
     /* Bold font weight */
 }
 
-/* Grid styling for the Vision and Mission content */
+/*  Vision and Mission content */
 .vision-mission-section .grid {
     display: grid;
     /* Display as grid */
@@ -106,7 +106,7 @@ p {
     /* Two equal columns */
     gap: 2rem;
     /* Gap between the columns */
-    margin-top: 10rem;
+    margin-top: 7rem;
     /* Margin top for spacing */
     position: relative;
     /* Relative positioning for the pseudo-element */
@@ -139,7 +139,7 @@ p {
 
 
 
-/* Heading styling for Vision and Mission */
+/* Vision and Mission */
 .card h3 {
     font-size: 1.25rem;
     /* Font size for the sub-headers */
@@ -200,3 +200,10 @@ p {
   .service-item p {
     margin-top: 5px;
   }
+
+/* our Team */
+
+
+ 
+  
+  
