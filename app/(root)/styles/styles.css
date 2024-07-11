@@ -1,0 +1,179 @@
+/* styles.css */
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.hero-section {
+    position: relative;
+    background-image: url('D:\DebateX\public\images\Hero.png');
+    /* Replace with the path to your image */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: #ffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    /* Adjust the overlay color and opacity */
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+.buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.button {
+    background-color: #5f27cd;
+    /* Adjust the button color */
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #341f97;
+    /* Adjust the hover color */
+}
+
+/* General styling for the Vision and Mission section */
+.vision-mission-section {
+    background-color: #413A67;
+    /* Dark purple background */
+    color: white;
+    /* White text color */
+    padding: 10rem 0;
+    /* Padding top and bottom */
+}
+
+/* Container styling */
+.vision-mission-section .container {
+    max-width: 1200px;
+    /* Max width of the container */
+    margin: 0 auto;
+    /* Center the container */
+    text-align: center;
+    /* Center the text */
+}
+
+/* Header styling */
+.vision-mission-section h2 {
+    font-size: 2rem;
+    /* Font size for the header */
+    font-weight: bold;
+    /* Bold font weight */
+}
+
+/* Grid styling for the Vision and Mission content */
+.vision-mission-section .grid {
+    display: grid;
+    /* Display as grid */
+    grid-template-columns: repeat(2, 1fr);
+    /* Two equal columns */
+    gap: 2rem;
+    /* Gap between the columns */
+    margin-top: 10rem;
+    /* Margin top for spacing */
+    position: relative;
+    /* Relative positioning for the pseudo-element */
+}
+
+/* Card styling */
+.card1 {
+    background-color: #413A67;
+    /* Slightly darker background for the individual sections */
+    padding: 1rem;
+    /* Padding inside the individual sections */
+    border-right: 2px solid #ffffff;
+    /* White border */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.card2 {
+    background-color: #413A67;
+    /* Slightly darker background for the individual sections */
+    padding: 1rem;
+    /* Padding inside the individual sections */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+
+
+/* Heading styling for Vision and Mission */
+.card h3 {
+    font-size: 1.25rem;
+    /* Font size for the sub-headers */
+    font-weight: bold;
+    /* Bold font weight */
+    margin-bottom: 1rem;
+    /* Margin bottom for spacing */
+}
+
+/* Paragraph styling */
+.card p {
+    font-size: 1rem;
+    /* Font size for the paragraphs */
+    line-height: 1.5;
+    /* Line height for better readability */
+}
+
+/* Border line styling */
+.border-center::before {
+    content: "";
+    /* Empty content for the pseudo-element */
+    position: absolute;
+    /* Absolute positioning */
+    top: 0;
+    /* Align to the top */
+    bottom: 0;
+    /* Align to the bottom */
+    left: 50%;
+    /* Position in the center horizontally */
+    width: 1px;
+    /* Width of the border line */
+    background-color: #ffffff;
+    /* White color for the border line */
+    transform: translateX(-50%);
+    /* Center the border line */
+}
+
