@@ -35,4 +35,4 @@ export const tokenProvider = async (): Promise<string> => {
     console.error("Error in tokenProvider:", error);
     throw new Error(`Failed to create token: ${error.message}`);
 
-};
+}}
