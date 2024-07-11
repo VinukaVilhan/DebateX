@@ -1,10 +1,7 @@
 "use client";
 
-import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import { auth } from "@/lib/firebase/config";
 import MeetingModel from "@/components/MeetingModel";
 import React, { useState, useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Card,
@@ -19,16 +16,24 @@ import MeetingTypeList from "@/components/MeetingTypeList";
 import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
+import { useUser } from "@clerk/nextjs";
+import { clerkClient } from "@clerk/nextjs/server";
+import { error } from "console";
+
 const Home = () => {
   const router = useRouter();
+  const { user } = useUser();
   const { toast } = useToast();
   const [name, setName] = useState("");
-  const storage = getStorage();
-  const user = auth.currentUser;
-  const [profileImageUrl, setProfileImageUrl] = useState("");
   const [meetingState, setMeetingState] = useState<
-    "isScheduleMeeting" | "isJoiningMeeting" | "isHostMeeting" | "isRecordingMeeting" | undefined
+    | "isScheduleMeeting"
+    | "isJoiningMeeting"
+    | "isHostMeeting"
+    | "isRecordingMeeting"
+    | undefined
   >(undefined);
+
+  const [email, setEmail] = useState("");
 
   const client = useStreamVideoClient();
   const [values, setValues] = useState({
@@ -87,49 +92,27 @@ const Home = () => {
     }
   };
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setName(user.displayName || "");
-        if (user.photoURL) {
-          setProfileImageUrl(user.photoURL);
-        } else {
-          const profileImageRef = ref(storage, `profile_images/${user.uid}`);
-          getDownloadURL(profileImageRef)
-            .then((url) => {
-              setProfileImageUrl(url);
-            })
-            .catch((error) => {
-              console.error("Error fetching profile image:", error);
-            });
-        }
-      } else {
-        console.log("User is logged out");
-        setName("");
-        setProfileImageUrl("");
-      }
-    });
-  }, [user, storage]);
-
   return (
     <section className="flex flex-col">
       <div className="flex flex-col gap-4 mx-auto max-w-5xl p-4 bg-background_of_dashboard-1 rounded-lg w-full">
         <div className="flex h-auto">
           <div className="flex gap-4 w-full flex-grow">
-            <div className="flex flex-[3] bg-white rounded-lg shadow-md p-5 flex-col">
+            <div className="flex flex-[3] bg-white rounded-lg shadow-md p-1 flex-col">
               <div className="flex w-full">
-                <div className="flex justify-start items-center w-fit">
-                  <Image
-                    src={profileImageUrl}
-                    height={150}
-                    width={150}
+                <div className="flex items-center w-full">
+                  <img
+                    src={user?.imageUrl}
+                    height={500}
+                    width={500}
                     alt="profile pic"
                     className="rounded-xl"
                   />
                 </div>
-                <div className="w-3/4 pl-3  flex flex-col justify-center">
-                  <h2 className="text-2xl font-bold">{name}</h2>
-                  <p>{user?.email}</p>
+                <div className="w-3/4 pl-5 flex flex-col justify-center">
+                  <h2 className="text-2xl font-bold">
+                    {user?.firstName} {user?.lastName}
+                  </h2>
+                  <p>{user?.primaryEmailAddressId}</p>
                   <span className="w-max inline-block px-3 py-1 mt-2 text-sm text-white bg-purple-600 rounded-full">
                     Free plan
                   </span>
@@ -140,35 +123,36 @@ const Home = () => {
                 <div className="flex space-x-9">
                   <span className="flex items-center space-x-2">
                     <Image
-                    src='/icons/chat_bubble.svg'
-                    height={30}
-                    width={30}
-                    alt='chat icon'
+                      src="/icons/chat_bubble.svg"
+                      height={30}
+                      width={30}
+                      alt="chat icon"
                     />
                     <label htmlFor="chat">Chat</label>
                   </span>
                   <span className="flex items-center space-x-2">
-                  <Image
-                    src='/icons/video(ps).svg'
-                    height={30}
-                    width={30}
-                    alt='chat icon'
+                    <Image
+                      src="/icons/video(ps).svg"
+                      height={30}
+                      width={30}
+                      alt="chat icon"
                     />
                     <label htmlFor="meeting">Meeting</label>
                   </span>
                   <span className="flex items-center space-x-2">
                     <Image
-                    src='/icons/notes(ps).svg'
-                    height={30}
-                    width={30}
-                    alt='meeting icon'/>
+                      src="/icons/notes(ps).svg"
+                      height={30}
+                      width={30}
+                      alt="meeting icon"
+                    />
                     <label htmlFor="notes">Notes</label>
                   </span>
                 </div>
               </div>
             </div>
-            <div className="flex flex-[2] bg-white flex-col p-2">
-              <div className="flex flex-1 bg-white gap-5 items-center justify-center flex-shrink-0">
+            <div className="flex flex-[2] bg-red-100 rounded-lg flex-col">
+              <div className="flex flex-[1] bg-white last:items-center gap-5 justify-evenly items-center">
                 <MeetingTypeList
                   img="/icons/schedule-meeting.svg"
                   title="Schedule"
@@ -185,7 +169,7 @@ const Home = () => {
                   handleClick={() => setMeetingState("isHostMeeting")}
                 />
                 <MeetingTypeList
-                  img="/icons/video_record.svg"
+                  img="/icons/recording(ps).png"
                   title="Recordings"
                   handleClick={() => setMeetingState("isRecordingMeeting")}
                 />

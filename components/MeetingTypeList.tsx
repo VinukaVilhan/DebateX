@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import React from "react";
-import MeetingModel from "./MeetingModel";
 
 type MeetingTypeListProps = {
   img: string;
