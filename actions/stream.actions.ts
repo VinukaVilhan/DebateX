@@ -28,11 +28,11 @@ export const tokenProvider = async (): Promise<string> => {
     const issued = Math.floor(Date.now() / 1000) - 60; // 1 minute ago
 
     // Generate the token
-    const token = client.createToken(user.uid, exp, issued );
+    const token = client.createToken(user.uid, exp, issued);
 
     return token;
   } catch (error) {
     console.error("Error in tokenProvider:", error);
-    throw new Error(`Failed to create token: ${error.message}`);
-
-};
+    throw new Error(`Failed to create token: ${(error as Error).message}`);
+  } // Add this closing brace
+}; // Add this closing brace and semicolon

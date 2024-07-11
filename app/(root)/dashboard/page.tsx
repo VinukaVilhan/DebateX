@@ -116,18 +116,18 @@ const Home = () => {
       <div className="flex flex-col gap-4 mx-auto max-w-5xl p-4 bg-background_of_dashboard-1 rounded-lg w-full">
         <div className="flex h-auto">
           <div className="flex gap-4 w-full flex-grow">
-            <div className="flex flex-[3] bg-white rounded-lg shadow-md p-1 flex-col">
+            <div className="flex flex-[3] bg-white rounded-lg shadow-md p-5 flex-col">
               <div className="flex w-full">
-                <div className="flex items-center w-full">
-                  <img
+                <div className="flex justify-start items-center w-fit">
+                  <Image
                     src={profileImageUrl}
-                    height={500}
-                    width={500}
+                    height={150}
+                    width={150}
                     alt="profile pic"
                     className="rounded-xl"
                   />
                 </div>
-                <div className="w-3/4 pl-5 flex flex-col justify-center">
+                <div className="w-3/4 pl-3  flex flex-col justify-center">
                   <h2 className="text-2xl font-bold">{name}</h2>
                   <p>{user?.email}</p>
                   <span className="w-max inline-block px-3 py-1 mt-2 text-sm text-white bg-purple-600 rounded-full">
@@ -167,8 +167,8 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-[2] bg-red-100 rounded-lg flex-col">
-              <div className="flex flex-[1] bg-white last:items-center gap-5 justify-evenly items-center">
+            <div className="flex flex-[2] bg-white flex-col p-2">
+              <div className="flex flex-1 bg-white gap-5 items-center justify-center flex-shrink-0">
                 <MeetingTypeList
                   img="/icons/schedule-meeting.svg"
                   title="Schedule"
@@ -185,7 +185,7 @@ const Home = () => {
                   handleClick={() => setMeetingState("isHostMeeting")}
                 />
                 <MeetingTypeList
-                  img="/icons/recording(ps).png"
+                  img="/icons/video_record.svg"
                   title="Recordings"
                   handleClick={() => setMeetingState("isRecordingMeeting")}
                 />
