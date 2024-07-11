@@ -24,29 +24,46 @@ export const StreamVideoProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   useEffect(() => {
-    if (!user) {
-      return;
-    }
-    if (!apiKey) {
-      throw new Error("Stream API key is required");
-    }
+    const initializeClient = async () => {
+      if (!user) {
+        return;
+      }
 
-    const client = new StreamVideoClient({
-      apiKey,
-      user: {
-        id: user?.uid,
-        name: user?.displayName || user?.uid,
-        image: user?.photoURL || "",
-      },
-      tokenProvider,
-    });
+      if (!apiKey) {
+        throw new Error("Stream API key is required");
+      }
 
-    setVideoClient(client);
+      try {
+        const client = new StreamVideoClient({
+          apiKey,
+          user: {
+            id: user.uid,
+            name: user.displayName || user.uid,
+            image: user.photoURL || "",
+          },
+          tokenProvider: async () => {
+            try {
+              const token = await tokenProvider();
+              return token;
+            } catch (error) {
+              console.error("Failed to fetch token:", error);
+              throw new Error("Failed to provide token");
+            }
+          },
+        });
+
+        setVideoClient(client);
+      } catch (error) {
+        console.error("Error initializing StreamVideoClient:", error);
+      }
+    };
+
+    initializeClient();
   }, [user]);
 
-  // if (!videoClient) return <Loader />;
+  if (!videoClient) return <Loader />;
 
-  return <StreamVideo client={videoClient}>{children}</StreamVideo>;
+  return videoClient ? <StreamVideo client={videoClient}>{children}</StreamVideo> : <Loader />;
 };
 
 export default StreamVideoProvider;

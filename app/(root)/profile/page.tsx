@@ -9,11 +9,11 @@ import {
   deleteUser,
   User,
 } from "firebase/auth";
-import NavbarDashboard from "@/components/NavbarDashboard";
 import { useRouter } from "next/navigation";
 import { auth, storage } from "../../../lib/firebase/config"; // Adjust the path as necessary
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import Modal from "../../../components/ui/Modal"; // Assuming Modal component is defined and exported
+import Image from "next/image";
 
 const Profile = () => {
   const router = useRouter();
@@ -148,14 +148,13 @@ const Profile = () => {
   };
 
   return (
-    <>
-      <NavbarDashboard />
-      {loading ? (
+    <div className="m-9">
+    {loading ? (
         <div className="flex items-center justify-center h-screen">
           Loading...
         </div>
       ) : (
-        <div className="max-w-2xl mx-auto p-6  bg-white shadow-lg rounded-lg mt-10">
+        <div className=" bg-white shadow-lg rounded-lg p-10">
           <h1 className="text-center text-purple-600 text-3xl mb-6">
             Hi {user ? `${user.displayName}!!` : "user"}
             <br />
@@ -201,8 +200,10 @@ const Profile = () => {
               onChange={handleImageUpload}
             />
             {profileImageUrl && (
-              <img
+              <Image
                 src={profileImageUrl}
+                width={30}
+                height={30}
                 alt="Profile"
                 className="mt-3 w-24 h-24 rounded-full"
               />
@@ -266,7 +267,8 @@ const Profile = () => {
         success="0"
         button="Close"
       />
-    </>
+    </div>
+ 
   );
 };
 
