@@ -185,7 +185,7 @@ const Home = () => {
                   handleClick={() => setMeetingState("isHostMeeting")}
                 />
                 <MeetingTypeList
-                  img="/icons/recording(ps).png"
+                  img="/icons/video_record.svg"
                   title="Recordings"
                   handleClick={() => setMeetingState("isRecordingMeeting")}
                 />

@@ -16,8 +16,8 @@ const MeetingTypeList = ({ img, title, handleClick }: MeetingTypeListProps) => {
       <div className="flex flex-col gap-1 items-center">
         <Image
           src={img}
-          width={40}
-          height={40}
+          width={50}
+          height={50}
           alt={title}
           onClick={handleClick}
           className="cursor-pointer"
