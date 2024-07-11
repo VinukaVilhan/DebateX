@@ -13,6 +13,17 @@ import DulminiImg from "@/public/images/team/Dulmini.png"
 import VinukaImg from "@/public/images/team/Vinuka.png"
 import VisionImg from "@/public/images/icons8-light-on-100.png"
 import MissionImg from "@/public/images/icons8-mission-100 (1).png"
+import MedalImg from "@/public/images/icons8-medals-100 (1).png"
+import ComImg from "@/public/images/icons8-people-working-together-100.png"
+import LawImg from "@/public/images/icons8-law-100.png"
+import EventImg from "@/public/images/icons8-schedule-100.png"
+import GearImg from "@/public/images/icons8-gear-100.png"
+import innovationImg from "@/public/images/icons8-innovation-100.png"
+
+
+
+
+
 
 
 const HomePage = () => {
@@ -80,6 +91,7 @@ const HomePage = () => {
             <h2 className="text-3xl font-bold">Our Aims</h2>
             <div className="grid grid-cols-3 gap-8 mt-8">
               <div>
+              
                 <h3 className="text-xl font-bold">Encourage Critical Thinking</h3>
                 <p>We aim to sharpen participants' analytical skills by providing a platform that challenges them to think deeply and articulate their thoughts clearly.</p>
               </div>
@@ -118,32 +130,40 @@ const HomePage = () => {
         {/* Services Section */}
         <section id="services" className="services-section bg-[#E6E1F8] py-20">
           <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold">Services</h2>
+            <h2 className="text-3xl font-bold">Services</h2><br></br><br></br>
             <div className="grid grid-cols-3 gap-8 mt-8">
-              <div>
+            
+            <div className="service-item">
+              <Image src={MedalImg} alt="medal Image" className="imgicon" /><br></br>
                 <h3 className="text-xl font-bold">Debate Competitions and Tournaments</h3>
                 <p>Organizing and hosting online and offline debate competitions.</p>
               </div>
-              <div>
+              <div className="service-item">
+              <Image src={ComImg} alt="community Image" className="imgicon" /><br></br>
                 <h3 className="text-xl font-bold">Community and Networking</h3>
                 <p>Facilitating networking opportunities through forums, discussion boards, and social media groups.</p>
               </div>
-              <div>
+              <div className="service-item">
+              <Image src={LawImg} alt="law Image" className="imgicon" /><br></br>
                 <h3 className="text-xl font-bold">Judging and Feedback</h3>
                 <p>Offering professional judging services for debates and providing detailed feedback and scoring to help debaters improve their skills.</p>
               </div>
-              <div>
+              <div className="service-item">
+              <Image src={EventImg} alt="Event Image" className="imgicon" /><br></br>
                 <h3 className="text-xl font-bold">Event Management</h3>
                 <p>Offering tools and platforms for virtual debate events.</p>
               </div>
-              <div>
+              <div className="service-item">
+              <Image src={GearImg} alt="Gear Image" className="imgicon" /><br></br>
                 <h3 className="text-xl font-bold">Customization and Personalization</h3>
                 <p>Allowing users to create personalized profiles to track their progress and achievements.</p>
               </div>
-              <div>
+              <div className="service-item">
+              <Image src={innovationImg} alt="Innovation Image" className="imgicon" /><br></br>
                 <h3 className="text-xl font-bold">Technology and Innovation</h3>
                 <p>Offering mobile apps and technology platforms for easy access and participation.</p>
               </div>
+              
             </div>
           </div>
         </section>

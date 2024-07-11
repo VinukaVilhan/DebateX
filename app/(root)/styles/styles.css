@@ -70,13 +70,13 @@ p {
     /* Adjust the hover color */
 }
 
-/* General styling for the Vision and Mission section */
+/* Vision and Mission section */
 .vision-mission-section {
     background-color: #413A67;
     /* Dark purple background */
     color: white;
     /* White text color */
-    padding: 10rem 0;
+    padding: 7rem 0;
     /* Padding top and bottom */
 }
 
@@ -177,3 +177,26 @@ p {
     /* Center the border line */
 }
 
+/* our Aims */
+.imgicon{
+    border-radius: 50%;
+    width: 50px;  /* Adjust the width as needed */
+    height: 50px; /* Adjust the height as needed */
+    object-fit: cover; /* Ensures the image covers the entire container */
+ 
+}
+
+.service-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .service-item h3 {
+    margin-top: 10px;
+  }
+  
+  .service-item p {
+    margin-top: 5px;
+  }
