@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
-import "../(root)/styles/styles.css";
 
 //------------ images----------------
 import HeroImg from "@/public/images/Hero.png"
@@ -11,8 +10,6 @@ import JalinaImg from "@/public/images/team/Jalina.png"
 import AkithImg from "@/public/images/team/Akith.png"
 import DulminiImg from "@/public/images/team/Dulmini.png"
 import VinukaImg from "@/public/images/team/Vinuka.png"
-import VisionImg from "@/public/images/icons8-light-on-100.png"
-import MissionImg from "@/public/images/icons8-mission-100 (1).png"
 
 
 const HomePage = () => {
@@ -33,7 +30,7 @@ const HomePage = () => {
         >
           <div className="container mx-auto text-center">
             <h1 className="text-5xl font-bold">Engage in Intellectual Debate and Hone Your Skills with DebateX</h1>
-            <p className="mt-4 text-lg">DebateX is a platform designed to foster critical thinking and public speaking skills through engaging and structured debates.</p>
+            <p className="mt-4 text-lg">Dignissim diam orci euismod etiam et. Nunc enim mauris amet massa arcu. Id sed quam mauris metus malesuada suspendisse sociis senectus. Et malesuada malesuada nulla lectus mauris sed.</p>
             <div className="mt-8 flex justify-center space-x-4">
               <button className="bg-[#8F67E8] text-white py-2 px-4 rounded-full">Get Started</button>
               <button className="bg-[#9C6BFF] text-white py-2 px-4 rounded-full">Host a competition</button>
@@ -95,25 +92,22 @@ const HomePage = () => {
           </div>
         </section>
 
-       {/* Vision & Mission Section */}
-       <section id="vision-mission" className="vision-mission-section bg-[#413A67] text-white py-20">
+        {/* Vision & Mission Section */}
+        <section id="vision-mission" className="vision-mission-section bg-[#413A67] text-white py-20">
           <div className="container mx-auto text-center">
             <h2 className="text-3xl font-bold">Our Vision & Mission</h2>
             <div className="grid grid-cols-2 gap-8 mt-8">
-              <div className="card1">
-              <Image src={VisionImg} alt="Vision Image" className="img1" /><br></br>
-                <h3 className="text-xl font-bold">Vision</h3><br></br>
+              <div>
+                <h3 className="text-xl font-bold">Vision</h3>
                 <p>To be the premier online platform for fostering intellectual growth, critical thinking, and respectful discourse through engaging and dynamic debates.</p>
               </div>
-              <div className="card2">
-              <Image src={MissionImg} alt="Mission Image" className="img2" /><br></br>
-                <h3 className="text-xl font-bold">Mission</h3><br></br>
+              <div>
+                <h3 className="text-xl font-bold">Mission</h3>
                 <p>Our mission is to foster a diverse community where individuals can debate, challenge ideas, and enhance their communication skills. We provide a supportive environment that promotes respectful dialogue, perspective exchange, and the art of debate, empowering members to become confident, informed, and persuasive speakers.</p>
               </div>
             </div>
           </div>
         </section>
-
 
         {/* Services Section */}
         <section id="services" className="services-section bg-[#E6E1F8] py-20">
