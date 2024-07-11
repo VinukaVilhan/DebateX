@@ -1,0 +1,66 @@
+/* styles.css */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.hero-section {
+    position: relative;
+    background-image: url('D:\DebateX\public\images\Hero.png'); /* Replace with the path to your image */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    color: #ffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Adjust the overlay color and opacity */
+}
+
+.content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+.buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.button {
+    background-color: #5f27cd; /* Adjust the button color */
+    color: white;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #341f97; /* Adjust the hover color */
+}

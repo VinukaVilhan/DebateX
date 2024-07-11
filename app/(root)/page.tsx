@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
+import "../(root)/styles/styles.css";
 
 //------------ images----------------
 import HeroImg from "@/public/images/Hero.png"
@@ -30,7 +31,7 @@ const HomePage = () => {
         >
           <div className="container mx-auto text-center">
             <h1 className="text-5xl font-bold">Engage in Intellectual Debate and Hone Your Skills with DebateX</h1>
-            <p className="mt-4 text-lg">Dignissim diam orci euismod etiam et. Nunc enim mauris amet massa arcu. Id sed quam mauris metus malesuada suspendisse sociis senectus. Et malesuada malesuada nulla lectus mauris sed.</p>
+            <p className="mt-4 text-lg">DebateX is a platform designed to foster critical thinking and public speaking skills through engaging and structured debates.</p>
             <div className="mt-8 flex justify-center space-x-4">
               <button className="bg-[#8F67E8] text-white py-2 px-4 rounded-full">Get Started</button>
               <button className="bg-[#9C6BFF] text-white py-2 px-4 rounded-full">Host a competition</button>
