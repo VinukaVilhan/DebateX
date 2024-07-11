@@ -1,7 +1,5 @@
-// authUtils.ts
 import { onAuthStateChanged, User } from "firebase/auth";
 import { auth } from "./firebase/config";
-
 
 interface AuthState {
   user: User | null;
