@@ -99,11 +99,11 @@ const Home = () => {
           <div className="flex gap-4 w-full flex-grow">
             <div className="flex flex-[3] bg-white rounded-lg shadow-md p-1 flex-col">
               <div className="flex w-full">
-                <div className="flex items-center w-full">
-                  <img
-                    src={user?.imageUrl}
-                    height={500}
-                    width={500}
+                <div className="flex items-center w-fit">
+                  <Image
+                    src={user?.imageUrl || ""}
+                    height={150}
+                    width={150}
                     alt="profile pic"
                     className="rounded-xl"
                   />
@@ -260,6 +260,7 @@ const Home = () => {
           </Tabs>
         </div>
       </div>
+
     </section>
   );
 };

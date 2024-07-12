@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import profileImg from "./../public/icons/user-profile.svg";
 import { useUser } from "@clerk/nextjs";
+import SignOutButtonRithara from "./ui/Signoutbutton";
 const NavbarDashboard = () => {
   const router = useRouter();
   const [showLogoutSuccessModal, setShowLogoutSuccessModal] = useState(false);
@@ -13,6 +14,14 @@ const NavbarDashboard = () => {
   const [logoutError, setLogoutError] = useState("");
   const { user } = useUser();
   const [profileImageUrl, setProfileImageUrl] = useState("");
+
+
+  useEffect(() => {
+    if (user) {
+      setProfileImageUrl(user.imageUrl);
+    }
+  })
+
 
   return (
     <nav className=" fixed w-full bg-dark-1 px-6 py-4 lg:px-10 ">
@@ -31,34 +40,36 @@ const NavbarDashboard = () => {
         </Link>
 
         <Link href="/profile" className="flex gap-2 items-center max-sm:hidden">
-          <p className="text-white ">Hi, {user?.firstName} {user?.lastName}</p>
+          <p className="text-white ">
+            Hi, {user?.firstName} {user?.lastName}
+          </p>
         </Link>
 
         <div className="flex flex-row gap-1">
-          <div>
-            {profileImageUrl ? (
-              <img
-                src={user?.imageUrl}
-                alt="Profile"
-                width={30}
-                height={30}
-                style={{ borderRadius: "50%" }}
-              />
-            ) : (
-              <Image
-                src={profileImg}
-                alt="Default Profile"
-                style={{ borderRadius: "50%", width: "30px", height: "30px" }}
-              />
-            )}
-          </div>
-          <button type="button" className="text-white" onClick={() => {}}>
-            <Image
-              src="/icons/logout.png"
-              height={30}
-              width={30}
-              alt="logout icon"
-            />
+          <Link href="/profile">
+            <div>
+              {profileImageUrl ? (
+                <Image
+                  src={user?.imageUrl || ""}
+                  alt="Profile"
+                  width={30}
+                  height={30}
+                  style={{ borderRadius: "50%" }}
+                />
+              ) : (
+                <Image
+                  src={profileImg}
+                  alt="Default Profile"
+                  width={30}
+                  height={30}
+                  style={{ borderRadius: "50%" }}
+                />
+              )}
+            </div>
+          </Link>
+
+          <button>
+            <SignOutButtonRithara></SignOutButtonRithara>
           </button>
         </div>
       </div>
