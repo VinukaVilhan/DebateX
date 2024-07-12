@@ -5,7 +5,6 @@ import Navbar from "@/components/Navbar";
 import "../(root)/Styles/page.css";
 
 //------------ images----------------
-import HeroImg from "@/public/images/hero.jpg";
 import RitharaImg from "@/public/images/team/Rithara.png";
 import JalinaImg from "@/public/images/team/Jalina.png";
 import AkithImg from "@/public/images/team/Akith.png";
@@ -23,6 +22,7 @@ import ThinkImg from "@/public/images/icons8-thinking-100.png";
 import EduImg from "@/public/images/icons8-education-100.png";
 import CommImg from "@/public/images/icons8-communication-100.png";
 import AboutusImg from "@/public/images/Meeting.jpg";
+import { CaretRight, ArrowUpRight } from "@phosphor-icons/react/dist/ssr"; // or wherever the CaretRight icon is from
 
 const HomePage = () => {
   return (
@@ -45,14 +45,17 @@ const HomePage = () => {
 
         <section>
           <div className="flex justify-center items-center space-x-12 w-full bg-[#413A67] py-12">
-            <button className="bg-[#58224de4] font- flex items-center justify-center border border-white text-white py-4 px-6 rounded-full">
+            <button className="bg-[#58224de4] font-bold flex items-center justify-between gap-2 border border-white text-white py-4 px-6 rounded-full">
               Get Started
+              <CaretRight size={16} />
             </button>
-            <button className="bg-[#58224de4] flex items-center justify-center border border-white text-white py-4 px-6 rounded-full">
+            <button className="bg-[#58224de4] font-bold flex items-center justify-between gap-2 border border-white text-white py-4 px-6 rounded-full">
               Host a competition
+              <CaretRight size={16} />
             </button>
-            <button className="bg-[#58224de4] flex items-center justify-center border border-white text-white py-4 px-6 rounded-full">
+            <button className="bg-[#58224de4] font-bold flex items-center justify-between gap-2 border border-white text-white py-4 px-6 rounded-full">
               Participate a competition
+              <CaretRight size={16} />
             </button>
           </div>
         </section>
@@ -87,29 +90,43 @@ const HomePage = () => {
         {/* About Us Section */}
         <section
           id="about"
-          className="about-section bg-#14142A text-white py-20"
+          className="bg-#14142A text-white mb-16 flex flex-col items-center mx-4"
         >
-          <br></br>
-          <br></br>
-          <h2 className="text-3xl font-bold">
+          <h2 className="text-4xl mb-20 font-bold">
+            <br></br>
+            <br></br>
             <center>About Us</center>
           </h2>
-          <br></br>
-          <br></br>
-          <br></br>
-          <div className="container mx-auto">
-            <div className="image-container">
-              <Image src={AboutusImg} alt="About Us Image" />
+
+          <div className="container flex mx-12 gap-4">
+            <div className="image-container w-1/2">
+              <Image
+                src={AboutusImg}
+                alt="About Us Image"
+                className="w-4/5 mx-auto"
+              />
             </div>
-            <div className="content-container">
-              <p>
+
+            <div className="flex flex-col w-1/2 ml-4">
+              <p className="text-2xl font-bold mb-12">
                 Welcome to DebateX, the ultimate online debating platform where
-                ideas meet, challenge, and evolve.<br></br><br></br>
+                ideas meet, challenge, and evolve.
               </p>
-              <div className="links">
-                <a href="#">DebateX Vision and Mission </a><br></br>
-                <a href="#">DebateX Services</a><br></br>
-                <a href="#">DebateX Expert Team</a><br></br>
+              <div className="text-xl ml-4 mr-12">
+                <div className="my-8 flex justify-between">
+                  <a href="#">Vision and Mission of DebateX</a>
+                  <ArrowUpRight size={32} />
+                </div>
+                <hr className="border-[#2f466a85]" />
+                <div className="my-8 flex justify-between">
+                  <a href="#">DebateX Services</a>
+                  <ArrowUpRight size={32} />
+                </div>
+                <hr className="border-[#2f466a85]" />
+                <div className="my-8 flex justify-between">
+                  <a href="#">DebateX Expert Team</a>
+                  <ArrowUpRight size={32} />
+                </div>
               </div>
             </div>
           </div>
@@ -130,9 +147,9 @@ const HomePage = () => {
                 </h3>
                 <br></br>
                 <p>
-                  We aim to sharpen participant's analytical skills by
-                  providing a platform that challenges them to think deeply and
-                  articulate their thoughts clearly.
+                  We aim to sharpen participant's analytical skills by providing
+                  a platform that challenges them to think deeply and articulate
+                  their thoughts clearly.
                 </p>
               </div>
               <div className="aim-item2">
@@ -278,7 +295,6 @@ const HomePage = () => {
                   and participation.
                 </p>
               </div>
-              
             </div>
           </div>
         </section>

@@ -19,7 +19,7 @@ const Navbar = () => {
   return (
     <nav className="flex justify-between items-center z-50 w-full bg-dark-1 px-20 py-4">
       <Link href="/" className="flex items-center justify-center">
-        <p className="text-4xl font-extrabold text-white max-sm:hidden">
+        <p className="text-5xl font-extrabold text-white max-sm:hidden">
           DebateX
         </p>
       </Link>

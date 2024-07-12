@@ -36,7 +36,6 @@ const Home = () => {
     | "isScheduleMeeting"
     | "isJoiningMeeting"
     | "isHostMeeting"
-    | "isRecordingMeeting"
     | undefined
   >(undefined);
 
@@ -104,6 +103,7 @@ const Home = () => {
   };
 
   return (
+
     <>
       <Dialog  open={isDialogOpen} onOpenChange={setIsDialogOpen}>
         
@@ -161,6 +161,7 @@ const Home = () => {
                     <button className="bg-purple-600 text-white py-2 px-4 rounded-lg">Upgrade</button>
                   </CardFooter>
                 </Card>
+
               </div>
             </DialogDescription>
           </DialogHeader>
@@ -192,6 +193,65 @@ const Home = () => {
                     </span>
                   </div>
                 </div>
+
+              </div>
+            </div>
+            <div className="flex flex-[2] bg-red-100 rounded-lg flex-col">
+              <div className="flex flex-[1] bg-white last:items-center gap-5 justify-evenly items-center">
+                <MeetingTypeList
+                  img="/icons/schedule-meeting.svg"
+                  title="Schedule"
+                  handleClick={() => setMeetingState("isScheduleMeeting")}
+                />
+                <MeetingTypeList
+                  img="/icons/join-meeting.svg"
+                  title="Join"
+                  handleClick={() => setMeetingState("isJoiningMeeting")}
+                />
+                <MeetingTypeList
+                  img="/icons/host-meeting.svg"
+                  title="Host"
+                  handleClick={() => setMeetingState("isHostMeeting")}
+                />
+                <MeetingTypeList
+                  img="/icons/recordings.svg"
+                  title="Recordings"
+                  handleClick={() => router.push("/dashboard/recordings")}
+                />
+                <MeetingModel
+                  isOpen={meetingState === "isHostMeeting"}
+                  onClose={() => setMeetingState(undefined)}
+                  title="Host a Meeting"
+                  className="text-center"
+                  buttonText="Start an instant Meeting"
+                  handleClick={createMeeting}
+                />
+
+                <MeetingModel
+                  isOpen={meetingState === "isJoiningMeeting"}
+                  onClose={() => setMeetingState(undefined)}
+                  title="Join a Meeting"
+                  className="text-center"
+                  buttonText="Join Meeting"
+                  handleClick={() => {}}
+                />
+
+                <MeetingModel
+                  isOpen={meetingState === "isScheduleMeeting"}
+                  onClose={() => setMeetingState(undefined)}
+                  title="Schedule a Meeting"
+                  className="text-center"
+                  buttonText="Schedule Meeting"
+                  handleClick={() => {}}
+                />
+              </div>
+              <div className="flex flex-[1] bg-white justify-center items-center">
+                <Card className="bg-slate-400 outline-none rounded-xl m-4">
+                  <CardContent className="flex flex-col bg-slate-400 m-1 justify-center">
+                    <h3 className="font-semibold">Personal meeting ID</h3>
+                    <div className="flex flex-row items-center gap-2">
+                      <h3>305-206-243</h3>
+
                 <div className="flex items-center justify-evenly mt-2 bg-gray-100 p-9 rounded-lg flex-col">
                   <span className="text-left ">Included in your plan:</span>
                   <div className="flex space-x-9">
@@ -205,6 +265,7 @@ const Home = () => {
                       <label htmlFor="chat">Chat</label>
                     </span>
                     <span className="flex items-center space-x-2">
+
                       <Image
                         src="/icons/video(ps).svg"
                         height={30}
