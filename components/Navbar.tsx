@@ -23,26 +23,33 @@ const Navbar = () => {
           DebateX
         </p>
       </Link>
-      <div className="sm:flex justify-evenly gap-8 text-xl font-bold hidden">
-        <Link href="/#hero" className="text-white">
-          <p>Home</p>
+
+      <div className="sm:flex justify-evenly gap-8 font-bold hidden">
+        <Link href="/#hero" className="text-white text-xl">
+          <p className="text-xl">Home</p>
         </Link>
         <Link href="" className="text-white">
-          <p>About</p>
+          <p className="text-xl">About</p>
         </Link>
         <Link href="/#aims" className="text-white">
-          <p>Aims</p>
+          <p className="text-xl">Aims</p>
         </Link>
         <Link href="/#contact" className="text-white">
-          <p>Contact Us</p>
+          <p className="text-xl">Contact Us</p>
         </Link>
       </div>
+
       {isLoggedIn ? (
         <Link href="/dashboard" className="text-white max-sm:hidden">
-          <p>Go to Dashboard</p>
+          <p className="px-5 py-4 font-medium rounded-full border border-white bg-gradient-to-r from-[#D897CB] from-0% to-[#bc76ae3b] to-56%">
+            Go to Dashboard
+          </p>
         </Link>
       ) : (
-        <Link href="/sign-in" className="text-white max-sm:hidden">
+        <Link
+          href="/sign-in"
+          className="px-5 py-4 font-medium rounded-full border border-white bg-gradient-to-r from-[#D897CB] from-0% to-[#bc76ae3b] to-56%"
+        >
           <p>Get Started</p>
         </Link>
       )}

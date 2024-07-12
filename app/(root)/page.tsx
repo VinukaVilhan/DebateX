@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
-import "../(root)/Styles/styles.css";
+import "../(root)/Styles/page.css";
 
 //------------ images----------------
 import HeroImg from "@/public/images/hero.jpg";
@@ -28,7 +28,7 @@ const HomePage = () => {
   return (
     <>
       <Navbar />
-      <div style={{ paddingTop: "80px" }}>
+      <div>
         {/* Hero Section */}
 
         <section id="hero" className="hero-section bg-[#292445] text-white">
@@ -55,33 +55,12 @@ const HomePage = () => {
               Participate a competition
             </button>
           </div>
-
-          <div className="container mx-auto text-center">
-            <h1 className="text-5xl font-bold">
-              Engage in Intellectual Debate and Hone Your Skills with DebateX
-            </h1>
-            <p className="mt-4 text-lg">
-              DebateX is a platform designed to foster critical thinking and
-              public speaking skills through engaging and structured debates.
-            </p>
-            <div className="mt-8 flex justify-center space-x-4">
-              <button className="bg-[#8F67E8] text-white py-2 px-4 rounded-full">
-                Get Started
-              </button>
-              <button className="bg-[#9C6BFF] text-white py-2 px-4 rounded-full">
-                Host a competition
-              </button>
-              <button className="bg-[#8F67E8] text-white py-2 px-4 rounded-full">
-                Participate a competition
-              </button>
-            </div>
-          </div>
         </section>
 
         {/* Stats Section */}
         <section
           id="stats"
-          className="stats-section bg-[#413A67] text-white py-20"
+          className="stats-section bg-[#050505] text-white py-20"
         >
           <div className="container mx-auto text-center">
             <div className="grid grid-cols-4 gap-8">
@@ -125,12 +104,12 @@ const HomePage = () => {
             <div className="content-container">
               <p>
                 Welcome to DebateX, the ultimate online debating platform where
-                ideas meet, challenge, and evolve.
+                ideas meet, challenge, and evolve.<br></br><br></br>
               </p>
               <div className="links">
-                <a href="#">Vision and Mission of DebateX</a>
-                <a href="#">DebateX Services</a>
-                <a href="#">DebateX Expert Team</a>
+                <a href="#">DebateX Vision and Mission </a><br></br>
+                <a href="#">DebateX Services</a><br></br>
+                <a href="#">DebateX Expert Team</a><br></br>
               </div>
             </div>
           </div>
@@ -151,7 +130,7 @@ const HomePage = () => {
                 </h3>
                 <br></br>
                 <p>
-                  We aim to sharpen participants&apos; analytical skills by
+                  We aim to sharpen participant's analytical skills by
                   providing a platform that challenges them to think deeply and
                   articulate their thoughts clearly.
                 </p>
@@ -299,6 +278,7 @@ const HomePage = () => {
                   and participation.
                 </p>
               </div>
+              
             </div>
           </div>
         </section>
@@ -325,8 +305,8 @@ const HomePage = () => {
                   alt="V. V. Fernando"
                   className="rounded-full mx-auto"
                 />
-                <h3 className="mt-4 text-xl font-bold">V. V. Fernando</h3>
-                <p>vv.fernando@gmail.com</p>
+                <h3 className="mt-4 text-xl font-bold">V. V. Fernandopulle</h3>
+                <p>vv.fernandopulle@gmail.com</p>
               </div>
               <div>
                 <Image

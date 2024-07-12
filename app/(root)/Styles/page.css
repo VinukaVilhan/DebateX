@@ -44,7 +44,6 @@ h1 {
 
 p {
   font-size: 1rem;
-  margin-bottom: 2rem;
 }
 
 .buttons {
@@ -95,7 +94,7 @@ p {
 }
 
 .about-section .content-container {
-  flex: 101;
+  flex: 1;
   max-width: 50%;
   text-align: left;
   padding: 20px;
@@ -118,9 +117,14 @@ p {
 .about-section .links a {
   display: block;
   color: #fff;
-  font-size: 0.912rem;
+  font-size: 0.932rem;
   text-decoration: none;
   margin-top: 0.5rem;
+}
+
+/* Hover effect for links */
+.about-section .links a:hover {
+  color: #9496d9; /* Change this color to whatever you prefer */
 }
 
 /* Vision and Mission section */
