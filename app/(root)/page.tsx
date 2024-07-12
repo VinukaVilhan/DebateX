@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import "../(root)/Styles/page.css";
-import { CaretRight, ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
+
 
 //------------ images----------------
 import HeroImg from "@/public/images/hero.jpg";
@@ -107,20 +107,9 @@ const HomePage = () => {
                 ideas meet, challenge, and evolve.
               </p>
               <div className="links">
-                <div className="my-8 flex justify-between">
-                  <a href="#">Vision and Mission of DebateX</a>
-                  <ArrowUpRight size={32} />
-                </div>
-                <hr />
-                <div className="my-8 flex justify-between">
-                  <a href="#">DebateX Services</a>
-                  <ArrowUpRight size={32} />
-                </div>
-                <hr />
-                <div className="my-8 flex justify-between">
-                  <a href="#">DebateX Expert Team</a>
-                  <ArrowUpRight size={32} />
-                </div>
+                <a href="#vision-mission">DebateX Vision and Mission</a><br></br>
+                <a href="#services">DebateX Services </a><br></br>
+                <a href="#team">DebateX Expert Team </a><br></br>
               </div>
             </div>
           </div>
