@@ -141,9 +141,9 @@ const HomePage = () => {
                 </h3>
                 <br></br>
                 <p>
-                  We aim to sharpen participants&apos; analytical skills by
-                  providing a platform that challenges them to think deeply and
-                  articulate their thoughts clearly.
+                  We aim to sharpen participant's analytical skills by providing
+                  a platform that challenges them to think deeply and articulate
+                  their thoughts clearly.
                 </p>
               </div>
               <div className="aim-item2">
@@ -315,8 +315,8 @@ const HomePage = () => {
                   alt="V. V. Fernando"
                   className="rounded-full mx-auto"
                 />
-                <h3 className="mt-4 text-xl font-bold">V. V. Fernando</h3>
-                <p>vv.fernando@gmail.com</p>
+                <h3 className="mt-4 text-xl font-bold">V. V. Fernandopulle</h3>
+                <p>vv.fernandopulle@gmail.com</p>
               </div>
               <div>
                 <Image
