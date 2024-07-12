@@ -251,28 +251,29 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-[2] bg-white flex-col rounded-2xl">
-                <div className="flex flex-[1] last:items-center gap-5 justify-evenly items-center p-3">
-                  <MeetingTypeList
-                    img="/icons/schedule-meeting.svg"
-                    title="Schedule"
-                    handleClick={() => setMeetingState("isScheduleMeeting")}
-                  />
-                  <MeetingTypeList
-                    img="/icons/join-meeting.svg"
-                    title="Join"
-                    handleClick={() => setMeetingState("isJoiningMeeting")}
-                  />
-                  <MeetingTypeList
-                    img="/icons/host-meeting.svg"
-                    title="Host"
-                    handleClick={() => setMeetingState("isHostMeeting")}
-                  />
-                  <MeetingTypeList
-                    img="/icons/recordings.svg"
-                    title="Recordings"
-                    handleClick={() => router.push("/dashboard/recordings")}
-                  />
+
+            <div className="flex flex-[2] bg-white flex-col rounded-2xl">
+              <div className="flex flex-[1] last:items-center gap-5 justify-evenly items-center p-3">
+                <MeetingTypeList
+                  img="/icons/schedule-meeting.svg"
+                  title="Schedule"
+                  handleClick={() => setMeetingState("isScheduleMeeting")}
+                />
+                <MeetingTypeList
+                  img="/icons/join-meeting.svg"
+                  title="Join"
+                  handleClick={() => setMeetingState("isJoiningMeeting")}
+                />
+                <MeetingTypeList
+                  img="/icons/host-meeting.svg"
+                  title="Host"
+                  handleClick={() => setMeetingState("isHostMeeting")}
+                />
+                <MeetingTypeList
+                  img="/icons/cassette-tape.svg"
+                  title="Recordings"
+                  handleClick={() => router.push("/dashboard/recordings")}
+                />
 
                   {!callDetail ? (
                     <MeetingModel
