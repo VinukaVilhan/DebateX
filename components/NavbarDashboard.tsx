@@ -6,6 +6,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import profileImg from "./../public/icons/user-profile.svg";
 import { useUser } from "@clerk/nextjs";
+import SignOutButtonRithara from "./ui/Signoutbutton";
 const NavbarDashboard = () => {
   const router = useRouter();
   const [showLogoutSuccessModal, setShowLogoutSuccessModal] = useState(false);
@@ -13,6 +14,7 @@ const NavbarDashboard = () => {
   const [logoutError, setLogoutError] = useState("");
   const { user } = useUser();
   const [profileImageUrl, setProfileImageUrl] = useState("");
+
 
   return (
     <nav className=" fixed w-full bg-dark-1 px-6 py-4 lg:px-10 ">
@@ -54,16 +56,13 @@ const NavbarDashboard = () => {
                 style={{ borderRadius: "50%" }}
               />
             )}
-          </div></Link>
-          
-          <button type="button" className="text-white" onClick={() => {}}>
-            <Image
-              src="/icons/logout.png"
-              height={30}
-              width={30}
-              alt="logout icon"
-            />
-          </button>
+
+          </div>
+        <button>
+        <SignOutButtonRithara></SignOutButtonRithara>
+        </button>
+         
+
         </div>
       </div>
 
