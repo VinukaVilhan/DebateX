@@ -278,6 +278,7 @@ const HomePage = () => {
                   and participation.
                 </p>
               </div>
+              
             </div>
           </div>
         </section>
