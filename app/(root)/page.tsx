@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
-import "../(root)/styles.css";
+import "../(root)/Styles/styles.css";
 
 //------------ images----------------
 import HeroImg from "@/public/images/hero.jpg";
@@ -22,14 +22,40 @@ import InnovationImg from "@/public/images/icons8-innovation-100.png";
 import ThinkImg from "@/public/images/icons8-thinking-100.png";
 import EduImg from "@/public/images/icons8-education-100.png";
 import CommImg from "@/public/images/icons8-communication-100.png";
+import AboutusImg from "@/public/images/Meeting.jpg";
 
 const HomePage = () => {
   return (
     <>
       <Navbar />
-      <div>
+      <div style={{ paddingTop: "80px" }}>
         {/* Hero Section */}
+
         <section id="hero" className="hero-section bg-[#292445] text-white">
+          <div className="container text-center flex flex-col justify-center items-center">
+            <h1 className="text-5xl font-bold px-28">
+              Engage in Intellectual Debate and Hone Your Skills with DebateX
+            </h1>
+            <p className="mt-4 text-lg mx-28">
+              DebateX is a platform designed to foster critical thinking and
+              public speaking skills through engaging and structured debates.
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div className="flex justify-center items-center space-x-12 w-full bg-[#413A67] py-12">
+            <button className="bg-[#58224de4] font- flex items-center justify-center border border-white text-white py-4 px-6 rounded-full">
+              Get Started
+            </button>
+            <button className="bg-[#58224de4] flex items-center justify-center border border-white text-white py-4 px-6 rounded-full">
+              Host a competition
+            </button>
+            <button className="bg-[#58224de4] flex items-center justify-center border border-white text-white py-4 px-6 rounded-full">
+              Participate a competition
+            </button>
+          </div>
+
           <div className="container mx-auto text-center">
             <h1 className="text-5xl font-bold">
               Engage in Intellectual Debate and Hone Your Skills with DebateX
@@ -80,13 +106,33 @@ const HomePage = () => {
         </section>
 
         {/* About Us Section */}
-        <section id="about" className="about-section bg-white py-20">
-          <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold">About Us</h2>
-            <p className="mt-4">
-              Welcome to DebateX, the ultimate online debating platform where
-              ideas meet, challenge, and evolve.
-            </p>
+        <section
+          id="about"
+          className="about-section bg-#14142A text-white py-20"
+        >
+          <br></br>
+          <br></br>
+          <h2 className="text-3xl font-bold">
+            <center>About Us</center>
+          </h2>
+          <br></br>
+          <br></br>
+          <br></br>
+          <div className="container mx-auto">
+            <div className="image-container">
+              <Image src={AboutusImg} alt="About Us Image" />
+            </div>
+            <div className="content-container">
+              <p>
+                Welcome to DebateX, the ultimate online debating platform where
+                ideas meet, challenge, and evolve.
+              </p>
+              <div className="links">
+                <a href="#">Vision and Mission of DebateX</a>
+                <a href="#">DebateX Services</a>
+                <a href="#">DebateX Expert Team</a>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -105,20 +151,9 @@ const HomePage = () => {
                 </h3>
                 <br></br>
                 <p>
-                  We aim to sharpen participants' analytical skills by providing
-                  a platform that challenges them to think deeply and articulate
-                  their thoughts clearly.
-                </p>
-                <Image src={ThinkImg} alt="THINK Image" className="imgicon2" />
-                <br></br>
-                <h3 className="text-xl font-bold">
-                  Encourage Critical Thinking
-                </h3>
-                <br></br>
-                <p>
-                  We aim to sharpen participants' analytical skills by providing
-                  a platform that challenges them to think deeply and articulate
-                  their thoughts clearly.
+                  We aim to sharpen participants&apos; analytical skills by
+                  providing a platform that challenges them to think deeply and
+                  articulate their thoughts clearly.
                 </p>
               </div>
               <div className="aim-item2">
