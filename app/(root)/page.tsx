@@ -146,7 +146,7 @@ const HomePage = () => {
                 </h3>
                 <br></br>
                 <p>
-                  We aim to sharpen participant's analytical skills by providing
+                  We aim to sharpen participant&rsquo;s analytical skills by providing
                   a platform that challenges them to think deeply and articulate
                   their thoughts clearly.
                 </p>
@@ -371,7 +371,7 @@ const HomePage = () => {
           </div>
         </section>
 
-        {/* Contact Us Section */}
+        {/* Contact Us Section
         <section
           id="contact"
           className="contact-section bg-[#413A67] text-white py-20"
@@ -429,7 +429,7 @@ const HomePage = () => {
               </button>
             </form>
           </div>
-        </section>
+        </section> */}
 
         {/* Footer Section */}
         <footer className="footer-section bg-[#292445] text-white py-8">
