@@ -69,6 +69,69 @@ p {
   /* Adjust the hover color */
 }
 
+
+/* About Us Section */
+.about-section {
+ 
+  color: #fff;
+  padding: 20px;
+}
+
+.about-section .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 70px; /* Add space below the image */
+}
+
+.about-section .image-container {
+  flex: 1;
+  max-width: 40%;
+}
+
+.about-section .image-container img {
+  width: 100%;
+  height: auto;
+  
+}
+
+.about-section .content-container {
+  flex: 101;
+  max-width: 50%;
+  text-align: left;
+  padding: 20px;
+  
+}
+
+.about-section h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.about-section p {
+  margin-top: 1rem;
+  font-size: 1.25rem;
+}
+
+.about-section .links {
+  margin-top: 1.5rem;
+}
+
+.about-section .links a {
+  display: block;
+  color: #fff;
+  font-size: 0.912rem;
+  text-decoration: none;
+  margin-top: 0.5rem;
+}
+
+
+
+
+
+
 /* Vision and Mission section */
 .vision-mission-section {
   color: white;
