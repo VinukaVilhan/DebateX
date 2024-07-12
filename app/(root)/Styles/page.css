@@ -87,22 +87,6 @@ hr {
   background-image: linear-gradient(to-right, #2f466a26, #2f466a, #2f466a26);
 }
 
-/* Hover effect for links */
-.about-section .links a:hover {
-  color: #9496d9; /* Change this color to whatever you prefer */
-}
-
-.about-section .links a::after {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 1px;
-  background: #9496d9; /* Change this color to whatever you prefer */
-  position: absolute;
-  left: 0;
-  bottom: -5px; /* Adjust this value to control the distance from the link text */
-}
-
 /* Vision and Mission section */
 .vision-mission-section {
   color: white;
@@ -137,8 +121,6 @@ hr {
   /* Two equal columns */
   gap: 5rem;
   /* Gap between the columns */
-  margin-top: 7rem;
-  /* Margin top for spacing */
   position: relative;
   /* Relative positioning for the pseudo-element */
 }
