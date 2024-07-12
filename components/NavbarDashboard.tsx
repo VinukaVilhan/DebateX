@@ -37,11 +37,7 @@ const NavbarDashboard = () => {
           </p>
         </Link>
 
-        <Link href="/profile" className="flex gap-2 items-center max-sm:hidden">
-          <p className="text-white ">
-            Hi, {user?.firstName} {user?.lastName}
-          </p>
-        </Link>
+
 
         <div className="flex flex-row gap-1">
           <UserButton />
