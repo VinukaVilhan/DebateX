@@ -118,12 +118,13 @@ p {
 
 .about-section .links {
   margin-top: 1.5rem;
+
 }
 
 .about-section .links a {
   display: block;
   color: #fff;
-  font-size: 0.912rem;
+  font-size: 0.932rem;
   text-decoration: none;
   margin-top: 0.5rem;
 }

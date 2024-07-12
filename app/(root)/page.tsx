@@ -90,11 +90,11 @@ const HomePage = () => {
             </div>
             <div className="content-container">
 
-              <p>Welcome to DebateX, the ultimate online debating platform where ideas meet, challenge, and evolve.</p>
+              <p>Welcome to DebateX, the ultimate online debating platform where ideas meet, challenge, and evolve.</p><br></br>
               <div className="links">
-                <a href="#">Vision and Mission of DebateX</a>
-                <a href="#">DebateX Services</a>
-                <a href="#">DebateX Expert Team</a>
+                <a href="#">Vision and Mission of DebateX</a><br></br>
+                <a href="#">DebateX Services</a><br></br>
+                <a href="#">DebateX Expert Team</a><br></br>
               </div>
             </div>
           </div>
