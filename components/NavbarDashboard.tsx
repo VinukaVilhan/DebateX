@@ -19,7 +19,7 @@ const NavbarDashboard = () => {
     if (user) {
       setProfileImageUrl(user.imageUrl);
     }
-  });
+  }, [user]);
 
   return (
     <nav className=" fixed w-full bg-dark-1 px-6 py-4 lg:px-10 ">
@@ -36,8 +36,6 @@ const NavbarDashboard = () => {
             DebateX
           </p>
         </Link>
-
-
 
         <div className="flex flex-row gap-1">
           <UserButton />
