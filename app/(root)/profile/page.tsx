@@ -14,32 +14,35 @@ const Profile = () => {
   const [showNameSuccessModal, setShowNameSuccessModal] = useState(false);
   const [showNameErrorModal, setShowNameErrorModal] = useState(false);
   const [nameError, setNameError] = useState("");
-  const [showPasswordSuccessModal, setShowPasswordSuccessModal] =
-    useState(false);
+  const [showPasswordSuccessModal, setShowPasswordSuccessModal] = useState(false);
   const [showPasswordErrorModal, setShowPasswordErrorModal] = useState(false);
   const [passwordError, setPasswordError] = useState("");
   const [showDeleteErrorModal, setShowDeleteErrorModal] = useState(false);
   const [showDeleteSuccessModal, setShowDeleteSuccessModal] = useState(false);
   const [deleteError, setDeleteError] = useState("");
-  const [profileImageUrl, setProfileImageUrl] = useState("");
+  const [imageUrl, setProfileImageUrlState] = useState("");
   const { user } = useUser();
 
-  useEffect(() => {
-    if (user) {
-      setLoading(false);
-    }
-  }, [user]);
+  const [profileImageUrl, setProfileImageUrl] = useState("");
+
+useEffect(() => {
+  if (user) {
+    setLoading(false);
+    setName(user?.username || "");
+    setProfileImageUrl(user?.imageUrl || "");
+  }
+}, [user, setProfileImageUrl]);
 
   return (
-    <div className="m-9">
+    <div className="flex justify-center pt-40 pb-40 m-auto">
       {loading ? (
         <div className="flex items-center justify-center h-screen">
           Loading...
         </div>
       ) : (
-        <div className=" bg-white shadow-lg rounded-lg p-10">
-          <h1 className="text-center text-purple-600 text-3xl mb-6">
-            Hi {user?.username}
+        <div className=" bg-white shadow-lg rounded-lg p-10 w-fit">
+          <h1 className="text-center text-purple-600 text-3xl mb-6 font-extrabold">
+            Hi, {user?.firstName || "User"}
             <br />
             <span className="text-black">Edit Your Profile</span>
           </h1>
@@ -76,21 +79,22 @@ const Profile = () => {
             </div>
           </form>
           <div className="form-group mt-6">
-            <label className="block mb-2">Upload Profile Image</label>
+            <label className="block mb-2">Current Profile Image</label>
+            {user?.imageUrl && (
+              <Image
+                src={user.imageUrl}
+                width={96}
+                height={96}
+                alt="Current Profile"
+                className="mb-4 w-24 h-24 rounded-full"
+              />
+            )}
+            <label className="block mb-2">Upload New Profile Image</label>
             <input
               type="file"
               className="w-full p-2 border rounded"
               onChange={() => {}}
             />
-            {profileImageUrl && (
-              <Image
-                src={profileImageUrl}
-                width={30}
-                height={30}
-                alt="Profile"
-                className="mt-3 w-24 h-24 rounded-full"
-              />
-            )}
           </div>
           <div className="form-group mt-6">
             <button
