@@ -104,12 +104,12 @@ const HomePage = () => {
             <div className="content-container">
               <p>
                 Welcome to DebateX, the ultimate online debating platform where
-                ideas meet, challenge, and evolve.
+                ideas meet, challenge, and evolve.<br></br><br></br>
               </p>
               <div className="links">
-                <a href="#">Vision and Mission of DebateX</a>
-                <a href="#">DebateX Services</a>
-                <a href="#">DebateX Expert Team</a>
+                <a href="#">DebateX Vision and Mission </a><br></br>
+                <a href="#">DebateX Services</a><br></br>
+                <a href="#">DebateX Expert Team</a><br></br>
               </div>
             </div>
           </div>
@@ -130,7 +130,7 @@ const HomePage = () => {
                 </h3>
                 <br></br>
                 <p>
-                  We aim to sharpen participants&apos; analytical skills by
+                  We aim to sharpen participant's analytical skills by
                   providing a platform that challenges them to think deeply and
                   articulate their thoughts clearly.
                 </p>
@@ -305,8 +305,8 @@ const HomePage = () => {
                   alt="V. V. Fernando"
                   className="rounded-full mx-auto"
                 />
-                <h3 className="mt-4 text-xl font-bold">V. V. Fernando</h3>
-                <p>vv.fernando@gmail.com</p>
+                <h3 className="mt-4 text-xl font-bold">V. V. Fernandopulle</h3>
+                <p>vv.fernandopulle@gmail.com</p>
               </div>
               <div>
                 <Image
