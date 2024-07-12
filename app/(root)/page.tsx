@@ -4,7 +4,6 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import "../(root)/Styles/page.css";
 
-
 //------------ images----------------
 import HeroImg from "@/public/images/hero.jpg";
 import RitharaImg from "@/public/images/team/Rithara.png";
@@ -24,8 +23,7 @@ import ThinkImg from "@/public/images/icons8-thinking-100.png";
 import EduImg from "@/public/images/icons8-education-100.png";
 import CommImg from "@/public/images/icons8-communication-100.png";
 import AboutusImg from "@/public/images/Meeting.jpg";
-import { CaretRight } from '@phosphor-icons/react/dist/ssr'; // or wherever the CaretRight icon is from
-
+import { CaretRight, ArrowUpRight } from "@phosphor-icons/react/dist/ssr"; // or wherever the CaretRight icon is from
 
 const HomePage = () => {
   return (
@@ -91,11 +89,16 @@ const HomePage = () => {
         </section>
 
         {/* About Us Section */}
-        <section id="about" className=" bg-#14142A text-white py-20">
+        <section
+          id="about"
+          className="about-section bg-#14142A text-white py-20"
+        >
           <h2 className="text-4xl mb-20 font-bold">
+            <br></br>
+            <br></br>
             <center>About Us</center>
           </h2>
-          <div className="flex mx-12 gap-4">
+          <div className="container flex mx-12 gap-4">
             <div className="image-container w-1/2">
               <Image
                 src={AboutusImg}
@@ -108,10 +111,21 @@ const HomePage = () => {
                 Welcome to DebateX, the ultimate online debating platform where
                 ideas meet, challenge, and evolve.
               </p>
-              <div className="links">
-                <a href="#vision-mission">DebateX Vision and Mission</a><br></br>
-                <a href="#services">DebateX Services </a><br></br>
-                <a href="#team">DebateX Expert Team </a><br></br>
+              <div className="links text-xl ml-4 mr-12">
+                <div className="my-8 flex justify-between">
+                  <a href="#">Vision and Mission of DebateX</a>
+                  <ArrowUpRight size={32} />
+                </div>
+                <hr className="border-[#2f466a85]" />
+                <div className="my-8 flex justify-between">
+                  <a href="#">DebateX Services</a>
+                  <ArrowUpRight size={32} />
+                </div>
+                <hr className="border-[#2f466a85]" />
+                <div className="my-8 flex justify-between">
+                  <a href="#">DebateX Expert Team</a>
+                  <ArrowUpRight size={32} />
+                </div>
               </div>
             </div>
           </div>
