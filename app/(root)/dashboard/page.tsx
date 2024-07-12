@@ -260,6 +260,7 @@ const Home = () => {
           </Tabs>
         </div>
       </div>
+
     </section>
   );
 };
