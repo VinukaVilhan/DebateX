@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import "../(root)/Styles/page.css";
+import { CaretRight, ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 
 //------------ images----------------
 import HeroImg from "@/public/images/hero.jpg";
@@ -45,14 +46,17 @@ const HomePage = () => {
 
         <section>
           <div className="flex justify-center items-center space-x-12 w-full bg-[#413A67] py-12">
-            <button className="bg-[#58224de4] font- flex items-center justify-center border border-white text-white py-4 px-6 rounded-full">
+            <button className="bg-[#58224de4] font-bold flex items-center justify-between gap-2 border border-white text-white py-4 px-6 rounded-full">
               Get Started
+              <CaretRight size={16} />
             </button>
-            <button className="bg-[#58224de4] flex items-center justify-center border border-white text-white py-4 px-6 rounded-full">
+            <button className="bg-[#58224de4] font-bold flex items-center justify-between gap-2 border border-white text-white py-4 px-6 rounded-full">
               Host a competition
+              <CaretRight size={16} />
             </button>
-            <button className="bg-[#58224de4] flex items-center justify-center border border-white text-white py-4 px-6 rounded-full">
+            <button className="bg-[#58224de4] font-bold flex items-center justify-between gap-2 border border-white text-white py-4 px-6 rounded-full">
               Participate a competition
+              <CaretRight size={16} />
             </button>
           </div>
         </section>
@@ -85,31 +89,38 @@ const HomePage = () => {
         </section>
 
         {/* About Us Section */}
-        <section
-          id="about"
-          className="about-section bg-#14142A text-white py-20"
-        >
-          <br></br>
-          <br></br>
-          <h2 className="text-3xl font-bold">
+        <section id="about" className=" bg-#14142A text-white py-20">
+          <h2 className="text-4xl mb-20 font-bold">
             <center>About Us</center>
           </h2>
-          <br></br>
-          <br></br>
-          <br></br>
-          <div className="container mx-auto">
-            <div className="image-container">
-              <Image src={AboutusImg} alt="About Us Image" />
+          <div className="flex mx-12 gap-4">
+            <div className="image-container w-1/2">
+              <Image
+                src={AboutusImg}
+                alt="About Us Image"
+                className="w-4/5 mx-auto"
+              />
             </div>
-            <div className="content-container">
-              <p>
+            <div className="content-container flex flex-col w-1/2 ml-4">
+              <p className="text-2xl font-bold mb-12">
                 Welcome to DebateX, the ultimate online debating platform where
                 ideas meet, challenge, and evolve.
               </p>
               <div className="links">
-                <a href="#">Vision and Mission of DebateX</a>
-                <a href="#">DebateX Services</a>
-                <a href="#">DebateX Expert Team</a>
+                <div className="my-8 flex justify-between">
+                  <a href="#">Vision and Mission of DebateX</a>
+                  <ArrowUpRight size={32} />
+                </div>
+                <hr />
+                <div className="my-8 flex justify-between">
+                  <a href="#">DebateX Services</a>
+                  <ArrowUpRight size={32} />
+                </div>
+                <hr />
+                <div className="my-8 flex justify-between">
+                  <a href="#">DebateX Expert Team</a>
+                  <ArrowUpRight size={32} />
+                </div>
               </div>
             </div>
           </div>
