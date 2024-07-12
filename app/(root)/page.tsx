@@ -91,10 +91,12 @@ const HomePage = () => {
           <div className="container mx-auto text-center">
             <h2 className="text-3xl font-bold">Our Aims</h2><br></br><br></br>
             <div className="grid grid-cols-3 gap-8 mt-8">
+              
               <div className="aim-item1">
               <Image src={ThinkImg} alt="THINK Image" className="imgicon2" /><br></br>
                 <h3 className="text-xl font-bold">Encourage Critical Thinking</h3><br></br>
                 <p>We aim to sharpen participants' analytical skills by providing a platform that challenges them to think deeply and articulate their thoughts clearly.</p>
+
               </div>
               <div className="aim-item2">
               <Image src={EduImg} alt="Educatiom Image" className="imgicon2" /><br></br>

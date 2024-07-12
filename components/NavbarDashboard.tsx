@@ -35,10 +35,11 @@ const NavbarDashboard = () => {
         </Link>
 
         <div className="flex flex-row gap-1">
+          <Link href='/profile'>
           <div>
             {profileImageUrl ? (
-              <img
-                src={user?.imageUrl}
+              <Image
+                src={user?.imageUrl || ""}
                 alt="Profile"
                 width={30}
                 height={30}
@@ -48,10 +49,13 @@ const NavbarDashboard = () => {
               <Image
                 src={profileImg}
                 alt="Default Profile"
-                style={{ borderRadius: "50%", width: "30px", height: "30px" }}
+                width={30}
+                height={30}
+                style={{ borderRadius: "50%" }}
               />
             )}
-          </div>
+          </div></Link>
+          
           <button type="button" className="text-white" onClick={() => {}}>
             <Image
               src="/icons/logout.png"
