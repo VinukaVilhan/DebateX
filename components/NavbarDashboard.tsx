@@ -4,94 +4,75 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { getStorage, ref, getDownloadURL } from "firebase/storage";
-import { auth } from "../lib/firebase/config";
-import { signOut, onAuthStateChanged } from "firebase/auth";
-import profileImg from "./../public/images/avatar-1.jpeg";
+import profileImg from "./../public/icons/user-profile.svg";
+import { useUser } from "@clerk/nextjs";
+import SignOutButtonRithara from "./ui/Signoutbutton";
 const NavbarDashboard = () => {
   const router = useRouter();
-  const [name, setName] = useState("");
-  const [profileImageUrl, setProfileImageUrl] = useState("");
   const [showLogoutSuccessModal, setShowLogoutSuccessModal] = useState(false);
   const [showLogoutErrorModal, setShowLogoutErrorModal] = useState(false);
   const [logoutError, setLogoutError] = useState("");
-  const storage = getStorage();
-  const user = auth.currentUser;
+  const { user } = useUser();
+  const [profileImageUrl, setProfileImageUrl] = useState("");
 
-  const handleSignout = () => {
-    signOut(auth)
-      .then(() => {
-        console.log("Logout Success");
-        setShowLogoutSuccessModal(true);
-        setShowLogoutErrorModal(false);
-
-        setTimeout(() => {
-          setShowLogoutSuccessModal(false);
-          router.push("/signup");
-        }, 3000); // Show modal for 3 seconds before navigating
-      })
-      .catch((error) => {
-        setLogoutError(error.message);
-        setShowLogoutErrorModal(true);
-      });
-  };
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setName(user.displayName || "");
-        if (user.photoURL) {
-          setProfileImageUrl(user.photoURL);
-        } else {
-          const profileImageRef = ref(storage, `profile_images/${user.uid}`);
-          getDownloadURL(profileImageRef)
-            .then((url) => {
-              setProfileImageUrl(url);
-            })
-            .catch((error) => {
-              console.error("Error fetching profile image:", error);
-            });
-        }
-      } else {
-        console.log("User is logged out");
-        setName("");
-        setProfileImageUrl("");
-      }
-    });
-  }, [user, storage]);
+    if (user) {
+      setProfileImageUrl(user.imageUrl);
+    }
+  })
+
 
   return (
-    <nav className="flex-between fixed z-50 w-full bg-dark-1 px-6 py-4 lg:px-10 items-center">
-      <Link href="/" className="flex items-center gap-1">
-        {/* <Image
+    <nav className=" fixed w-full bg-dark-1 px-6 py-4 lg:px-10 ">
+      <div className="flex flex-row flex-1 flex-between">
+        <Link href="/" className="flex items-center gap-1">
+          {/* <Image
           src="/icons/logo.svg"
           width={32}
           height={32}
           alt="DebateX logo"
           className="max-sm:size-10"
         /> */}
-        <p className="text-[26 px] font-extrabold text-white max-sm:hidden">
-          DebateX
-        </p>
-      </Link>
+          <p className="text-[26 px] font-extrabold text-white max-sm:hidden">
+            DebateX
+          </p>
+        </Link>
 
-      <Link href="/profile" className="flex items-center max-sm:hidden">
-        <p style={{alignItems:"center"}}  className="text-white " >Hi {name}</p>
-        {profileImageUrl ? (
-          <img
-            src={profileImageUrl}
-            alt="Profile"
-            style={{ borderRadius: "50%", width: "30px", height: "30px" }}
-          />
-        ) : (
-          <Image
-            src={profileImg}
-            alt="Default Profile"
-            style={{ borderRadius: "50%", width: "30px", height: "30px" }}
-          />
-        )}
-      </Link>
-      <button type="button" className="text-white" onClick={handleSignout}>Logout</button>
+        <Link href="/profile" className="flex gap-2 items-center max-sm:hidden">
+          <p className="text-white ">
+            Hi, {user?.firstName} {user?.lastName}
+          </p>
+        </Link>
+
+        <div className="flex flex-row gap-1">
+          <Link href="/profile">
+            <div>
+              {profileImageUrl ? (
+                <Image
+                  src={user?.imageUrl || ""}
+                  alt="Profile"
+                  width={30}
+                  height={30}
+                  style={{ borderRadius: "50%" }}
+                />
+              ) : (
+                <Image
+                  src={profileImg}
+                  alt="Default Profile"
+                  width={30}
+                  height={30}
+                  style={{ borderRadius: "50%" }}
+                />
+              )}
+            </div>
+          </Link>
+
+          <button>
+            <SignOutButtonRithara></SignOutButtonRithara>
+          </button>
+        </div>
+      </div>
 
       <div className="flex-between gap-5">
         <MobileNavDashboard />

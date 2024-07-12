@@ -1,41 +1,24 @@
-// tokenProvider.ts
-import { getAuthState } from "@/lib/authUtils";
+"use server";
+
+import { currentUser } from "@clerk/nextjs/server";
 import { StreamClient } from "@stream-io/node-sdk";
 
-const apiKey = process.env.NEXT_PUBLIC_STREAM_API_KEY;
-const apiSecret = process.env.STREAM_SECRET_KEY;
+const STREAM_API_KEY = process.env.NEXT_PUBLIC_STREAM_API_KEY;
+const STREAM_API_SECRET = process.env.STREAM_SECRET_KEY;
 
 export const tokenProvider = async () => {
-  const { user, loading, error } = await getAuthState();
+  const user = await currentUser();
 
-  if (loading) {
-    throw new Error("Still loading user data");
-  }
+  if (!user) throw new Error("User is not authenticated");
+  if (!STREAM_API_KEY) throw new Error("Stream API key secret is missing");
+  if (!STREAM_API_SECRET) throw new Error("Stream API secret is missing");
 
-  if (error) {
-    throw new Error(`Error fetching user: ${error.message}`);
-  }
+  const streamClient = new StreamClient(STREAM_API_KEY, STREAM_API_SECRET);
 
-  if (!user) {
-    throw new Error("User is not logged in");
-  }
+  const expirationTime = Math.floor(Date.now() / 1000) + 3600;
+  const issuedAt = Math.floor(Date.now() / 1000) - 60;
 
-  if (!apiKey) {
-    throw new Error("Stream API key is required");
-  }
-
-
-  if (!apiSecret) {
-    throw new Error("Stream secret key is required");
-  }
-
-  const client = new StreamClient(apiKey, apiSecret);
-
-  const exp = Math.round(new Date().getTime() / 1000) + 60 * 60;
-
-  const issued = Math.floor(Date.now() / 1000) - 60;
-
-  const token = client.createToken(user.uid, exp, issued);
+  const token = streamClient.createToken(user.id, expirationTime, issuedAt);
 
   return token;
 };
