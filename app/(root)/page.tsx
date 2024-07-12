@@ -21,7 +21,11 @@ import ThinkImg from "@/public/images/icons8-thinking-100.png";
 import EduImg from "@/public/images/icons8-education-100.png";
 import CommImg from "@/public/images/icons8-communication-100.png";
 import AboutusImg from "@/public/images/Meeting.jpg";
-import { CaretRight, ArrowUpRight } from "@phosphor-icons/react/dist/ssr"; 
+import FbImg from "@/public/images/icons8-facebook-100 (2).png";
+import TwitterImg from "@/public/images/icons8-twitter-100.png";
+import LinkedinImg from "@/public/images/icons8-linked-in-100.png";
+import InsterImg from "@/public/images/icons8-instagram-100.png";
+import { CaretRight, ArrowUpRight } from "@phosphor-icons/react/dist/ssr"; // or wherever the CaretRight icon is from
 
 const HomePage = () => {
   return (
@@ -113,17 +117,23 @@ const HomePage = () => {
               </p>
               <div className="text-xl ml-4 mr-12">
                 <div className="my-8 flex justify-between">
-                  <a href="#">Vision and Mission of DebateX</a>
+                  <a href="#vision-mission" className="hover:text-indigo-500">
+                    Vision and Mission of DebateX
+                  </a>
                   <ArrowUpRight size={32} />
                 </div>
                 <hr className="border-[#2f466a85]" />
                 <div className="my-8 flex justify-between">
-                  <a href="#">DebateX Services</a>
+                  <a href="#services" className="hover:text-indigo-500">
+                    DebateX Services
+                  </a>
                   <ArrowUpRight size={32} />
                 </div>
                 <hr className="border-[#2f466a85]" />
                 <div className="my-8 flex justify-between">
-                  <a href="#">DebateX Expert Team</a>
+                  <a href="#team" className="hover:text-indigo-500">
+                    DebateX Expert Team
+                  </a>
                   <ArrowUpRight size={32} />
                 </div>
               </div>
@@ -146,9 +156,9 @@ const HomePage = () => {
                 </h3>
                 <br></br>
                 <p>
-                  We aim to sharpen participant&rsquo;s analytical skills by providing
-                  a platform that challenges them to think deeply and articulate
-                  their thoughts clearly.
+                  We aim to sharpen participant&rsquo;s analytical skills by
+                  providing a platform that challenges them to think deeply and
+                  articulate their thoughts clearly.
                 </p>
               </div>
               <div className="aim-item2">
@@ -371,11 +381,8 @@ const HomePage = () => {
           </div>
         </section>
 
-        {/* Contact Us Section
-        <section
-          id="contact"
-          className="contact-section bg-[#413A67] text-white py-20"
-        >
+        {/* Contact Us Section */}
+        <section id="contact" className="contact-section bg-[#9496D9]  py-20">
           <div className="container mx-auto text-center">
             <h2 className="text-3xl font-bold">Contact Us</h2>
             <p className="mt-4">
@@ -385,7 +392,7 @@ const HomePage = () => {
               <div className="mb-4">
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-gray-200"
+                  className="block text-sm font-medium text-black"
                 >
                   Name
                 </label>
@@ -398,7 +405,7 @@ const HomePage = () => {
               <div className="mb-4">
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-gray-200"
+                  className="block text-sm font-medium text-black"
                 >
                   Email
                 </label>
@@ -411,7 +418,7 @@ const HomePage = () => {
               <div className="mb-4">
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-gray-200"
+                  className="block text-sm font-medium text-black-200"
                 >
                   Message
                 </label>
@@ -429,30 +436,55 @@ const HomePage = () => {
               </button>
             </form>
           </div>
-        </section> */}
+        </section>
 
         {/* Footer Section */}
-        <footer className="footer-section bg-[#292445] text-white py-8">
+        <footer className="footer-section bg-[##14142A] text-white py-8">
           <div className="container mx-auto text-center">
-            <p className="mb-4">
-              Join our community of passionate debaters and learners today.
-              Unlock your potential and explore new opportunities to engage in
-              debates.
-            </p>
-            <div className="flex justify-center space-x-4">
-              <a href="#" className="text-white hover:text-gray-400">
-                Facebook
-              </a>
-              <a href="#" className="text-white hover:text-gray-400">
-                Twitter
-              </a>
-              <a href="#" className="text-white hover:text-gray-400">
-                LinkedIn
-              </a>
-              <a href="#" className="text-white hover:text-gray-400">
-                Instagram
-              </a>
+            <div className="newsletter">
+              <h1>Subscribe to Newsletter</h1>
+              <br></br>
+
+              <form className="mt-6">
+                <input
+                  type="email"
+                  placeholder="Enter your Email..."
+                  className="px-4 py-2 rounded-full mr-6"
+                />
+                <button
+                  type="submit"
+                  className="px-4 py-2 rounded-full bg-[#8b4899] text-white"
+                >
+                  Subscribe
+                </button>
+              </form>
             </div>
+            <div className="footer-links mt-12">
+              <div className="icontext">
+                <p>
+                  Join our community of passionate debaters and never miss out
+                  on upcoming events, debates, and opportunities to enhance your
+                  skills!
+                </p>
+                <br></br>
+                <br></br>
+                <div className="flex justify-center mt-4">
+                  <a href="#" className="text-white hover:text-gray-400">
+                    <Image src={FbImg} alt="fb Image" className="icon4" />
+                  </a>
+                  <a href="#" className="text-white hover:text-gray-400">
+                    <Image src={TwitterImg} alt="fb Image" className="icon4" />
+                  </a>
+                  <a href="#" className="text-white hover:text-gray-400">
+                    <Image src={LinkedinImg} alt="fb Image" className="icon4" />
+                  </a>
+                  <a href="#" className="text-white hover:text-gray-400">
+                    <Image src={InsterImg} alt="fb Image" className="icon4" />
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="designer">Design By The Mavericks</div>
           </div>
         </footer>
       </div>
