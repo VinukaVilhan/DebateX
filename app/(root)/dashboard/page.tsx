@@ -109,7 +109,7 @@ const Home = () => {
                   <h2 className="text-2xl font-bold">
                     {user?.firstName} {user?.lastName}
                   </h2>
-                  <p>{user?.primaryEmailAddressId}</p>
+                  <p className="text-sm">{user?.primaryEmailAddress?.emailAddress}</p>
                   <span className="w-max inline-block px-3 py-1 mt-2 text-sm text-white bg-purple-600 rounded-full">
                     Free plan
                   </span>
