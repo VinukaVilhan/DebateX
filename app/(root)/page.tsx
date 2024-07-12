@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
-import "../(root)/Styles/styles.css";
+import "../(root)/Styles/page.css";
 
 //------------ images----------------
 import HeroImg from "@/public/images/hero.jpg";
@@ -28,7 +28,7 @@ const HomePage = () => {
   return (
     <>
       <Navbar />
-      <div style={{ paddingTop: "80px" }}>
+      <div>
         {/* Hero Section */}
 
         <section id="hero" className="hero-section bg-[#292445] text-white">
@@ -56,7 +56,7 @@ const HomePage = () => {
             </button>
           </div>
 
-          <div className="container mx-auto text-center">
+          {/* <div className="container mx-auto text-center">
             <h1 className="text-5xl font-bold">
               Engage in Intellectual Debate and Hone Your Skills with DebateX
             </h1>
@@ -75,13 +75,13 @@ const HomePage = () => {
                 Participate a competition
               </button>
             </div>
-          </div>
+          </div> */}
         </section>
 
         {/* Stats Section */}
         <section
           id="stats"
-          className="stats-section bg-[#413A67] text-white py-20"
+          className="stats-section bg-[#050505] text-white py-20"
         >
           <div className="container mx-auto text-center">
             <div className="grid grid-cols-4 gap-8">
