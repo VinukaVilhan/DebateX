@@ -42,8 +42,8 @@ const HomePage = () => {
         </section>
 
         <section>
-          <div className="flex justify-center items-center space-x-4 w-full bg-[#413A67] px-28 py-12">
-            <button className="bg-[#58224de4] flex items-center justify-center border border-white text-white py-4 px-6 rounded-full">
+          <div className="flex justify-center items-center space-x-12 w-full bg-[#413A67] py-12">
+            <button className="bg-[#58224de4] font- flex items-center justify-center border border-white text-white py-4 px-6 rounded-full">
               Get Started
             </button>
             <button className="bg-[#58224de4] flex items-center justify-center border border-white text-white py-4 px-6 rounded-full">
