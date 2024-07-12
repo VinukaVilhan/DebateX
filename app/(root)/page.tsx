@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import "../(root)/Styles/page.css";
@@ -22,7 +21,7 @@ import ThinkImg from "@/public/images/icons8-thinking-100.png";
 import EduImg from "@/public/images/icons8-education-100.png";
 import CommImg from "@/public/images/icons8-communication-100.png";
 import AboutusImg from "@/public/images/Meeting.jpg";
-import { CaretRight, ArrowUpRight } from "@phosphor-icons/react/dist/ssr"; // or wherever the CaretRight icon is from
+import { CaretRight, ArrowUpRight } from "@phosphor-icons/react/dist/ssr"; 
 
 const HomePage = () => {
   return (
