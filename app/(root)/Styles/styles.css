@@ -10,7 +10,7 @@ html {
 
 .hero-section {
   position: relative;
-  background-image: url("../../public/images/hero.png");
+  background-image: url("../../../public/images/hero.png");
   background-size: cover;
   background-position: center;
   height: 80vh;
@@ -69,10 +69,8 @@ p {
   /* Adjust the hover color */
 }
 
-
 /* About Us Section */
 .about-section {
- 
   color: #fff;
   padding: 20px;
 }
@@ -94,7 +92,6 @@ p {
 .about-section .image-container img {
   width: 100%;
   height: auto;
-  
 }
 
 .about-section .content-container {
@@ -102,7 +99,6 @@ p {
   max-width: 50%;
   text-align: left;
   padding: 20px;
-  
 }
 
 .about-section h2 {
@@ -126,11 +122,6 @@ p {
   text-decoration: none;
   margin-top: 0.5rem;
 }
-
-
-
-
-
 
 /* Vision and Mission section */
 .vision-mission-section {
