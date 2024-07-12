@@ -5,7 +5,6 @@ import Navbar from "@/components/Navbar";
 import "../(root)/Styles/page.css";
 
 //------------ images----------------
-import HeroImg from "@/public/images/hero.jpg";
 import RitharaImg from "@/public/images/team/Rithara.png";
 import JalinaImg from "@/public/images/team/Jalina.png";
 import AkithImg from "@/public/images/team/Akith.png";
@@ -89,15 +88,13 @@ const HomePage = () => {
         </section>
 
         {/* About Us Section */}
-        <section
-          id="about"
-          className="about-section bg-#14142A text-white py-20"
-        >
+        <section id="about" className="bg-#14142A text-white mb-16">
           <h2 className="text-4xl mb-20 font-bold">
             <br></br>
             <br></br>
             <center>About Us</center>
           </h2>
+
           <div className="container flex mx-12 gap-4">
             <div className="image-container w-1/2">
               <Image
@@ -106,6 +103,7 @@ const HomePage = () => {
                 className="w-4/5 mx-auto"
               />
             </div>
+
             <div className="content-container flex flex-col w-1/2 ml-4">
               <p className="text-2xl font-bold mb-12">
                 Welcome to DebateX, the ultimate online debating platform where
