@@ -20,6 +20,7 @@ export default function RootLayout({
 }: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en">
+
       <ClerkProvider
         appearance={{
           layout: {
@@ -40,6 +41,7 @@ export default function RootLayout({
           {children}
         </body>
       </ClerkProvider>
+
     </html>
   );
 }
