@@ -34,16 +34,9 @@ const HomePage = () => {
       <Navbar />
       <div style={{ paddingTop: "80px" }}>
         {/* Hero Section */}
-        <section
-          id="hero"
-          className="hero-section bg-[#292445] text-white py-20"
-          style={{
-            backgroundImage: `url(${HeroImg})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        >
+
+        <section id="hero" className="hero-section bg-[#292445] text-white">
+
           <div className="container mx-auto text-center">
             <h1 className="text-5xl font-bold">Engage in Intellectual Debate and Hone Your Skills with DebateX</h1>
             <p className="mt-4 text-lg">DebateX is a platform designed to foster critical thinking and public speaking skills through engaging and structured debates.</p>
@@ -106,10 +99,12 @@ const HomePage = () => {
           <div className="container mx-auto text-center">
             <h2 className="text-3xl font-bold">Our Aims</h2><br></br><br></br>
             <div className="grid grid-cols-3 gap-8 mt-8">
+              
               <div className="aim-item1">
                 <Image src={ThinkImg} alt="THINK Image" className="imgicon2" /><br></br>
                 <h3 className="text-xl font-bold">Encourage Critical Thinking</h3><br></br>
-                <p>We aim to sharpen participants' analytical skills by providing a platform that challenges them to think deeply and articulate their thoughts clearly.</p>
+                <p>We aim to sharpen participants&apos; analytical skills by providing a platform that challenges them to think deeply and articulate their thoughts clearly.</p>
+
               </div>
               <div className="aim-item2">
                 <Image src={EduImg} alt="Educatiom Image" className="imgicon2" /><br></br>
