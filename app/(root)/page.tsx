@@ -106,17 +106,17 @@ const HomePage = () => {
                 Welcome to DebateX, the ultimate online debating platform where
                 ideas meet, challenge, and evolve.
               </p>
-              <div className="links">
+              <div className="links text-xl ml-4 mr-12">
                 <div className="my-8 flex justify-between">
                   <a href="#">Vision and Mission of DebateX</a>
                   <ArrowUpRight size={32} />
                 </div>
-                <hr />
+                <hr className="border-[#2f466a85]" />
                 <div className="my-8 flex justify-between">
                   <a href="#">DebateX Services</a>
                   <ArrowUpRight size={32} />
                 </div>
-                <hr />
+                <hr className="border-[#2f466a85]" />
                 <div className="my-8 flex justify-between">
                   <a href="#">DebateX Expert Team</a>
                   <ArrowUpRight size={32} />
