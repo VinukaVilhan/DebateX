@@ -1,7 +1,14 @@
-"use client";
+"use client"
+
+
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
 
 import MeetingModel from "@/components/MeetingModel";
-import React, { useState, useEffect } from "react";
+import MeetingTypeList from "@/components/MeetingTypeList";
+import { useRouter } from "next/navigation";
+import { useToast } from "@/components/ui/use-toast";
+import { useUser } from "@clerk/nextjs";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Card,
@@ -11,12 +18,21 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Image from "next/image";
-import MeetingTypeList from "@/components/MeetingTypeList";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
-import { useRouter } from "next/navigation";
-import { useToast } from "@/components/ui/use-toast";
-import { useUser } from "@clerk/nextjs";
+
+
+
+
+
+
+
 
 const Home = () => {
   const router = useRouter();
@@ -24,22 +40,24 @@ const Home = () => {
   const { toast } = useToast();
   const [name, setName] = useState("");
   const [meetingState, setMeetingState] = useState<
-    | "isScheduleMeeting"
-    | "isJoiningMeeting"
-    | "isHostMeeting"
-    | undefined
+    "isScheduleMeeting" | "isJoiningMeeting" | "isHostMeeting" | undefined
   >(undefined);
-
-  const [email, setEmail] = useState("");
-
+  const [isDialogOpen, setIsDialogOpen] = useState(true); // State to control the dialog
   const client = useStreamVideoClient();
   const [values, setValues] = useState({
     dateTime: new Date(),
     description: "",
     link: "",
   });
-
   const [callDetails, setCallDetails] = useState<Call>();
+
+  useEffect(() => {
+    setIsDialogOpen(true); // Open the dialog when the component mounts
+  }, []);
+
+  const toggleDialog = () => {
+    setIsDialogOpen(!isDialogOpen);
+  }
 
   const createMeeting = async () => {
     if (!client || !user) return;
@@ -90,7 +108,75 @@ const Home = () => {
   };
 
   return (
-    <section className="flex flex-col">
+    <>
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent className="max-w-4xl p-10 bg-background_of_dashboard-1 overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-center text-3xl">Pricing</DialogTitle>
+            <DialogDescription>
+              <div className="flex justify-around mt-6 w-full gap-4">
+                <Card className="bg-white shadow-md w-1/3 text-center p-4 flex flex-col">
+                  <CardHeader>
+                    <CardTitle>Basic (Free)</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="text-left list-disc pl-1">
+                      <li>Meetings</li>
+                      <li>Team Chat</li>
+                      <li>Notepad</li>
+                    </ul>
+                  </CardContent>
+                  <CardFooter className="mt-auto flex justify-center">
+                    <button className="bg-gray-300 text-black py-2 px-4 rounded-lg">
+                      Current Plan
+                    </button>
+                  </CardFooter>
+                </Card>
+                <Card className="bg-white shadow-md w-1/3 text-center p-4 flex flex-col">
+                  <CardHeader>
+                    <CardTitle>Pro ($15/month)</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="text-left list-disc pl-1">
+                      <li>Unlimited Meetings</li>
+                      <li>Breakout Rooms</li>
+                      <li>Unlimited Participants</li>
+                      <li>Coin Toss</li>
+                      <li>Team Chat</li>
+                      <li>Point display</li>
+                      <li>Notepad</li>
+                    </ul>
+                  </CardContent>
+                  <CardFooter className="mt-auto flex justify-center">
+                    <button className="bg-background_of_dashboard-1 text-white py-2 px-4 rounded-lg">
+                      Upgrade
+                    </button>
+                  </CardFooter>
+                </Card>
+                <Card className="bg-white shadow-md w-1/3 text-center p-4 flex flex-col">
+                  <CardHeader>
+                    <CardTitle>Enterprise</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="text-left list-disc pl-1">
+                      <li>All Pro Features</li>
+                      <li>Custom Solutions</li>
+                      <li>24/7 Support</li>
+                    </ul>
+                  </CardContent>
+                  <CardFooter className="mt-auto flex justify-center">
+                    <button className="bg-purple-600 text-white py-2 px-4 rounded-lg">
+                      Upgrade
+                    </button>
+                  </CardFooter>
+                </Card>
+              </div>
+            </DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
+
+      <section className="flex flex-col">
       <div className="flex flex-col gap-4 mx-auto max-w-5xl p-4 bg-background_of_dashboard-1 rounded-lg w-full">
         <div className="flex h-auto">
           <div className="flex gap-4 w-full flex-grow">
@@ -169,7 +255,8 @@ const Home = () => {
                   img="/icons/recordings.svg"
                   title="Recordings"
                   handleClick={() => router.push("/dashboard/recordings")}
-                />
+
+
                 <MeetingModel
                   isOpen={meetingState === "isHostMeeting"}
                   onClose={() => setMeetingState(undefined)}
@@ -258,7 +345,8 @@ const Home = () => {
         </div>
       </div>
 
-    </section>
+     </section>
+    </>
   );
 };
 

@@ -1,11 +1,9 @@
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import "../(root)/Styles/page.css";
 
 //------------ images----------------
-import HeroImg from "@/public/images/hero.jpg";
 import RitharaImg from "@/public/images/team/Rithara.png";
 import JalinaImg from "@/public/images/team/Jalina.png";
 import AkithImg from "@/public/images/team/Akith.png";
@@ -23,7 +21,7 @@ import ThinkImg from "@/public/images/icons8-thinking-100.png";
 import EduImg from "@/public/images/icons8-education-100.png";
 import CommImg from "@/public/images/icons8-communication-100.png";
 import AboutusImg from "@/public/images/Meeting.jpg";
-import { CaretRight, ArrowUpRight } from "@phosphor-icons/react/dist/ssr"; // or wherever the CaretRight icon is from
+import { CaretRight, ArrowUpRight } from "@phosphor-icons/react/dist/ssr"; 
 
 const HomePage = () => {
   return (
@@ -91,13 +89,14 @@ const HomePage = () => {
         {/* About Us Section */}
         <section
           id="about"
-          className="about-section bg-#14142A text-white py-20"
+          className="bg-#14142A text-white mb-16 flex flex-col items-center mx-4"
         >
           <h2 className="text-4xl mb-20 font-bold">
             <br></br>
             <br></br>
             <center>About Us</center>
           </h2>
+
           <div className="container flex mx-12 gap-4">
             <div className="image-container w-1/2">
               <Image
@@ -106,12 +105,13 @@ const HomePage = () => {
                 className="w-4/5 mx-auto"
               />
             </div>
-            <div className="content-container flex flex-col w-1/2 ml-4">
+
+            <div className="flex flex-col w-1/2 ml-4">
               <p className="text-2xl font-bold mb-12">
                 Welcome to DebateX, the ultimate online debating platform where
                 ideas meet, challenge, and evolve.
               </p>
-              <div className="links text-xl ml-4 mr-12">
+              <div className="text-xl ml-4 mr-12">
                 <div className="my-8 flex justify-between">
                   <a href="#">Vision and Mission of DebateX</a>
                   <ArrowUpRight size={32} />
@@ -134,7 +134,7 @@ const HomePage = () => {
         {/* Aims Section */}
         <section id="aims" className="aims-section bg-[#9496D9] py-20">
           <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold">Our Aims</h2>
+            <h2 className="text-4xl font-bold">Our Aims</h2>
             <br></br>
             <br></br>
             <div className="grid grid-cols-3 gap-8 mt-8">
@@ -194,17 +194,17 @@ const HomePage = () => {
         {/* Vision & Mission Section */}
         <section
           id="vision-mission"
-          className="vision-mission-section bg-#14142A text-white py-20"
+          className="vision-mission-section bg-[#14142A] text-white py-16"
         >
           <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold">Our Vision & Mission</h2>
-            <div className="grid grid-cols-2 gap-8 mt-8">
+            <h2 className="text-4xl font-bold">Our Vision & Mission</h2>
+            <div className="grid grid-cols-2 gap-8 mt-20">
               <div className="card1">
                 <Image src={VisionImg} alt="Vision Image" className="img1" />
                 <br></br>
-                <h3 className="text-xl font-bold">Vision</h3>
+                <h3 className="text-2xl font-bold">Vision</h3>
                 <br></br>
-                <p>
+                <p className="text-xl font-semibold">
                   To be the premier online platform for fostering intellectual
                   growth, critical thinking, and respectful discourse through
                   engaging and dynamic debates.
@@ -213,9 +213,9 @@ const HomePage = () => {
               <div className="card2">
                 <Image src={MissionImg} alt="Mission Image" className="img2" />
                 <br></br>
-                <h3 className="text-xl font-bold">Mission</h3>
+                <h3 className="text-2xl font-bold">Mission</h3>
                 <br></br>
-                <p>
+                <p className="text-xl font-semibold">
                   Our mission is to foster a diverse community where individuals
                   can debate, challenge ideas, and enhance their communication
                   skills. We provide a supportive environment that promotes
@@ -229,14 +229,17 @@ const HomePage = () => {
         </section>
 
         {/* Services Section */}
-        <section id="services" className="services-section bg-[#9496D9] py-20">
+        <section id="services" className=" bg-[#9496D9] py-16 px-12">
           <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold">Services</h2>
-            <br></br>
-            <br></br>
-            <div className="grid grid-cols-3 gap-1 mt-8">
+            <h2 className="text-3xl font-bold mb-4">Services</h2>
+            <p className="text-xl mb-6 font-semibold">
+              Unlock Your Debating skills with DebateX Services
+            </p>
+            <div className="grid grid-cols-3 mt-8">
               <div className="service-item1">
-                <Image src={MedalImg} alt="medal Image" className="imgicon" />
+                <div className="w-16 h-16 flex justify-center items-center overflow-hidden rounded-full">
+                  <Image src={MedalImg} alt="medal Image" className="imgicon" />
+                </div>
                 <br></br>
                 <h3 className="text-xl font-bold">
                   Debate Competitions and Tournaments
@@ -246,7 +249,13 @@ const HomePage = () => {
                 </p>
               </div>
               <div className="service-item2">
-                <Image src={ComImg} alt="community Image" className="imgicon" />
+                <div className="w-16 h-16 flex justify-center items-center overflow-hidden rounded-full">
+                  <Image
+                    src={ComImg}
+                    alt="community Image"
+                    className="imgicon"
+                  />
+                </div>
                 <br></br>
                 <h3 className="text-xl font-bold">Community and Networking</h3>
                 <p>
@@ -255,7 +264,9 @@ const HomePage = () => {
                 </p>
               </div>
               <div className="service-item3">
-                <Image src={LawImg} alt="law Image" className="imgicon" />
+                <div className="w-16 h-16 flex justify-center items-center overflow-hidden rounded-full">
+                  <Image src={LawImg} alt="law Image" className="imgicon" />
+                </div>
                 <br></br>
                 <h3 className="text-xl font-bold">Judging and Feedback</h3>
                 <p>
@@ -265,13 +276,17 @@ const HomePage = () => {
                 </p>
               </div>
               <div className="service-item4">
-                <Image src={EventImg} alt="Event Image" className="imgicon" />
+                <div className="w-16 h-16 flex justify-center items-center overflow-hidden rounded-full">
+                  <Image src={EventImg} alt="Event Image" className="imgicon" />
+                </div>
                 <br></br>
                 <h3 className="text-xl font-bold">Event Management</h3>
                 <p>Offering tools and platforms for virtual debate events.</p>
               </div>
               <div className="service-item5">
-                <Image src={GearImg} alt="Gear Image" className="imgicon" />
+                <div className="w-16 h-16 flex justify-center items-center overflow-hidden rounded-full">
+                  <Image src={GearImg} alt="Gear Image" className="imgicon" />
+                </div>
                 <br></br>
                 <h3 className="text-xl font-bold">
                   Customization and Personalization
@@ -282,11 +297,13 @@ const HomePage = () => {
                 </p>
               </div>
               <div className="service-item6">
-                <Image
-                  src={InnovationImg}
-                  alt="Innovation Image"
-                  className="imgicon"
-                />
+                <div className="w-16 h-16 flex justify-center items-center overflow-hidden rounded-full">
+                  <Image
+                    src={InnovationImg}
+                    alt="Innovation Image"
+                    className="imgicon"
+                  />
+                </div>
                 <br></br>
                 <h3 className="text-xl font-bold">Technology and Innovation</h3>
                 <p>
