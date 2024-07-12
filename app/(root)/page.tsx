@@ -29,16 +29,7 @@ const HomePage = () => {
       <Navbar />
       <div>
         {/* Hero Section */}
-        <section
-          id="hero"
-          className="hero-section bg-[#292445] text-white"
-          style={{
-            backgroundImage: `url(${HeroImg})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        >
+        <section id="hero" className="hero-section bg-[#292445] text-white">
           <div className="container mx-auto text-center">
             <h1 className="text-5xl font-bold">
               Engage in Intellectual Debate and Hone Your Skills with DebateX
