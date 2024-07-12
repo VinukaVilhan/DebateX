@@ -88,7 +88,10 @@ const HomePage = () => {
         </section>
 
         {/* About Us Section */}
-        <section id="about" className="bg-#14142A text-white mb-16">
+        <section
+          id="about"
+          className="bg-#14142A text-white mb-16 flex flex-col items-center mx-4"
+        >
           <h2 className="text-4xl mb-20 font-bold">
             <br></br>
             <br></br>
@@ -104,12 +107,12 @@ const HomePage = () => {
               />
             </div>
 
-            <div className="content-container flex flex-col w-1/2 ml-4">
+            <div className="flex flex-col w-1/2 ml-4">
               <p className="text-2xl font-bold mb-12">
                 Welcome to DebateX, the ultimate online debating platform where
                 ideas meet, challenge, and evolve.
               </p>
-              <div className="links text-xl ml-4 mr-12">
+              <div className="text-xl ml-4 mr-12">
                 <div className="my-8 flex justify-between">
                   <a href="#">Vision and Mission of DebateX</a>
                   <ArrowUpRight size={32} />
