@@ -12,17 +12,13 @@ const Navbar = () => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-
   useEffect(() => {
     setIsLoggedIn(!!user);
   }, [user]);
 
-
   return (
     <nav className="flex justify-between items-center z-50 w-full bg-dark-1 px-20 py-4">
       <Link href="/" className="flex items-center justify-center">
-      <Link href="/" className="flex items-center">      
-      
         <p className="text-4xl font-extrabold text-white max-sm:hidden">
           DebateX
         </p>
