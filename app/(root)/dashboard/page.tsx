@@ -55,6 +55,10 @@ const Home = () => {
     setIsDialogOpen(true); // Open the dialog when the component mounts
   }, []);
 
+  const toggleDialog = () => {
+    setIsDialogOpen(!isDialogOpen);
+  }
+
   const createMeeting = async () => {
     if (!client || !user) return;
 
@@ -173,34 +177,65 @@ const Home = () => {
       </Dialog>
 
       <section className="flex flex-col">
-        <div className="flex flex-col gap-4 mx-auto max-w-5xl p-4 bg-background_of_dashboard-1 rounded-lg w-full">
-          <div className="flex h-auto">
-            <div className="flex gap-4 w-full flex-grow">
-              <div className="flex flex-[3] bg-white rounded-lg shadow-md p-1 flex-col">
-                <div className="flex w-full">
-                  <div className="flex items-center w-fit">
+      <div className="flex flex-col gap-4 mx-auto max-w-5xl p-4 bg-background_of_dashboard-1 rounded-lg w-full">
+        <div className="flex h-auto">
+          <div className="flex gap-4 w-full flex-grow">
+            <div className="flex flex-[3] bg-white rounded-2xl shadow-md p-4 flex-col">
+              <div className="flex w-full">
+                <div className="flex items-center w-fit">
+                  <Image
+                    src={user?.imageUrl || ""}
+                    height={150}
+                    width={150}
+                    alt="profile pic"
+                    className="rounded-xl"
+                  />
+                </div>
+                <div className="w-3/4 pl-5 flex flex-col justify-center">
+                  <h2 className="text-2xl font-bold">
+                    {user?.firstName} {user?.lastName}
+                  </h2>
+                  <p className="text-sm">{user?.primaryEmailAddress?.emailAddress}</p>
+                  <span className="w-max inline-block px-3 py-1 mt-2 text-sm text-white bg-purple-600 rounded-full">
+                    Free plan
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-center justify-evenly mt-2 bg-gray-200 p-9 rounded-2xl flex-col">
+                <span className="text-left ">Included in your plan:</span>
+                <div className="flex space-x-9">
+                  <span className="flex items-center space-x-2">
                     <Image
-                      src={user?.imageUrl || ""}
-                      height={150}
-                      width={150}
-                      alt="profile pic"
-                      className="rounded-xl"
+                      src="/icons/chat_bubble.svg"
+                      height={30}
+                      width={30}
+                      alt="chat icon"
                     />
-                  </div>
-                  <div className="w-3/4 pl-5 flex flex-col justify-center">
-                    <h2 className="text-2xl font-bold">
-                      {user?.firstName} {user?.lastName}
-                    </h2>
-                    <p>{user?.primaryEmailAddress?.emailAddress}</p>
-                    <span className="w-max inline-block px-3 py-1 mt-2 text-sm text-white bg-purple-600 rounded-full">
-                      Free plan
-                    </span>
-                  </div>
+                    <label htmlFor="chat">Chat</label>
+                  </span>
+                  <span className="flex items-center space-x-2">
+                    <Image
+                      src="/icons/video(ps).svg"
+                      height={30}
+                      width={30}
+                      alt="chat icon"
+                    />
+                    <label htmlFor="meeting">Meeting</label>
+                  </span>
+                  <span className="flex items-center space-x-2">
+                    <Image
+                      src="/icons/notes(ps).svg"
+                      height={30}
+                      width={30}
+                      alt="meeting icon"
+                    />
+                    <label htmlFor="notes">Notes</label>
+                  </span>
                 </div>
               </div>
             </div>
-            <div className="flex flex-[2] bg-red-100 rounded-lg flex-col">
-              <div className="flex flex-[1] bg-white last:items-center gap-5 justify-evenly items-center">
+            <div className="flex flex-[2] bg-white flex-col rounded-2xl">
+              <div className="flex flex-[1] last:items-center gap-5 justify-evenly items-center p-3">
                 <MeetingTypeList
                   img="/icons/schedule-meeting.svg"
                   title="Schedule"
@@ -216,6 +251,11 @@ const Home = () => {
                   title="Host"
                   handleClick={() => setMeetingState("isHostMeeting")}
                 />
+                <MeetingTypeList
+                  img="/icons/recordings.svg"
+                  title="Recordings"
+                  handleClick={() => router.push("/dashboard/recordings")}
+                />
                 <MeetingModel
                   isOpen={meetingState === "isHostMeeting"}
                   onClose={() => setMeetingState(undefined)}
@@ -224,6 +264,7 @@ const Home = () => {
                   buttonText="Start an instant Meeting"
                   handleClick={createMeeting}
                 />
+
                 <MeetingModel
                   isOpen={meetingState === "isJoiningMeeting"}
                   onClose={() => setMeetingState(undefined)}
@@ -232,6 +273,7 @@ const Home = () => {
                   buttonText="Join Meeting"
                   handleClick={() => {}}
                 />
+
                 <MeetingModel
                   isOpen={meetingState === "isScheduleMeeting"}
                   onClose={() => setMeetingState(undefined)}
@@ -241,92 +283,68 @@ const Home = () => {
                   handleClick={() => {}}
                 />
               </div>
-              <div className="flex flex-[1] bg-white justify-center items-center">
-                <Card className="bg-slate-400 outline-none rounded-xl m-4">
-                  <CardContent className="flex flex-col bg-slate-400 m-1 justify-center">
+              <div className="flex flex-[1] justify-center items-center">
+                <Card className="bg-slate-200 outline-none rounded-xl">
+                  <CardContent className="flex flex-col bg-slate-200 m-1 justify-center">
                     <h3 className="font-semibold">Personal meeting ID</h3>
                     <div className="flex flex-row items-center gap-2">
                       <h3>305-206-243</h3>
-                      <div className="flex items-center justify-evenly mt-2 bg-gray-100 p-9 rounded-lg flex-col">
-                        <span className="text-left">Included in your plan:</span>
-                        <div className="flex space-x-9">
-                          <span className="flex items-center space-x-2">
-                            <Image
-                              src="/icons/chat_bubble.svg"
-                              height={30}
-                              width={30}
-                              alt="chat icon"
-                            />
-                            <label htmlFor="chat">Chat</label>
-                          </span>
-                          <span className="flex items-center space-x-2">
-                            <Image
-                              src="/icons/video(ps).svg"
-                              height={30}
-                              width={30}
-                              alt="chat icon"
-                            />
-                            <label htmlFor="meeting">Meeting</label>
-                          </span>
-                          <span className="flex items-center space-x-2">
-                            <Image
-                              src="/icons/notes(ps).svg"
-                              height={30}
-                              width={30}
-                              alt="meeting icon"
-                            />
-                            <label htmlFor="notes">Notes</label>
-                          </span>
-                        </div>
-                      </div>
+                      <Image
+                        src={"/icons/copy.png"}
+                        width={30}
+                        height={30}
+                        alt="copy id icon"
+                      />
                     </div>
                   </CardContent>
                 </Card>
               </div>
             </div>
           </div>
-          <div className="flex h-60 items-center my-1">
-            <Tabs defaultValue="upcoming" className="w-full">
-              <TabsList className="grid w-full grid-cols-2 bg-white">
-                <TabsTrigger value="upcoming" className="w-full text-center py-2">
-                  Upcoming
-                </TabsTrigger>
-                <TabsTrigger value="previous" className="w-full text-center py-2">
-                  Previous
-                </TabsTrigger>
-              </TabsList>
-              <TabsContent value="upcoming">
-                <Card className="text-center mt-4 bg-slate-400 outline-none border-none">
-                  <CardHeader>
-                    <CardTitle>No upcoming meetings</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-2 flex justify-center">
-                    <button
-                      type="button"
-                      className="bg-purple-600 text-white py-2 px-4 rounded-lg"
-                    >
-                      Schedule a meeting
-                    </button>
-                  </CardContent>
-                  <CardFooter></CardFooter>
-                </Card>
-              </TabsContent>
-              <TabsContent value="previous">
-                <Card className="text-center mt-4 bg-slate-400 outline-none border-none">
-                  <CardHeader>
-                    <CardTitle>Previous</CardTitle>
-                    <CardDescription>View your past events here.</CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-2 flex justify-center">
-                    {/* Add content for previous events */}
-                  </CardContent>
-                  <CardFooter></CardFooter>
-                </Card>
-              </TabsContent>
-            </Tabs>
-          </div>
         </div>
-      </section>
+        <div className="flex h-60 items-center my-1 bg-white p-3 rounded-2xl">
+          <Tabs defaultValue="upcoming" className="w-full">
+            <TabsList className="grid w-full grid-cols-2 bg-white">
+              <TabsTrigger value="upcoming" className="w-full text-center py-2">
+                Upcoming
+              </TabsTrigger>
+              <TabsTrigger value="previous" className="w-full text-center py-2">
+                Previous
+              </TabsTrigger>
+            </TabsList>
+            <TabsContent value="upcoming">
+              <Card className="text-center mt-4 bg-slate-200 outline-none border-none">
+                <CardHeader>
+                  <CardTitle>No upcoming meetings</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2 flex justify-center">
+                  <button
+                    type="button"
+                    className="bg-purple-600 text-white py-2 px-4 rounded-lg"
+                  >
+                    Schedule a meeting
+                  </button>
+                </CardContent>
+                <CardFooter></CardFooter>
+              </Card>
+            </TabsContent>
+            <TabsContent value="previous">
+              <Card className="text-center mt-4 bg-slate-200 outline-none border-none">
+                <CardHeader>
+                  <CardTitle>Previous</CardTitle>
+                  <CardDescription>View your past events here.</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-2 flex justify-center">
+                  {/* Add content for previous events */}
+                </CardContent>
+                <CardFooter></CardFooter>
+              </Card>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </div>
+
+     </section>
     </>
   );
 };
