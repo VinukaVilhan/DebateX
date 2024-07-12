@@ -17,8 +17,6 @@ import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
 import { useUser } from "@clerk/nextjs";
-import { clerkClient } from "@clerk/nextjs/server";
-import { error } from "console";
 
 const Home = () => {
   const router = useRouter();
@@ -29,7 +27,6 @@ const Home = () => {
     | "isScheduleMeeting"
     | "isJoiningMeeting"
     | "isHostMeeting"
-    | "isRecordingMeeting"
     | undefined
   >(undefined);
 
@@ -169,9 +166,9 @@ const Home = () => {
                   handleClick={() => setMeetingState("isHostMeeting")}
                 />
                 <MeetingTypeList
-                  img="/icons/recording(ps).png"
+                  img="/icons/recordings.svg"
                   title="Recordings"
-                  handleClick={() => setMeetingState("isRecordingMeeting")}
+                  handleClick={() => router.push("/dashboard/recordings")}
                 />
                 <MeetingModel
                   isOpen={meetingState === "isHostMeeting"}
