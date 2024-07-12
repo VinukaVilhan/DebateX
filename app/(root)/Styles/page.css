@@ -80,7 +80,7 @@ p {
   justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
-  margin-bottom: 70px; /* Add space below the image */
+  margin-bottom: 80px; /* Add space below the image */
 }
 
 .about-section .image-container {
@@ -117,15 +117,34 @@ p {
 .about-section .links a {
   display: block;
   color: #fff;
-  font-size: 0.932rem;
+  font-size: 0.972rem;
   text-decoration: none;
   margin-top: 0.5rem;
+  position: relative;
 }
 
 /* Hover effect for links */
 .about-section .links a:hover {
   color: #9496d9; /* Change this color to whatever you prefer */
 }
+
+.about-section .links a::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: #9496D9; /* Change this color to whatever you prefer */
+  position: absolute;
+  left: 0;
+  bottom: -5px; /* Adjust this value to control the distance from the link text */
+}
+
+
+
+
+
+
+
 
 /* Vision and Mission section */
 .vision-mission-section {

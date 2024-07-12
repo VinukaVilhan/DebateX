@@ -107,9 +107,9 @@ const HomePage = () => {
                 ideas meet, challenge, and evolve.<br></br><br></br>
               </p>
               <div className="links">
-                <a href="#">DebateX Vision and Mission </a><br></br>
-                <a href="#">DebateX Services</a><br></br>
-                <a href="#">DebateX Expert Team</a><br></br>
+                <a href="#vision-mission">DebateX Vision and Mission</a><br></br>
+                <a href="#services">DebateX Services </a><br></br>
+                <a href="#team">DebateX Expert Team </a><br></br>
               </div>
             </div>
           </div>
