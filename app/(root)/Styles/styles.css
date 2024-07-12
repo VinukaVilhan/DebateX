@@ -129,7 +129,10 @@ p {
   margin-top: 0.5rem;
 }
 
-
+/* Hover effect for links */
+.about-section .links a:hover {
+  color: #9496D9; /* Change this color to whatever you prefer */
+}
 
 
 
