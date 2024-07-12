@@ -19,7 +19,7 @@ const NavbarDashboard = () => {
     if (user) {
       setProfileImageUrl(user.imageUrl);
     }
-  });
+  }, [user]);
 
   return (
     <nav className=" fixed w-full bg-dark-1 px-6 py-4 lg:px-10 ">
@@ -34,12 +34,6 @@ const NavbarDashboard = () => {
         /> */}
           <p className="text-[26 px] font-extrabold text-white max-sm:hidden">
             DebateX
-          </p>
-        </Link>
-
-        <Link href="/profile" className="flex gap-2 items-center max-sm:hidden">
-          <p className="text-white ">
-            Hi, {user?.firstName} {user?.lastName}
           </p>
         </Link>
 

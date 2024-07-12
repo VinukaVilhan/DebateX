@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import "../(root)/Styles/page.css";
@@ -22,16 +21,11 @@ import ThinkImg from "@/public/images/icons8-thinking-100.png";
 import EduImg from "@/public/images/icons8-education-100.png";
 import CommImg from "@/public/images/icons8-communication-100.png";
 import AboutusImg from "@/public/images/Meeting.jpg";
-
-import FbImg from"@/public/images/icons8-facebook-100 (2).png"
-import TwitterImg from"@/public/images/icons8-twitter-100.png"
-import LinkedinImg from"@/public/images/icons8-linked-in-100.png"
-import InsterImg from"@/public/images/icons8-instagram-100.png"
-
-
-
+import FbImg from "@/public/images/icons8-facebook-100 (2).png";
+import TwitterImg from "@/public/images/icons8-twitter-100.png";
+import LinkedinImg from "@/public/images/icons8-linked-in-100.png";
+import InsterImg from "@/public/images/icons8-instagram-100.png";
 import { CaretRight, ArrowUpRight } from "@phosphor-icons/react/dist/ssr"; // or wherever the CaretRight icon is from
-
 
 const HomePage = () => {
   return (
@@ -123,17 +117,23 @@ const HomePage = () => {
               </p>
               <div className="text-xl ml-4 mr-12">
                 <div className="my-8 flex justify-between">
-                  <a href="#vision-mission" className="hover:text-indigo-500">Vision and Mission of DebateX</a>
+                  <a href="#vision-mission" className="hover:text-indigo-500">
+                    Vision and Mission of DebateX
+                  </a>
                   <ArrowUpRight size={32} />
                 </div>
                 <hr className="border-[#2f466a85]" />
                 <div className="my-8 flex justify-between">
-                  <a href="#services" className="hover:text-indigo-500">DebateX Services</a>
+                  <a href="#services" className="hover:text-indigo-500">
+                    DebateX Services
+                  </a>
                   <ArrowUpRight size={32} />
                 </div>
                 <hr className="border-[#2f466a85]" />
                 <div className="my-8 flex justify-between">
-                  <a href="#team" className="hover:text-indigo-500" >DebateX Expert Team</a>
+                  <a href="#team" className="hover:text-indigo-500">
+                    DebateX Expert Team
+                  </a>
                   <ArrowUpRight size={32} />
                 </div>
               </div>
@@ -156,9 +156,9 @@ const HomePage = () => {
                 </h3>
                 <br></br>
                 <p>
-                  We aim to sharpen participant's analytical skills by providing
-                  a platform that challenges them to think deeply and articulate
-                  their thoughts clearly.
+                  We aim to sharpen participant&rsquo;s analytical skills by
+                  providing a platform that challenges them to think deeply and
+                  articulate their thoughts clearly.
                 </p>
               </div>
               <div className="aim-item2">
@@ -239,15 +239,17 @@ const HomePage = () => {
         </section>
 
         {/* Services Section */}
-        <section id="services" className="services-section bg-[#9496D9] py-16">
+        <section id="services" className=" bg-[#9496D9] py-16 px-12">
           <div className="container mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">Services</h2>
-            <p className="text-2xl mb-6">
+            <p className="text-xl mb-6 font-semibold">
               Unlock Your Debating skills with DebateX Services
             </p>
-            <div className="grid grid-cols-3 gap-1 mt-8">
+            <div className="grid grid-cols-3 mt-8">
               <div className="service-item1">
-                <Image src={MedalImg} alt="medal Image" className="imgicon" />
+                <div className="w-16 h-16 flex justify-center items-center overflow-hidden rounded-full">
+                  <Image src={MedalImg} alt="medal Image" className="imgicon" />
+                </div>
                 <br></br>
                 <h3 className="text-xl font-bold">
                   Debate Competitions and Tournaments
@@ -257,7 +259,13 @@ const HomePage = () => {
                 </p>
               </div>
               <div className="service-item2">
-                <Image src={ComImg} alt="community Image" className="imgicon" />
+                <div className="w-16 h-16 flex justify-center items-center overflow-hidden rounded-full">
+                  <Image
+                    src={ComImg}
+                    alt="community Image"
+                    className="imgicon"
+                  />
+                </div>
                 <br></br>
                 <h3 className="text-xl font-bold">Community and Networking</h3>
                 <p>
@@ -266,7 +274,9 @@ const HomePage = () => {
                 </p>
               </div>
               <div className="service-item3">
-                <Image src={LawImg} alt="law Image" className="imgicon" />
+                <div className="w-16 h-16 flex justify-center items-center overflow-hidden rounded-full">
+                  <Image src={LawImg} alt="law Image" className="imgicon" />
+                </div>
                 <br></br>
                 <h3 className="text-xl font-bold">Judging and Feedback</h3>
                 <p>
@@ -276,13 +286,17 @@ const HomePage = () => {
                 </p>
               </div>
               <div className="service-item4">
-                <Image src={EventImg} alt="Event Image" className="imgicon" />
+                <div className="w-16 h-16 flex justify-center items-center overflow-hidden rounded-full">
+                  <Image src={EventImg} alt="Event Image" className="imgicon" />
+                </div>
                 <br></br>
                 <h3 className="text-xl font-bold">Event Management</h3>
                 <p>Offering tools and platforms for virtual debate events.</p>
               </div>
               <div className="service-item5">
-                <Image src={GearImg} alt="Gear Image" className="imgicon" />
+                <div className="w-16 h-16 flex justify-center items-center overflow-hidden rounded-full">
+                  <Image src={GearImg} alt="Gear Image" className="imgicon" />
+                </div>
                 <br></br>
                 <h3 className="text-xl font-bold">
                   Customization and Personalization
@@ -293,11 +307,13 @@ const HomePage = () => {
                 </p>
               </div>
               <div className="service-item6">
-                <Image
-                  src={InnovationImg}
-                  alt="Innovation Image"
-                  className="imgicon"
-                />
+                <div className="w-16 h-16 flex justify-center items-center overflow-hidden rounded-full">
+                  <Image
+                    src={InnovationImg}
+                    alt="Innovation Image"
+                    className="imgicon"
+                  />
+                </div>
                 <br></br>
                 <h3 className="text-xl font-bold">Technology and Innovation</h3>
                 <p>
@@ -366,10 +382,7 @@ const HomePage = () => {
         </section>
 
         {/* Contact Us Section */}
-        <section
-          id="contact"
-          className="contact-section bg-[#9496D9]  py-20"
-        >
+        <section id="contact" className="contact-section bg-[#9496D9]  py-20">
           <div className="container mx-auto text-center">
             <h2 className="text-3xl font-bold">Contact Us</h2>
             <p className="mt-4">
@@ -429,47 +442,49 @@ const HomePage = () => {
         <footer className="footer-section bg-[##14142A] text-white py-8">
           <div className="container mx-auto text-center">
             <div className="newsletter">
-              <h1>Subscribe to Newsletter</h1><br></br>
-              
+              <h1>Subscribe to Newsletter</h1>
+              <br></br>
+
               <form className="mt-6">
                 <input
                   type="email"
                   placeholder="Enter your Email..."
                   className="px-4 py-2 rounded-full mr-6"
                 />
-                <button type="submit" className="px-4 py-2 rounded-full bg-[#8b4899] text-white">
+                <button
+                  type="submit"
+                  className="px-4 py-2 rounded-full bg-[#8b4899] text-white"
+                >
                   Subscribe
                 </button>
               </form>
             </div>
             <div className="footer-links mt-12">
               <div className="icontext">
-               
                 <p>
-                  Join our community of passionate debaters and never miss out on
-                  upcoming events, debates, and opportunities to enhance your
+                  Join our community of passionate debaters and never miss out
+                  on upcoming events, debates, and opportunities to enhance your
                   skills!
-                </p><br></br><br></br>
+                </p>
+                <br></br>
+                <br></br>
                 <div className="flex justify-center mt-4">
-                  <a href="#" className= "text-white hover:text-gray-400">
-                  <Image src={FbImg} alt="fb Image" className="icon4" />
+                  <a href="#" className="text-white hover:text-gray-400">
+                    <Image src={FbImg} alt="fb Image" className="icon4" />
                   </a>
                   <a href="#" className="text-white hover:text-gray-400">
-                  <Image src={TwitterImg} alt="fb Image" className="icon4" />
+                    <Image src={TwitterImg} alt="fb Image" className="icon4" />
                   </a>
                   <a href="#" className="text-white hover:text-gray-400">
-                  <Image src={LinkedinImg} alt="fb Image" className="icon4" />
+                    <Image src={LinkedinImg} alt="fb Image" className="icon4" />
                   </a>
                   <a href="#" className="text-white hover:text-gray-400">
-                  <Image src={InsterImg} alt="fb Image" className="icon4" />
+                    <Image src={InsterImg} alt="fb Image" className="icon4" />
                   </a>
                 </div>
               </div>
-              
             </div>
-            <div className="designer">
-              Design By The Mavericks
-            </div>
+            <div className="designer">Design By The Mavericks</div>
           </div>
         </footer>
       </div>
