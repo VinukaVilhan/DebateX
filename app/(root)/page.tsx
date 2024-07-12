@@ -30,32 +30,35 @@ const HomePage = () => {
       <div>
         {/* Hero Section */}
         <section id="hero" className="hero-section bg-[#292445] text-white">
-          <div className="container mx-auto text-center">
-            <h1 className="text-5xl font-bold">
+          <div className="container text-center flex flex-col justify-center items-center">
+            <h1 className="text-5xl font-bold px-28">
               Engage in Intellectual Debate and Hone Your Skills with DebateX
             </h1>
-            <p className="mt-4 text-lg">
+            <p className="mt-4 text-lg mx-28">
               DebateX is a platform designed to foster critical thinking and
               public speaking skills through engaging and structured debates.
             </p>
-            <div className="mt-8 flex justify-center space-x-4">
-              <button className="bg-[#8F67E8] text-white py-2 px-4 rounded-full">
-                Get Started
-              </button>
-              <button className="bg-[#9C6BFF] text-white py-2 px-4 rounded-full">
-                Host a competition
-              </button>
-              <button className="bg-[#8F67E8] text-white py-2 px-4 rounded-full">
-                Participate a competition
-              </button>
-            </div>
+          </div>
+        </section>
+
+        <section>
+          <div className="flex justify-center items-center space-x-12 w-full bg-[#413A67] py-12">
+            <button className="bg-[#58224de4] font- flex items-center justify-center border border-white text-white py-4 px-6 rounded-full">
+              Get Started
+            </button>
+            <button className="bg-[#58224de4] flex items-center justify-center border border-white text-white py-4 px-6 rounded-full">
+              Host a competition
+            </button>
+            <button className="bg-[#58224de4] flex items-center justify-center border border-white text-white py-4 px-6 rounded-full">
+              Participate a competition
+            </button>
           </div>
         </section>
 
         {/* Stats Section */}
         <section
           id="stats"
-          className="stats-section bg-[#413A67] text-white py-20"
+          className="stats-section bg-dark-1 text-white py-20 px-8"
         >
           <div className="container mx-auto text-center">
             <div className="grid grid-cols-4 gap-8">
