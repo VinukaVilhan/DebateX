@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Modal from "../../../components/ui/Modal"; // Assuming Modal component is defined and exported
 import Image from "next/image";
@@ -23,6 +23,12 @@ const Profile = () => {
   const [deleteError, setDeleteError] = useState("");
   const [profileImageUrl, setProfileImageUrl] = useState("");
   const { user } = useUser();
+
+  useEffect(() => {
+    if (user) {
+      setLoading(false);
+    }
+  }, [user]);
 
   return (
     <div className="m-9">
