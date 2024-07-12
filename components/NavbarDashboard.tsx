@@ -15,7 +15,6 @@ const NavbarDashboard = () => {
   const { user } = useUser();
   const [profileImageUrl, setProfileImageUrl] = useState("");
 
-
   return (
     <nav className=" fixed w-full bg-dark-1 px-6 py-4 lg:px-10 ">
       <div className="flex flex-row flex-1 flex-between">
@@ -33,38 +32,37 @@ const NavbarDashboard = () => {
         </Link>
 
         <Link href="/profile" className="flex gap-2 items-center max-sm:hidden">
-          <p className="text-white ">Hi, {user?.firstName} {user?.lastName}</p>
+          <p className="text-white ">
+            Hi, {user?.firstName} {user?.lastName}
+          </p>
         </Link>
 
         <div className="flex flex-row gap-1">
-          <Link href='/profile'>
-          <div>
-            {profileImageUrl ? (
-              <Image
-                src={user?.imageUrl || ""}
-                alt="Profile"
-                width={30}
-                height={30}
-                style={{ borderRadius: "50%" }}
-              />
-            ) : (
-              <Image
-                src={profileImg}
-                alt="Default Profile"
-                width={30}
-                height={30}
-                style={{ borderRadius: "50%" }}
-              />
-            )}
-         
-          </div>
+          <Link href="/profile">
+            <div>
+              {profileImageUrl ? (
+                <Image
+                  src={user?.imageUrl || ""}
+                  alt="Profile"
+                  width={30}
+                  height={30}
+                  style={{ borderRadius: "50%" }}
+                />
+              ) : (
+                <Image
+                  src={profileImg}
+                  alt="Default Profile"
+                  width={30}
+                  height={30}
+                  style={{ borderRadius: "50%" }}
+                />
+              )}
+            </div>
           </Link>
 
-        <button>
-        <SignOutButtonRithara></SignOutButtonRithara>
-        </button>
-         
-
+          <button>
+            <SignOutButtonRithara></SignOutButtonRithara>
+          </button>
         </div>
       </div>
 
