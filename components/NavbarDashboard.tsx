@@ -59,7 +59,7 @@ const NavbarDashboard = () => {
          
           </div>
           </Link>
-          
+
         <button>
         <SignOutButtonRithara></SignOutButtonRithara>
         </button>

@@ -33,16 +33,9 @@ const HomePage = () => {
       <Navbar />
       <div style={{ paddingTop: "80px" }}>
         {/* Hero Section */}
-        <section
-          id="hero"
-          className="hero-section bg-[#292445] text-white py-20"
-          style={{
-            backgroundImage: `url(${HeroImg})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        >
+
+        <section id="hero" className="hero-section bg-[#292445] text-white">
+
           <div className="container mx-auto text-center">
             <h1 className="text-5xl font-bold">Engage in Intellectual Debate and Hone Your Skills with DebateX</h1>
             <p className="mt-4 text-lg">DebateX is a platform designed to foster critical thinking and public speaking skills through engaging and structured debates.</p>

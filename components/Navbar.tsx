@@ -3,17 +3,19 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
+import { useUser } from "@clerk/nextjs";
 import Mobilenav from "./mobileNav";
 
-
 const Navbar = () => {
+  const { user } = useUser();
   const router = useRouter();
-  const [name, setName] = useState("");
-  const [showLogoutSuccessModal, setShowLogoutSuccessModal] = useState(false);
-  const [showLogoutErrorModal, setShowLogoutErrorModal] = useState(false);
-  const [logoutError, setLogoutError] = useState("");
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+
+  useEffect(() => {
+    setIsLoggedIn(!!user);
+  }, [user]);
 
 
   return (
@@ -24,17 +26,17 @@ const Navbar = () => {
           DebateX
         </p>
       </Link>
-      <div className="sm:flex justify-evenly gap-8 text-xl font-bold hidden ">
-        <Link href="/#hero" className="text-white ">
+      <div className="sm:flex justify-evenly gap-8 text-xl font-bold hidden">
+        <Link href="/#hero" className="text-white">
           <p>Home</p>
         </Link>
-        <Link href="" className="text-white ">
+        <Link href="" className="text-white">
           <p>About</p>
         </Link>
-        <Link href="/#aims" className="text-white ">
+        <Link href="/#aims" className="text-white">
           <p>Aims</p>
         </Link>
-        <Link href="/#contact" className="text-white ">
+        <Link href="/#contact" className="text-white">
           <p>Contact Us</p>
         </Link>
       </div>
@@ -46,7 +48,6 @@ const Navbar = () => {
         <Link href="/sign-in" className="text-white max-sm:hidden">
           <p>Get Started</p>
         </Link>
-
       )}
 
       <div className="flex-between gap-5 sm:hidden">
