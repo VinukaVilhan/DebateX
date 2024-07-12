@@ -2,7 +2,8 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
-import "../(root)/Styles/styles.css";
+import "../(root)/Styles/page.css";
+
 
 //------------ images----------------
 import HeroImg from "@/public/images/hero.jpg";
@@ -23,12 +24,14 @@ import ThinkImg from "@/public/images/icons8-thinking-100.png";
 import EduImg from "@/public/images/icons8-education-100.png";
 import CommImg from "@/public/images/icons8-communication-100.png";
 import AboutusImg from "@/public/images/Meeting.jpg";
+import { CaretRight } from 'phosphor-react'; // or wherever the CaretRight icon is from
+
 
 const HomePage = () => {
   return (
     <>
       <Navbar />
-      <div style={{ paddingTop: "80px" }}>
+      <div>
         {/* Hero Section */}
 
         <section id="hero" className="hero-section bg-[#292445] text-white">
@@ -45,43 +48,25 @@ const HomePage = () => {
 
         <section>
           <div className="flex justify-center items-center space-x-12 w-full bg-[#413A67] py-12">
-            <button className="bg-[#58224de4] font- flex items-center justify-center border border-white text-white py-4 px-6 rounded-full">
+            <button className="bg-[#58224de4] font-bold flex items-center justify-between gap-2 border border-white text-white py-4 px-6 rounded-full">
               Get Started
+              <CaretRight size={16} />
             </button>
-            <button className="bg-[#58224de4] flex items-center justify-center border border-white text-white py-4 px-6 rounded-full">
+            <button className="bg-[#58224de4] font-bold flex items-center justify-between gap-2 border border-white text-white py-4 px-6 rounded-full">
               Host a competition
+              <CaretRight size={16} />
             </button>
-            <button className="bg-[#58224de4] flex items-center justify-center border border-white text-white py-4 px-6 rounded-full">
+            <button className="bg-[#58224de4] font-bold flex items-center justify-between gap-2 border border-white text-white py-4 px-6 rounded-full">
               Participate a competition
+              <CaretRight size={16} />
             </button>
-          </div>
-
-          <div className="container mx-auto text-center">
-            <h1 className="text-5xl font-bold">
-              Engage in Intellectual Debate and Hone Your Skills with DebateX
-            </h1>
-            <p className="mt-4 text-lg">
-              DebateX is a platform designed to foster critical thinking and
-              public speaking skills through engaging and structured debates.
-            </p>
-            <div className="mt-8 flex justify-center space-x-4">
-              <button className="bg-[#8F67E8] text-white py-2 px-4 rounded-full">
-                Get Started
-              </button>
-              <button className="bg-[#9C6BFF] text-white py-2 px-4 rounded-full">
-                Host a competition
-              </button>
-              <button className="bg-[#8F67E8] text-white py-2 px-4 rounded-full">
-                Participate a competition
-              </button>
-            </div>
           </div>
         </section>
 
         {/* Stats Section */}
         <section
           id="stats"
-          className="stats-section bg-[#413A67] text-white py-20"
+          className="stats-section bg-[#050505] text-white py-20"
         >
           <div className="container mx-auto text-center">
             <div className="grid grid-cols-4 gap-8">
@@ -106,31 +91,27 @@ const HomePage = () => {
         </section>
 
         {/* About Us Section */}
-        <section
-          id="about"
-          className="about-section bg-#14142A text-white py-20"
-        >
-          <br></br>
-          <br></br>
-          <h2 className="text-3xl font-bold">
+        <section id="about" className=" bg-#14142A text-white py-20">
+          <h2 className="text-4xl mb-20 font-bold">
             <center>About Us</center>
           </h2>
-          <br></br>
-          <br></br>
-          <br></br>
-          <div className="container mx-auto">
-            <div className="image-container">
-              <Image src={AboutusImg} alt="About Us Image" />
+          <div className="flex mx-12 gap-4">
+            <div className="image-container w-1/2">
+              <Image
+                src={AboutusImg}
+                alt="About Us Image"
+                className="w-4/5 mx-auto"
+              />
             </div>
-            <div className="content-container">
-              <p>
+            <div className="content-container flex flex-col w-1/2 ml-4">
+              <p className="text-2xl font-bold mb-12">
                 Welcome to DebateX, the ultimate online debating platform where
                 ideas meet, challenge, and evolve.
               </p>
               <div className="links">
-                <a href="#">Vision and Mission of DebateX</a>
-                <a href="#">DebateX Services</a>
-                <a href="#">DebateX Expert Team</a>
+                <a href="#vision-mission">DebateX Vision and Mission</a><br></br>
+                <a href="#services">DebateX Services </a><br></br>
+                <a href="#team">DebateX Expert Team </a><br></br>
               </div>
             </div>
           </div>
@@ -151,9 +132,9 @@ const HomePage = () => {
                 </h3>
                 <br></br>
                 <p>
-                  We aim to sharpen participants&apos; analytical skills by
-                  providing a platform that challenges them to think deeply and
-                  articulate their thoughts clearly.
+                  We aim to sharpen participant's analytical skills by providing
+                  a platform that challenges them to think deeply and articulate
+                  their thoughts clearly.
                 </p>
               </div>
               <div className="aim-item2">
@@ -325,8 +306,8 @@ const HomePage = () => {
                   alt="V. V. Fernando"
                   className="rounded-full mx-auto"
                 />
-                <h3 className="mt-4 text-xl font-bold">V. V. Fernando</h3>
-                <p>vv.fernando@gmail.com</p>
+                <h3 className="mt-4 text-xl font-bold">V. V. Fernandopulle</h3>
+                <p>vv.fernandopulle@gmail.com</p>
               </div>
               <div>
                 <Image
