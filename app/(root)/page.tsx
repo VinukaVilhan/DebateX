@@ -18,9 +18,10 @@ import ComImg from "@/public/images/icons8-people-working-together-100.png"
 import LawImg from "@/public/images/icons8-law-100.png"
 import EventImg from "@/public/images/icons8-schedule-100.png"
 import GearImg from "@/public/images/icons8-gear-100.png"
-import innovationImg from "@/public/images/icons8-innovation-100.png"
-
-
+import InnovationImg from "@/public/images/icons8-innovation-100.png"
+import ThinkImg from "@/public/images/icons8-thinking-100.png"
+import EduImg from "@/public/images/icons8-education-100.png"
+import CommImg from "@/public/images/icons8-communication-100.png"
 
 
 
@@ -86,21 +87,23 @@ const HomePage = () => {
         </section>
 
         {/* Aims Section */}
-        <section id="aims" className="aims-section bg-[#E6E1F8] py-20">
+        <section id="aims" className="aims-section bg-[#9496D9] py-20">
           <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold">Our Aims</h2>
+            <h2 className="text-3xl font-bold">Our Aims</h2><br></br><br></br>
             <div className="grid grid-cols-3 gap-8 mt-8">
-              <div>
-              
-                <h3 className="text-xl font-bold">Encourage Critical Thinking</h3>
+              <div className="aim-item1">
+              <Image src={ThinkImg} alt="THINK Image" className="imgicon2" /><br></br>
+                <h3 className="text-xl font-bold">Encourage Critical Thinking</h3><br></br>
                 <p>We aim to sharpen participants' analytical skills by providing a platform that challenges them to think deeply and articulate their thoughts clearly.</p>
               </div>
-              <div>
-                <h3 className="text-xl font-bold">Facilitate Lifelong Learning</h3>
+              <div className="aim-item2">
+              <Image src={EduImg} alt="Educatiom Image" className="imgicon2" /><br></br>
+                <h3 className="text-xl font-bold">Facilitate Lifelong Learning</h3><br></br>
                 <p>We are dedicated to providing a platform that continuously educates and informs our users, helping them stay abreast of current issues and trends while cultivating a lifelong passion for learning and intellectual growth.</p>
               </div>
-              <div>
-                <h3 className="text-xl font-bold">Enhance Communication Skills</h3>
+              <div className="aim-item3">
+              <Image src={CommImg} alt="communication Image" className="imgicon2" /><br></br>
+                <h3 className="text-xl font-bold">Enhance Communication Skills</h3><br></br>
                 <p>Our platform provides various tools and resources to help users improve their debating and communication abilities, making it easier for them to articulate their thoughts clearly and persuasively.</p>
               </div>
             </div>
@@ -108,7 +111,7 @@ const HomePage = () => {
         </section>
 
        {/* Vision & Mission Section */}
-       <section id="vision-mission" className="vision-mission-section bg-[#413A67] text-white py-20">
+       <section id="vision-mission" className="vision-mission-section bg-#14142A text-white py-20">
           <div className="container mx-auto text-center">
             <h2 className="text-3xl font-bold">Our Vision & Mission</h2>
             <div className="grid grid-cols-2 gap-8 mt-8">
@@ -128,38 +131,38 @@ const HomePage = () => {
 
 
         {/* Services Section */}
-        <section id="services" className="services-section bg-[#E6E1F8] py-20">
+        <section id="services" className="services-section bg-[#9496D9] py-20">
           <div className="container mx-auto text-center">
             <h2 className="text-3xl font-bold">Services</h2><br></br><br></br>
-            <div className="grid grid-cols-3 gap-8 mt-8">
+            <div className="grid grid-cols-3 gap-1 mt-8">
             
-            <div className="service-item">
+            <div className="service-item1">
               <Image src={MedalImg} alt="medal Image" className="imgicon" /><br></br>
                 <h3 className="text-xl font-bold">Debate Competitions and Tournaments</h3>
                 <p>Organizing and hosting online and offline debate competitions.</p>
               </div>
-              <div className="service-item">
+              <div className="service-item2">
               <Image src={ComImg} alt="community Image" className="imgicon" /><br></br>
                 <h3 className="text-xl font-bold">Community and Networking</h3>
                 <p>Facilitating networking opportunities through forums, discussion boards, and social media groups.</p>
               </div>
-              <div className="service-item">
+              <div className="service-item3">
               <Image src={LawImg} alt="law Image" className="imgicon" /><br></br>
                 <h3 className="text-xl font-bold">Judging and Feedback</h3>
                 <p>Offering professional judging services for debates and providing detailed feedback and scoring to help debaters improve their skills.</p>
               </div>
-              <div className="service-item">
+              <div className="service-item4">
               <Image src={EventImg} alt="Event Image" className="imgicon" /><br></br>
                 <h3 className="text-xl font-bold">Event Management</h3>
                 <p>Offering tools and platforms for virtual debate events.</p>
               </div>
-              <div className="service-item">
+              <div className="service-item5">
               <Image src={GearImg} alt="Gear Image" className="imgicon" /><br></br>
                 <h3 className="text-xl font-bold">Customization and Personalization</h3>
                 <p>Allowing users to create personalized profiles to track their progress and achievements.</p>
               </div>
-              <div className="service-item">
-              <Image src={innovationImg} alt="Innovation Image" className="imgicon" /><br></br>
+              <div className="service-item6">
+              <Image src={InnovationImg} alt="Innovation Image" className="imgicon" /><br></br>
                 <h3 className="text-xl font-bold">Technology and Innovation</h3>
                 <p>Offering mobile apps and technology platforms for easy access and participation.</p>
               </div>
@@ -169,9 +172,9 @@ const HomePage = () => {
         </section>
 
         {/* Team Section */}
-        <section id="team" className="team-section bg-white py-20">
+        <section id="team" className="team-section bg-#14142A py-20">
           <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold">Our Team</h2>
+            <h2 className="text-3xl font-bold">Our Team</h2><br></br><br></br>
             <div className="grid grid-cols-3 gap-8 mt-8">
               <div>
                 <Image src={AkithImg} alt="B. A. Akith Chandinu" className="rounded-full mx-auto" />

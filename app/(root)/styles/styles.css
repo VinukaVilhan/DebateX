@@ -72,8 +72,6 @@ p {
 
 /* Vision and Mission section */
 .vision-mission-section {
-    background-color: #413A67;
-    /* Dark purple background */
     color: white;
     /* White text color */
     padding: 7rem 0;
@@ -104,7 +102,7 @@ p {
     /* Display as grid */
     grid-template-columns: repeat(2, 1fr);
     /* Two equal columns */
-    gap: 2rem;
+    gap: 5rem;
     /* Gap between the columns */
     margin-top: 7rem;
     /* Margin top for spacing */
@@ -114,7 +112,7 @@ p {
 
 /* Card styling */
 .card1 {
-    background-color: #413A67;
+    background-color: #14142A;
     /* Slightly darker background for the individual sections */
     padding: 1rem;
     /* Padding inside the individual sections */
@@ -124,10 +122,12 @@ p {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    padding-right: 100px;
+    text-align: justify;
 }
 
 .card2 {
-    background-color: #413A67;
+    background-color: #14142A;
     /* Slightly darker background for the individual sections */
     padding: 1rem;
     /* Padding inside the individual sections */
@@ -135,6 +135,7 @@ p {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    text-align: justify;
 }
 
 
@@ -177,7 +178,7 @@ p {
     /* Center the border line */
 }
 
-/* our Aims */
+/* our Services */
 .imgicon{
     border-radius: 50%;
     width: 50px;  /* Adjust the width as needed */
@@ -186,7 +187,74 @@ p {
  
 }
 
-.service-item {
+.service-item1 {
+    background-color: #9496D9;
+    /* Slightly darker background for the individual sections */
+    padding: 2rem;
+    /* Padding inside the individual sections */
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .service-item2 {
+    background-color: #9496D9;
+    /* Slightly darker background for the individual sections */
+    padding: 2rem;
+    /* Padding inside the individual sections */
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .service-item3 {
+    background-color: #9496D9;
+    /* Slightly darker background for the individual sections */
+    padding: 2rem;
+    /* Padding inside the individual sections */
+    border-bottom: 1px solid #000000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .service-item4 {
+    background-color: #9496D9;
+    /* Slightly darker background for the individual sections */
+    padding: 2rem;
+    /* Padding inside the individual sections */
+    border-right: 1px solid #000000;
+    /* White border */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .service-item5 {
+    background-color: #9496D9;
+    /* Slightly darker background for the individual sections */
+    padding: 2rem;
+    /* Padding inside the individual sections */
+    border-right: 1px solid #000000;
+    /* White border */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .service-item6 {
+    background-color: #9496D9;
+    /* Slightly darker background for the individual sections */
+    padding: 2rem;
+    /* Padding inside the individual sections */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -201,9 +269,57 @@ p {
     margin-top: 5px;
   }
 
-/* our Team */
+/* our Aims */
 
-
+.imgicon2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
  
+  .aim-item1{
+    background-color: #9496D9;
+    /* Slightly darker background for the individual sections */
+    padding: 2rem;
+    /* Padding inside the individual sections */
+    border-right: 1px solid #000000;
+    /* White border */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+  }
   
-  
+  .aim-item2{
+    background-color: #9496D9;
+    /* Slightly darker background for the individual sections */
+    padding: 2rem;
+    /* Padding inside the individual sections */
+    border-right: 1px solid #000000;
+    /* White border */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+  }
+
+  .aim-item3{
+    background-color: #9496D9;
+    /* Slightly darker background for the individual sections */
+    padding: 2rem;
+    /* Padding inside the individual sections */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+  }
+
+  /* our Team */
+
+  .team-section {
+    color: #ffff;
+  }
