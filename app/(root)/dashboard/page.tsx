@@ -252,10 +252,10 @@ const Home = () => {
                   handleClick={() => setMeetingState("isHostMeeting")}
                 />
                 <MeetingTypeList
-                  img="/icons/recordings.svg"
+                  img="/icons/cassette-tape.svg"
                   title="Recordings"
                   handleClick={() => router.push("/dashboard/recordings")}
-
+                />
 
                 />
 
