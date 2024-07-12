@@ -255,7 +255,8 @@ const Home = () => {
                   img="/icons/recordings.svg"
                   title="Recordings"
                   handleClick={() => router.push("/dashboard/recordings")}
-                />
+
+
                 <MeetingModel
                   isOpen={meetingState === "isHostMeeting"}
                   onClose={() => setMeetingState(undefined)}
