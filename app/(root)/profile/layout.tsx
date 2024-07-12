@@ -5,9 +5,9 @@ const ProfileLayout = ({children}: {children:ReactNode}) =>  {
   return (
     <>
       
-      <main className="">
-       <NavbarDashboard />
-        <section className="pt-16">
+      <main className="m-auto">
+      <NavbarDashboard />
+        <section className='w-full'>
             {children}
         </section>
       </main>

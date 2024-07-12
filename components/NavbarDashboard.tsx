@@ -15,6 +15,14 @@ const NavbarDashboard = () => {
   const { user } = useUser();
   const [profileImageUrl, setProfileImageUrl] = useState("");
 
+
+  useEffect(() => {
+    if (user) {
+      setProfileImageUrl(user.imageUrl);
+    }
+  })
+
+
   return (
     <nav className=" fixed w-full bg-dark-1 px-6 py-4 lg:px-10 ">
       <div className="flex flex-row flex-1 flex-between">
