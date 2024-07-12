@@ -94,7 +94,7 @@ const HomePage = () => {
                   Encourage Critical Thinking
                 </h3>
                 <p>
-                  We aim to sharpen participants' analytical skills by providing
+                  We aim to sharpen participants&rsquo; analytical skills by providing
                   a platform that challenges them to think deeply and articulate
                   their thoughts clearly.
                 </p>
