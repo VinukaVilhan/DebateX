@@ -128,7 +128,7 @@ const Home = () => {
                   </CardContent>
                   <CardFooter className="mt-auto flex justify-center">
                     <button className="bg-gray-300 text-black py-2 px-4 rounded-lg">
-                      Current Plan
+                    Current plan
                     </button>
                   </CardFooter>
                 </Card>
@@ -196,8 +196,8 @@ const Home = () => {
                     {user?.firstName} {user?.lastName}
                   </h2>
                   <p className="text-sm">{user?.primaryEmailAddress?.emailAddress}</p>
-                  <span className="w-max inline-block px-3 py-1 mt-2 text-sm text-white bg-purple-600 rounded-full">
-                    Free plan
+                  <span className="w-max inline-block px-3 py-1 mt-2 text-sm text-white bg-purple-600 rounded-full" onClick={toggleDialog}>
+                    Current plan
                   </span>
                 </div>
               </div>
@@ -256,6 +256,9 @@ const Home = () => {
                   title="Recordings"
                   handleClick={() => router.push("/dashboard/recordings")}
                 />
+
+                />
+
 
                 <MeetingModel
                   isOpen={meetingState === "isHostMeeting"}
