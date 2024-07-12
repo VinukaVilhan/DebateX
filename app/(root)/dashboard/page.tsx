@@ -257,8 +257,6 @@ const Home = () => {
                   handleClick={() => router.push("/dashboard/recordings")}
                 />
 
-                />
-
 
                 <MeetingModel
                   isOpen={meetingState === "isHostMeeting"}
