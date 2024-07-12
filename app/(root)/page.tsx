@@ -118,6 +118,17 @@ const HomePage = () => {
                   a platform that challenges them to think deeply and articulate
                   their thoughts clearly.
                 </p>
+                <Image src={ThinkImg} alt="THINK Image" className="imgicon2" />
+                <br></br>
+                <h3 className="text-xl font-bold">
+                  Encourage Critical Thinking
+                </h3>
+                <br></br>
+                <p>
+                  We aim to sharpen participants' analytical skills by providing
+                  a platform that challenges them to think deeply and articulate
+                  their thoughts clearly.
+                </p>
               </div>
               <div className="aim-item2">
                 <Image

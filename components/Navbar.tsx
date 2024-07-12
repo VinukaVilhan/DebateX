@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Mobilenav from "./mobileNav";
 
+
 const Navbar = () => {
   const router = useRouter();
   const [name, setName] = useState("");
@@ -43,6 +44,7 @@ const Navbar = () => {
         <Link href="/sign-in" className="text-white max-sm:hidden">
           <p>Get Started</p>
         </Link>
+
       )}
 
       <div className="flex-between gap-5 sm:hidden">
