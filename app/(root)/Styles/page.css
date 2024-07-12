@@ -80,7 +80,7 @@ p {
   justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
-  margin-bottom: 80px; /* Add space below the image */
+  margin-bottom: 100px; /* Add space below the image */
 }
 
 .about-section .image-container {
@@ -116,7 +116,7 @@ p {
 
 .about-section .links a {
   display: block;
-  color: #fff;
+  color:#fff ;
   font-size: 0.972rem;
   text-decoration: none;
   margin-top: 0.5rem;
@@ -138,13 +138,6 @@ p {
   left: 0;
   bottom: -5px; /* Adjust this value to control the distance from the link text */
 }
-
-
-
-
-
-
-
 
 /* Vision and Mission section */
 .vision-mission-section {

@@ -24,7 +24,7 @@ import ThinkImg from "@/public/images/icons8-thinking-100.png";
 import EduImg from "@/public/images/icons8-education-100.png";
 import CommImg from "@/public/images/icons8-communication-100.png";
 import AboutusImg from "@/public/images/Meeting.jpg";
-import { CaretRight } from 'phosphor-react'; // or wherever the CaretRight icon is from
+// import { CaretRight } from 'phosphor-react'; // or wherever the CaretRight icon is from
 
 
 const HomePage = () => {
@@ -50,15 +50,15 @@ const HomePage = () => {
           <div className="flex justify-center items-center space-x-12 w-full bg-[#413A67] py-12">
             <button className="bg-[#58224de4] font-bold flex items-center justify-between gap-2 border border-white text-white py-4 px-6 rounded-full">
               Get Started
-              <CaretRight size={16} />
+              {/* <CaretRight size={16} /> */}
             </button>
             <button className="bg-[#58224de4] font-bold flex items-center justify-between gap-2 border border-white text-white py-4 px-6 rounded-full">
               Host a competition
-              <CaretRight size={16} />
+              {/* <CaretRight size={16} /> */}
             </button>
             <button className="bg-[#58224de4] font-bold flex items-center justify-between gap-2 border border-white text-white py-4 px-6 rounded-full">
               Participate a competition
-              <CaretRight size={16} />
+              {/* <CaretRight size={16} /> */}
             </button>
           </div>
         </section>
@@ -91,11 +91,11 @@ const HomePage = () => {
         </section>
 
         {/* About Us Section */}
-        <section id="about" className=" bg-#14142A text-white py-20">
-          <h2 className="text-4xl mb-20 font-bold">
+        <section id="about" className="about-section bg-#14142A text-white py-20">
+          <h2 className="text-4xl mb-20 font-bold"><br></br><br></br>
             <center>About Us</center>
           </h2>
-          <div className="flex mx-12 gap-4">
+          <div className="container flex mx-12 gap-4">
             <div className="image-container w-1/2">
               <Image
                 src={AboutusImg}
