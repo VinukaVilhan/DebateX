@@ -24,6 +24,8 @@ import ThinkImg from "@/public/images/icons8-thinking-100.png";
 import EduImg from "@/public/images/icons8-education-100.png";
 import CommImg from "@/public/images/icons8-communication-100.png";
 import AboutusImg from "@/public/images/Meeting.jpg";
+import { CaretRight } from 'phosphor-react'; // or wherever the CaretRight icon is from
+
 
 const HomePage = () => {
   return (
