@@ -94,7 +94,7 @@ const Home = () => {
       <div className="flex flex-col gap-4 mx-auto max-w-5xl p-4 bg-background_of_dashboard-1 rounded-lg w-full">
         <div className="flex h-auto">
           <div className="flex gap-4 w-full flex-grow">
-            <div className="flex flex-[3] bg-white rounded-lg shadow-md p-1 flex-col">
+            <div className="flex flex-[3] bg-white rounded-2xl shadow-md p-4 flex-col">
               <div className="flex w-full">
                 <div className="flex items-center w-fit">
                   <Image
@@ -115,7 +115,7 @@ const Home = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex items-center justify-evenly mt-2 bg-gray-100 p-9 rounded-lg flex-col">
+              <div className="flex items-center justify-evenly mt-2 bg-gray-200 p-9 rounded-2xl flex-col">
                 <span className="text-left ">Included in your plan:</span>
                 <div className="flex space-x-9">
                   <span className="flex items-center space-x-2">
@@ -148,8 +148,8 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-[2] bg-red-100 rounded-lg flex-col">
-              <div className="flex flex-[1] bg-white last:items-center gap-5 justify-evenly items-center">
+            <div className="flex flex-[2] bg-white flex-col rounded-2xl">
+              <div className="flex flex-[1] last:items-center gap-5 justify-evenly items-center p-3">
                 <MeetingTypeList
                   img="/icons/schedule-meeting.svg"
                   title="Schedule"
@@ -197,9 +197,9 @@ const Home = () => {
                   handleClick={() => {}}
                 />
               </div>
-              <div className="flex flex-[1] bg-white justify-center items-center">
-                <Card className="bg-slate-400 outline-none rounded-xl m-4">
-                  <CardContent className="flex flex-col bg-slate-400 m-1 justify-center">
+              <div className="flex flex-[1] justify-center items-center">
+                <Card className="bg-slate-200 outline-none rounded-xl">
+                  <CardContent className="flex flex-col bg-slate-200 m-1 justify-center">
                     <h3 className="font-semibold">Personal meeting ID</h3>
                     <div className="flex flex-row items-center gap-2">
                       <h3>305-206-243</h3>
@@ -216,7 +216,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="flex h-60 items-center my-1 ">
+        <div className="flex h-60 items-center my-1 bg-white p-3 rounded-2xl">
           <Tabs defaultValue="upcoming" className="w-full">
             <TabsList className="grid w-full grid-cols-2 bg-white">
               <TabsTrigger value="upcoming" className="w-full text-center py-2">
@@ -227,7 +227,7 @@ const Home = () => {
               </TabsTrigger>
             </TabsList>
             <TabsContent value="upcoming">
-              <Card className="text-center mt-4 bg-slate-400 outline-none border-none">
+              <Card className="text-center mt-4 bg-slate-200 outline-none border-none">
                 <CardHeader>
                   <CardTitle>No upcoming meetings</CardTitle>
                 </CardHeader>
@@ -243,7 +243,7 @@ const Home = () => {
               </Card>
             </TabsContent>
             <TabsContent value="previous">
-              <Card className="text-center mt-4 bg-slate-400 outline-none border-none">
+              <Card className="text-center mt-4 bg-slate-200 outline-none border-none">
                 <CardHeader>
                   <CardTitle>Previous</CardTitle>
                   <CardDescription>View your past events here.</CardDescription>

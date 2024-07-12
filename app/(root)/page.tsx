@@ -354,7 +354,7 @@ const HomePage = () => {
           </div>
         </section>
 
-        {/* Contact Us Section */}
+        {/* Contact Us Section
         <section
           id="contact"
           className="contact-section bg-[#413A67] text-white py-20"
@@ -412,7 +412,7 @@ const HomePage = () => {
               </button>
             </form>
           </div>
-        </section>
+        </section> */}
 
         {/* Footer Section */}
         <footer className="footer-section bg-[#292445] text-white py-8">
