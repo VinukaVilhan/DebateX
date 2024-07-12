@@ -24,7 +24,7 @@ import ThinkImg from "@/public/images/icons8-thinking-100.png";
 import EduImg from "@/public/images/icons8-education-100.png";
 import CommImg from "@/public/images/icons8-communication-100.png";
 import AboutusImg from "@/public/images/Meeting.jpg";
-import { CaretRight } from 'phosphor-react'; // or wherever the CaretRight icon is from
+import { CaretRight } from '@phosphor-icons/react/dist/ssr'; // or wherever the CaretRight icon is from
 
 
 const HomePage = () => {
@@ -132,7 +132,7 @@ const HomePage = () => {
                 </h3>
                 <br></br>
                 <p>
-                  We aim to sharpen participant's analytical skills by providing
+                  We aim to sharpen participant&rsquo;s analytical skills by providing
                   a platform that challenges them to think deeply and articulate
                   their thoughts clearly.
                 </p>
