@@ -56,9 +56,10 @@ const NavbarDashboard = () => {
                 style={{ borderRadius: "50%" }}
               />
             )}
-
+         
           </div>
           </Link>
+
         <button>
         <SignOutButtonRithara></SignOutButtonRithara>
         </button>
