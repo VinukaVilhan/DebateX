@@ -1,5 +1,4 @@
-"use client"
-
+"use client";
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
@@ -26,13 +25,6 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
-
-
-
-
-
-
-
 
 const Home = () => {
   const router = useRouter();
@@ -254,7 +246,9 @@ const Home = () => {
                     <div className="flex flex-row items-center gap-2">
                       <h3>305-206-243</h3>
                       <div className="flex items-center justify-evenly mt-2 bg-gray-100 p-9 rounded-lg flex-col">
-                        <span className="text-left">Included in your plan:</span>
+                        <span className="text-left">
+                          Included in your plan:
+                        </span>
                         <div className="flex space-x-9">
                           <span className="flex items-center space-x-2">
                             <Image
@@ -294,10 +288,16 @@ const Home = () => {
           <div className="flex h-60 items-center my-1">
             <Tabs defaultValue="upcoming" className="w-full">
               <TabsList className="grid w-full grid-cols-2 bg-white">
-                <TabsTrigger value="upcoming" className="w-full text-center py-2">
+                <TabsTrigger
+                  value="upcoming"
+                  className="w-full text-center py-2"
+                >
                   Upcoming
                 </TabsTrigger>
-                <TabsTrigger value="previous" className="w-full text-center py-2">
+                <TabsTrigger
+                  value="previous"
+                  className="w-full text-center py-2"
+                >
                   Previous
                 </TabsTrigger>
               </TabsList>
@@ -321,7 +321,9 @@ const Home = () => {
                 <Card className="text-center mt-4 bg-slate-400 outline-none border-none">
                   <CardHeader>
                     <CardTitle>Previous</CardTitle>
-                    <CardDescription>View your past events here.</CardDescription>
+                    <CardDescription>
+                      View your past events here.
+                    </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-2 flex justify-center">
                     {/* Add content for previous events */}
