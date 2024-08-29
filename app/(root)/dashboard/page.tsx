@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import "../../(root)/Styles/dashboard.css";
 
 import MeetingModel from "@/components/MeetingModel";
 import MeetingTypeList from "@/components/MeetingTypeList";
@@ -412,12 +413,16 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                       <h3 className="font-semibold">Personal meeting ID</h3>
                       <div className="flex flex-row items-center gap-2">
                         <h3>305-206-243</h3>
+                        <div className="copyicon">
                         <Image
                           src={"/icons/copy.png"}
                           width={30}
                           height={30}
                           alt="copy id icon"
+                          
+                          
                         />
+                        </div>
                       </div>
                     </CardContent>
                   </Card>
