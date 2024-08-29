@@ -28,14 +28,14 @@ const Navbar = () => {
         <Link href="/#hero" className="text-white text-xl">
           <p className="text-lg">Home</p>
         </Link>
-        <Link href="" className="text-white">
+        <Link href="/#about" className="text-white">
           <p className="text-lg">About</p>
         </Link>
         <Link href="/#aims" className="text-white">
           <p className="text-lg">Aims</p>
         </Link>
-        <Link href="/#contact" className="text-white">
-          <p className="text-lg">Contact Us</p>
+        <Link href="/#services" className="text-white">
+          <p className="text-lg">Services</p>
         </Link>
       </div>
 
