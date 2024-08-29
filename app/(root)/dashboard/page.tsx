@@ -176,7 +176,7 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                     </ul>
                   </CardContent>
                   <CardFooter className="mt-auto flex justify-center">
-                    <button className="bg-dark-1 text-white py-2 px-4 border-2 w-full hover:">
+                    <button className="bg-dark-1 text-white py-2 px-4 border-2 w-full hover:bg-[#4E4176]">
                       Upgrade
                     </button>
                   </CardFooter>
@@ -201,7 +201,7 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                     </ul>
                   </CardContent>
                   <CardFooter className="mt-auto flex justify-center">
-                    <button className="bg-dark-1 text-white py-2 px-4 border-2 w-full">
+                    <button className="bg-dark-1 text-white py-2 px-4 border-2 w-full hover:bg-[#4E4176]">
                       Upgrade
                     </button>
                   </CardFooter>
