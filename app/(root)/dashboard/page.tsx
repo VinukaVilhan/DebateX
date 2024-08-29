@@ -126,62 +126,83 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
   return (
     <>
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="max-w-4xl p-10 bg-background_of_dashboard-1 overflow-y-auto">
+        <DialogContent className="max-w-3xl p-10 bg-background_of_dashboard-1 overflow-y-auto rounded-xl">
           <DialogHeader>
-            <DialogTitle className="text-center text-3xl">Pricing</DialogTitle>
+            <DialogTitle className="text-center text-3xl">
+              Pricing & Plans
+            </DialogTitle>
+
             <DialogDescription>
               <div className="flex justify-around mt-6 w-full gap-4">
-                <Card className="bg-white shadow-md w-1/3 text-center p-4 flex flex-col">
+                <Card className="bg-white shadow-xl w-1/3 text-center p-4 flex flex-col rounded-2xl ">
                   <CardHeader>
-                    <CardTitle>Basic (Free)</CardTitle>
+                    <CardTitle className="bg-gradient-to-r from-gray-600 to-white p-2 text-lg">
+                      Free
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <ul className="text-left list-disc pl-1">
+                    <p className="text-3xl my-6">
+                      <sup className="text-sm">$</sup>0
+                    </p>
+
+                    <ul className="text-left list-disc pl-1 text-xs">
                       <li>Meetings</li>
                       <li>Team Chat</li>
                       <li>Notepad</li>
                     </ul>
                   </CardContent>
                   <CardFooter className="mt-auto flex justify-center">
-                    <button className="bg-gray-300 text-black py-2 px-4 rounded-lg">
+                    <button className="bg-gray-300 text-black py-2 px-4 border-2 hover:bg-gray-500">
                       Current Plan
                     </button>
                   </CardFooter>
                 </Card>
-                <Card className="bg-white shadow-md w-1/3 text-center p-4 flex flex-col">
+
+                <Card className="bg-white shadow-xl w-1/3 text-center p-4 flex flex-col rounded-xl">
                   <CardHeader>
-                    <CardTitle>Pro ($15/month)</CardTitle>
+                    <CardTitle className="bg-gradient-to-r from-[#4E4176] to-white p-2 text-lg">
+                      Lite
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <ul className="text-left list-disc pl-1">
-                      <li>Unlimited Meetings</li>
-                      <li>Breakout Rooms</li>
-                      <li>Unlimited Participants</li>
-                      <li>Coin Toss</li>
-                      <li>Team Chat</li>
-                      <li>Point display</li>
-                      <li>Notepad</li>
+                    <p className="text-3xl my-6">
+                      <sup className="text-sm">$</sup>12
+                      <sub className="text-sm">/ mo</sub>
+                    </p>
+                    <ul className="text-left list-disc pl-1 text-xs">
+                      <li>Unlimited Meetings & Participants</li>
+                      <li>Breakout Rooms & Team Chat</li>
+                      <li>Coin Toss & Point Display</li>
+                      <li>Integrated Notepad</li>
                     </ul>
                   </CardContent>
                   <CardFooter className="mt-auto flex justify-center">
-                    <button className="bg-background_of_dashboard-1 text-white py-2 px-4 rounded-lg">
+                    <button className="bg-dark-1 text-white py-2 px-4 border-2 w-full hover:bg-[#4E4176]">
                       Upgrade
                     </button>
                   </CardFooter>
                 </Card>
-                <Card className="bg-white shadow-md w-1/3 text-center p-4 flex flex-col">
+
+                <Card className="bg-white shadow-xl w-1/3 text-center p-4 flex flex-col rounded-2xl ">
                   <CardHeader>
-                    <CardTitle>Enterprise</CardTitle>
+                    <CardTitle className="bg-gradient-to-r from-[#5A5DAF] to-white p-2 text-lg">
+                      Pro
+                    </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <ul className="text-left list-disc pl-1">
+                    <p className="text-3xl my-6">
+                      <sup className="text-sm">$</sup>10
+                      <sub className="text-sm">/ 12 mo</sub>
+                    </p>
+
+                    <ul className="text-left list-disc pl-1 text-xs">
                       <li>All Pro Features</li>
                       <li>Custom Solutions</li>
                       <li>24/7 Support</li>
                     </ul>
                   </CardContent>
                   <CardFooter className="mt-auto flex justify-center">
-                    <button className="bg-purple-600 text-white py-2 px-4 rounded-lg">
+                    <button className="bg-dark-1 text-white py-2 px-4 border-2 w-full hover:bg-[#4E4176]">
                       Upgrade
                     </button>
                   </CardFooter>
@@ -255,28 +276,28 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
               </div>
             
 
-            <div className="flex flex-[2] bg-white flex-col rounded-2xl">
-              <div className="flex flex-[1] last:items-center gap-5 justify-evenly items-center p-3">
-                <MeetingTypeList
-                  img="/icons/schedule-meeting.svg"
-                  title="Schedule"
-                  handleClick={() => setMeetingState("isScheduleMeeting")}
-                />
-                <MeetingTypeList
-                  img="/icons/join-meeting.svg"
-                  title="Join"
-                  handleClick={() => setMeetingState("isJoiningMeeting")}
-                />
-                <MeetingTypeList
-                  img="/icons/host-meeting.svg"
-                  title="Host"
-                  handleClick={() => setMeetingState("isHostMeeting")}
-                />
-                <MeetingTypeList
-                  img="/icons/cassette-tape.svg"
-                  title="Recordings"
-                  handleClick={() => router.push("/dashboard/recordings")}
-                />
+              <div className="flex flex-[2] bg-white flex-col rounded-2xl">
+                <div className="flex flex-[1] last:items-center gap-5 justify-evenly items-center p-3">
+                  <MeetingTypeList
+                    img="/icons/schedule-meeting.svg"
+                    title="Schedule"
+                    handleClick={() => setMeetingState("isScheduleMeeting")}
+                  />
+                  <MeetingTypeList
+                    img="/icons/join-meeting.svg"
+                    title="Join"
+                    handleClick={() => setMeetingState("isJoiningMeeting")}
+                  />
+                  <MeetingTypeList
+                    img="/icons/host-meeting.svg"
+                    title="Host"
+                    handleClick={() => setMeetingState("isHostMeeting")}
+                  />
+                  <MeetingTypeList
+                    img="/icons/cassette-tape.svg"
+                    title="Recordings"
+                    handleClick={() => router.push("/dashboard/recordings")}
+                  />
 
                   {!callDetail ? (
                     <MeetingModel
