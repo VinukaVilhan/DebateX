@@ -23,15 +23,12 @@ import EduImg from "@/public/images/icons8-education-100.png";
 import CommImg from "@/public/images/icons8-communication-100.png";
 import AboutusImg from "@/public/images/Meeting.jpg";
 
-import FbImg from"@/public/images/icons8-facebook-100 (2).png"
-import TwitterImg from"@/public/images/icons8-twitter-100.png"
-import LinkedinImg from"@/public/images/icons8-linked-in-100.png"
-import InsterImg from"@/public/images/icons8-instagram-100.png"
-
-
+import FbImg from "@/public/images/icons8-facebook-100 (2).png";
+import TwitterImg from "@/public/images/icons8-twitter-100.png";
+import LinkedinImg from "@/public/images/icons8-linked-in-100.png";
+import InsterImg from "@/public/images/icons8-instagram-100.png";
 
 import { CaretRight, ArrowUpRight } from "@phosphor-icons/react/dist/ssr"; // or wherever the CaretRight icon is from
-
 
 const HomePage = () => {
   return (
@@ -123,17 +120,23 @@ const HomePage = () => {
               </p>
               <div className="text-xl ml-4 mr-12">
                 <div className="my-8 flex justify-between">
-                  <a href="#vision-mission" className="hover:text-indigo-500">Vision and Mission of DebateX</a>
+                  <a href="#vision-mission" className="hover:text-indigo-500">
+                    Vision and Mission of DebateX
+                  </a>
                   <ArrowUpRight size={32} />
                 </div>
                 <hr className="border-[#2f466a85]" />
                 <div className="my-8 flex justify-between">
-                  <a href="#services" className="hover:text-indigo-500">DebateX Services</a>
+                  <a href="#services" className="hover:text-indigo-500">
+                    DebateX Services
+                  </a>
                   <ArrowUpRight size={32} />
                 </div>
                 <hr className="border-[#2f466a85]" />
                 <div className="my-8 flex justify-between">
-                  <a href="#team" className="hover:text-indigo-500" >DebateX Expert Team</a>
+                  <a href="#team" className="hover:text-indigo-500">
+                    DebateX Expert Team
+                  </a>
                   <ArrowUpRight size={32} />
                 </div>
               </div>
@@ -366,10 +369,7 @@ const HomePage = () => {
         </section>
 
         {/* Contact Us Section */}
-        <section
-          id="contact"
-          className="contact-section bg-[#9496D9]  py-20"
-        >
+        <section id="contact" className="contact-section bg-[#9496D9]  py-20">
           <div className="container mx-auto text-center">
             <h2 className="text-3xl font-bold">Contact Us</h2>
             <p className="mt-4">
@@ -426,49 +426,123 @@ const HomePage = () => {
         </section>
 
         {/* Footer Section */}
-        <footer className="footer-section bg-[##14142A] text-white py-8">
-          <div className="container mx-auto text-center">
-            <div className="newsletter">
-              <h1>Subscribe to Newsletter</h1><br></br>
-              
-              <form className="mt-6">
+        <footer className="footer-section bg-[#14142A] text-white py-8">
+          <div className="container mx-auto">
+            <div className="newsletter text-center mb-12">
+              <h1 className="text-xl font-bold">Subscribe to Newsletter</h1>
+              <p className="mt-2 text-gray-400">
+                Subscribe to our newsletter to receive the latest updates,
+                exclusive content, and insightful tips directly to your inbox.
+              </p>
+              <form className="mt-6 flex justify-center">
                 <input
                   type="email"
                   placeholder="Enter your Email..."
-                  className="px-4 py-2 rounded-full mr-6"
+                  className="px-4 py-2 rounded-full mr-4 text-black"
                 />
-                <button type="submit" className="px-4 py-2 rounded-full bg-[#8b4899] text-white">
+                <button
+                  type="submit"
+                  className="px-6 py-2 rounded-full bg-[#8b4899] text-white"
+                >
                   Subscribe
                 </button>
               </form>
             </div>
-            <div className="footer-links mt-12">
-              <div className="icontext">
-               
+
+            <div className="footer-links grid grid-cols-1 md:grid-cols-4 text-center md:text-left gap-8">
+              <div className="col-span-1">
+                <h4 className="font-bold text-lg mb-4">DebateX</h4>
                 <p>
-                  Join our community of passionate debaters and never miss out on
-                  upcoming events, debates, and opportunities to enhance your
+                  Join our community of passionate debaters and never miss out
+                  on upcoming events, debates, and opportunities to enhance your
                   skills!
-                </p><br></br><br></br>
-                <div className="flex justify-center mt-4">
-                  <a href="#" className= "text-white hover:text-gray-400">
-                  <Image src={FbImg} alt="fb Image" className="icon4" />
+                </p>
+                <div className="flex justify-center md:justify-start mt-4 space-x-4">
+                  <a href="#" className="text-white hover:text-gray-400">
+                    <Image src={FbImg} alt="Facebook" className="icon4" />
                   </a>
                   <a href="#" className="text-white hover:text-gray-400">
-                  <Image src={TwitterImg} alt="fb Image" className="icon4" />
+                    <Image src={TwitterImg} alt="Twitter" className="icon4" />
                   </a>
                   <a href="#" className="text-white hover:text-gray-400">
-                  <Image src={LinkedinImg} alt="fb Image" className="icon4" />
+                    <Image src={LinkedinImg} alt="LinkedIn" className="icon4" />
                   </a>
                   <a href="#" className="text-white hover:text-gray-400">
-                  <Image src={InsterImg} alt="fb Image" className="icon4" />
+                    <Image src={InsterImg} alt="Instagram" className="icon4" />
                   </a>
                 </div>
               </div>
+             
+              <div>
+                <h4 className="font-bold text-lg mb-4">Company</h4>
+                <ul>
+                  <li>
+                    <a href="#" className="hover:text-gray-400">
+                      Home
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="hover:text-gray-400">
+                      About us
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="hover:text-gray-400">
+                      Services
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-lg mb-4">Resources</h4>
+                <ul>
+                  <li>
+                    <a href="#" className="hover:text-gray-400">
+                      Community
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="hover:text-gray-400">
+                      Video Tutorials
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="hover:text-gray-400">
+                      API Documentation
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="hover:text-gray-400">
+                      Security Reports
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div className="help">
+                <h4 className="font-bold text-lg mb-4">Help</h4>
+                <ul>
+                  <li>
+                    <a href="#" className="hover:text-gray-400">
+                      Customer Support
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="hover:text-gray-400">
+                      Terms & Conditions
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="hover:text-gray-400">
+                      Privacy Policy
+                    </a>
+                  </li>
+                </ul>
+              </div>
               
             </div>
-            <div className="designer">
-              Design By The Mavericks
+
+            <div className="designer mt-12 text-center text-gray-500">
+              Copyright @2024 All Rights Reserved | Design By The Mavericks
             </div>
           </div>
         </footer>

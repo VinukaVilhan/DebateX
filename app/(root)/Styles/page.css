@@ -343,10 +343,9 @@ hr {
 
 /* Footer Section */
 .footer-section {
-  background-color: #14142A;
+  background-image: linear-gradient(#423c5d, rgb(13, 4, 22));
   color: white;
   padding: 40px 20px;
-  text-align: center;
 }
 
 .footer-section .container {
@@ -354,37 +353,30 @@ hr {
   margin: 0 auto;
 }
 
-.footer-section .mb-4 {
-  margin-bottom: 1rem;
+.footer-section .newsletter input[type="email"] {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 50px; /* Fully rounded */
+  margin-right: 0.5rem;
 }
 
-.footer-section .flex {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.footer-section .flex a {
+.footer-section .newsletter button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 50px;
+  background-color: #8b4899;
   color: white;
-  text-decoration: none;
-  transition: color 0.3s ease;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.footer-section .flex a:hover {
-  color: gray;
+.footer-section .newsletter button:hover {
+  background-color: #6f397e;
 }
 
 .footer-section .footer-links {
-  display: flex;
-  justify-content: center;
+  display: grid;
   gap: 2rem;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-}
-
-.footer-section .footer-links div {
-  text-align: left;
 }
 
 .footer-section .footer-links h4 {
@@ -393,7 +385,6 @@ hr {
 }
 
 .footer-section .footer-links a {
-  display: block;
   color: white;
   text-decoration: none;
   margin-bottom: 0.5rem;
@@ -404,42 +395,25 @@ hr {
   color: gray;
 }
 
-.footer-section .newsletter {
-  margin-top: 2rem;
-  text-align: center;
-}
-
-.footer-section .newsletter input[type="email"] {
-  padding: 0.5rem 1rem;
-  border: none;
-  border: radius 28px;
-  margin-right: 0.5rem;
-}
-
-.footer-section .newsletter button {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 25px;
-  background-color: #58224D;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.footer-section .newsletter button:hover {
-  background-color: #6f397e;
-}
-
 .footer-section .designer {
   margin-top: 2rem;
- color: #fff;
-font-size: small;
+  color: #aaa;
+  font-size: small;
 }
 
-.icon4{
-  width: 36px; /* Adjust the size of the icons here */
+.icon4 {
+  width: 36px;
   height: 36px;
   transition: transform 0.3s ease;
-  text-align: center;
 }
+
+.icon4:hover {
+  transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+.col-span-1{
+
+  padding-right: 100PX;
+}
+
 
