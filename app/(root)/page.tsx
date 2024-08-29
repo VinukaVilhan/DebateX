@@ -122,16 +122,11 @@ const HomePage = () => {
                   <a href="#vision-mission" className="hover:text-indigo-500">
                     Vision and Mission of DebateX
                   </a>
-                  <a href="#vision-mission" className="hover:text-indigo-500">
-                    Vision and Mission of DebateX
-                  </a>
+
                   <ArrowUpRight size={32} />
                 </div>
                 <hr className="border-[#2f466a85]" />
                 <div className="my-8 flex justify-between">
-                  <a href="#services" className="hover:text-indigo-500">
-                    DebateX Services
-                  </a>
                   <a href="#services" className="hover:text-indigo-500">
                     DebateX Services
                   </a>
@@ -142,9 +137,7 @@ const HomePage = () => {
                   <a href="#team" className="hover:text-indigo-500">
                     DebateX Expert Team
                   </a>
-                  <a href="#team" className="hover:text-indigo-500">
-                    DebateX Expert Team
-                  </a>
+
                   <ArrowUpRight size={32} />
                 </div>
               </div>
@@ -398,8 +391,8 @@ const HomePage = () => {
         </section>
 
         {/* Contact Us Section */}
-        
-        <section id="contact" className="contact-section bg-[#9496D9]  py-20">
+
+        {/* <section id="contact" className="contact-section bg-[#9496D9]  py-20">
           <div className="container mx-auto text-center">
             <h2 className="text-3xl font-bold">Contact Us</h2>
             <p className="mt-4">
@@ -453,7 +446,7 @@ const HomePage = () => {
               </button>
             </form>
           </div>
-        </section>
+        </section> */}
 
         {/* Footer Section */}
         <footer className="footer-section bg-[#14142A] text-white py-8">
@@ -465,7 +458,6 @@ const HomePage = () => {
                 exclusive content, and insightful tips directly to your inbox.
               </p>
               <form className="mt-6 flex justify-center">
-
                 <input
                   type="email"
                   placeholder="Enter your Email..."
@@ -503,7 +495,7 @@ const HomePage = () => {
                   </a>
                 </div>
               </div>
-             
+
               <div>
                 <h4 className="font-bold text-lg mb-4">Company</h4>
                 <ul>
@@ -569,7 +561,6 @@ const HomePage = () => {
                   </li>
                 </ul>
               </div>
-              
             </div>
 
             <div className="designer mt-12 text-center text-gray-500">
