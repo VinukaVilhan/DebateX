@@ -327,7 +327,7 @@ hr {
   text-align: center;
 }
 
-/* Footer Section */
+/* ---------------Footer Section------------------ */
 .footer-section {
   background-image: linear-gradient(#423c5d, rgb(13, 4, 22));
   color: white;
@@ -393,11 +393,10 @@ hr {
   transition: transform 0.3s ease;
 }
 
-
 .icon4:hover {
   transform: scale(1.1); /* Slight zoom effect on hover */
 }
 
-.col-span-1{
-  padding-right: 100PX;
+.col-span-1 {
+  padding-right: 100px;
 }
