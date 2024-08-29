@@ -252,7 +252,7 @@ const HomePage = () => {
         {/* Services Section */}
         <section id="services" className=" bg-[#9496D9] py-16 px-12">
           <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">Services</h2>
+            <h2 className="text-4xl font-bold mb-4">Services</h2>
             <p className="text-xl mb-6 font-semibold">
               Unlock Your Debating skills with DebateX Services
             </p>
@@ -262,7 +262,7 @@ const HomePage = () => {
                   <Image src={MedalImg} alt="medal Image" className="imgicon" />
                 </div>
                 <br></br>
-                <h3 className="text-xl font-bold">
+                <h3 className="text-xl font-bold mb-4">
                   Debate Competitions and Tournaments
                 </h3>
                 <p>
@@ -278,7 +278,9 @@ const HomePage = () => {
                   />
                 </div>
                 <br></br>
-                <h3 className="text-xl font-bold">Community and Networking</h3>
+                <h3 className="text-xl font-bold mb-4">
+                  Community and Networking
+                </h3>
                 <p>
                   Facilitating networking opportunities through forums,
                   discussion boards, and social media groups.
@@ -289,7 +291,7 @@ const HomePage = () => {
                   <Image src={LawImg} alt="law Image" className="imgicon" />
                 </div>
                 <br></br>
-                <h3 className="text-xl font-bold">Judging and Feedback</h3>
+                <h3 className="text-xl font-bold mb-4">Judging and Feedback</h3>
                 <p>
                   Offering professional judging services for debates and
                   providing detailed feedback and scoring to help debaters
@@ -301,7 +303,7 @@ const HomePage = () => {
                   <Image src={EventImg} alt="Event Image" className="imgicon" />
                 </div>
                 <br></br>
-                <h3 className="text-xl font-bold">Event Management</h3>
+                <h3 className="text-xl font-bold mb-4">Event Management</h3>
                 <p>Offering tools and platforms for virtual debate events.</p>
               </div>
               <div className="service-item5">
@@ -309,7 +311,7 @@ const HomePage = () => {
                   <Image src={GearImg} alt="Gear Image" className="imgicon" />
                 </div>
                 <br></br>
-                <h3 className="text-xl font-bold">
+                <h3 className="text-xl font-bold mb-4">
                   Customization and Personalization
                 </h3>
                 <p>
@@ -326,7 +328,9 @@ const HomePage = () => {
                   />
                 </div>
                 <br></br>
-                <h3 className="text-xl font-bold">Technology and Innovation</h3>
+                <h3 className="text-xl font-bold mb-4">
+                  Technology and Innovation
+                </h3>
                 <p>
                   Offering mobile apps and technology platforms for easy access
                   and participation.
@@ -337,17 +341,18 @@ const HomePage = () => {
         </section>
 
         {/* Team Section */}
-        <section id="team" className="team-section bg-#14142A py-20">
-          <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold">Our Team</h2>
-            <br></br>
-            <br></br>
-            <div className="grid grid-cols-3 gap-8 mt-8">
+        <section
+          id="team"
+          className="team-section bg-[#14142A] text-white py-20"
+        >
+          <div className="flex flex-col items-center justify-center text-center">
+            <h2 className="text-4xl font-bold mb-8">Our Team</h2>
+            <div className="grid grid-cols-3 gap-x-24 gap-y-12 mt-8">
               <div>
                 <Image
                   src={AkithImg}
                   alt="B. A. Akith Chandinu"
-                  className="rounded-full mx-auto"
+                  className="rounded-4xl mx-auto"
                 />
                 <h3 className="mt-4 text-xl font-bold">B. A. Akith Chandinu</h3>
                 <p>akith.chandinu@gmail.com</p>
@@ -356,7 +361,7 @@ const HomePage = () => {
                 <Image
                   src={VinukaImg}
                   alt="V. V. Fernando"
-                  className="rounded-full mx-auto"
+                  className="rounded-4xl mx-auto"
                 />
                 <h3 className="mt-4 text-xl font-bold">V. V. Fernandopulle</h3>
                 <p>vv.fernandopulle@gmail.com</p>
@@ -365,7 +370,7 @@ const HomePage = () => {
                 <Image
                   src={JalinaImg}
                   alt="Jalina Hirushan"
-                  className="rounded-full mx-auto"
+                  className="rounded-4xl mx-auto"
                 />
                 <h3 className="mt-4 text-xl font-bold">Jalina Hirushan</h3>
                 <p>jalinahirushan2002@gmail.com</p>
@@ -374,7 +379,7 @@ const HomePage = () => {
                 <Image
                   src={RitharaImg}
                   alt="Rithara Kithmanthie"
-                  className="rounded-full mx-auto"
+                  className="rounded-4xl mx-auto"
                 />
                 <h3 className="mt-4 text-xl font-bold">Rithara Kithmanthie</h3>
                 <p>ritharaedirisinghe@gmail.com</p>
@@ -383,7 +388,7 @@ const HomePage = () => {
                 <Image
                   src={DulminiImg}
                   alt="S. Dulmini Abeyweera"
-                  className="rounded-full mx-auto"
+                  className="rounded-4xl mx-auto"
                 />
                 <h3 className="mt-4 text-xl font-bold">S. Dulmini Abeyweera</h3>
                 <p>samikshaabeyweera@gmail.com</p>
@@ -460,6 +465,7 @@ const HomePage = () => {
                 exclusive content, and insightful tips directly to your inbox.
               </p>
               <form className="mt-6 flex justify-center">
+
                 <input
                   type="email"
                   placeholder="Enter your Email..."
