@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import "../../(root)/Styles/dashboard.css";
+import Link from "next/link";
 
 import MeetingModel from "@/components/MeetingModel";
 import MeetingTypeList from "@/components/MeetingTypeList";
@@ -215,7 +216,7 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
 
       <section className="flex flex-col">
         <div className="flex flex-col gap-4 mx-auto max-w-5xl p-4 bg-background_of_dashboard-1 rounded-lg w-full">
-          <div className="flex h-auto">
+          <div className="flex">
             <div className="flex gap-4 w-full flex-grow">
               <div className="flex flex-[3] bg-white rounded-2xl shadow-md p-4 flex-col">
                 <div className="flex w-full">
@@ -235,9 +236,17 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                     <p className="text-sm">
                       {user?.primaryEmailAddress?.emailAddress}
                     </p>
-                    <span className="w-max inline-block px-3 py-1 mt-2 text-sm text-white bg-purple-600 rounded-full">
-                      Free plan
-                    </span>
+                    <p>
+                      <span className="w-max inline-block px-3 py-1 mt-2 text-sm text-white bg-purple-600 rounded-full">
+                        Free plan
+                      </span>
+                      <Link
+                        href="/pricing"
+                        className="text-xs underline ml-3 text-purple-500"
+                      >
+                        Change plan
+                      </Link>
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-center justify-evenly mt-2 bg-gray-200 p-9 rounded-2xl flex-col">
@@ -414,14 +423,12 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                       <div className="flex flex-row items-center gap-2">
                         <h3>305-206-243</h3>
                         <div className="copyicon">
-                        <Image
-                          src={"/icons/copy.png"}
-                          width={30}
-                          height={30}
-                          alt="copy id icon"
-                          
-                          
-                        />
+                          <Image
+                            src={"/icons/copy.png"}
+                            width={30}
+                            height={30}
+                            alt="copy id icon"
+                          />
                         </div>
                       </div>
                     </CardContent>
