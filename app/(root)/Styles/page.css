@@ -193,9 +193,9 @@ hr {
 
 /* our Services */
 .imgicon {
-  border-radius: 50%;
-  width: 50px; /* Adjust the width as needed */
-  height: 50px; /* Adjust the height as needed */
+  /* border-radius: 50%; */
+  width: 70px; /* Adjust the width as needed */
+  height: 70px; /* Adjust the height as needed */
   object-fit: cover; /* Ensures the image covers the entire container */
 }
 

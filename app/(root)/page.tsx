@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import "../(root)/Styles/page.css";
@@ -123,6 +122,9 @@ const HomePage = () => {
                   <a href="#vision-mission" className="hover:text-indigo-500">
                     Vision and Mission of DebateX
                   </a>
+                  <a href="#vision-mission" className="hover:text-indigo-500">
+                    Vision and Mission of DebateX
+                  </a>
                   <ArrowUpRight size={32} />
                 </div>
                 <hr className="border-[#2f466a85]" />
@@ -130,10 +132,16 @@ const HomePage = () => {
                   <a href="#services" className="hover:text-indigo-500">
                     DebateX Services
                   </a>
+                  <a href="#services" className="hover:text-indigo-500">
+                    DebateX Services
+                  </a>
                   <ArrowUpRight size={32} />
                 </div>
                 <hr className="border-[#2f466a85]" />
                 <div className="my-8 flex justify-between">
+                  <a href="#team" className="hover:text-indigo-500">
+                    DebateX Expert Team
+                  </a>
                   <a href="#team" className="hover:text-indigo-500">
                     DebateX Expert Team
                   </a>
@@ -159,9 +167,9 @@ const HomePage = () => {
                 </h3>
                 <br></br>
                 <p>
-                  We aim to sharpen participant's analytical skills by providing
-                  a platform that challenges them to think deeply and articulate
-                  their thoughts clearly.
+                  We aim to sharpen participant&rsquo;s analytical skills by
+                  providing a platform that challenges them to think deeply and
+                  articulate their thoughts clearly.
                 </p>
               </div>
               <div className="aim-item2">
@@ -242,15 +250,17 @@ const HomePage = () => {
         </section>
 
         {/* Services Section */}
-        <section id="services" className="services-section bg-[#9496D9] py-16">
+        <section id="services" className=" bg-[#9496D9] py-16 px-12">
           <div className="container mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">Services</h2>
-            <p className="text-2xl mb-6">
+            <p className="text-xl mb-6 font-semibold">
               Unlock Your Debating skills with DebateX Services
             </p>
-            <div className="grid grid-cols-3 gap-1 mt-8">
+            <div className="grid grid-cols-3 mt-8">
               <div className="service-item1">
-                <Image src={MedalImg} alt="medal Image" className="imgicon" />
+                <div className="w-16 h-16 flex justify-center items-center overflow-hidden rounded-full">
+                  <Image src={MedalImg} alt="medal Image" className="imgicon" />
+                </div>
                 <br></br>
                 <h3 className="text-xl font-bold">
                   Debate Competitions and Tournaments
@@ -260,7 +270,13 @@ const HomePage = () => {
                 </p>
               </div>
               <div className="service-item2">
-                <Image src={ComImg} alt="community Image" className="imgicon" />
+                <div className="w-16 h-16 flex justify-center items-center overflow-hidden rounded-full">
+                  <Image
+                    src={ComImg}
+                    alt="community Image"
+                    className="imgicon"
+                  />
+                </div>
                 <br></br>
                 <h3 className="text-xl font-bold">Community and Networking</h3>
                 <p>
@@ -269,7 +285,9 @@ const HomePage = () => {
                 </p>
               </div>
               <div className="service-item3">
-                <Image src={LawImg} alt="law Image" className="imgicon" />
+                <div className="w-16 h-16 flex justify-center items-center overflow-hidden rounded-full">
+                  <Image src={LawImg} alt="law Image" className="imgicon" />
+                </div>
                 <br></br>
                 <h3 className="text-xl font-bold">Judging and Feedback</h3>
                 <p>
@@ -279,13 +297,17 @@ const HomePage = () => {
                 </p>
               </div>
               <div className="service-item4">
-                <Image src={EventImg} alt="Event Image" className="imgicon" />
+                <div className="w-16 h-16 flex justify-center items-center overflow-hidden rounded-full">
+                  <Image src={EventImg} alt="Event Image" className="imgicon" />
+                </div>
                 <br></br>
                 <h3 className="text-xl font-bold">Event Management</h3>
                 <p>Offering tools and platforms for virtual debate events.</p>
               </div>
               <div className="service-item5">
-                <Image src={GearImg} alt="Gear Image" className="imgicon" />
+                <div className="w-16 h-16 flex justify-center items-center overflow-hidden rounded-full">
+                  <Image src={GearImg} alt="Gear Image" className="imgicon" />
+                </div>
                 <br></br>
                 <h3 className="text-xl font-bold">
                   Customization and Personalization
@@ -296,11 +318,13 @@ const HomePage = () => {
                 </p>
               </div>
               <div className="service-item6">
-                <Image
-                  src={InnovationImg}
-                  alt="Innovation Image"
-                  className="imgicon"
-                />
+                <div className="w-16 h-16 flex justify-center items-center overflow-hidden rounded-full">
+                  <Image
+                    src={InnovationImg}
+                    alt="Innovation Image"
+                    className="imgicon"
+                  />
+                </div>
                 <br></br>
                 <h3 className="text-xl font-bold">Technology and Innovation</h3>
                 <p>
@@ -369,6 +393,7 @@ const HomePage = () => {
         </section>
 
         {/* Contact Us Section */}
+        <section id="contact" className="contact-section bg-[#9496D9]  py-20">
         <section id="contact" className="contact-section bg-[#9496D9]  py-20">
           <div className="container mx-auto text-center">
             <h2 className="text-3xl font-bold">Contact Us</h2>
