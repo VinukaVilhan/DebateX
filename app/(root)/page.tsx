@@ -393,7 +393,7 @@ const HomePage = () => {
         </section>
 
         {/* Contact Us Section */}
-        <section id="contact" className="contact-section bg-[#9496D9]  py-20">
+        
         <section id="contact" className="contact-section bg-[#9496D9]  py-20">
           <div className="container mx-auto text-center">
             <h2 className="text-3xl font-bold">Contact Us</h2>
