@@ -122,16 +122,12 @@ const HomePage = () => {
                   <a href="#vision-mission" className="hover:text-indigo-500">
                     Vision and Mission of DebateX
                   </a>
-                  <a href="#vision-mission" className="hover:text-indigo-500">
-                    Vision and Mission of DebateX
-                  </a>
+                 
                   <ArrowUpRight size={32} />
                 </div>
                 <hr className="border-[#2f466a85]" />
                 <div className="my-8 flex justify-between">
-                  <a href="#services" className="hover:text-indigo-500">
-                    DebateX Services
-                  </a>
+                  
                   <a href="#services" className="hover:text-indigo-500">
                     DebateX Services
                   </a>
@@ -142,9 +138,7 @@ const HomePage = () => {
                   <a href="#team" className="hover:text-indigo-500">
                     DebateX Expert Team
                   </a>
-                  <a href="#team" className="hover:text-indigo-500">
-                    DebateX Expert Team
-                  </a>
+                  
                   <ArrowUpRight size={32} />
                 </div>
               </div>
