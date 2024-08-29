@@ -1,5 +1,4 @@
-"use client"
-
+"use client";
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
@@ -26,15 +25,28 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
+import ReactDatePicker from "react-datepicker";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
+import { addDays, format } from "date-fns";
+import { Calendar as CalendarIcon } from "lucide-react";
+import { DateRange } from "react-day-picker";
 
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
-
-
-
-
-
-const Home = () => {
+const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
+  const [date, setDate] = React.useState<DateRange | undefined>({
+    from: new Date(2022, 0, 20),
+    to: addDays(new Date(2022, 0, 20), 20),
+  });
   const router = useRouter();
   const { user } = useUser();
   const { toast } = useToast();
@@ -42,6 +54,7 @@ const Home = () => {
   const [meetingState, setMeetingState] = useState<
     "isScheduleMeeting" | "isJoiningMeeting" | "isHostMeeting" | undefined
   >(undefined);
+  const [callDetail, setCallDetail] = useState<Call>();
   const [isDialogOpen, setIsDialogOpen] = useState(true); // State to control the dialog
   const client = useStreamVideoClient();
   const [values, setValues] = useState({
@@ -57,7 +70,7 @@ const Home = () => {
 
   const toggleDialog = () => {
     setIsDialogOpen(!isDialogOpen);
-  }
+  };
 
   const createMeeting = async () => {
     if (!client || !user) return;
@@ -107,6 +120,8 @@ const Home = () => {
     }
   };
 
+  const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${callDetail?.id}`;
+
   return (
     <>
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
@@ -128,7 +143,7 @@ const Home = () => {
                   </CardContent>
                   <CardFooter className="mt-auto flex justify-center">
                     <button className="bg-gray-300 text-black py-2 px-4 rounded-lg">
-                    Current plan
+                      Current Plan
                     </button>
                   </CardFooter>
                 </Card>
@@ -177,63 +192,66 @@ const Home = () => {
       </Dialog>
 
       <section className="flex flex-col">
-      <div className="flex flex-col gap-4 mx-auto max-w-5xl p-4 bg-background_of_dashboard-1 rounded-lg w-full">
-        <div className="flex h-auto">
-          <div className="flex gap-4 w-full flex-grow">
-            <div className="flex flex-[3] bg-white rounded-2xl shadow-md p-4 flex-col">
-              <div className="flex w-full">
-                <div className="flex items-center w-fit">
-                  <Image
-                    src={user?.imageUrl || ""}
-                    height={150}
-                    width={150}
-                    alt="profile pic"
-                    className="rounded-xl"
-                  />
+        <div className="flex flex-col gap-4 mx-auto max-w-5xl p-4 bg-background_of_dashboard-1 rounded-lg w-full">
+          <div className="flex h-auto">
+            <div className="flex gap-4 w-full flex-grow">
+              <div className="flex flex-[3] bg-white rounded-2xl shadow-md p-4 flex-col">
+                <div className="flex w-full">
+                  <div className="flex items-center w-fit">
+                    <Image
+                      src={user?.imageUrl || ""}
+                      height={150}
+                      width={150}
+                      alt="profile pic"
+                      className="rounded-xl"
+                    />
+                  </div>
+                  <div className="w-3/4 pl-5 flex flex-col justify-center">
+                    <h2 className="text-2xl font-bold">
+                      {user?.firstName} {user?.lastName}
+                    </h2>
+                    <p className="text-sm">
+                      {user?.primaryEmailAddress?.emailAddress}
+                    </p>
+                    <span className="w-max inline-block px-3 py-1 mt-2 text-sm text-white bg-purple-600 rounded-full">
+                      Free plan
+                    </span>
+                  </div>
                 </div>
-                <div className="w-3/4 pl-5 flex flex-col justify-center">
-                  <h2 className="text-2xl font-bold">
-                    {user?.firstName} {user?.lastName}
-                  </h2>
-                  <p className="text-sm">{user?.primaryEmailAddress?.emailAddress}</p>
-                  <span className="w-max inline-block px-3 py-1 mt-2 text-sm text-white bg-purple-600 rounded-full" onClick={toggleDialog}>
-                    Current plan
-                  </span>
+                <div className="flex items-center justify-evenly mt-2 bg-gray-200 p-9 rounded-2xl flex-col">
+                  <span className="text-left ">Included in your plan:</span>
+                  <div className="flex space-x-9">
+                    <span className="flex items-center space-x-2">
+                      <Image
+                        src="/icons/chat_bubble.svg"
+                        height={30}
+                        width={30}
+                        alt="chat icon"
+                      />
+                      <label htmlFor="chat">Chat</label>
+                    </span>
+                    <span className="flex items-center space-x-2">
+                      <Image
+                        src="/icons/video(ps).svg"
+                        height={30}
+                        width={30}
+                        alt="chat icon"
+                      />
+                      <label htmlFor="meeting">Meeting</label>
+                    </span>
+                    <span className="flex items-center space-x-2">
+                      <Image
+                        src="/icons/notes(ps).svg"
+                        height={30}
+                        width={30}
+                        alt="meeting icon"
+                      />
+                      <label htmlFor="notes">Notes</label>
+                    </span>
+                  </div>
                 </div>
               </div>
-              <div className="flex items-center justify-evenly mt-2 bg-gray-200 p-9 rounded-2xl flex-col">
-                <span className="text-left ">Included in your plan:</span>
-                <div className="flex space-x-9">
-                  <span className="flex items-center space-x-2">
-                    <Image
-                      src="/icons/chat_bubble.svg"
-                      height={30}
-                      width={30}
-                      alt="chat icon"
-                    />
-                    <label htmlFor="chat">Chat</label>
-                  </span>
-                  <span className="flex items-center space-x-2">
-                    <Image
-                      src="/icons/video(ps).svg"
-                      height={30}
-                      width={30}
-                      alt="chat icon"
-                    />
-                    <label htmlFor="meeting">Meeting</label>
-                  </span>
-                  <span className="flex items-center space-x-2">
-                    <Image
-                      src="/icons/notes(ps).svg"
-                      height={30}
-                      width={30}
-                      alt="meeting icon"
-                    />
-                    <label htmlFor="notes">Notes</label>
-                  </span>
-                </div>
-              </div>
-            </div>
+
             <div className="flex flex-[2] bg-white flex-col rounded-2xl">
               <div className="flex flex-[1] last:items-center gap-5 justify-evenly items-center p-3">
                 <MeetingTypeList
@@ -252,103 +270,190 @@ const Home = () => {
                   handleClick={() => setMeetingState("isHostMeeting")}
                 />
                 <MeetingTypeList
-                  img="/icons/recordings.svg"
+                  img="/icons/cassette-tape.svg"
                   title="Recordings"
                   handleClick={() => router.push("/dashboard/recordings")}
-
-
                 />
 
+                  {!callDetail ? (
+                    <MeetingModel
+                      isOpen={meetingState === "isScheduleMeeting"}
+                      onClose={() => setMeetingState(undefined)}
+                      title="Create Meeting"
+                      handleClick={createMeeting}
+                    >
+                      <div className="flex flex-col gap-2.5">
+                        <label className="text-base font-normal leading-[22.4px] text-sky-2">
+                          Add a description
+                        </label>
+                        <Textarea
+                          className="border-none bg-dark-3 focus-visible:ring-0 focus-visible:ring-offset-0 text-black"
+                          onChange={(e) =>
+                            setValues({
+                              ...values,
+                              description: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
+                      <div className="flex w-full flex-col gap-2.5">
+                        <label className="text-base font-normal leading-[22.4px] text-sky-2">
+                          Select Date and Time
+                        </label>
+                        <div className={cn("grid gap-2", className)}>
+                          <Popover>
+                            <PopoverTrigger asChild>
+                              <Button
+                                id="date"
+                                variant={"outline"}
+                                className={cn(
+                                  "w-[300px] justify-start text-left font-normal",
+                                  !date && "text-muted-foreground"
+                                )}
+                              >
+                                <CalendarIcon className="mr-2 h-4 w-4" />
+                                {date?.from ? (
+                                  date.to ? (
+                                    <>
+                                      {format(date.from, "LLL dd, y")} -{" "}
+                                      {format(date.to, "LLL dd, y")}
+                                    </>
+                                  ) : (
+                                    format(date.from, "LLL dd, y")
+                                  )
+                                ) : (
+                                  <span>Pick a date</span>
+                                )}
+                              </Button>
+                            </PopoverTrigger>
+                            <PopoverContent
+                              className="w-auto p-0 bg-[#14142A] text-white border-none"
+                              align="start"
+                            >
+                              <Calendar
+                                initialFocus
+                                mode="range"
+                                defaultMonth={date?.from}
+                                selected={date}
+                                onSelect={setDate}
+                                numberOfMonths={2}
+                              />
+                            </PopoverContent>
+                          </Popover>
+                        </div>
+                      </div>
+                    </MeetingModel>
+                  ) : (
+                    <MeetingModel
+                      isOpen={meetingState === "isScheduleMeeting"}
+                      onClose={() => setMeetingState(undefined)}
+                      title="Meeting Created"
+                      handleClick={() => {
+                        navigator.clipboard.writeText(meetingLink);
+                        toast({ title: "Link Copied" });
+                      }}
+                      image={"/icons/checked.svg"}
+                      buttonIcon="/icons/copy.svg"
+                      className="text-center"
+                      buttonText="Copy Meeting Link"
+                    />
+                  )}
 
-                <MeetingModel
-                  isOpen={meetingState === "isHostMeeting"}
-                  onClose={() => setMeetingState(undefined)}
-                  title="Host a Meeting"
-                  className="text-center"
-                  buttonText="Start an instant Meeting"
-                  handleClick={createMeeting}
-                />
+                  <MeetingModel
+                    isOpen={meetingState === "isJoiningMeeting"}
+                    onClose={() => setMeetingState(undefined)}
+                    title="Type the link here"
+                    className="text-center"
+                    buttonText="Join Meeting"
+                    handleClick={() => router.push(values.link)}
+                  >
+                    <Input
+                      placeholder="Meeting link"
+                      onChange={(e) =>
+                        setValues({ ...values, link: e.target.value })
+                      }
+                      className="border-none bg-dark-3 focus-visible:ring-0 focus-visible:ring-offset-0 text-black"
+                    />
+                  </MeetingModel>
 
-                <MeetingModel
-                  isOpen={meetingState === "isJoiningMeeting"}
-                  onClose={() => setMeetingState(undefined)}
-                  title="Join a Meeting"
-                  className="text-center"
-                  buttonText="Join Meeting"
-                  handleClick={() => {}}
-                />
-
-                <MeetingModel
-                  isOpen={meetingState === "isScheduleMeeting"}
-                  onClose={() => setMeetingState(undefined)}
-                  title="Schedule a Meeting"
-                  className="text-center"
-                  buttonText="Schedule Meeting"
-                  handleClick={() => {}}
-                />
-              </div>
-              <div className="flex flex-[1] justify-center items-center">
-                <Card className="bg-slate-200 outline-none rounded-xl">
-                  <CardContent className="flex flex-col bg-slate-200 m-1 justify-center">
-                    <h3 className="font-semibold">Personal meeting ID</h3>
-                    <div className="flex flex-row items-center gap-2">
-                      <h3>305-206-243</h3>
-                      <Image
-                        src={"/icons/copy.png"}
-                        width={30}
-                        height={30}
-                        alt="copy id icon"
-                      />
-                    </div>
-                  </CardContent>
-                </Card>
+                  <MeetingModel
+                    isOpen={meetingState === "isHostMeeting"}
+                    onClose={() => setMeetingState(undefined)}
+                    title="Start an Instant Meeting"
+                    className="text-center"
+                    buttonText="Start Meeting"
+                    handleClick={createMeeting}
+                  />
+                </div>
+                <div className="flex flex-[1] justify-center items-center">
+                  <Card className="bg-slate-200 outline-none rounded-xl">
+                    <CardContent className="flex flex-col bg-slate-200 m-1 justify-center">
+                      <h3 className="font-semibold">Personal meeting ID</h3>
+                      <div className="flex flex-row items-center gap-2">
+                        <h3>305-206-243</h3>
+                        <Image
+                          src={"/icons/copy.png"}
+                          width={30}
+                          height={30}
+                          alt="copy id icon"
+                        />
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
               </div>
             </div>
           </div>
+          <div className="flex h-60 items-center my-1 bg-white p-3 rounded-2xl">
+            <Tabs defaultValue="upcoming" className="w-full">
+              <TabsList className="grid w-full grid-cols-2 bg-white">
+                <TabsTrigger
+                  value="upcoming"
+                  className="w-full text-center py-2"
+                >
+                  Upcoming
+                </TabsTrigger>
+                <TabsTrigger
+                  value="previous"
+                  className="w-full text-center py-2"
+                >
+                  Previous
+                </TabsTrigger>
+              </TabsList>
+              <TabsContent value="upcoming">
+                <Card className="text-center mt-4 bg-slate-200 outline-none border-none">
+                  <CardHeader>
+                    <CardTitle>No upcoming meetings</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-2 flex justify-center">
+                    <button
+                      type="button"
+                      className="bg-purple-600 text-white py-2 px-4 rounded-lg"
+                    >
+                      Schedule a meeting
+                    </button>
+                  </CardContent>
+                  <CardFooter></CardFooter>
+                </Card>
+              </TabsContent>
+              <TabsContent value="previous">
+                <Card className="text-center mt-4 bg-slate-200 outline-none border-none">
+                  <CardHeader>
+                    <CardTitle>Previous</CardTitle>
+                    <CardDescription>
+                      View your past events here.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-2 flex justify-center">
+                    {/* Add content for previous events */}
+                  </CardContent>
+                  <CardFooter></CardFooter>
+                </Card>
+              </TabsContent>
+            </Tabs>
+          </div>
         </div>
-        <div className="flex h-60 items-center my-1 bg-white p-3 rounded-2xl">
-          <Tabs defaultValue="upcoming" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 bg-white">
-              <TabsTrigger value="upcoming" className="w-full text-center py-2">
-                Upcoming
-              </TabsTrigger>
-              <TabsTrigger value="previous" className="w-full text-center py-2">
-                Previous
-              </TabsTrigger>
-            </TabsList>
-            <TabsContent value="upcoming">
-              <Card className="text-center mt-4 bg-slate-200 outline-none border-none">
-                <CardHeader>
-                  <CardTitle>No upcoming meetings</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2 flex justify-center">
-                  <button
-                    type="button"
-                    className="bg-purple-600 text-white py-2 px-4 rounded-lg"
-                  >
-                    Schedule a meeting
-                  </button>
-                </CardContent>
-                <CardFooter></CardFooter>
-              </Card>
-            </TabsContent>
-            <TabsContent value="previous">
-              <Card className="text-center mt-4 bg-slate-200 outline-none border-none">
-                <CardHeader>
-                  <CardTitle>Previous</CardTitle>
-                  <CardDescription>View your past events here.</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-2 flex justify-center">
-                  {/* Add content for previous events */}
-                </CardContent>
-                <CardFooter></CardFooter>
-              </Card>
-            </TabsContent>
-          </Tabs>
-        </div>
-      </div>
-
-     </section>
+      </section>
     </>
   );
 };
