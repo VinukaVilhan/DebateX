@@ -1,11 +1,9 @@
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
-import "../(root)/Styles/styles.css";
+import "../(root)/Styles/page.css";
 
 //------------ images----------------
-import HeroImg from "@/public/images/hero.jpg";
 import RitharaImg from "@/public/images/team/Rithara.png";
 import JalinaImg from "@/public/images/team/Jalina.png";
 import AkithImg from "@/public/images/team/Akith.png";
@@ -24,11 +22,18 @@ import EduImg from "@/public/images/icons8-education-100.png";
 import CommImg from "@/public/images/icons8-communication-100.png";
 import AboutusImg from "@/public/images/Meeting.jpg";
 
+import FbImg from "@/public/images/icons8-facebook-100 (2).png";
+import TwitterImg from "@/public/images/icons8-twitter-100.png";
+import LinkedinImg from "@/public/images/icons8-linked-in-100.png";
+import InsterImg from "@/public/images/icons8-instagram-100.png";
+
+import { CaretRight, ArrowUpRight } from "@phosphor-icons/react/dist/ssr"; // or wherever the CaretRight icon is from
+
 const HomePage = () => {
   return (
     <>
       <Navbar />
-      <div style={{ paddingTop: "80px" }}>
+      <div>
         {/* Hero Section */}
 
         <section id="hero" className="hero-section bg-[#292445] text-white">
@@ -45,43 +50,25 @@ const HomePage = () => {
 
         <section>
           <div className="flex justify-center items-center space-x-12 w-full bg-[#413A67] py-12">
-            <button className="bg-[#58224de4] font- flex items-center justify-center border border-white text-white py-4 px-6 rounded-full">
+            <button className="bg-[#58224de4] font-bold flex items-center justify-between gap-2 border border-white text-white py-4 px-6 rounded-full">
               Get Started
+              <CaretRight size={16} />
             </button>
-            <button className="bg-[#58224de4] flex items-center justify-center border border-white text-white py-4 px-6 rounded-full">
+            <button className="bg-[#58224de4] font-bold flex items-center justify-between gap-2 border border-white text-white py-4 px-6 rounded-full">
               Host a competition
+              <CaretRight size={16} />
             </button>
-            <button className="bg-[#58224de4] flex items-center justify-center border border-white text-white py-4 px-6 rounded-full">
+            <button className="bg-[#58224de4] font-bold flex items-center justify-between gap-2 border border-white text-white py-4 px-6 rounded-full">
               Participate a competition
+              <CaretRight size={16} />
             </button>
-          </div>
-
-          <div className="container mx-auto text-center">
-            <h1 className="text-5xl font-bold">
-              Engage in Intellectual Debate and Hone Your Skills with DebateX
-            </h1>
-            <p className="mt-4 text-lg">
-              DebateX is a platform designed to foster critical thinking and
-              public speaking skills through engaging and structured debates.
-            </p>
-            <div className="mt-8 flex justify-center space-x-4">
-              <button className="bg-[#8F67E8] text-white py-2 px-4 rounded-full">
-                Get Started
-              </button>
-              <button className="bg-[#9C6BFF] text-white py-2 px-4 rounded-full">
-                Host a competition
-              </button>
-              <button className="bg-[#8F67E8] text-white py-2 px-4 rounded-full">
-                Participate a competition
-              </button>
-            </div>
           </div>
         </section>
 
         {/* Stats Section */}
         <section
           id="stats"
-          className="stats-section bg-[#413A67] text-white py-20"
+          className="stats-section bg-[#050505] text-white py-20"
         >
           <div className="container mx-auto text-center">
             <div className="grid grid-cols-4 gap-8">
@@ -108,29 +95,51 @@ const HomePage = () => {
         {/* About Us Section */}
         <section
           id="about"
-          className="about-section bg-#14142A text-white py-20"
+          className="bg-#14142A text-white mb-16 flex flex-col items-center mx-4"
         >
-          <br></br>
-          <br></br>
-          <h2 className="text-3xl font-bold">
+          <h2 className="text-4xl mb-20 font-bold">
+            <br></br>
+            <br></br>
             <center>About Us</center>
           </h2>
-          <br></br>
-          <br></br>
-          <br></br>
-          <div className="container mx-auto">
-            <div className="image-container">
-              <Image src={AboutusImg} alt="About Us Image" />
+
+          <div className="container flex mx-12 gap-4">
+            <div className="image-container w-1/2">
+              <Image
+                src={AboutusImg}
+                alt="About Us Image"
+                className="w-4/5 mx-auto"
+              />
             </div>
-            <div className="content-container">
-              <p>
+
+            <div className="flex flex-col w-1/2 ml-4">
+              <p className="text-2xl font-bold mb-12">
                 Welcome to DebateX, the ultimate online debating platform where
                 ideas meet, challenge, and evolve.
               </p>
-              <div className="links">
-                <a href="#">Vision and Mission of DebateX</a>
-                <a href="#">DebateX Services</a>
-                <a href="#">DebateX Expert Team</a>
+              <div className="text-xl ml-4 mr-12">
+                <div className="my-8 flex justify-between">
+                  <a href="#vision-mission" className="hover:text-indigo-500">
+                    Vision and Mission of DebateX
+                  </a>
+
+                  <ArrowUpRight size={32} />
+                </div>
+                <hr className="border-[#2f466a85]" />
+                <div className="my-8 flex justify-between">
+                  <a href="#services" className="hover:text-indigo-500">
+                    DebateX Services
+                  </a>
+                  <ArrowUpRight size={32} />
+                </div>
+                <hr className="border-[#2f466a85]" />
+                <div className="my-8 flex justify-between">
+                  <a href="#team" className="hover:text-indigo-500">
+                    DebateX Expert Team
+                  </a>
+
+                  <ArrowUpRight size={32} />
+                </div>
               </div>
             </div>
           </div>
@@ -139,7 +148,7 @@ const HomePage = () => {
         {/* Aims Section */}
         <section id="aims" className="aims-section bg-[#9496D9] py-20">
           <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold">Our Aims</h2>
+            <h2 className="text-4xl font-bold">Our Aims</h2>
             <br></br>
             <br></br>
             <div className="grid grid-cols-3 gap-8 mt-8">
@@ -151,7 +160,7 @@ const HomePage = () => {
                 </h3>
                 <br></br>
                 <p>
-                  We aim to sharpen participants&apos; analytical skills by
+                  We aim to sharpen participant&rsquo;s analytical skills by
                   providing a platform that challenges them to think deeply and
                   articulate their thoughts clearly.
                 </p>
@@ -199,17 +208,17 @@ const HomePage = () => {
         {/* Vision & Mission Section */}
         <section
           id="vision-mission"
-          className="vision-mission-section bg-#14142A text-white py-20"
+          className="vision-mission-section bg-[#14142A] text-white py-16"
         >
           <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold">Our Vision & Mission</h2>
-            <div className="grid grid-cols-2 gap-8 mt-8">
+            <h2 className="text-4xl font-bold">Our Vision & Mission</h2>
+            <div className="grid grid-cols-2 gap-8 mt-20">
               <div className="card1">
                 <Image src={VisionImg} alt="Vision Image" className="img1" />
                 <br></br>
-                <h3 className="text-xl font-bold">Vision</h3>
+                <h3 className="text-2xl font-bold">Vision</h3>
                 <br></br>
-                <p>
+                <p className="text-xl font-semibold">
                   To be the premier online platform for fostering intellectual
                   growth, critical thinking, and respectful discourse through
                   engaging and dynamic debates.
@@ -218,9 +227,9 @@ const HomePage = () => {
               <div className="card2">
                 <Image src={MissionImg} alt="Mission Image" className="img2" />
                 <br></br>
-                <h3 className="text-xl font-bold">Mission</h3>
+                <h3 className="text-2xl font-bold">Mission</h3>
                 <br></br>
-                <p>
+                <p className="text-xl font-semibold">
                   Our mission is to foster a diverse community where individuals
                   can debate, challenge ideas, and enhance their communication
                   skills. We provide a supportive environment that promotes
@@ -234,16 +243,19 @@ const HomePage = () => {
         </section>
 
         {/* Services Section */}
-        <section id="services" className="services-section bg-[#9496D9] py-20">
+        <section id="services" className=" bg-[#9496D9] py-16 px-12">
           <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold">Services</h2>
-            <br></br>
-            <br></br>
-            <div className="grid grid-cols-3 gap-1 mt-8">
+            <h2 className="text-4xl font-bold mb-4">Services</h2>
+            <p className="text-xl mb-6 font-semibold">
+              Unlock Your Debating skills with DebateX Services
+            </p>
+            <div className="grid grid-cols-3 mt-8">
               <div className="service-item1">
-                <Image src={MedalImg} alt="medal Image" className="imgicon" />
+                <div className="w-16 h-16 flex justify-center items-center overflow-hidden rounded-full">
+                  <Image src={MedalImg} alt="medal Image" className="imgicon" />
+                </div>
                 <br></br>
-                <h3 className="text-xl font-bold">
+                <h3 className="text-xl font-bold mb-4">
                   Debate Competitions and Tournaments
                 </h3>
                 <p>
@@ -251,18 +263,28 @@ const HomePage = () => {
                 </p>
               </div>
               <div className="service-item2">
-                <Image src={ComImg} alt="community Image" className="imgicon" />
+                <div className="w-16 h-16 flex justify-center items-center overflow-hidden rounded-full">
+                  <Image
+                    src={ComImg}
+                    alt="community Image"
+                    className="imgicon"
+                  />
+                </div>
                 <br></br>
-                <h3 className="text-xl font-bold">Community and Networking</h3>
+                <h3 className="text-xl font-bold mb-4">
+                  Community and Networking
+                </h3>
                 <p>
                   Facilitating networking opportunities through forums,
                   discussion boards, and social media groups.
                 </p>
               </div>
               <div className="service-item3">
-                <Image src={LawImg} alt="law Image" className="imgicon" />
+                <div className="w-16 h-16 flex justify-center items-center overflow-hidden rounded-full">
+                  <Image src={LawImg} alt="law Image" className="imgicon" />
+                </div>
                 <br></br>
-                <h3 className="text-xl font-bold">Judging and Feedback</h3>
+                <h3 className="text-xl font-bold mb-4">Judging and Feedback</h3>
                 <p>
                   Offering professional judging services for debates and
                   providing detailed feedback and scoring to help debaters
@@ -270,15 +292,19 @@ const HomePage = () => {
                 </p>
               </div>
               <div className="service-item4">
-                <Image src={EventImg} alt="Event Image" className="imgicon" />
+                <div className="w-16 h-16 flex justify-center items-center overflow-hidden rounded-full">
+                  <Image src={EventImg} alt="Event Image" className="imgicon" />
+                </div>
                 <br></br>
-                <h3 className="text-xl font-bold">Event Management</h3>
+                <h3 className="text-xl font-bold mb-4">Event Management</h3>
                 <p>Offering tools and platforms for virtual debate events.</p>
               </div>
               <div className="service-item5">
-                <Image src={GearImg} alt="Gear Image" className="imgicon" />
+                <div className="w-16 h-16 flex justify-center items-center overflow-hidden rounded-full">
+                  <Image src={GearImg} alt="Gear Image" className="imgicon" />
+                </div>
                 <br></br>
-                <h3 className="text-xl font-bold">
+                <h3 className="text-xl font-bold mb-4">
                   Customization and Personalization
                 </h3>
                 <p>
@@ -287,13 +313,17 @@ const HomePage = () => {
                 </p>
               </div>
               <div className="service-item6">
-                <Image
-                  src={InnovationImg}
-                  alt="Innovation Image"
-                  className="imgicon"
-                />
+                <div className="w-16 h-16 flex justify-center items-center overflow-hidden rounded-full">
+                  <Image
+                    src={InnovationImg}
+                    alt="Innovation Image"
+                    className="imgicon"
+                  />
+                </div>
                 <br></br>
-                <h3 className="text-xl font-bold">Technology and Innovation</h3>
+                <h3 className="text-xl font-bold mb-4">
+                  Technology and Innovation
+                </h3>
                 <p>
                   Offering mobile apps and technology platforms for easy access
                   and participation.
@@ -304,17 +334,18 @@ const HomePage = () => {
         </section>
 
         {/* Team Section */}
-        <section id="team" className="team-section bg-#14142A py-20">
-          <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold">Our Team</h2>
-            <br></br>
-            <br></br>
-            <div className="grid grid-cols-3 gap-8 mt-8">
+        <section
+          id="team"
+          className="team-section bg-[#14142A] text-white py-20"
+        >
+          <div className="flex flex-col items-center justify-center text-center">
+            <h2 className="text-4xl font-bold mb-8">Our Team</h2>
+            <div className="grid grid-cols-3 gap-x-24 gap-y-12 mt-8">
               <div>
                 <Image
                   src={AkithImg}
                   alt="B. A. Akith Chandinu"
-                  className="rounded-full mx-auto"
+                  className="rounded-4xl mx-auto"
                 />
                 <h3 className="mt-4 text-xl font-bold">B. A. Akith Chandinu</h3>
                 <p>akith.chandinu@gmail.com</p>
@@ -323,16 +354,16 @@ const HomePage = () => {
                 <Image
                   src={VinukaImg}
                   alt="V. V. Fernando"
-                  className="rounded-full mx-auto"
+                  className="rounded-4xl mx-auto"
                 />
-                <h3 className="mt-4 text-xl font-bold">V. V. Fernando</h3>
-                <p>vv.fernando@gmail.com</p>
+                <h3 className="mt-4 text-xl font-bold">V. V. Fernandopulle</h3>
+                <p>vv.fernandopulle@gmail.com</p>
               </div>
               <div>
                 <Image
                   src={JalinaImg}
                   alt="Jalina Hirushan"
-                  className="rounded-full mx-auto"
+                  className="rounded-4xl mx-auto"
                 />
                 <h3 className="mt-4 text-xl font-bold">Jalina Hirushan</h3>
                 <p>jalinahirushan2002@gmail.com</p>
@@ -341,7 +372,7 @@ const HomePage = () => {
                 <Image
                   src={RitharaImg}
                   alt="Rithara Kithmanthie"
-                  className="rounded-full mx-auto"
+                  className="rounded-4xl mx-auto"
                 />
                 <h3 className="mt-4 text-xl font-bold">Rithara Kithmanthie</h3>
                 <p>ritharaedirisinghe@gmail.com</p>
@@ -350,7 +381,7 @@ const HomePage = () => {
                 <Image
                   src={DulminiImg}
                   alt="S. Dulmini Abeyweera"
-                  className="rounded-full mx-auto"
+                  className="rounded-4xl mx-auto"
                 />
                 <h3 className="mt-4 text-xl font-bold">S. Dulmini Abeyweera</h3>
                 <p>samikshaabeyweera@gmail.com</p>
@@ -360,10 +391,8 @@ const HomePage = () => {
         </section>
 
         {/* Contact Us Section */}
-        <section
-          id="contact"
-          className="contact-section bg-[#413A67] text-white py-20"
-        >
+
+        {/* <section id="contact" className="contact-section bg-[#9496D9]  py-20">
           <div className="container mx-auto text-center">
             <h2 className="text-3xl font-bold">Contact Us</h2>
             <p className="mt-4">
@@ -373,7 +402,7 @@ const HomePage = () => {
               <div className="mb-4">
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-gray-200"
+                  className="block text-sm font-medium text-black"
                 >
                   Name
                 </label>
@@ -386,7 +415,7 @@ const HomePage = () => {
               <div className="mb-4">
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-gray-200"
+                  className="block text-sm font-medium text-black"
                 >
                   Email
                 </label>
@@ -399,7 +428,7 @@ const HomePage = () => {
               <div className="mb-4">
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-gray-200"
+                  className="block text-sm font-medium text-black-200"
                 >
                   Message
                 </label>
@@ -417,29 +446,125 @@ const HomePage = () => {
               </button>
             </form>
           </div>
-        </section>
+        </section> */}
 
         {/* Footer Section */}
-        <footer className="footer-section bg-[#292445] text-white py-8">
-          <div className="container mx-auto text-center">
-            <p className="mb-4">
-              Join our community of passionate debaters and learners today.
-              Unlock your potential and explore new opportunities to engage in
-              debates.
-            </p>
-            <div className="flex justify-center space-x-4">
-              <a href="#" className="text-white hover:text-gray-400">
-                Facebook
-              </a>
-              <a href="#" className="text-white hover:text-gray-400">
-                Twitter
-              </a>
-              <a href="#" className="text-white hover:text-gray-400">
-                LinkedIn
-              </a>
-              <a href="#" className="text-white hover:text-gray-400">
-                Instagram
-              </a>
+        <footer className="footer-section bg-[#14142A] text-white py-8">
+          <div className="container mx-auto">
+            <div className="newsletter text-center mb-12">
+              <h1 className="text-xl font-bold">Subscribe to Newsletter</h1>
+              <p className="mt-2 text-gray-400">
+                Subscribe to our newsletter to receive the latest updates,
+                exclusive content, and insightful tips directly to your inbox.
+              </p>
+              <form className="mt-6 flex justify-center">
+                <input
+                  type="email"
+                  placeholder="Enter your Email..."
+                  className="px-4 py-2 rounded-full mr-4 text-black"
+                />
+                <button
+                  type="submit"
+                  className="px-6 py-2 rounded-full bg-[#8b4899] text-white"
+                >
+                  Subscribe
+                </button>
+              </form>
+            </div>
+
+            <div className="footer-links grid grid-cols-1 md:grid-cols-4 text-center md:text-left gap-8">
+              <div className="col-span-1">
+                <h4 className="font-bold text-lg mb-4">DebateX</h4>
+                <p>
+                  Join our community of passionate debaters and never miss out
+                  on upcoming events, debates, and opportunities to enhance your
+                  skills!
+                </p>
+                <div className="flex justify-center md:justify-start mt-4 space-x-4">
+                  <a href="#" className="text-white hover:text-gray-400">
+                    <Image src={FbImg} alt="Facebook" className="icon4" />
+                  </a>
+                  <a href="#" className="text-white hover:text-gray-400">
+                    <Image src={TwitterImg} alt="Twitter" className="icon4" />
+                  </a>
+                  <a href="#" className="text-white hover:text-gray-400">
+                    <Image src={LinkedinImg} alt="LinkedIn" className="icon4" />
+                  </a>
+                  <a href="#" className="text-white hover:text-gray-400">
+                    <Image src={InsterImg} alt="Instagram" className="icon4" />
+                  </a>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="font-bold text-lg mb-4">Company</h4>
+                <ul>
+                  <li>
+                    <a href="#" className="hover:text-gray-400">
+                      Home
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="hover:text-gray-400">
+                      About us
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="hover:text-gray-400">
+                      Services
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-lg mb-4">Resources</h4>
+                <ul>
+                  <li>
+                    <a href="#" className="hover:text-gray-400">
+                      Community
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="hover:text-gray-400">
+                      Video Tutorials
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="hover:text-gray-400">
+                      API Documentation
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="hover:text-gray-400">
+                      Security Reports
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div className="help">
+                <h4 className="font-bold text-lg mb-4">Help</h4>
+                <ul>
+                  <li>
+                    <a href="#" className="hover:text-gray-400">
+                      Customer Support
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="hover:text-gray-400">
+                      Terms & Conditions
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="hover:text-gray-400">
+                      Privacy Policy
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="designer mt-12 text-center text-gray-500">
+              Copyright @2024 All Rights Reserved | Design By The Mavericks
             </div>
           </div>
         </footer>
