@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -12,11 +13,11 @@ type MeetingTypeListProps = {
 const MeetingTypeList = ({ img, title, handleClick }: MeetingTypeListProps) => {
   return (
     <div>
-      <div className="flex flex-col gap-1 items-center">
+      <div className="flex3 flex-col gap-1 items-center">
         <Image
           src={img}
-          width={50}
-          height={50}
+          width={50} // Adjust width
+          height={40} // Adjust height
           alt={title}
           onClick={handleClick}
           className="cursor-pointer"
@@ -27,4 +28,7 @@ const MeetingTypeList = ({ img, title, handleClick }: MeetingTypeListProps) => {
   );
 };
 
+
+
 export default MeetingTypeList;
+

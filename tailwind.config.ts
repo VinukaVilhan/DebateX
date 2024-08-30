@@ -26,7 +26,12 @@ const config = {
         blue: {
           1: "#0E78F9",
         },
-        background_of_dashboard: { 1: "#9496D9" },
+
+        field:{
+          1: "#9A9292",
+        },
+        background_of_dashboard:{1: '#9496D9'},
+
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -84,5 +89,6 @@ const config = {
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
+
 
 export default config;
