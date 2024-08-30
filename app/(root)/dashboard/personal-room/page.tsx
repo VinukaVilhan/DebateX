@@ -63,7 +63,7 @@ const PersonalRoom = () => {
         </Button>
 
         <Button
-          className="custom-button"
+          className="custom-button2"
           onClick={() => {
             navigator.clipboard.writeText(meetingLink);
             toast({ title: "Link Copied" });
