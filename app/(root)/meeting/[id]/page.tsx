@@ -16,7 +16,6 @@ const MeetingPage = () => {
   const { isLoaded, user } = useUser();
   const { call, isCallLoading } = useGetCallById(id);
   const [isSetupComplete, setIsSetupComplete] = useState(false);
-  const [userName, setUserName] = useState("");
 
   if (!isLoaded || isCallLoading) return <Loader />;
 
@@ -39,12 +38,9 @@ const MeetingPage = () => {
       <StreamCall call={call}>
         <StreamTheme>
           {!isSetupComplete ? (
-            <MeetingSetup
-              setIsSetupComplete={setIsSetupComplete}
-              setUserName={setUserName}
-            />
+            <MeetingSetup setIsSetupComplete={setIsSetupComplete} />
           ) : (
-            <MeetingRoom userName={userName} />
+            <MeetingRoom userName={user?.firstName || "Guest"} />
           )}
         </StreamTheme>
       </StreamCall>

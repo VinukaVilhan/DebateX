@@ -1,21 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   useCallStateHooks,
   useCalls,
   useStreamVideoClient,
+  DeviceSettings,
 } from "@stream-io/video-react-sdk";
 import { Loader } from "lucide-react";
 
 interface MeetingSetupProps {
   setIsSetupComplete: (isComplete: boolean) => void;
-  setUserName: (name: string) => void;
 }
 
-const MeetingSetup: React.FC<MeetingSetupProps> = ({
-  setIsSetupComplete,
-  setUserName,
-}) => {
-  const [name, setName] = useState("");
+const MeetingSetup: React.FC<MeetingSetupProps> = ({ setIsSetupComplete }) => {
   const [isJoining, setIsJoining] = useState(false);
   const calls = useCalls();
   const call = calls[0];
@@ -23,49 +19,42 @@ const MeetingSetup: React.FC<MeetingSetupProps> = ({
   const { useLocalParticipant } = useCallStateHooks();
   const localParticipant = useLocalParticipant();
 
-  const handleJoin = async () => {
-    if (!call || !client || !name.trim()) return;
-
-    setIsJoining(true);
-
-    try {
-      await call.join({
-        // Use 'video' and 'audio' instead of 'camera' and 'mic'
-        video: false,
-        audio: false,
-      });
-      // Instead of updating user data, we'll just set the name locally
-      setUserName(name);
+  useEffect(() => {
+    if (localParticipant) {
       setIsSetupComplete(true);
-    } catch (error) {
-      console.error("Error joining call:", error);
-      setIsJoining(false);
     }
-  };
+  }, [localParticipant, setIsSetupComplete]);
+
+  useEffect(() => {
+    const joinCall = async () => {
+      if (call && client && !isJoining && !localParticipant) {
+        setIsJoining(true);
+        try {
+          await call.join();
+        } catch (error) {
+          console.error("Error joining call:", error);
+          setIsJoining(false);
+        }
+      }
+    };
+
+    joinCall();
+  }, [call, client, isJoining, localParticipant]);
 
   if (!call || !client) return <Loader />;
 
-  if (localParticipant) {
-    setIsSetupComplete(true);
-    return null;
+  if (isJoining && !localParticipant) {
+    return <Loader />;
   }
 
   return (
-    <div className="flex h-screen flex-col items-center justify-center">
-      <h1 className="mb-4 text-2xl font-bold text-white">Join Meeting</h1>
-      <input
-        type="text"
-        placeholder="Enter your name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        className="mb-4 w-64 rounded-md border border-gray-300 p-2 text-black"
-      />
+    <div className="flex flex-col items-center justify-center h-screen">
+      <DeviceSettings />
       <button
-        onClick={handleJoin}
-        disabled={isJoining || !name.trim()}
-        className="rounded-md bg-blue-500 px-4 py-2 text-white disabled:bg-gray-400"
+        onClick={() => setIsSetupComplete(true)}
+        className="mt-4 rounded-md bg-blue-500 px-4 py-2 text-white"
       >
-        {isJoining ? "Joining..." : "Join"}
+        Continue to Meeting
       </button>
     </div>
   );
