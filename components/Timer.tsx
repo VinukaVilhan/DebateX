@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
 import { Clock, Play, Pause, RefreshCcw } from "lucide-react";
-import '../app/(root)/styles/timer.css';
+import '../app/(root)/Styles/timer.css';
 
 const Timer = () => {
   const [isEditing, setIsEditing] = useState(true); // Initially shows the clock button
