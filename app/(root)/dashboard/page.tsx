@@ -1,9 +1,12 @@
 "use client";
 
+import '../styles/datePicker.css';
+
+
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import "../../(root)/Styles/dashboard.css";
-
+import 'react-datepicker/dist/react-datepicker.css'
 import MeetingModel from "@/components/MeetingModel";
 import MeetingTypeList from "@/components/MeetingTypeList";
 import { useRouter } from "next/navigation";
@@ -121,7 +124,7 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
     }
   };
 
-  const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${callDetail?.id}`;
+  const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${callDetails?.id}`;
 
   return (
     <>
@@ -297,11 +300,12 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                     handleClick={() => router.push("/dashboard/recordings")}
                   />
 
-                  {!callDetail ? (
+                  {!callDetails ? (
                     <MeetingModel
                       isOpen={meetingState === "isScheduleMeeting"}
                       onClose={() => setMeetingState(undefined)}
                       title="Create Meeting"
+                      buttonText="Schedule Meeting"
                       handleClick={createMeeting}
                     >
                       <div className="flex flex-col gap-2.5">
@@ -322,47 +326,16 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                         <label className="text-base font-normal leading-[22.4px] text-sky-2">
                           Select Date and Time
                         </label>
-                        <div className={cn("grid gap-2", className)}>
-                          <Popover>
-                            <PopoverTrigger asChild>
-                              <Button
-                                id="date"
-                                variant={"outline"}
-                                className={cn(
-                                  "w-[300px] justify-start text-left font-normal",
-                                  !date && "text-muted-foreground"
-                                )}
-                              >
-                                <CalendarIcon className="mr-2 h-4 w-4" />
-                                {date?.from ? (
-                                  date.to ? (
-                                    <>
-                                      {format(date.from, "LLL dd, y")} -{" "}
-                                      {format(date.to, "LLL dd, y")}
-                                    </>
-                                  ) : (
-                                    format(date.from, "LLL dd, y")
-                                  )
-                                ) : (
-                                  <span>Pick a date</span>
-                                )}
-                              </Button>
-                            </PopoverTrigger>
-                            <PopoverContent
-                              className="w-auto p-0 bg-[#14142A] text-white border-none"
-                              align="start"
-                            >
-                              <Calendar
-                                initialFocus
-                                mode="range"
-                                defaultMonth={date?.from}
-                                selected={date}
-                                onSelect={setDate}
-                                numberOfMonths={2}
-                              />
-                            </PopoverContent>
-                          </Popover>
-                        </div>
+                        <ReactDatePicker
+                          selected={values.dateTime}
+                          onChange={(date) => setValues({ ...values, dateTime: date! })}
+                          showTimeSelect
+                          timeFormat="HH:mm"
+                          timeIntervals={15}
+                          timeCaption="time"
+                          dateFormat="MMMM d, yyyy h:mm aa"
+                          className="w-full rounded bg-dark-3 p-2 focus:outline-none custom-datepicker-input"
+                        />
                       </div>
                     </MeetingModel>
                   ) : (
@@ -452,11 +425,13 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                     <CardTitle>No upcoming meetings</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-2 flex justify-center">
+
                     <button
                       type="button"
                       className="bg-purple-600 text-white py-2 px-4 rounded-lg"
                     >
                       Schedule a meeting
+
                     </button>
                   </CardContent>
                   <CardFooter></CardFooter>
