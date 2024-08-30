@@ -28,5 +28,7 @@ const MeetingTypeList = ({ img, title, handleClick }: MeetingTypeListProps) => {
   );
 };
 
+
+
 export default MeetingTypeList;
 
