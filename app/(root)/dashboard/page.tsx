@@ -1,7 +1,7 @@
 "use client";
 
-import '../styles/datePicker.css';
-import'../styles/card.css'
+import '../Styles/datePicker.css';
+import'../Styles/card.css'
 import CallList from '@/components/CallList'
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
