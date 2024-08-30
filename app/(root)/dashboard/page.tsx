@@ -1,8 +1,8 @@
 "use client";
 
 import '../styles/datePicker.css';
-
-
+import'../styles/card.css'
+import CallList from '@/components/CallList'
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import "../../(root)/Styles/dashboard.css";
@@ -444,6 +444,83 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                   </CardHeader>
                   <CardContent className="space-y-2 flex justify-center">
                     <br></br>
+                    <button
+                      type="button"
+                      className="bg-[#5A5DAF] text-white py-2 px-4 rounded-lg"
+                    >
+                      Schedule a meeting
+
+                    </button>
+                    <button
+                      type="button"
+                      className="bg-[#5A5DAF] text-white py-2 px-4 rounded-lg"
+                    >
+                      Schedule a meeting
+
+                    </button>
+                    <button
+                      type="button"
+                      className="bg-[#5A5DAF] text-white py-2 px-4 rounded-lg"
+                    >
+                      Schedule a meeting
+
+                    </button>
+                    <button
+                      type="button"
+                      className="bg-[#5A5DAF] text-white py-2 px-4 rounded-lg"
+                    >
+                      Schedule a meeting
+
+                    </button>
+                    <button
+                      type="button"
+                      className="bg-[#5A5DAF] text-white py-2 px-4 rounded-lg"
+                    >
+                      Schedule a meeting
+
+                    </button>
+                    <button
+                      type="button"
+                      className="bg-[#5A5DAF] text-white py-2 px-4 rounded-lg"
+                    >
+                      Schedule a meeting
+
+                    </button>
+                    <button
+                      type="button"
+                      className="bg-[#5A5DAF] text-white py-2 px-4 rounded-lg"
+                    >
+                      Schedule a meeting
+
+                    </button>
+                    <button
+                      type="button"
+                      className="bg-[#5A5DAF] text-white py-2 px-4 rounded-lg"
+                    >
+                      Schedule a meeting
+
+                    </button>
+                    <button
+                      type="button"
+                      className="bg-[#5A5DAF] text-white py-2 px-4 rounded-lg"
+                    >
+                      Schedule a meeting
+
+                    </button>
+                    <button
+                      type="button"
+                      className="bg-[#5A5DAF] text-white py-2 px-4 rounded-lg"
+                    >
+                      Schedule a meeting
+
+                    </button>
+                    <button
+                      type="button"
+                      className="bg-[#5A5DAF] text-white py-2 px-4 rounded-lg"
+                    >
+                      Schedule a meeting
+
+                    </button>
                     <button
                       type="button"
                       className="bg-[#5A5DAF] text-white py-2 px-4 rounded-lg"
