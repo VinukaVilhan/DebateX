@@ -90,6 +90,12 @@
   }
 }
 
+
+.custom-footer {
+  background-color: #ffffff !important; /* Footer background color */
+  color: #000000 !important; /* Footer text color */
+}
+
 /* animation */
 
 .show-block {
