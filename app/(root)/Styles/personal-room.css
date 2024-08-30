@@ -1,0 +1,14 @@
+/* styles.css or styles.module.css */
+.custom-button {
+    background-color: #14142A;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .custom-button:hover {
+    background-color:  #4E4176; /* Darker blue */
+  }
+  
