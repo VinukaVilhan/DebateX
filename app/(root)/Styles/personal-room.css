@@ -1,0 +1,27 @@
+/* styles.css or styles.module.css */
+.custom-button {
+    background-color: #14142A;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .custom-button:hover {
+    background-color:  #4E4176; 
+  }
+  
+  .custom-button2 {
+    background-color: #4E4176;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+  }
+  
+  .custom-button2:hover {
+    background-color:  #14142A; 
+  }
