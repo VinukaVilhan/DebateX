@@ -7,6 +7,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { useGetCallById } from "@/hooks/useGetCallById";
 import { useStreamVideoClient } from "@stream-io/video-react-sdk";
 import { useRouter } from "next/navigation";
+import "../../../(root)/Styles/Personal-Room.css";
 
 const Table = ({
   title,
@@ -57,12 +58,12 @@ const PersonalRoom = () => {
         <Table title="Invite Link" description={meetingLink} />
       </div>
       <div className="flex gap-5 text-white">
-        <Button className="custom-button" style={{ backgroundColor: "#4E4176" }} onClick={startRoom}>
+        <Button className="custom-button" onClick={startRoom}>
           Start Meeting
         </Button>
 
         <Button
-          className="bg-dark-3"
+          className="custom-button"
           onClick={() => {
             navigator.clipboard.writeText(meetingLink);
             toast({ title: "Link Copied" });
