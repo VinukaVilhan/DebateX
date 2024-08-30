@@ -217,12 +217,12 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
       </Dialog>
 
       <section className="flex flex-col">
-        <div className="flex flex-col gap-4 mx-auto max-w-5xl p-4 bg-background_of_dashboard-1 rounded-lg w-full">
+        <div className="flex flex-col gap-20 mx-auto max-w-5xl p-4 bg-background_of_dashboard-1 rounded-lg w-full">
           <div className="flex h-auto">
-            <div className="flex gap-4 w-full flex-grow">
+            <div className="flex gap-20 w-full flex-grow">
               <div className="flex flex-[3] bg-white rounded-2xl shadow-md p-4 flex-col">
                 <div className="flex w-full">
-                  <div className="flex items-center w-fit">
+                  <div className="flex1 items-center w-fit">
                     <Image
                       src={user?.imageUrl || ""}
                       height={150}
@@ -238,14 +238,17 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                     <p className="text-sm">
                       {user?.primaryEmailAddress?.emailAddress}
                     </p>
-                    <span className="w-max inline-block px-3 py-1 mt-2 text-sm text-white bg-purple-600 rounded-full">
+                    <span className="w-max inline-block px-3 py-1 mt-2 text-sm text-white bg-[#5A5DAF] rounded-full">
                       Free plan
                     </span>
                   </div>
                 </div>
-                <div className="flex items-center justify-evenly mt-2 bg-gray-200 p-9 rounded-2xl flex-col">
-                  <span className="text-left ">Included in your plan:</span>
-                  <div className="flex space-x-9">
+                <div className="flex items-center justify-evenly mt-5 bg-gray-200 p-9 rounded-2xl flex-col">
+                  <span className="text-left font-bold">
+                    Included in your plan:
+                  </span>
+                  <br></br>
+                  <div className="flex space-x-2">
                     <span className="flex items-center space-x-2">
                       <Image
                         src="/icons/chat_bubble.svg"
@@ -278,21 +281,24 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
               </div>
 
               <div className="flex flex-[2] bg-white flex-col rounded-2xl">
-                <div className="flex flex-[1] last:items-center gap-5 justify-evenly items-center p-3">
+                <div className="flex flex-[1] last:items-center gap-8 justify-evenly items-center p-3">
                   <MeetingTypeList
                     img="/icons/schedule-meeting.svg"
                     title="Schedule"
                     handleClick={() => setMeetingState("isScheduleMeeting")}
+                    
                   />
                   <MeetingTypeList
                     img="/icons/join-meeting.svg"
                     title="Join"
                     handleClick={() => setMeetingState("isJoiningMeeting")}
+                  
                   />
                   <MeetingTypeList
                     img="/icons/host-meeting.svg"
                     title="Host"
                     handleClick={() => setMeetingState("isHostMeeting")}
+                    
                   />
                   <MeetingTypeList
                     img="/icons/cassette-tape.svg"
@@ -380,21 +386,22 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                     handleClick={createMeeting}
                   />
                 </div>
-                <div className="flex flex-[1] justify-center items-center">
-                  <Card className="bg-slate-200 outline-none rounded-xl">
+                <div className="flex flex-[2] justify-center items-center">
+                  <Card className="bg-slate-200 outline-none rounded-xl ml-7">
                     <CardContent className="flex flex-col bg-slate-200 m-1 justify-center">
+                      <br></br>
                       <h3 className="font-semibold">Personal meeting ID</h3>
-                      <div className="flex flex-row items-center gap-2">
+                      <br></br>
+                      <div className="flex flex-row items-center gap-3">
                         <h3>305-206-243</h3>
                         <div className="copyicon">
-                        <Image
-                          src={"/icons/copy.png"}
-                          width={30}
-                          height={30}
-                          alt="copy id icon"
-                          
-                          
-                        />
+                          <Image
+                            src={"/icons/copy.png"}
+                            width={30}
+                            height={30}
+                            alt="copy id icon"
+                            className="icon-color"
+                          />
                         </div>
                       </div>
                     </CardContent>
@@ -403,7 +410,7 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
               </div>
             </div>
           </div>
-          <div className="flex h-60 items-center my-1 bg-white p-3 rounded-2xl">
+          <div className="flex h-60 items-center my-1 bg-white p-8 rounded-2xl">
             <Tabs defaultValue="upcoming" className="w-full">
               <TabsList className="grid w-full grid-cols-2 bg-white">
                 <TabsTrigger
@@ -414,7 +421,7 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                 </TabsTrigger>
                 <TabsTrigger
                   value="previous"
-                  className="w-full text-center py-2"
+                  className="w-full text-center py-2 "
                 >
                   Previous
                 </TabsTrigger>
@@ -422,13 +429,13 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
               <TabsContent value="upcoming">
                 <Card className="text-center mt-4 bg-slate-200 outline-none border-none">
                   <CardHeader>
-                    <CardTitle>No upcoming meetings</CardTitle>
+                    <br></br> <CardTitle>No upcoming meetings</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-2 flex justify-center">
-
+                    <br></br>
                     <button
                       type="button"
-                      className="bg-purple-600 text-white py-2 px-4 rounded-lg"
+                      className="bg-[#5A5DAF] text-white py-2 px-4 rounded-lg"
                     >
                       Schedule a meeting
 
@@ -440,6 +447,7 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
               <TabsContent value="previous">
                 <Card className="text-center mt-4 bg-slate-200 outline-none border-none">
                   <CardHeader>
+                    <br></br>
                     <CardTitle>Previous</CardTitle>
                     <CardDescription>
                       View your past events here.

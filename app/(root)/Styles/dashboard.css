@@ -1,3 +1,9 @@
-.copyicon {
-  color: rgb(249, 92, 92);
+.icon-color {
+    filter: invert(20%) brightness(50%);
+  }
+
+.flex{
+    padding-right: 25px;
 }
+
+
