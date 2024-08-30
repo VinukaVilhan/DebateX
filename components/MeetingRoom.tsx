@@ -27,10 +27,6 @@ import EndCallButton from "./EndCallButton";
 
 type CallLayoutType = "grid" | "speaker-left" | "speaker-right";
 
-interface MeetingRoomProps {
-  userName: string;
-}
-
 interface CoinTossProps {
   team1: string;
   team2: string;
@@ -113,7 +109,7 @@ const CopyLinkButton = () => {
   );
 };
 
-const MeetingRoom: React.FC<MeetingRoomProps> = ({ userName }) => {
+const MeetingRoom = () => {
   const searchParams = useSearchParams();
   const isPersonalRoom = !!searchParams.get("personal");
   const router = useRouter();

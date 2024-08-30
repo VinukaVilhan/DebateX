@@ -1,61 +1,63 @@
-import { useState, useEffect } from "react";
+"use client";
+
 import {
-  useCallStateHooks,
-  useCalls,
-  useStreamVideoClient,
   DeviceSettings,
+  useCall,
+  VideoPreview,
 } from "@stream-io/video-react-sdk";
-import { Loader } from "lucide-react";
+import React, { useEffect, useState } from "react";
+import { Button } from "./ui/button";
 
-interface MeetingSetupProps {
-  setIsSetupComplete: (isComplete: boolean) => void;
-}
+const MeetingSetup = ({
+  setIsSetupComplete,
+}: {
+  setIsSetupComplete: (value: boolean) => void;
+}) => {
+  const [isMicCamToggeldOn, setIsMicCamToggeldOn] = useState(false);
 
-const MeetingSetup: React.FC<MeetingSetupProps> = ({ setIsSetupComplete }) => {
-  const [isJoining, setIsJoining] = useState(false);
-  const calls = useCalls();
-  const call = calls[0];
-  const client = useStreamVideoClient();
-  const { useLocalParticipant } = useCallStateHooks();
-  const localParticipant = useLocalParticipant();
+  const call = useCall();
 
-  useEffect(() => {
-    if (localParticipant) {
-      setIsSetupComplete(true);
-    }
-  }, [localParticipant, setIsSetupComplete]);
-
-  useEffect(() => {
-    const joinCall = async () => {
-      if (call && client && !isJoining && !localParticipant) {
-        setIsJoining(true);
-        try {
-          await call.join();
-        } catch (error) {
-          console.error("Error joining call:", error);
-          setIsJoining(false);
-        }
-      }
-    };
-
-    joinCall();
-  }, [call, client, isJoining, localParticipant]);
-
-  if (!call || !client) return <Loader />;
-
-  if (isJoining && !localParticipant) {
-    return <Loader />;
+  if (!call) {
+    throw new Error("usecall must be used inside StreamCall component");
   }
 
+  useEffect(() => {
+    if (isMicCamToggeldOn) {
+      call?.camera.disable();
+      call?.microphone.disable();
+    } else {
+      call?.camera.enable();
+      call?.microphone.enable();
+    }
+  }, [isMicCamToggeldOn, call?.camera, call?.microphone]);
+
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <DeviceSettings />
-      <button
-        onClick={() => setIsSetupComplete(true)}
-        className="mt-4 rounded-md bg-blue-500 px-4 py-2 text-white"
+    <div className="flex h-screen w-full flex-col items-center justify-center gap-3 text-white">
+      <h1 className="text-2xl font-bold">Setup</h1>
+      <VideoPreview />
+
+      <div className="flex h-16 items-center justify-center gap-3">
+        <label className="flex items-center justify-center gap-2 font-medium">
+          <input
+            type="checkbox"
+            checked={isMicCamToggeldOn}
+            onChange={(e) => setIsMicCamToggeldOn(e.target.checked)}
+          />
+          Join with mic and cam off
+        </label>
+        <DeviceSettings />
+      </div>
+
+      <Button
+        className="rounded-md bg-green-500 px- py-2.5"
+        onClick={() => {
+          call.join();
+
+          setIsSetupComplete(true);
+        }}
       >
-        Continue to Meeting
-      </button>
+        Join Meeting
+      </Button>
     </div>
   );
 };

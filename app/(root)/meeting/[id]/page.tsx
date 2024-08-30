@@ -40,7 +40,7 @@ const MeetingPage = () => {
           {!isSetupComplete ? (
             <MeetingSetup setIsSetupComplete={setIsSetupComplete} />
           ) : (
-            <MeetingRoom userName={user?.firstName || "Guest"} />
+            <MeetingRoom />
           )}
         </StreamTheme>
       </StreamCall>
