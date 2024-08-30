@@ -1,63 +1,72 @@
-"use client";
-
+import { useState } from "react";
 import {
-  DeviceSettings,
-  useCall,
-  VideoPreview,
+  useCallStateHooks,
+  useCalls,
+  useStreamVideoClient,
 } from "@stream-io/video-react-sdk";
-import React, { useEffect, useState } from "react";
-import { Button } from "./ui/button";
+import { Loader } from "lucide-react";
 
-const MeetingSetup = ({
+interface MeetingSetupProps {
+  setIsSetupComplete: (isComplete: boolean) => void;
+  setUserName: (name: string) => void;
+}
+
+const MeetingSetup: React.FC<MeetingSetupProps> = ({
   setIsSetupComplete,
-}: {
-  setIsSetupComplete: (value: boolean) => void;
+  setUserName,
 }) => {
-  const [isMicCamToggeldOn, setIsMicCamToggeldOn] = useState(false);
+  const [name, setName] = useState("");
+  const [isJoining, setIsJoining] = useState(false);
+  const calls = useCalls();
+  const call = calls[0];
+  const client = useStreamVideoClient();
+  const { useLocalParticipant } = useCallStateHooks();
+  const localParticipant = useLocalParticipant();
 
-  const call = useCall();
+  const handleJoin = async () => {
+    if (!call || !client || !name.trim()) return;
 
-  if (!call) {
-    throw new Error("usecall must be used inside StreamCall component");
+    setIsJoining(true);
+
+    try {
+      await call.join({
+        // Use 'video' and 'audio' instead of 'camera' and 'mic'
+        video: false,
+        audio: false,
+      });
+      // Instead of updating user data, we'll just set the name locally
+      setUserName(name);
+      setIsSetupComplete(true);
+    } catch (error) {
+      console.error("Error joining call:", error);
+      setIsJoining(false);
+    }
+  };
+
+  if (!call || !client) return <Loader />;
+
+  if (localParticipant) {
+    setIsSetupComplete(true);
+    return null;
   }
 
-  useEffect(() => {
-    if (isMicCamToggeldOn) {
-      call?.camera.disable();
-      call?.microphone.disable();
-    } else {
-      call?.camera.enable();
-      call?.microphone.enable();
-    }
-  }, [isMicCamToggeldOn, call?.camera, call?.microphone]);
-
   return (
-    <div className="flex h-screen w-full flex-col items-center justify-center gap-3 text-white">
-      <h1 className="text-2xl font-bold">Setup</h1>
-      <VideoPreview />
-
-      <div className="flex h-16 items-center justify-center gap-3">
-        <label className="flex items-center justify-center gap-2 font-medium">
-          <input
-            type="checkbox"
-            checked={isMicCamToggeldOn}
-            onChange={(e) => setIsMicCamToggeldOn(e.target.checked)}
-          />
-          Join with mic and cam off
-        </label>
-        <DeviceSettings />
-      </div>
-
-      <Button
-        className="rounded-md bg-green-500 px- py-2.5"
-        onClick={() => {
-          call.join();
-
-          setIsSetupComplete(true);
-        }}
+    <div className="flex h-screen flex-col items-center justify-center">
+      <h1 className="mb-4 text-2xl font-bold text-white">Join Meeting</h1>
+      <input
+        type="text"
+        placeholder="Enter your name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        className="mb-4 w-64 rounded-md border border-gray-300 p-2 text-black"
+      />
+      <button
+        onClick={handleJoin}
+        disabled={isJoining || !name.trim()}
+        className="rounded-md bg-blue-500 px-4 py-2 text-white disabled:bg-gray-400"
       >
-        Join Meeting
-      </Button>
+        {isJoining ? "Joining..." : "Join"}
+      </button>
     </div>
   );
 };
