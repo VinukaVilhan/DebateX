@@ -1,7 +1,7 @@
 "use client";
 
-import { useUser } from "@clerk/nextjs";
 import React from "react";
+import { useUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { useGetCallById } from "@/hooks/useGetCallById";
@@ -18,7 +18,7 @@ const Table = ({
 }) => {
   return (
     <div className="flex flex-col mb-6">
-      <h1 className="text-base font-medium text-black lg:text-xl">{title}:</h1>
+      <h1 className="text-base font-medium text-white lg:text-xl">{title}:</h1>
       <p className="text-sm font-bold text-white lg:text-xl">{description}</p>
     </div>
   );
@@ -50,29 +50,35 @@ const PersonalRoom = () => {
   };
 
   return (
-    <section className="personal-room-container flex flex-col gap-10 text-white p-6">
-      <h1 className="text-3xl font-bold mb-4">Personal Room</h1>
-      <div className="flex flex-col gap-8 xl:max-w-[900px]">
-        <Table title="Topic" description={`${user?.firstName}'s Meeting Room`} />
-        <Table title="Meeting ID" description={meetingID!} />
-        <Table title="Invite Link" description={meetingLink} />
-      </div>
-      <div className="flex gap-5 text-white">
-        <Button className="custom-button" onClick={startRoom}>
-          Start Meeting
-        </Button>
+    <div className="main-container">
+      {/* Body Section */}
+      <div className="body-section">
+        {/* Personal Room Section */}
+        <section className="personal-room-container flex flex-col gap-10 text-white p-6">
+          <h1 className="text-3xl font-bold mb-4">Personal Room</h1>
+          <div className="flex flex-col gap-8 xl:max-w-[900px]">
+            <Table title="Topic" description={`${user?.username}'s Meeting Room`} />
+            <Table title="Meeting ID" description={meetingID!} />
+            <Table title="Invite Link" description={meetingLink} />
+          </div>
+          <div className="flex gap-5 text-white">
+            <Button className="custom-button" onClick={startRoom}>
+              Start Meeting
+            </Button>
 
-        <Button
-          className="custom-button2"
-          onClick={() => {
-            navigator.clipboard.writeText(meetingLink);
-            toast({ title: "Link Copied" });
-          }}
-        >
-          Copy Invitation
-        </Button>
+            <Button
+              className="custom-button2"
+              onClick={() => {
+                navigator.clipboard.writeText(meetingLink);
+                toast({ title: "Link Copied" });
+              }}
+            >
+              Copy Invitation
+            </Button>
+          </div>
+        </section>
       </div>
-    </section>
+    </div>
   );
 };
 
