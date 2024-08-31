@@ -26,14 +26,39 @@
     background-color:  #14142A; 
   }
 
-  .personal-room-container {
-    background-color: #2C2C42;
-    padding: 20px; /* Adjust padding as needed */
-    border-radius: 8px; /* Optional: adds some rounding to the corners */
-    color: white; /* Adjust text color for contrast */
-  }
+ 
+  
+ /* Apply the background color to the entire page */
+body {
+  background-color: #2C2C42;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
 
-  .text-white {
-    color: white;
-  }
+html, body {
+  min-height: 100vh;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-top: 60px; /* Adjust if needed to account for the navbar height */
+}
+
+.body-section {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #2C2C42; /* Ensures the body section has the desired background color */
+}
+
+/* Ensure the personal-room-container takes the remaining space */
+.personal-room-container {
+  background-color: #2C2C42;
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+}
+
   
