@@ -7,7 +7,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { useGetCallById } from "@/hooks/useGetCallById";
 import { useStreamVideoClient } from "@stream-io/video-react-sdk";
 import { useRouter } from "next/navigation";
-import "../../../(root)/Styles/Personal-Room.css";
+import "../../../(root)/Styles/personal-room.css";
 
 const Table = ({
   title,
