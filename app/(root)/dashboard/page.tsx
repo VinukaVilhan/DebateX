@@ -11,11 +11,9 @@ import MeetingTypeList from "@/components/MeetingTypeList";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
 import { useUser } from "@clerk/nextjs";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -32,7 +30,7 @@ import ReactDatePicker from "react-datepicker";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
-import { addDays, format } from "date-fns";
+import { addDays } from "date-fns";
 import {
   Calendar as CalendarIcon,
   CassetteTape,
@@ -41,18 +39,6 @@ import {
 } from "lucide-react";
 import { DateRange } from "react-day-picker";
 
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-
-import MeetingSection2 from "@/components/MeetingSection2";
-import ScheduleCard2 from "@/components/ScheduleCard2";
-import ProfileCard2 from "@/components/ProfileCard2";
 import { CalendarDots } from "@phosphor-icons/react/dist/ssr";
 export default function Home() {
   const [date, setDate] = React.useState<DateRange | undefined>({
@@ -233,7 +219,7 @@ export default function Home() {
               <div className="bg-custom-gradient rounded-xl px-6 lg:px-10 py-6 lg:py-10 shadow-lg h-full">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
-                    <img
+                    <Image
                       src={user?.imageUrl || ""}
                       alt="Profile"
                       className="w-12 h-12 lg:w-16 lg:h-16 rounded-full object-cover"
