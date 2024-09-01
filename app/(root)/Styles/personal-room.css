@@ -8,7 +8,7 @@
 }
 
 .custom-button:hover {
-  background-color:#ffffff7a;
+  background-color:rgb(11, 122, 249);
 }
 
 
@@ -35,5 +35,5 @@
 }
 
 .copy-icon:hover {
-  color: #4e4176; /* Change color on hover */
+  color:rgb(126 34 206); /* Change color on hover */
 }
