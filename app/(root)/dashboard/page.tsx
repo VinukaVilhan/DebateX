@@ -118,7 +118,7 @@ export default function Home() {
       setCallDetails(call);
 
       if (!values.description) {
-        router.push(`/meeting/${call.id}`);
+        router.push(`/meeting/${call.id}?state=${meetingState}`);
       }
 
       toast({
@@ -407,7 +407,7 @@ export default function Home() {
                     />
                   </div>
                   <div className="bg-white text-black rounded px-10 py-2 text-center flex flex-col items-center">
-                    <h1 className="text-black mb-2">Personal Meeting ID</h1>
+                    <h3 className="text-black mb-2">Personal Meeting ID</h3>
                     <span className="flex items-center gap-2">
                       <p className="text-lg font-bold">305 208 1729-H</p>
                       <Image
