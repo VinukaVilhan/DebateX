@@ -1,12 +1,13 @@
 "use client";
 
-import '../styles/datePicker.css';
-
-
+import '../Styles/datePicker.css';
+import'../Styles/card.css'
+import CallList from '@/components/CallList'
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import "../../(root)/Styles/dashboard.css";
 import 'react-datepicker/dist/react-datepicker.css'
+import Link from "next/link";
 import MeetingModel from "@/components/MeetingModel";
 import MeetingTypeList from "@/components/MeetingTypeList";
 import { useRouter } from "next/navigation";
@@ -46,7 +47,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
+const Home = () => {
   const [date, setDate] = React.useState<DateRange | undefined>({
     from: new Date(2022, 0, 20),
     to: addDays(new Date(2022, 0, 20), 20),
@@ -238,9 +239,18 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                     <p className="text-sm">
                       {user?.primaryEmailAddress?.emailAddress}
                     </p>
-                    <span className="w-max inline-block px-3 py-1 mt-2 text-sm text-white bg-[#5A5DAF] rounded-full">
-                      Free plan
-                    </span>
+
+                    <p>
+                      <span className="w-max inline-block px-3 py-1 mt-2 text-sm text-white bg-purple-600 rounded-full">
+                        Free plan
+                      </span>
+                      <Link
+                        href="/pricing"
+                        className="text-xs underline ml-3 text-purple-500"
+                      >
+                        Change plan
+                      </Link>
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-center justify-evenly mt-5 bg-gray-200 p-9 rounded-2xl flex-col">
@@ -401,6 +411,7 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                             height={30}
                             alt="copy id icon"
                             className="icon-color"
+
                           />
                         </div>
                       </div>
@@ -440,6 +451,7 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                       Schedule a meeting
 
                     </button>
+                    
                   </CardContent>
                   <CardFooter></CardFooter>
                 </Card>
