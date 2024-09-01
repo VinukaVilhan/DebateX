@@ -50,34 +50,34 @@ const PersonalRoom = () => {
   };
 
   return (
-    <div className="main-container">
-      {/* Body Section */}
-      <div className="body-section">
-        {/* Personal Room Section */}
-        <section className="personal-room-container flex flex-col gap-10 text-white p-6">
-          <h1 className="text-3xl font-bold mb-4">Personal Room</h1>
-          <div className="flex flex-col gap-8 xl:max-w-[900px]">
-            <Table title="Topic" description={`${user?.username}'s Meeting Room`} />
-            <Table title="Meeting ID" description={meetingID!} />
-            <Table title="Invite Link" description={meetingLink} />
-          </div>
-          <div className="flex gap-5 text-white">
-            <Button className="custom-button" onClick={startRoom}>
-              Start Meeting
-            </Button>
+    <div className="body-section">
+      {/* Personal Room Section */}
+      <section className="personal-room-container flex flex-col gap-10 text-white p-12">
+        <h1 className="text-3xl font-bold mb-4">Personal Room</h1>
+        <div className="flex flex-col gap-8 xl:max-w-[900px]">
+          <Table
+            title="Topic"
+            description={`${user?.username}'s Meeting Room`}
+          />
+          <Table title="Meeting ID" description={meetingID!} />
+          <Table title="Invite Link" description={meetingLink} />
+        </div>
+        <div className="flex gap-5 text-white">
+          <Button className="custom-button" onClick={startRoom}>
+            Start Meeting
+          </Button>
 
-            <Button
-              className="custom-button2"
-              onClick={() => {
-                navigator.clipboard.writeText(meetingLink);
-                toast({ title: "Link Copied" });
-              }}
-            >
-              Copy Invitation
-            </Button>
-          </div>
-        </section>
-      </div>
+          <Button
+            className="custom-button2"
+            onClick={() => {
+              navigator.clipboard.writeText(meetingLink);
+              toast({ title: "Link Copied" });
+            }}
+          >
+            Copy Invitation
+          </Button>
+        </div>
+      </section>
     </div>
   );
 };
