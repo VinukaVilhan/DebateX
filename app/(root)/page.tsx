@@ -218,7 +218,7 @@ const HomePage = () => {
                 <br></br>
                 <h3 className="text-2xl font-bold">Vision</h3>
                 <br></br>
-                <p className="text-xl font-semibold">
+                <p className="text-xl text-center">
                   To be the premier online platform for fostering intellectual
                   growth, critical thinking, and respectful discourse through
                   engaging and dynamic debates.
@@ -229,7 +229,7 @@ const HomePage = () => {
                 <br></br>
                 <h3 className="text-2xl font-bold">Mission</h3>
                 <br></br>
-                <p className="text-xl font-semibold">
+                <p className="text-xl text-center">
                   Our mission is to foster a diverse community where individuals
                   can debate, challenge ideas, and enhance their communication
                   skills. We provide a supportive environment that promotes
