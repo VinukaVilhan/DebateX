@@ -18,6 +18,13 @@ const config = {
       },
     },
     extend: {
+      backgroundImage: {
+        "custom-gradient":
+          "linear-gradient(180deg, #1D1454 18.8%, #4E4176 100%)",
+      },
+      height: {
+        icon: "24px",
+      },
       colors: {
         dark: {
           1: "#1C1F2E",
@@ -26,12 +33,14 @@ const config = {
         },
         blue: {
           1: "#0E78F9",
+          2: "#14142A",
         },
 
-        field:{
+        field: {
           1: "#9A9292",
+          2: "#D6BBBB",
         },
-        background_of_dashboard:{1: '#9496D9'},
+        background_of_dashboard: { 1: "#9496D9" },
 
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -90,6 +99,5 @@ const config = {
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
-
 
 export default config;
