@@ -29,7 +29,7 @@ const config = {
         dark: {
           1: "#1C1F2E",
           2: "#161925",
-          customBackground: '#2C2C42', // Your custom color
+          customBackground: '#000000', // Your custom color
         },
         blue: {
           1: "#0E78F9",
