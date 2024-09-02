@@ -1,5 +1,5 @@
 .custom-button {
-  background-color: #005fff;
+  background-color: rgb(126 34 206);
   color: white;
   border: none;
   padding: 10px 20px;
@@ -8,21 +8,10 @@
 }
 
 .custom-button:hover {
-  background-color:#ffffff7a;
+  background-color:rgb(11, 122, 249);
 }
 
-.custom-button2 {
-  background-color: #ffffff7a;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
 
-.custom-button2:hover {
-  background-color: #005fff;
-}
 
 .body-section {
   background-color: #2c2c42; /* Ensure the body section has the desired background color */
@@ -35,4 +24,16 @@
   background-color: #000000;
   border-radius: 8px;
   color: white;
+}
+
+.copy-icon {
+  font-size: 26px; /* Adjust size as needed */
+  color: rgb(11, 122, 249); /* Set the color */
+  cursor: pointer; /* Change cursor on hover */
+  margin-left: 5px; /* Space between the link and the icon */
+  transition: color 0.3s ease;
+}
+
+.copy-icon:hover {
+  color:rgb(126 34 206); /* Change color on hover */
 }
