@@ -1,12 +1,11 @@
 "use client";
 
-import '../styles/datePicker.css';
-
+import "../styles/datePicker.css";
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import "../../(root)/Styles/dashboard.css";
-import 'react-datepicker/dist/react-datepicker.css'
+import "react-datepicker/dist/react-datepicker.css";
 import Link from "next/link";
 import MeetingModel from "@/components/MeetingModel";
 import MeetingTypeList from "@/components/MeetingTypeList";
@@ -156,7 +155,7 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                     </ul>
                   </CardContent>
                   <CardFooter className="mt-auto flex justify-center">
-                    <button className="bg-gray-300 text-black py-2 px-4 border-2 hover:bg-gray-500">
+                    <button className="bg-gray-300 text-black py-2 px-4 border-2 w-full hover:bg-gray-500">
                       Current Plan
                     </button>
                   </CardFooter>
@@ -296,19 +295,16 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                     img="/icons/schedule-meeting.svg"
                     title="Schedule"
                     handleClick={() => setMeetingState("isScheduleMeeting")}
-                    
                   />
                   <MeetingTypeList
                     img="/icons/join-meeting.svg"
                     title="Join"
                     handleClick={() => setMeetingState("isJoiningMeeting")}
-                  
                   />
                   <MeetingTypeList
                     img="/icons/host-meeting.svg"
                     title="Host"
                     handleClick={() => setMeetingState("isHostMeeting")}
-                    
                   />
                   <MeetingTypeList
                     img="/icons/cassette-tape.svg"
@@ -344,7 +340,9 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                         </label>
                         <ReactDatePicker
                           selected={values.dateTime}
-                          onChange={(date) => setValues({ ...values, dateTime: date! })}
+                          onChange={(date) =>
+                            setValues({ ...values, dateTime: date! })
+                          }
                           showTimeSelect
                           timeFormat="HH:mm"
                           timeIntervals={15}
@@ -411,7 +409,6 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                             height={30}
                             alt="copy id icon"
                             className="icon-color"
-
                           />
                         </div>
                       </div>
@@ -449,7 +446,6 @@ const Home = ({ className }: React.HTMLAttributes<HTMLDivElement>) => {
                       className="bg-[#5A5DAF] text-white py-2 px-4 rounded-lg"
                     >
                       Schedule a meeting
-
                     </button>
                   </CardContent>
                   <CardFooter></CardFooter>
