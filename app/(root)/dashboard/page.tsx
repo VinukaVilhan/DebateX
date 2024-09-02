@@ -219,13 +219,13 @@ export default function Home() {
               <div className="bg-custom-gradient rounded-xl px-6 lg:px-10 py-6 lg:py-10 shadow-lg h-full">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
-                  <Image
-                    src={user?.imageUrl || ""}
-                    alt="Profile"
-                    width={64} 
-                    height={64} 
-                    className="rounded-full object-cover"
-                  />
+                    <Image
+                      src={user?.imageUrl || ""}
+                      alt="Profile"
+                      width={64}
+                      height={64}
+                      className="rounded-full object-cover"
+                    />
                     <div>
                       <h2 className="text-white text-xl lg:text-2xl font-semibold">
                         {user?.firstName} {user?.lastName}
