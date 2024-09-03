@@ -1,7 +1,6 @@
 "use client";
 
 import "../Styles/datePicker.css";
-
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import "../../(root)/Styles/dashboard.css";
@@ -29,8 +28,7 @@ import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
 import ReactDatePicker from "react-datepicker";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-
-import { addDays } from "date-fns";
+import { addDays, format } from "date-fns";
 import {
   Calendar as CalendarIcon,
   CassetteTape,
@@ -39,7 +37,52 @@ import {
 } from "lucide-react";
 import { DateRange } from "react-day-picker";
 
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+
 import { CalendarDots } from "@phosphor-icons/react/dist/ssr";
+
+// Additional Imports
+import { format as formatDate } from "date-fns"; // Imported as formatDate to avoid conflict with the existing format import
+import Upcoming from "./upcoming/page";
+
+// Mock data for meetings (Replace this with your data fetching logic)
+const mockUpcomingMeetings = [
+  {
+    id: 1,
+    title: "Team Sync",
+    date: new Date(Date.now() + 24 * 60 * 60 * 1000), // Tomorrow
+    description: "Weekly team sync-up meeting",
+  },
+  {
+    id: 2,
+    title: "Client Call",
+    date: new Date(Date.now() + 48 * 60 * 60 * 1000), // Day after tomorrow
+    description: "Discuss project updates with the client",
+  },
+];
+
+const mockPreviousMeetings = [
+  {
+    id: 1,
+    title: "Project Kickoff",
+    date: new Date(Date.now() - 72 * 60 * 60 * 1000), // 3 days ago
+    description: "Initial meeting to kick off the new project",
+  },
+  {
+    id: 2,
+    title: "Monthly Review",
+    date: new Date(Date.now() - 168 * 60 * 60 * 1000), // 7 days ago
+    description: "Review last month's performance and set goals",
+  },
+];
+
 export default function Home() {
   const [date, setDate] = React.useState<DateRange | undefined>({
     from: new Date(2022, 0, 20),
@@ -104,7 +147,8 @@ export default function Home() {
       setCallDetails(call);
 
       if (!values.description) {
-        router.push(`/meeting/${call.id}`);
+        router.push(`/meeting/${call.id}?state=${meetingState}`);
+
       }
 
       toast({
@@ -120,6 +164,7 @@ export default function Home() {
 
   const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${callDetails?.id}`;
 
+
   return (
     <>
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
@@ -128,7 +173,6 @@ export default function Home() {
             <DialogTitle className="text-center text-3xl">
               Pricing & Plans
             </DialogTitle>
-
             <DialogDescription>
               <div className="flex justify-around mt-6 w-full gap-4">
                 <Card className="bg-white shadow-xl w-1/3 text-center p-4 flex flex-col rounded-2xl ">
@@ -141,7 +185,6 @@ export default function Home() {
                     <p className="text-3xl my-6">
                       <sup className="text-sm">$</sup>0
                     </p>
-
                     <ul className="text-left list-disc pl-1 text-xs">
                       <li>Meetings</li>
                       <li>Team Chat</li>
@@ -149,7 +192,7 @@ export default function Home() {
                     </ul>
                   </CardContent>
                   <CardFooter className="mt-auto flex justify-center">
-                    <button className="bg-gray-300 text-black py-2 px-4 border-2 hover:bg-gray-500">
+                    <button className="bg-gray-300 text-black py-2 px-4 border-2 w-full hover:bg-gray-500">
                       Current Plan
                     </button>
                   </CardFooter>
@@ -191,7 +234,6 @@ export default function Home() {
                       <sup className="text-sm">$</sup>10
                       <sub className="text-sm">/ 12 mo</sub>
                     </p>
-
                     <ul className="text-left list-disc pl-1 text-xs">
                       <li>All Pro Features</li>
                       <li>Custom Solutions</li>
@@ -209,7 +251,7 @@ export default function Home() {
           </DialogHeader>
         </DialogContent>
       </Dialog>
-      <div className="min-h-screen bg-black p-6">
+
         <main className="space-y-8">
           <div
             className="grid gap-6 px-4 lg:px-20 grid-cols-1 lg:grid-cols-[3fr_1fr]"
@@ -222,10 +264,21 @@ export default function Home() {
                     <Image
                       src={user?.imageUrl || ""}
                       alt="Profile"
-                      width={64}
-                      height={64}
-                      className="rounded-full object-cover"
+
+
+                     
+                      width={64} // Specify appropriate width
+                      height={64} // Specify appropriate height
+                      className="w-12 h-12 lg:w-16 lg:h-16 rounded-full object-cover"
+
+
+
                     />
+                      {/* width={64}
+                      height={64}
+                      className="rounded-full object-cover"  */}
+
+
                     <div>
                       <h2 className="text-white text-xl lg:text-2xl font-semibold">
                         {user?.firstName} {user?.lastName}
@@ -241,9 +294,9 @@ export default function Home() {
                 </div>
 
                 <div className="flex mt-4 flex-col lg:flex-row justify-between items-center">
-                  <div className="bg-white text-black rounded-lg p-4 w-full lg:w-1/2">
+                  <div className="bg-white text-black rounded px-10 p-4 w-full lg:w-1/2">
                     <h3 className="text-lg font-semibold mb-3">
-                      Included in your plan
+                      Included in your plan:
                     </h3>
                     <div className="flex flex-row space-y-4 lg:space-y-0 lg:space-x-10">
                       <span className="flex items-center space-x-1">
@@ -276,11 +329,15 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-8 items-center mt-4 lg:mt-0 lg:bg-red-500 xl:bg-pink-900 2xl:bg-green-600">
-                    <button className="border-white border font-bold text-white bg-blue-2 px-4 py-2 xl:px-3 2xl:px-5 xl:py-3 rounded text-sm 2xl:text-md">
+
+                  <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-8 items-center mt-4 lg:mt-0">
+                    <button className="border-white border font-bold text-white bg-blue-2 px-4 py-2 xl:px-3 2xl:px-5 xl:py-3 rounded text-sm 2xl:text-md"
+                    onClick={() => router.push('/pricing')}>
+
                       Change Plan
                     </button>
-                    <button className="bg-field-2 text-black font-bold border-2 border-white px-4 py-2 lg:px-6 lg:py-3 xl:p-3 rounded text-sm 2xl:text-md">
+                    <button className="bg-field-2 text-black font-bold border-2 border-white px-4 py-2 lg:px-6 lg:py-3 xl:p-3 rounded text-sm 2xl:text-md"
+                    onClick={() => router.push('/dashboard/personal-room')}>
                       Personal - Room
                     </button>
                   </div>
@@ -332,7 +389,7 @@ export default function Home() {
                                 description: e.target.value,
                               })
                             }
-                          />{" "}
+                          />
                         </div>
                         <div className="flex w-full flex-col gap-2.5">
                           <label className="text-base font-normal leading-[22.4px] text-sky-2">
@@ -395,7 +452,7 @@ export default function Home() {
                     />
                   </div>
                   <div className="bg-white text-black rounded px-10 py-2 text-center flex flex-col items-center">
-                    <h1 className="text-black mb-2">Personal Meeting ID</h1>
+                    <h3 className="text-black mb-2">Personal Meeting ID</h3>
                     <span className="flex items-center gap-2">
                       <p className="text-lg font-bold">305 208 1729-H</p>
                       <Image
@@ -404,6 +461,10 @@ export default function Home() {
                         height={30}
                         alt="copy id icon"
                         className="cursor-pointer icon-color"
+                        onClick={() => {
+                          navigator.clipboard.writeText(meetingLink);
+                          toast({ title: "Link Copied" });
+                        }}
                       />
                     </span>
                   </div>
@@ -411,8 +472,32 @@ export default function Home() {
               </div>
             </span>
           </div>
-        </main>
+       
+
+      <div className="bg-custom-gradient rounded-xl px-3 lg:px-10 py-10 lg:py-10 shadow-lg lg:mx-20">
+      <div className="text-center">
+        <h5 className="text-white text-lg lg:text-xl font-semibold mb-10">
+          Discover your past and upcoming debates in one convenient spot. Quickly review previous<br></br> discussions
+          or get ready for what's ahead—everything you need to manage your DebateX <br></br>journey is right here.
+        </h5>
+
+        <div className="flex justify-center gap-4">
+          <Button 
+          className="custom-button1 border-2 border-white text-black py-2 px-4 rounded-lg"
+          onClick={() => router.push('/dashboard/upcoming')}
+          >
+            Upcoming meetings
+          </Button>
+          <Button 
+          className="custom-button2 border-2 border-white text-black py-2 px-4 rounded-lg"
+          onClick={() => router.push('/dashboard/previous')}
+          >
+            Previous meetings
+          </Button>
+          </div>
+        </div>
       </div>
+      </main>
     </>
   );
 }
