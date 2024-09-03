@@ -6,7 +6,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { useGetCallById } from "@/hooks/useGetCallById";
 import { useStreamVideoClient } from "@stream-io/video-react-sdk";
 import { useRouter } from "next/navigation";
-import { FiCopy } from 'react-icons/fi';
+import { FiCopy } from "react-icons/fi";
 import "../../../(root)/Styles/personal-room.css";
 
 const Table = ({
@@ -29,7 +29,7 @@ const Table = ({
   );
 };
 
-const personalRoom = () => {
+const PersonalRoom = () => {
   const { user } = useUser();
   const meetingID = user?.id;
   const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${meetingID}?personal=true`;
@@ -64,9 +64,9 @@ const personalRoom = () => {
             description={`${user?.username}'s Meeting Room`}
           />
           <Table title="Meeting ID" description={meetingID!} />
-          <Table 
-            title="Invite Link" 
-            description={meetingLink} 
+          <Table
+            title="Invite Link"
+            description={meetingLink}
             icon={
               <FiCopy
                 className="copy-icon"
@@ -88,5 +88,4 @@ const personalRoom = () => {
   );
 };
 
-export default personalRoom;
-
+export default PersonalRoom;
