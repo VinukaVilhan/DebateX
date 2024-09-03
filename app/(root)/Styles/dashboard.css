@@ -1,9 +1,7 @@
 .icon-color {
-    filter: invert(20%) brightness(50%);
-  }
+  filter: invert(20%) brightness(50%);
+}
 
 /* .flex{
     padding-right: 25px;
 } */
-
-
