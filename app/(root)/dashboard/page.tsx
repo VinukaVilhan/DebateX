@@ -104,7 +104,7 @@ export default function Home() {
       setCallDetails(call);
 
       if (!values.description) {
-        router.push(`/meeting/${call.id}`);
+        router.push(`/meeting/${call.id}?state=${meetingState}`);
       }
 
       toast({
@@ -222,10 +222,17 @@ export default function Home() {
                     <Image
                       src={user?.imageUrl || ""}
                       alt="Profile"
-                      width={64}
+
+<!--                       width={64}
                       height={64}
-                      className="rounded-full object-cover"
+                      className="rounded-full object-cover" -->
+
+                      width={64} // Specify appropriate width
+                      height={64} // Specify appropriate height
+                      className="w-12 h-12 lg:w-16 lg:h-16 rounded-full object-cover"
+
                     />
+
                     <div>
                       <h2 className="text-white text-xl lg:text-2xl font-semibold">
                         {user?.firstName} {user?.lastName}
@@ -395,7 +402,7 @@ export default function Home() {
                     />
                   </div>
                   <div className="bg-white text-black rounded px-10 py-2 text-center flex flex-col items-center">
-                    <h1 className="text-black mb-2">Personal Meeting ID</h1>
+                    <h3 className="text-black mb-2">Personal Meeting ID</h3>
                     <span className="flex items-center gap-2">
                       <p className="text-lg font-bold">305 208 1729-H</p>
                       <Image
