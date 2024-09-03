@@ -238,6 +238,7 @@ export default function Home() {
                       height={64} // Specify appropriate height
                       className="w-12 h-12 lg:w-16 lg:h-16 rounded-full object-cover"
 
+
                     />
                       {/* width={64}
                       height={64}
