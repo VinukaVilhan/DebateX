@@ -24,7 +24,7 @@ const Pricing = () => {
         <h1 className="text-4xl font-bold text-center mt-24">
           Choose Your Plan
         </h1>
-        <p className="text-center text-gray-500 mt-2">
+        <p className="text-center text-black-500 mt-2">
           Start with a 1-month free trial. No credit card required.
         </p>
       </header>
