@@ -1,8 +1,6 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
-
 import {
   CallControls,
   CallParticipantsList,
@@ -14,13 +12,9 @@ import {
   useCallStateHooks,
 } from "@stream-io/video-react-sdk";
 import { useRouter, useSearchParams } from "next/navigation";
-
 import { Users, LayoutList, Coins, Copy, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Timer from "./Timer";
-
-import { useToast } from "@/components/ui/use-toast";
-
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -31,9 +25,8 @@ import {
 import Loader from "./Loader";
 import { cn } from "@/lib/utils";
 import EndCallButton from "./EndCallButton";
-import ShareModal from "./ui/ShareModal";
-type CallLayoutType = "grid" | "speaker-left" | "speaker-right";
 
+type CallLayoutType = "grid" | "speaker-left" | "speaker-right";
 
 interface CoinTossProps {
   team1: string;
@@ -203,31 +196,15 @@ const CopyLinkButton = () => {
 };
 
 const MeetingRoom = () => {
-
-interface MeetingRoomProps {
-  meetingID: string;
-}
-
-const MeetingRoom = ({ meetingID }: MeetingRoomProps) => {
-
   const searchParams = useSearchParams();
   const isPersonalRoom = !!searchParams.get("personal");
   const router = useRouter();
   const [layout, setLayout] = useState<CallLayoutType>("speaker-left");
   const [showParticipants, setShowParticipants] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
   const { useCallCallingState } = useCallStateHooks();
-
   const [coinTossResult, setCoinTossResult] = useState<string | null>(null);
 
   const call = useCall();
-
-  const { toast } = useToast();
-
-  const meetingLink = `/meeting/${meetingID}`;
-
-  // Check the current calling state
-
   const callingState = useCallCallingState();
 
   const isHost = call?.isCreatedByMe || false;
@@ -257,23 +234,15 @@ const MeetingRoom = ({ meetingID }: MeetingRoomProps) => {
         return <PaginatedGridLayout />;
       case "speaker-right":
         return <SpeakerLayout participantsBarPosition="left" />;
-      case "speaker-left":
       default:
         return <SpeakerLayout participantsBarPosition="right" />;
     }
   };
 
-
   const handleCoinToss = (winner: string, side: "pro" | "con") => {
     const result = `${winner} will argue for the ${side} side.`;
     setCoinTossResult(result);
     setTimeout(() => setCoinTossResult(null), 5000); // Clear result after 5 seconds
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(meetingLink);
-    toast({
-      title: "Meeting link copied to clipboard!",
-    });
   };
 
   return (
@@ -290,14 +259,11 @@ const MeetingRoom = ({ meetingID }: MeetingRoomProps) => {
           <CallParticipantsList onClose={() => setShowParticipants(false)} />
         </div>
       </div>
-
       {/* Timer */}
       <div className="fixed top-0 right-0 m-4">
         <Timer />
       </div>
-
-      {/* Video layout and call controls */}
-
+      {/* video layout and call controls */}
       <div className="fixed bottom-0 flex w-full items-center justify-center gap-5">
         <CallControls onLeave={() => router.push(`/`)} />
 
@@ -312,17 +278,16 @@ const MeetingRoom = ({ meetingID }: MeetingRoomProps) => {
               <div key={index}>
                 <DropdownMenuItem
                   onClick={() =>
-                    setLayout(item.toLowerCase().replace(" ", "-") as CallLayoutType)
+                    setLayout(item.toLowerCase() as CallLayoutType)
                   }
                 >
                   {item}
                 </DropdownMenuItem>
-                {index < 2 && <DropdownMenuSeparator className="border-dark-1" />}
+                <DropdownMenuSeparator className="border-dark-1" />
               </div>
             ))}
           </DropdownMenuContent>
         </DropdownMenu>
-
         <CallStatsButton />
         <button onClick={() => setShowParticipants((prev) => !prev)}>
           <div className="cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]">
@@ -337,9 +302,7 @@ const MeetingRoom = ({ meetingID }: MeetingRoomProps) => {
           isHost={isHost}
         />
         {!isPersonalRoom && <EndCallButton />}
-        <button onClick={() => setIsModalOpen(true)}>Share</button> {/* Show modal on click */}
       </div>
-
       {coinTossResult && (
         <div className="absolute top-4 left-1/2 transform -translate-x-1/2 bg-[#19232d] px-4 py-2 rounded-xl">
           {coinTossResult}
@@ -348,16 +311,6 @@ const MeetingRoom = ({ meetingID }: MeetingRoomProps) => {
       <AnimatePresence>
         {coinTossResult && <ResultDisplay result={coinTossResult} />}
       </AnimatePresence>
-
-
-      {/* Share Modal */}
-      <ShareModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        onCopy={handleCopy}
-        meetingLink={meetingLink}
-      />
-
     </section>
   );
 };
