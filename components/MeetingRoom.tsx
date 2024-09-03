@@ -202,7 +202,7 @@ const CopyLinkButton = () => {
   );
 };
 
-const MeetingRoom = () => {
+
 
 interface MeetingRoomProps {
   meetingID: string;
@@ -361,5 +361,5 @@ const MeetingRoom = ({ meetingID }: MeetingRoomProps) => {
     </section>
   );
 };
-
+}
 export default MeetingRoom;
