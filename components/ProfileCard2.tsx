@@ -1,13 +1,16 @@
 import React from 'react';
+import Image from 'next/image';
 
 export default function ProfileCard2() {
   return (
     <div className="bg-gradient-to-r from-purple-900 to-purple-700 rounded-xl p-6 flex items-center justify-between shadow-lg">
       <div className="flex items-center space-x-4">
-        <img
-                      src={user?.imageUrl || ""}
-                      alt="Profile"
-          className="w-16 h-16 rounded-full object-cover"
+      <Image
+        src="/profile.jpg" // replace with actual image path
+        alt="Profile"
+        width={64} // equivalent to w-16 in Tailwind CSS
+        height={64} // equivalent to h-16 in Tailwind CSS
+        className="rounded-full object-cover"
         />
         <div>
           <h2 className="text-white text-2xl font-semibold">Michelle James</h2>

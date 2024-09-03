@@ -36,6 +36,7 @@ import {
   UserSquare,
 } from "lucide-react";
 import { DateRange } from "react-day-picker";
+
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -44,6 +45,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+
 import { CalendarDots } from "@phosphor-icons/react/dist/ssr";
 
 // Additional Imports
@@ -190,7 +192,7 @@ export default function Home() {
                     </ul>
                   </CardContent>
                   <CardFooter className="mt-auto flex justify-center">
-                    <button className="bg-gray-300 text-black py-2 px-4 border-2 hover:bg-gray-500">
+                    <button className="bg-gray-300 text-black py-2 px-4 border-2 w-full hover:bg-gray-500">
                       Current Plan
                     </button>
                   </CardFooter>
@@ -249,7 +251,7 @@ export default function Home() {
           </DialogHeader>
         </DialogContent>
       </Dialog>
-      <div className="bg-black p-6">
+
         <main className="space-y-8">
           <div
             className="grid gap-6 px-4 lg:px-20 grid-cols-1 lg:grid-cols-[3fr_1fr]"
@@ -262,10 +264,21 @@ export default function Home() {
                     <Image
                       src={user?.imageUrl || ""}
                       alt="Profile"
-                      width={64}
-                      height={64}
+
+
+                     
+                      width={64} // Specify appropriate width
+                      height={64} // Specify appropriate height
                       className="w-12 h-12 lg:w-16 lg:h-16 rounded-full object-cover"
+
+
+
                     />
+                      {/* width={64}
+                      height={64}
+                      className="rounded-full object-cover"  */}
+
+
                     <div>
                       <h2 className="text-white text-xl lg:text-2xl font-semibold">
                         {user?.firstName} {user?.lastName}
@@ -316,9 +329,11 @@ export default function Home() {
                     </div>
                   </div>
 
+
                   <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-8 items-center mt-4 lg:mt-0">
                     <button className="border-white border font-bold text-white bg-blue-2 px-4 py-2 xl:px-3 2xl:px-5 xl:py-3 rounded text-sm 2xl:text-md"
                     onClick={() => router.push('/pricing')}>
+
                       Change Plan
                     </button>
                     <button className="bg-field-2 text-black font-bold border-2 border-white px-4 py-2 lg:px-6 lg:py-3 xl:p-3 rounded text-sm 2xl:text-md"
