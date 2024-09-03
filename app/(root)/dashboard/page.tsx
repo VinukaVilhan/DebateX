@@ -473,7 +473,6 @@ export default function Home() {
             </span>
           </div>
         </main>
-      </div>
 
       <div className="bg-custom-gradient rounded-xl px-3 lg:px-10 py-10 lg:py-10 shadow-lg lg:mx-20">
       <div className="text-center">
