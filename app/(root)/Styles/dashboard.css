@@ -2,8 +2,43 @@
     filter: invert(20%) brightness(50%);
   }
 
-/* .flex{
-    padding-right: 25px;
-} */
+  .custom-button1 {
+    background-color: #D6BBBB;
+    color: black;
+    font-weight: bolder;
+    border-color: white;
+    border-width: 3px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .custom-button1:hover {
+    background-color:rgb(161 161 161);
+  }
 
+  .custom-button2 {
+    background-color: #D6BBBB;
+    color: black;
+    font-weight: bolder;
+    border-color: white;
+    border-width: 3px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .custom-button2:hover {
+    background-color:rgb(161 161 161);
+  }
+
+  @media (min-width: 1024px) {
+
+    .lg\:mx-20 {
+      margin-left: 6rem;
+      margin-right: 6rem;
+    }
+  }  
 
