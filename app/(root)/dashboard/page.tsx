@@ -39,6 +39,16 @@ import {
 } from "lucide-react";
 import { DateRange } from "react-day-picker";
 
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+
+
 import { CalendarDots } from "@phosphor-icons/react/dist/ssr";
 export default function Home() {
   const [date, setDate] = React.useState<DateRange | undefined>({
@@ -223,15 +233,17 @@ export default function Home() {
                       src={user?.imageUrl || ""}
                       alt="Profile"
 
-<!--                       width={64}
-                      height={64}
-                      className="rounded-full object-cover" -->
-
+                     
                       width={64} // Specify appropriate width
                       height={64} // Specify appropriate height
                       className="w-12 h-12 lg:w-16 lg:h-16 rounded-full object-cover"
 
+
                     />
+                      {/* width={64}
+                      height={64}
+                      className="rounded-full object-cover"  */}
+
 
                     <div>
                       <h2 className="text-white text-xl lg:text-2xl font-semibold">
@@ -283,7 +295,7 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-8 items-center mt-4 lg:mt-0 lg:bg-red-500 xl:bg-pink-900 2xl:bg-green-600">
+                  <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-8 items-center mt-4 lg:mt-0 ">
                     <button className="border-white border font-bold text-white bg-blue-2 px-4 py-2 xl:px-3 2xl:px-5 xl:py-3 rounded text-sm 2xl:text-md">
                       Change Plan
                     </button>
