@@ -11,11 +11,9 @@ import MeetingTypeList from "@/components/MeetingTypeList";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
 import { useUser } from "@clerk/nextjs";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -32,7 +30,7 @@ import ReactDatePicker from "react-datepicker";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
-import { addDays, format } from "date-fns";
+import { addDays } from "date-fns";
 import {
   Calendar as CalendarIcon,
   CassetteTape,
@@ -234,10 +232,17 @@ export default function Home() {
                     <Image
                       src={user?.imageUrl || ""}
                       alt="Profile"
+
+                     
                       width={64} // Specify appropriate width
                       height={64} // Specify appropriate height
                       className="w-12 h-12 lg:w-16 lg:h-16 rounded-full object-cover"
+
                     />
+                      {/* width={64}
+                      height={64}
+                      className="rounded-full object-cover"  */}
+
 
                     <div>
                       <h2 className="text-white text-xl lg:text-2xl font-semibold">
