@@ -50,9 +50,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-import MeetingSection2 from "@/components/MeetingSection2";
-import ScheduleCard2 from "@/components/ScheduleCard2";
-import ProfileCard2 from "@/components/ProfileCard2";
+
 import { CalendarDots } from "@phosphor-icons/react/dist/ssr";
 export default function Home() {
   const [date, setDate] = React.useState<DateRange | undefined>({
@@ -291,7 +289,7 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-8 items-center mt-4 lg:mt-0 lg:bg-red-500 xl:bg-pink-900 2xl:bg-green-600">
+                  <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-8 items-center mt-4 lg:mt-0 ">
                     <button className="border-white border font-bold text-white bg-blue-2 px-4 py-2 xl:px-3 2xl:px-5 xl:py-3 rounded text-sm 2xl:text-md">
                       Change Plan
                     </button>
