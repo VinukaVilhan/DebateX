@@ -209,6 +209,7 @@ export default function Home() {
           </DialogHeader>
         </DialogContent>
       </Dialog>
+
       <div className="min-h-screen bg-black p-6">
         <main className="space-y-8">
           <div
