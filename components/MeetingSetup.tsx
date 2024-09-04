@@ -24,7 +24,7 @@ import {
   getDoc,
   updateDoc,
 } from "firebase/firestore";
-import { db } from "@/app/firebase/page";
+import { db } from "@/app/firebase/layout";
 
 interface MeetingSetupProps {
   setIsSetupComplete: (value: boolean) => void;
