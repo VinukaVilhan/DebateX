@@ -4,7 +4,6 @@ import { useUser } from "@clerk/nextjs";
 import { StreamCall, StreamTheme } from "@stream-io/video-react-sdk";
 import { useParams, useRouter } from "next/navigation"; // Import useRouter
 import { Loader } from "lucide-react";
-
 import { useGetCallById } from "@/hooks/useGetCallById";
 import Alert from "@/components/Alert";
 import MeetingSetup from "@/components/MeetingSetup";
@@ -99,7 +98,10 @@ const MeetingPage = () => {
               meetingState={meetingState || ""}
             />
           ) : (
-            <MeetingRoom meetingID={meetingId} />
+            <MeetingRoom  />
+          
+
+            
           )}
         </StreamTheme>
       </StreamCall>

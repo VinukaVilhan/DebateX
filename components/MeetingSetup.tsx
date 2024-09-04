@@ -177,7 +177,7 @@ const MeetingSetup: React.FC<MeetingSetupProps> = ({
                   className="bg-blue-500 mt-4"
                   onClick={handleLetsGoClick}
                 >
-                  Ok I added the teams, let's go
+                  Ok I added the teams, let&aposl;s go
                 </Button>
               </DialogDescription>
             </DialogHeader>
