@@ -478,7 +478,7 @@ export default function Home() {
       <div className="text-center">
         <h5 className="text-white text-lg lg:text-xl font-semibold mb-10">
           Discover your past and upcoming debates in one convenient spot. Quickly review previous<br></br> discussions
-          or get ready for what's ahead—everything you need to manage your DebateX <br></br>journey is right here.
+          or get ready for what&apos;s ahead—everything you need to manage your DebateX <br></br>journey is right here.
         </h5>
 
         <div className="flex justify-center gap-4">
