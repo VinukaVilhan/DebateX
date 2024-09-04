@@ -17,7 +17,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Plus, Trash, Edit2 } from "lucide-react";
 import { getFirestore, collection, addDoc,setDoc,doc } from "firebase/firestore";
-import { db } from "@/app/firebase/page";
+import { db } from "@/lib/firebaseConfig";
 
 interface MeetingSetupProps {
   setIsSetupComplete: (value: boolean) => void;
@@ -177,7 +177,7 @@ const MeetingSetup: React.FC<MeetingSetupProps> = ({
                   className="bg-blue-500 mt-4"
                   onClick={handleLetsGoClick}
                 >
-                  Ok I added the teams, let&aposl;s go
+                  Ok, I added the teams, let&apos;s go
                 </Button>
               </DialogDescription>
             </DialogHeader>
