@@ -24,6 +24,7 @@ interface MeetingSetupProps {
   userId: string;
   meetingId: string;
   meetingState: string;
+  userName : string;
 }
 
 const MeetingSetup: React.FC<MeetingSetupProps> = ({

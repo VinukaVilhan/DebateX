@@ -86,6 +86,7 @@ const MeetingPage = () => {
   if (user) console.log(user.id, id, meetingState);
 
   const meetingId = Array.isArray(id) ? id[0] : id || "";
+  const userName = `${user?.firstName ?? ""} ${user?.lastName ?? ""}`.trim();
 
   return (
     <main className="h-screen w-full">
@@ -97,9 +98,10 @@ const MeetingPage = () => {
               userId={user.id}
               meetingId={meetingId}
               meetingState={meetingState || ""}
+              userName = {userName||""}
             />
           ) : (
-            <MeetingRoom meetingID={meetingId} />
+            <MeetingRoom />
           )}
         </StreamTheme>
       </StreamCall>
