@@ -37,18 +37,17 @@ const MeetingPage = () => {
         const meetingDocRef = doc(db, "meetings", meetingId);
         console.log("meetingdoc ref ", meetingDocRef);
         const meetingDocSnap = await getDoc(meetingDocRef);
-        console.log("meetingDocSnap", meetingDocSnap)
+        console.log("meetingDocSnap", meetingDocSnap);
         if (meetingDocSnap.exists()) {
           const meetingData = meetingDocSnap.data();
           console.log("meetingData", meetingData);
-          console.log("user id", user.id)
-          console.log("meetingData.userid", meetingData.userId)
+          console.log("user id", user.id);
+          console.log("meetingData.userid", meetingData.userId);
           if (meetingData.userId !== user.id) {
             // Redirect if user ID does not match
             console.log("redirected");
             router.push(`/meeting/${id}?state=isJoiningMeeting`);
-          }
-          else {
+          } else {
             console.log("user is the host");
           }
         } else {
@@ -85,6 +84,7 @@ const MeetingPage = () => {
   if (user) console.log(user.id, id, meetingState);
 
   const meetingId = Array.isArray(id) ? id[0] : id || "";
+  const userName = `${user?.firstName ?? ""} ${user?.lastName ?? ""}`.trim();
 
   return (
     <main className="h-screen w-full">
@@ -96,12 +96,12 @@ const MeetingPage = () => {
               userId={user.id}
               meetingId={meetingId}
               meetingState={meetingState || ""}
+              userName = {userName||""}
             />
           ) : (
-            <MeetingRoom  />
-          
 
-            
+            <MeetingRoom  />
+
           )}
         </StreamTheme>
       </StreamCall>
