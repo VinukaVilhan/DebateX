@@ -37,18 +37,17 @@ const MeetingPage = () => {
         const meetingDocRef = doc(db, "meetings", meetingId);
         console.log("meetingdoc ref ", meetingDocRef);
         const meetingDocSnap = await getDoc(meetingDocRef);
-        console.log("meetingDocSnap", meetingDocSnap)
+        console.log("meetingDocSnap", meetingDocSnap);
         if (meetingDocSnap.exists()) {
           const meetingData = meetingDocSnap.data();
           console.log("meetingData", meetingData);
-          console.log("user id", user.id)
-          console.log("meetingData.userid", meetingData.userId)
+          console.log("user id", user.id);
+          console.log("meetingData.userid", meetingData.userId);
           if (meetingData.userId !== user.id) {
             // Redirect if user ID does not match
             console.log("redirected");
             router.push(`/meeting/${id}?state=isJoiningMeeting`);
-          }
-          else {
+          } else {
             console.log("user is the host");
           }
         } else {
@@ -99,9 +98,6 @@ const MeetingPage = () => {
             />
           ) : (
             <MeetingRoom  />
-          
-
-            
           )}
         </StreamTheme>
       </StreamCall>
