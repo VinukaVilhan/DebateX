@@ -24,7 +24,7 @@ import {
   getDoc,
   updateDoc,
 } from "firebase/firestore";
-import { db } from "@/app/firebase/page";
+import { db } from "@/app/firebase/layout";
 
 interface MeetingSetupProps {
   setIsSetupComplete: (value: boolean) => void;
@@ -201,7 +201,7 @@ const MeetingSetup: React.FC<MeetingSetupProps> = ({
                   className="bg-blue-500 mt-4"
                   onClick={handleLetsGoClick}
                 >
-                  Ok I added the teams, let&aposl;s go
+                  Ok, I added the teams, let&apos;s go
                 </Button>
               </DialogDescription>
             </DialogHeader>

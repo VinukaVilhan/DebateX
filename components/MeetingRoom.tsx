@@ -261,7 +261,7 @@ const MeetingRoom = () => {
       </div>
       {/* Timer */}
       <div className="fixed top-0 right-0 m-4">
-        <Timer isHost={isHost}/>
+        <Timer />
       </div>
       {/* video layout and call controls */}
       <div className="fixed bottom-0 flex w-full items-center justify-center gap-5">

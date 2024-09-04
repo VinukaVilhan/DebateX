@@ -2,10 +2,9 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import Draggable from "react-draggable";
 import { Clock, Play, Pause, RefreshCcw } from "lucide-react";
-import { useCall } from "@stream-io/video-react-sdk";
 import '../app/(root)/Styles/timer.css';
 
-const Timer = ({ isHost }: {isHost : boolean}) => {
+const Timer = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [isRunning, setIsRunning] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
@@ -15,20 +14,11 @@ const Timer = ({ isHost }: {isHost : boolean}) => {
   const [initialSeconds, setInitialSeconds] = useState(0);
   const [showClockButton, setShowClockButton] = useState(true);
   const timerRef = useRef<HTMLDivElement>(null);
-  const call = useCall();
-
-  const broadcastTimerState = useCallback((isRunning: boolean, isPaused: boolean) => {
-    call?.sendCustomEvent({
-      type: "timer_update",
-      data: { minutes, seconds, isRunning, isPaused },
-    });
-  }, [call, minutes, seconds]);
 
   const stopTimer = useCallback(() => {
     setIsRunning(false);
     setIsPaused(false);
-    broadcastTimerState(false, false);
-  }, [broadcastTimerState]);
+  }, []);
 
   useEffect(() => {
     if (isRunning && !isPaused) {
@@ -44,58 +34,57 @@ const Timer = ({ isHost }: {isHost : boolean}) => {
             setMinutes(minutes - 1);
             setSeconds(59);
           }
-          broadcastTimerState(true, false);
         }, 1000);
 
         return () => clearInterval(id);
       }
     }
-  }, [isRunning, isPaused, minutes, seconds, stopTimer, broadcastTimerState]);
+  }, [isRunning, isPaused, minutes, seconds, stopTimer]);
 
   const handleStart = () => {
-    if (isHost && (minutes > 0 || seconds > 0)) {
+    if (minutes > 0 || seconds > 0) {
       setInitialMinutes(minutes);
       setInitialSeconds(seconds);
       setIsEditing(false);
       setIsRunning(true);
       setIsPaused(false);
       setShowClockButton(false);
-      broadcastTimerState(true, false);
     }
   };
 
   const handlePlay = () => {
-    if (isHost && !isRunning) {
+    if (!isRunning) {
       setIsRunning(true);
-      setIsPaused(false);
-      broadcastTimerState(true, false);
     }
+    setIsPaused(false);
   };
 
   const handlePause = () => {
-    if (isHost && isRunning) {
+    if (isRunning) {
       setIsPaused(true);
       setIsRunning(false);
-      broadcastTimerState(false, true);
     }
   };
 
   const handleReset = () => {
-    if (isHost) {
-      stopTimer();
-      setMinutes(initialMinutes);
-      setSeconds(initialSeconds);
-      setIsEditing(true);
-      setShowClockButton(false);
-      broadcastTimerState(false, false);
-    }
+    stopTimer();
+    setMinutes(initialMinutes);
+    setSeconds(initialSeconds);
+    setIsEditing(true);
+    setShowClockButton(false);
+  };
+
+  const handleStop = () => {
+    stopTimer();
+    setMinutes(0);
+    setSeconds(0);
+    setIsEditing(true);
+    setShowClockButton(false);
   };
 
   const handleClockButtonClick = () => {
-    if (isHost) {
-      setIsEditing(true);
-      setShowClockButton(false);
-    }
+    setIsEditing(true);
+    setShowClockButton(false);
   };
 
   const handleClickOutside = useCallback((event: MouseEvent) => {
@@ -111,25 +100,6 @@ const Timer = ({ isHost }: {isHost : boolean}) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [handleClickOutside]);
-
-  useEffect(() => {
-    const handleCustomEvent = (event: {type : string; data : any}) => {
-      if (event.type === "timer_update" && !isHost) {
-        const { minutes, seconds, isRunning, isPaused } = event.data;
-        setMinutes(minutes);
-        setSeconds(seconds);
-        setIsRunning(isRunning);
-        setIsPaused(isPaused);
-        setIsEditing(false);
-        setShowClockButton(false);
-      }
-    };
-
-    call?.on("custom_event" as any, handleCustomEvent);
-    return () => {
-      call?.off("custom_event" as any, handleCustomEvent);
-    };
-  }, [call, isHost]);
 
   return (
     <Draggable>
