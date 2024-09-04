@@ -159,7 +159,7 @@ export default function Home() {
                     </ul>
                   </CardContent>
                   <CardFooter className="mt-auto flex justify-center">
-                    <button className="bg-gray-300 text-black py-2 px-4 border-2 hover:bg-gray-500">
+                    <button className="bg-gray-300 text-black py-2 px-4 border-2 w-full hover:bg-gray-500">
                       Current Plan
                     </button>
                   </CardFooter>
@@ -219,6 +219,7 @@ export default function Home() {
           </DialogHeader>
         </DialogContent>
       </Dialog>
+
       <div className="min-h-screen bg-black p-6">
         <main className="space-y-8">
           <div
