@@ -25,10 +25,13 @@ import {
 import Loader from "./Loader";
 import { cn } from "@/lib/utils";
 import EndCallButton from "./EndCallButton";
+
 import { doc, getDoc, updateDoc } from "firebase/firestore"; // Import Firebase functions
 import { db } from "@/app/firebase/layout";
 import { useUser } from "@clerk/nextjs";
 import ParticipantsView from "./ParticipantsView";
+import { setDoc } from "firebase/firestore";
+
 
 type CallLayoutType = "grid" | "speaker-left" | "speaker-right";
 
@@ -220,10 +223,13 @@ const MeetingRoom: React.FC<MeetingRoomProps> = ({ userId, meetingId }) => {
   const [showParticipants, setShowParticipants] = useState(false);
   const { useCallCallingState } = useCallStateHooks();
   const [coinTossResult, setCoinTossResult] = useState<string | null>(null);
+
   const [hasJoined, setHasJoined] = useState(false);
   const [team1, setTeam1] = useState<string>("Team A");
   const [team2, setTeam2] = useState<string>("Team B");
   const [loadingTeams, setLoadingTeams] = useState(true);
+  const [showNoteInput, setShowNoteInput] = useState(false); // For toggling the note input
+  const [note, setNote] = useState(""); // State for user notes
 
   const call = useCall();
   const callingState = useCallCallingState();
@@ -314,6 +320,16 @@ const MeetingRoom: React.FC<MeetingRoomProps> = ({ userId, meetingId }) => {
     setTimeout(() => setCoinTossResult(null), 5000); // Clear result after 5 seconds
   };
 
+  const handleSaveNote = async () => {
+    if (note && call?.id) {
+      const notesDoc = doc(db, "meetings", call.id, "notes", "userNote");
+      await setDoc(notesDoc, { text: note }, { merge: true });
+      setNote(""); // Clear the input after saving
+      setShowNoteInput(false); // Hide the input modal after saving
+    }
+  };
+  
+
   return (
     <section className="relative h-screen w-full overflow-hidden pt-4 text-white">
       <div className="relative flex size-full items-center justify-center">
@@ -366,6 +382,28 @@ const MeetingRoom: React.FC<MeetingRoomProps> = ({ userId, meetingId }) => {
           </div>
         </button>
         <CopyLinkButton />
+        
+        <div>
+        <button className="bg-blue-500 text-white py-2 px-4 rounded" onClick={() => setShowNoteInput(true)}>
+          Take Notes
+        </button>
+        {showNoteInput && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+            <div className="bg-white p-6 rounded-lg">
+              <textarea
+                value={note}
+                onChange={(e) => setNote(e.target.value)}
+                placeholder="Write your notes here..."
+                className="w-full h-40 p-2 border text-black border-gray-300 rounded"
+              />
+              <button onClick={handleSaveNote} className="bg-green-500 text-white py-2 px-4 rounded mt-4">
+                Save Note
+              </button>
+            </div>
+          </div>
+        )}
+      </div>  
+
         <CoinToss
           team1={team1}
           team2={team2}
