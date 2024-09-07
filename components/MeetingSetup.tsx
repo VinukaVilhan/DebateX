@@ -19,12 +19,12 @@ import { Plus, Trash, Edit2 } from "lucide-react";
 import {
   getFirestore,
   collection,
-  addDoc,
   setDoc,
   doc,
-  getDoc,updateDoc
+  getDoc,
+  updateDoc,
 } from "firebase/firestore";
-import { db } from "@/app/firebase/page";
+import { db } from "@/app/firebase/layout";
 
 interface MeetingSetupProps {
   setIsSetupComplete: (value: boolean) => void;
@@ -99,67 +99,52 @@ const MeetingSetup: React.FC<MeetingSetupProps> = ({
     setTeams(teams.filter((_, i) => i !== index));
   };
 
-  useEffect(() => {
-    const saveToFirestore = async () => {
-      try {
-        // Create a reference to the document with the meetingId as the document ID
-        const meetingDocRef = doc(collection(db, "meetings"), meetingId);
+  const saveToFirestore = async () => {
+    try {
+      // Create a reference to the document with the meetingId as the document ID
+      const meetingDocRef = doc(collection(db, "meetings"), meetingId);
 
-        // Use setDoc to create or overwrite the document with the specified ID
-        const meetingDocSnap = await getDoc(meetingDocRef);
-        if (meetingDocSnap.exists()) {
-          console.log("Document exists:", meetingDocSnap.data());
-          // Perform any actions if the document exists
-          const meetingData = meetingDocSnap.data();
+      // Use setDoc to create or overwrite the document with the specified ID
+      const meetingDocSnap = await getDoc(meetingDocRef);
+      if (meetingDocSnap.exists()) {
+        console.log("Document exists:", meetingDocSnap.data());
+        // Perform any actions if the document exists
+        const meetingData = meetingDocSnap.data();
 
-          const participants = meetingData.participants || [];
-          const updatedParticipants = [
-            ...participants,
-            { userId, userName },
-          ];
-          await updateDoc(meetingDocRef, { participants: updatedParticipants });
-          console.log("Document updated with new participant");
-
-        
-        } else {
-          console.log("Document does not exist. Creating a new document.");
-          await setDoc(meetingDocRef, {
-            meetingId,
-            hostId: userId,
-            hostName: userName,
-            teams,
-          });
-        }
-
-        setIsSetupComplete(true);
-        setIsDialogOpen(false);
-        call.join();
-      } catch (error) {
-        console.error("Error adding document to Firestore: ", error);
+        const participants = meetingData.participants || [];
+        const updatedParticipants = [...participants, { userId, userName }];
+        await updateDoc(meetingDocRef, { participants: updatedParticipants });
+        console.log("Document updated with new participant");
+      } else {
+        console.log("Document does not exist. Creating a new document.");
+        await setDoc(meetingDocRef, {
+          meetingId,
+          hostId: userId,
+          hostName: userName,
+          teams,
+        });
       }
-    };
-saveToFirestore();
-  }, [
-    teams,
-    isDialogOpen,
-    meetingId,
-    userId,
-    call,
-    setIsSetupComplete,
-    meetingState,
-  ]);
+
+      setIsSetupComplete(true);
+      setIsDialogOpen(false); // Close the dialog after saving the teams
+      call.join();
+    } catch (error) {
+      console.error("Error adding document to Firestore: ", error);
+    }
+  };
 
   const handleLetsGoClick = () => {
     if (
-      meetingState !== "isHostMeeting" &&
-      meetingState !== "isScheduleMeeting"
+      (meetingState === "isHostMeeting" || meetingState === "isScheduleMeeting") &&
+      teams.length > 0
     ) {
+      saveToFirestore(); // Save the teams and close the dialog
+    } else if (meetingState !== "isHostMeeting" && meetingState !== "isScheduleMeeting") {
       // Proceed to the meeting directly if not a host
+      saveToFirestore(); // Save the teams and close the dialog
+
       setIsSetupComplete(true);
       call.join();
-    } else if (isDialogOpen) {
-      setIsDialogOpen(false);
-      // Only proceed to save and join if dialog is open
     }
   };
 
@@ -216,7 +201,7 @@ saveToFirestore();
                   className="bg-blue-500 mt-4"
                   onClick={handleLetsGoClick}
                 >
-                  Ok I added the teams, let&aposl;s go
+                  Ok, I added the teams, let&apos;s go
                 </Button>
               </DialogDescription>
             </DialogHeader>

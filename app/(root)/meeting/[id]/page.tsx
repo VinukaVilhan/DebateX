@@ -8,7 +8,7 @@ import { useGetCallById } from "@/hooks/useGetCallById";
 import Alert from "@/components/Alert";
 import MeetingSetup from "@/components/MeetingSetup";
 import MeetingRoom from "@/components/MeetingRoom";
-import { db } from "@/app/firebase/page";
+import { db } from "@/lib/firebaseConfig";
 import { doc, getDoc } from "firebase/firestore"; // Import Firebase functions
 
 const MeetingPage = () => {
