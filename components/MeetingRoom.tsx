@@ -221,6 +221,9 @@ const MeetingRoom: React.FC<MeetingRoomProps> = ({ userId, meetingId }) => {
   const { useCallCallingState } = useCallStateHooks();
   const [coinTossResult, setCoinTossResult] = useState<string | null>(null);
   const [hasJoined, setHasJoined] = useState(false);
+  const [team1, setTeam1] = useState<string>("Team A");
+  const [team2, setTeam2] = useState<string>("Team B");
+  const [loadingTeams, setLoadingTeams] = useState(true);
 
   const call = useCall();
   const callingState = useCallCallingState();
@@ -239,38 +242,6 @@ const MeetingRoom: React.FC<MeetingRoomProps> = ({ userId, meetingId }) => {
     }
   }, [call, hasJoined]);
 
-  // const handleEndCall = async () => {
-  //   if (!userId || !meetingId) return;
-
-  //   console.log(meetingId);
-  //   console.log(userId);
-
-  //   try {
-  //     const meetingDocRef = doc(db, "meetings", meetingId);
-  //     const meetingDocSnap = await getDoc(meetingDocRef);
-
-  //     if (meetingDocSnap.exists()) {
-  //       const meetingData = meetingDocSnap.data();
-  //       console.log(meetingData);
-  //       const updatedParticipants = Object.values(meetingData.participants || {}).filter(
-  //         (participant: { userId: string }) => participant.userId !== userId
-  //       );
-
-  //       // Update the participants array in the database
-  //       await updateDoc(meetingDocRef, {
-  //         participants: updatedParticipants,
-  //       });
-
-  //       console.log("Participant removed successfully.");
-  //       // Optionally navigate away from the meeting page
-  //       router.push("/dashboard"); // Redirect to dashboard or another page
-  //     } else {
-  //       console.error("Meeting document not found");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error updating meeting document:", error);
-  //   }
-  // };
 
   useEffect(() => {
     if (call) {
@@ -288,6 +259,41 @@ const MeetingRoom: React.FC<MeetingRoomProps> = ({ userId, meetingId }) => {
       };
     }
   }, [call]);
+
+  useEffect(() => {
+    const fetchTeams = async () => {
+      setLoadingTeams(true); // Set loading state to true
+      try {
+        const docRef = doc(db, "meetings", meetingId); // Reference to the meeting document
+        const docSnap = await getDoc(docRef); // Get the document snapshot
+  
+        if (docSnap.exists()) {
+          const data = docSnap.data(); // Extract document data
+          console.log("Fetched meeting data:", data); // Log full data for debugging
+  
+          // Check if 'teams' field exists and is an array
+          if (data.teams && Array.isArray(data.teams) && data.teams.length >= 2) {
+            setTeam1(data.teams[0] || "Team A"); // Set the first team with fallback
+            setTeam2(data.teams[1] || "Team B"); // Set the second team with fallback
+          } else {
+            console.error("Teams data is missing or has an unexpected structure.");
+          }
+        } else {
+          console.error("No such document!");
+        }
+      } catch (error) {
+        console.error("Error fetching team data:", error); // Log any errors
+      } finally {
+        setLoadingTeams(false); // Stop loading state
+      }
+    };
+  
+    if (meetingId) {
+      fetchTeams(); // Fetch team data if meetingId is available
+    }
+  }, [meetingId]); // Re-run whenever meetingId changes
+  
+
 
   if (callingState !== CallingState.JOINED) return <Loader />;
 
@@ -361,8 +367,8 @@ const MeetingRoom: React.FC<MeetingRoomProps> = ({ userId, meetingId }) => {
         </button>
         <CopyLinkButton />
         <CoinToss
-          team1="Team A"
-          team2="Team B"
+          team1={team1}
+          team2={team2}
           onTossResult={handleCoinToss}
           isHost={isHost}
         />
