@@ -54,11 +54,11 @@ const MeetingCard = ({
   return (
     <section className="flex flex-col w-full justify-between gap-6 rounded-2xl bg-dark-1 px-9 py-8 mx-auto">
       <div className="flex flex-col gap-2 pl-2">
-        <article className="flex gap-3">
+        <article className="flex items-center gap-3">
           <Image src={icon} alt="upcoming" width={28} height={28} />
           <div className="flex flex-col gap-2">
             {/* <h1 className="text-2xl font-bold">{title}</h1> */}
-            <h1 className="text-4xl font-bold">{`${formattedDate}`}</h1>
+            <h1 className="text-4xl font-bold mb-0">{`${formattedDate}`}</h1>
           </div>
         </article>
 
@@ -89,7 +89,7 @@ const MeetingCard = ({
           <div className="flex gap-2">
             <Button
               onClick={handleClick}
-              className="rounded bg-blue-1 px-6 w-1/2 flex justify-between"
+              className="rounded bg-blue-1 px-6 w-2/3 flex gap-1 justify-center"
             >
               {buttonIcon1 && (
                 <Image src={buttonIcon1} alt="feature" width={20} height={20} />
@@ -103,7 +103,7 @@ const MeetingCard = ({
                   title: "Link Copied",
                 });
               }}
-              className="bg-dark-4 px-6"
+              className="bg-dark-4 px-2"
             >
               <Image
                 src="/icons/copy.svg"

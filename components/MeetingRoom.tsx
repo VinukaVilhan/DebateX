@@ -25,6 +25,7 @@ import {
 import Loader from "./Loader";
 import { cn } from "@/lib/utils";
 import EndCallButton from "./EndCallButton";
+import "../app/(root)/Styles/MeetingRoom.css";
 
 type CallLayoutType = "grid" | "speaker-left" | "speaker-right";
 
