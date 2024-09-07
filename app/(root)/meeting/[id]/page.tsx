@@ -1,16 +1,16 @@
+
 "use client";
 import React, { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
 import { StreamCall, StreamTheme } from "@stream-io/video-react-sdk";
 import { useParams, useRouter } from "next/navigation"; // Import useRouter
 import { Loader } from "lucide-react";
-
 import { useGetCallById } from "@/hooks/useGetCallById";
 import Alert from "@/components/Alert";
 import MeetingSetup from "@/components/MeetingSetup";
 import MeetingRoom from "@/components/MeetingRoom";
-import { db } from "@/app/firebase/page";
-import { doc, getDoc } from "firebase/firestore"; // Import Firebase functions
+import { db } from "@/lib/firebaseConfig";
+import { doc, getDoc,updateDoc} from "firebase/firestore"; // Import Firebase functions
 
 const MeetingPage = () => {
   const { id } = useParams();
@@ -85,25 +85,31 @@ const MeetingPage = () => {
   if (user) console.log(user.id, id, meetingState);
 
   const meetingId = Array.isArray(id) ? id[0] : id || "";
+  const userName = `${user?.firstName ?? ""} ${user?.lastName ?? ""}`.trim();
 
   return (
     <main className="h-screen w-full">
       <StreamCall call={call}>
         <StreamTheme>
-          {!isSetupComplete && user ? (
-            <MeetingSetup
-              setIsSetupComplete={setIsSetupComplete}
-              userId={user.id}
-              meetingId={meetingId}
-              meetingState={meetingState || ""}
-            />
-          ) : (
-            <MeetingRoom />
+          {user && (
+            !isSetupComplete ? (
+              <MeetingSetup
+                setIsSetupComplete={setIsSetupComplete}
+                userId={user.id}
+                meetingId={meetingId}
+                meetingState={meetingState || ""}
+                userName={userName || ""}
+              />
+            ) : (
+              <MeetingRoom 
+                userId={user.id || ""} 
+                meetingId={meetingId} 
+              />
+            )
           )}
         </StreamTheme>
       </StreamCall>
     </main>
   );
-};
-
+}
 export default MeetingPage;
