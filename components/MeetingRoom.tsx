@@ -25,7 +25,10 @@ import {
 import Loader from "./Loader";
 import { cn } from "@/lib/utils";
 import EndCallButton from "./EndCallButton";
-import "../app/(root)/Styles/MeetingRoom.css";
+import { doc, getDoc, updateDoc } from "firebase/firestore"; // Import Firebase functions
+import { db } from "@/app/firebase/layout";
+import { useUser } from "@clerk/nextjs";
+import ParticipantsView from "./ParticipantsView";
 
 type CallLayoutType = "grid" | "speaker-left" | "speaker-right";
 
@@ -196,7 +199,12 @@ const CopyLinkButton = () => {
   );
 };
 
-const MeetingRoom = () => {
+interface MeetingRoomProps {
+  userId: string;
+  meetingId: string;
+}
+
+const MeetingRoom: React.FC<MeetingRoomProps> = ({ userId, meetingId }) => {
   const searchParams = useSearchParams();
   const isPersonalRoom = !!searchParams.get("personal");
   const router = useRouter();
@@ -204,11 +212,60 @@ const MeetingRoom = () => {
   const [showParticipants, setShowParticipants] = useState(false);
   const { useCallCallingState } = useCallStateHooks();
   const [coinTossResult, setCoinTossResult] = useState<string | null>(null);
+  const [hasJoined, setHasJoined] = useState(false);
 
   const call = useCall();
   const callingState = useCallCallingState();
 
   const isHost = call?.isCreatedByMe || false;
+
+  useEffect(() => {
+    if (call && !hasJoined) {
+      console.log("Attempting to join the call");
+      call
+        .join()
+        .then(() => {
+          console.log("Joined the call successfully");
+          setHasJoined(true);
+        })
+        .catch((error) => {
+          console.error("Error joining call:", error);
+        });
+    }
+  }, [call, hasJoined]);
+
+  // const handleEndCall = async () => {
+  //   if (!userId || !meetingId) return;
+
+  //   console.log(meetingId);
+  //   console.log(userId);
+
+  //   try {
+  //     const meetingDocRef = doc(db, "meetings", meetingId);
+  //     const meetingDocSnap = await getDoc(meetingDocRef);
+
+  //     if (meetingDocSnap.exists()) {
+  //       const meetingData = meetingDocSnap.data();
+  //       console.log(meetingData);
+  //       const updatedParticipants = Object.values(meetingData.participants || {}).filter(
+  //         (participant: { userId: string }) => participant.userId !== userId
+  //       );
+
+  //       // Update the participants array in the database
+  //       await updateDoc(meetingDocRef, {
+  //         participants: updatedParticipants,
+  //       });
+
+  //       console.log("Participant removed successfully.");
+  //       // Optionally navigate away from the meeting page
+  //       router.push("/dashboard"); // Redirect to dashboard or another page
+  //     } else {
+  //       console.error("Meeting document not found");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error updating meeting document:", error);
+  //   }
+  // };
 
   useEffect(() => {
     if (call) {
@@ -257,17 +314,19 @@ const MeetingRoom = () => {
             "show-block": showParticipants,
           })}
         >
-          <CallParticipantsList onClose={() => setShowParticipants(false)} />
+          <div className="fixed top-0 left-0 p-4 bg-gray-800 text-white">
+            {/* Replace CallParticipantsList with ParticipantsView */}
+            <ParticipantsView meetingId={meetingId} />
+          </div>{" "}
         </div>
       </div>
       {/* Timer */}
       <div className="fixed top-0 right-0 m-4">
         <Timer />
       </div>
-      {/* video layout and call controls */}
+      {/* Video layout and call controls */}
       <div className="fixed bottom-0 flex w-full items-center justify-center gap-5">
         <CallControls onLeave={() => router.push(`/`)} />
-
         <DropdownMenu>
           <div className="flex items-center">
             <DropdownMenuTrigger className="cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]">
