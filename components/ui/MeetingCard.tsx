@@ -53,8 +53,8 @@ const MeetingCard = ({
 
   return (
     <section className="flex flex-col w-full justify-between gap-6 rounded-2xl bg-dark-1 px-9 py-8 mx-auto">
-      <div className="flex flex-col gap-1 pl-2">
-        <article className="flex gap-5">
+      <div className="flex flex-col gap-2 pl-2">
+        <article className="flex gap-3">
           <Image src={icon} alt="upcoming" width={28} height={28} />
           <div className="flex flex-col gap-2">
             {/* <h1 className="text-2xl font-bold">{title}</h1> */}
@@ -89,12 +89,12 @@ const MeetingCard = ({
           <div className="flex gap-2">
             <Button
               onClick={handleClick}
-              className="rounded bg-blue-1 px-6 w-1/2"
+              className="rounded bg-blue-1 px-6 w-1/2 flex justify-between"
             >
               {buttonIcon1 && (
                 <Image src={buttonIcon1} alt="feature" width={20} height={20} />
               )}
-              {buttonText}
+              <p className="text-lg">{buttonText}</p>
             </Button>
             <Button
               onClick={() => {

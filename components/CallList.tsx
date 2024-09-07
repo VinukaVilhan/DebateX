@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Loader from "./Loader";
 import { useToast } from "./ui/use-toast";
+import { Rewind } from "@phosphor-icons/react/dist/ssr";
 
 const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
   const { endedCalls, upcomingCalls, callRecordings, isLoading } =
@@ -79,11 +80,11 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
           <MeetingCard
             key={(meeting as Call).id}
             icon={
-              type === "ended"
-                ? "icons/previous.svg"
+              type == "ended"
+                ? "/icons/rewind.svg"
                 : type === "upcoming"
                 ? "/icons/upcoming.svg"
-                : "/icons/recordings.svg"
+                : "/icons/video-camera-fill.svg"
             }
             title={
               (meeting as Call).state?.custom?.description ||

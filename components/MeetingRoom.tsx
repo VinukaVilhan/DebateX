@@ -25,8 +25,13 @@ import {
 import Loader from "./Loader";
 import { cn } from "@/lib/utils";
 import EndCallButton from "./EndCallButton";
-import { db } from "@/lib/firebaseConfig"; // Import Firestore instance
-import { doc, setDoc } from "firebase/firestore";
+
+import { doc, getDoc, updateDoc } from "firebase/firestore"; // Import Firebase functions
+import { db } from "@/app/firebase/layout";
+import { useUser } from "@clerk/nextjs";
+import ParticipantsView from "./ParticipantsView";
+import { setDoc } from "firebase/firestore";
+
 
 type CallLayoutType = "grid" | "speaker-left" | "speaker-right";
 
@@ -53,6 +58,9 @@ const CoinToss: React.FC<CoinTossProps> = ({
 }) => {
   const [flipping, setFlipping] = useState(false);
   const call = useCall();
+
+
+
 
   const flipCoin = () => {
     setFlipping(true);
@@ -197,7 +205,17 @@ const CopyLinkButton = () => {
   );
 };
 
-const MeetingRoom = () => {
+interface MeetingRoomProps {
+ 
+  userId: string;
+  meetingId: string;
+  
+}
+
+
+
+
+const MeetingRoom: React.FC<MeetingRoomProps> = ({ userId, meetingId }) => {
   const searchParams = useSearchParams();
   const isPersonalRoom = !!searchParams.get("personal");
   const router = useRouter();
@@ -205,12 +223,31 @@ const MeetingRoom = () => {
   const [showParticipants, setShowParticipants] = useState(false);
   const { useCallCallingState } = useCallStateHooks();
   const [coinTossResult, setCoinTossResult] = useState<string | null>(null);
+
+  const [hasJoined, setHasJoined] = useState(false);
+  const [team1, setTeam1] = useState<string>("Team A");
+  const [team2, setTeam2] = useState<string>("Team B");
+  const [loadingTeams, setLoadingTeams] = useState(true);
   const [showNoteInput, setShowNoteInput] = useState(false); // For toggling the note input
   const [note, setNote] = useState(""); // State for user notes
+
   const call = useCall();
   const callingState = useCallCallingState();
 
   const isHost = call?.isCreatedByMe || false;
+
+  useEffect(() => {
+    if (call && !hasJoined) {
+      console.log("Attempting to join the call");
+      call.join().then(() => {
+        console.log("Joined the call successfully");
+        setHasJoined(true);
+      }).catch((error) => {
+        console.error("Error joining call:", error);
+      });
+    }
+  }, [call, hasJoined]);
+
 
   useEffect(() => {
     if (call) {
@@ -228,6 +265,41 @@ const MeetingRoom = () => {
       };
     }
   }, [call]);
+
+  useEffect(() => {
+    const fetchTeams = async () => {
+      setLoadingTeams(true); // Set loading state to true
+      try {
+        const docRef = doc(db, "meetings", meetingId); // Reference to the meeting document
+        const docSnap = await getDoc(docRef); // Get the document snapshot
+  
+        if (docSnap.exists()) {
+          const data = docSnap.data(); // Extract document data
+          console.log("Fetched meeting data:", data); // Log full data for debugging
+  
+          // Check if 'teams' field exists and is an array
+          if (data.teams && Array.isArray(data.teams) && data.teams.length >= 2) {
+            setTeam1(data.teams[0] || "Team A"); // Set the first team with fallback
+            setTeam2(data.teams[1] || "Team B"); // Set the second team with fallback
+          } else {
+            console.error("Teams data is missing or has an unexpected structure.");
+          }
+        } else {
+          console.error("No such document!");
+        }
+      } catch (error) {
+        console.error("Error fetching team data:", error); // Log any errors
+      } finally {
+        setLoadingTeams(false); // Stop loading state
+      }
+    };
+  
+    if (meetingId) {
+      fetchTeams(); // Fetch team data if meetingId is available
+    }
+  }, [meetingId]); // Re-run whenever meetingId changes
+  
+
 
   if (callingState !== CallingState.JOINED) return <Loader />;
 
@@ -269,17 +341,19 @@ const MeetingRoom = () => {
             "show-block": showParticipants,
           })}
         >
-          <CallParticipantsList onClose={() => setShowParticipants(false)} />
-        </div>
+ <div className="fixed top-0 left-0 p-4 bg-gray-800 text-white">
+          {/* Replace CallParticipantsList with ParticipantsView */}
+          <ParticipantsView meetingId={meetingId} />
+        </div>        </div>
+       
       </div>
       {/* Timer */}
       <div className="fixed top-0 right-0 m-4">
         <Timer />
       </div>
-      {/* video layout and call controls */}
+      {/* Video layout and call controls */}
       <div className="fixed bottom-0 flex w-full items-center justify-center gap-5">
-        <CallControls onLeave={() => router.push(`/`)} />
-
+      <CallControls onLeave={() => router.push(`/`)} />
         <DropdownMenu>
           <div className="flex items-center">
             <DropdownMenuTrigger className="cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]">
@@ -331,8 +405,8 @@ const MeetingRoom = () => {
       </div>  
 
         <CoinToss
-          team1="Team A"
-          team2="Team B"
+          team1={team1}
+          team2={team2}
           onTossResult={handleCoinToss}
           isHost={isHost}
         />
