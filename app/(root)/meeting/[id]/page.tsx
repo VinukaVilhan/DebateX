@@ -1,3 +1,4 @@
+
 "use client";
 import React, { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
@@ -9,7 +10,7 @@ import Alert from "@/components/Alert";
 import MeetingSetup from "@/components/MeetingSetup";
 import MeetingRoom from "@/components/MeetingRoom";
 import { db } from "@/lib/firebaseConfig";
-import { doc, getDoc } from "firebase/firestore"; // Import Firebase functions
+import { doc, getDoc,updateDoc} from "firebase/firestore"; // Import Firebase functions
 
 const MeetingPage = () => {
   const { id } = useParams();
@@ -90,23 +91,25 @@ const MeetingPage = () => {
     <main className="h-screen w-full">
       <StreamCall call={call}>
         <StreamTheme>
-          {!isSetupComplete && user ? (
-            <MeetingSetup
-              setIsSetupComplete={setIsSetupComplete}
-              userId={user.id}
-              meetingId={meetingId}
-              meetingState={meetingState || ""}
-              userName = {userName||""}
-            />
-          ) : (
-
-            <MeetingRoom  />
-
+          {user && (
+            !isSetupComplete ? (
+              <MeetingSetup
+                setIsSetupComplete={setIsSetupComplete}
+                userId={user.id}
+                meetingId={meetingId}
+                meetingState={meetingState || ""}
+                userName={userName || ""}
+              />
+            ) : (
+              <MeetingRoom 
+                userId={user.id || ""} 
+                meetingId={meetingId} 
+              />
+            )
           )}
         </StreamTheme>
       </StreamCall>
     </main>
   );
-};
-
+}
 export default MeetingPage;
